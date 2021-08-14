@@ -1,0 +1,31 @@
+shell = "zsh"
+
+[plugins]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+# use = ["{{ name }}.zsh"]
+
+[plugins.k]
+github = "supercrabtree/k"
+
+# [plugins.blackbox]
+# github = "StackExchange/blackbox"
+
+# [plugins.zsh-syntax-highlighting]
+# github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.fzf-tab]
+github = "Aloxaf/fzf-tab"
+
+[plugins.fast-syntax-highlighting]
+github = "zdharma/fast-syntax-highlighting"
+
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
