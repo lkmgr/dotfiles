@@ -41,8 +41,14 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 eval "$(sheldon source)"
-eval "$(zoxide init zsh)"
-eval "$(keychain --eval --quiet id_ed25519)"
+
+if type "zoxide" > /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+if type "keychain" > /dev/null; then
+  eval "$(keychain --eval --quiet id_ed25519)"
+fi
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -51,8 +57,8 @@ bindkey "^[[F" end-of-line
 bindkey "^[[3~" delete-char
 bindkey '^@' autosuggest-execute
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
