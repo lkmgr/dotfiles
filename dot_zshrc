@@ -33,6 +33,12 @@ export FZF_DEFAULT_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
+# Color Aliases
+alias ls='ls --color=auto'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+
 alias cp='cp --reflink=auto'
 
 alias cl='clear'
@@ -40,7 +46,6 @@ alias cl='clear'
 alias ll='exa --long --color-scale --icons --all --group-directories-first'
 alias kk='k -ah'
 
-alias ls='ls --color=auto'
 alias l='ls -alh'
 alias ..='cd ..'
 
