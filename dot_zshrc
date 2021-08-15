@@ -13,6 +13,26 @@ HISTSIZE=1000
 SAVEHIST=50000
 # bindkey -e
 
+_fzf_compgen_path() {
+    fd . "$1"
+}
+_fzf_compgen_dir() {
+    fd --type d . "$1"
+}
+
+export FZF_DEFAULT_OPTS="
+--layout=reverse
+--height=50%
+--multi
+--preview-window=:hidden
+--preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
+--prompt='∼ ' --pointer='▶' --marker='✓'
+"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --exclude '.git' --exclude 'node_modules'"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+
 alias cp='cp --reflink=auto'
 
 alias cl='clear'
