@@ -1,0 +1,4 @@
+{{ if eq .chezmoi.osRelease.id "arch" -}}
+#!/bin/sh
+sudo pacman -Syu --needed --noconfirm zsh fzf exa fd bat age
+{{ end -}}
