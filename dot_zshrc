@@ -26,7 +26,7 @@ _fzf_compgen_dir() {
 
 export FZF_DEFAULT_OPTS="
 --layout=reverse
---height=50%
+--height=75%
 --multi
 --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'
 --prompt='∼ ' --pointer='▶' --marker='✓'
@@ -46,7 +46,7 @@ alias cp='cp --reflink=auto'
 
 alias cl='clear'
 
-alias ll='exa --long --color-scale --icons --all --group-directories-first'
+alias ll='exa --long --color-scale --icons --all --all --group --header --extended --group-directories-first'
 alias kk='k -ah'
 
 alias l='ls -alh'
@@ -70,15 +70,9 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
-eval "$(sheldon source)"
-
-if type "zoxide" > /dev/null; then
-  eval "$(zoxide init zsh)"
-fi
-
-if type "keychain" > /dev/null; then
-  eval "$(keychain --eval --quiet id_ed25519)"
-fi
+command -v sheldon > /dev/null && eval "$(sheldon source)"
+command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
+command -v keychain > /dev/null && eval "$(keychain --eval --quiet id_ed25519)"
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
