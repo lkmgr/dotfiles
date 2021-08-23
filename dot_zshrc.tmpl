@@ -75,15 +75,15 @@ alias tws='timew summary :ids'
 alias twsw='timew summary :ids :week'
 alias twsm='timew summary :ids :month'
 
-{{ if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.os "linux" -}}
 alias sctl='sudo systemctl'
 alias jrunit='sudo journalctl -u'
-{{ end }}
+{{- end }}
 
-{{ if eq .chezmoi.osRelease.id "arch" }}
+{{ if eq .chezmoi.osRelease.id "arch" -}}
 alias yin="yay -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S"
 alias pin="pacman -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S"
-{{ end -}}
+{{- end }}
 
 autoload -Uz compinit && compinit
 
@@ -114,9 +114,9 @@ bindkey '^[[F' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^@' autosuggest-execute
 
-{{ if eq .chezmoi.os "darwin" }}
+{{- if eq .chezmoi.os "darwin" -}}
 bindkey 'ç' fzf-cd-widget
-{{ end }}
+{{- end }}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
