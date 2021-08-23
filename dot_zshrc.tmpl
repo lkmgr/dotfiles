@@ -5,9 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+typeset -U path
 path+=("$HOME/.local/bin")
-
 export PATH
+
+export SHELDON_CONFIG_DIR="$HOME/.config/sheldon"
+export SHELDON_DATA_DIR="$HOME/.config/sheldon"
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=45
@@ -47,19 +50,51 @@ alias cp='cp --reflink=auto'
 alias cl='clear'
 
 alias ll='exa --long --color-scale --icons --all --all --group --header --extended --group-directories-first'
-alias kk='k -ah'
+alias kk='k -ah --no-vcs'
 
 alias l='ls -alh'
 alias ..='cd ..'
 
+alias batlog='bat -pp -l log'
+
+# git
+alias gf='git fetch'
+alias gfp='git fetch -p'
+alias gl='git pull'
+alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gco='git checkout'
+alias grb='git rebase'
+
+# docker
+alias dco='docker-compose'
+
+# timewarrior
+alias tw='timew'
+alias tws='timew summary :ids'
+alias twsw='timew summary :ids :week'
+alias twsm='timew summary :ids :month'
+
+{{ if eq .chezmoi.os "linux" -}}
 alias sctl='sudo systemctl'
 alias jrunit='sudo journalctl -u'
+{{ end -}}
 
+{{ if eq .chezmoi.osRelease.id "arch" -}}
 alias yin="yay -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S"
 alias pin="pacman -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S"
+{{ end -}}
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
+
+if [[ -f ~/.fzf.zsh ]]; then
+  # mac
+  source ~/.fzf.zsh 
+elif [[ -f /usr/share/fzf/key-bindings.zsh && -f /usr/share/fzf/completion.zsh ]]; then
+  # arch
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
 
 # fzf-tab
 # set list-colors to enable filename colorizing
@@ -67,19 +102,21 @@ compinit
 # preview directory's content with exa when completing cd
 # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
 command -v sheldon > /dev/null && eval "$(sheldon source)"
 command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
 command -v keychain > /dev/null && eval "$(keychain --eval --quiet id_ed25519)"
+command -v direnv > /dev/null && eval "$(direnv hook zsh)"
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
-bindkey "^[[3~" delete-char
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[3~' delete-char
 bindkey '^@' autosuggest-execute
+
+{{ if eq .chezmoi.os "darwin" -}}
+bindkey 'ç' fzf-cd-widget
+{{ end -}}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
