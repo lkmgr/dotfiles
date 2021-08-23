@@ -78,11 +78,11 @@ alias twsm='timew summary :ids :month'
 {{ if eq .chezmoi.os "linux" -}}
 alias sctl='sudo systemctl'
 alias jrunit='sudo journalctl -u'
-{{- end }}
 
-{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch")) -}}
+{{ if eq .chezmoi.osRelease.id "arch" -}}
 alias yin="yay -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S"
 alias pin="pacman -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S"
+{{- end }}
 {{- end }}
 
 autoload -Uz compinit && compinit
