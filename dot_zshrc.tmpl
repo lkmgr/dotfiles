@@ -21,10 +21,10 @@ SAVEHIST=200000
 # bindkey -e
 
 _fzf_compgen_path() {
-    fd . "$1"
+  fd . "$1"
 }
 _fzf_compgen_dir() {
-    fd --type d . "$1"
+  fd --type d . "$1"
 }
 
 export FZF_DEFAULT_OPTS="
@@ -82,8 +82,8 @@ alias jrunit='sudo journalctl -u'
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 alias yin="yay -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S"
 alias pin="pacman -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S"
-{{- end }}
-{{- end }}
+{{- end -}}
+{{- end -}}
 
 autoload -Uz compinit && compinit
 
