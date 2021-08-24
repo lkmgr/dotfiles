@@ -115,7 +115,7 @@ bindkey '^[[F' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^@' autosuggest-execute
 
-{{- if eq .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "darwin" -}}
 bindkey 'ç' fzf-cd-widget
 {{- end }}
 
