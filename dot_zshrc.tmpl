@@ -83,6 +83,7 @@ alias jrunit='sudo journalctl -u'
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 alias yin="yay -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S"
 alias pin="pacman -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S"
+alias pupd="sudo pacman -Syu"
 {{- end -}}
 {{- end }}
 
