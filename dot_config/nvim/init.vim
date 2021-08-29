@@ -30,6 +30,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+Plug 'tpope/vim-sensible'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
@@ -183,7 +184,7 @@ endif
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
 
-set scrolloff=3
+set scrolloff=6
 
 
 "" Status bar
