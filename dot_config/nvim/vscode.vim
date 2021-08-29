@@ -37,7 +37,7 @@ cnoreabbrev Qall qall
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Tabs
+"" Tabs - change to vscode function calls
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
