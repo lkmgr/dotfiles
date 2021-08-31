@@ -37,7 +37,7 @@ cnoreabbrev Qall qall
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Tabs - change to vscode function calls
+"" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
@@ -59,11 +59,20 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-"" vim-commentary alternative
-xmap gc <Plug>VSCodeCommentary
-nmap gc <Plug>VSCodeCommentary
-omap gc <Plug>VSCodeCommentary
+"" comments
+function! s:visualBlockComment()
+    normal! gv
+    let startPos = getpos("v")
+    let endPos = getpos(".")
+    call VSCodeNotifyRangePos("editor.action.blockComment", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+endfunction
+
+" xmap gc <Plug>VSCodeCommentary
+" nmap gc <Plug>VSCodeCommentary
+" omap gc <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
+
+xmap gc :<C-u>call <SID>visualBlockComment()<CR> 
 
 "" vscode specific
 nnoremap <C-w>gd <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
