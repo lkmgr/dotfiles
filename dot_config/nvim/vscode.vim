@@ -72,7 +72,7 @@ endfunction
 " omap gc <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
 
-xmap gc :<C-u>call <SID>visualBlockComment()<CR> 
+xmap gc :<C-u>call <SID>visualBlockComment()<CR>
 
 "" vscode specific
 nnoremap <C-w>gd <Cmd>call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
