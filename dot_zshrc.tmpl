@@ -100,10 +100,11 @@ elif [[ -f /usr/share/fzf/key-bindings.zsh && -f /usr/share/fzf/completion.zsh ]
 fi
 
 # fzf-tab
-# set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --all --long --color=always --group-directories-first --no-permissions --no-user --no-time --icons $realpath'
+{{ if eq .chezmoi.os "linux" -}}
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+{{- end }}
 
 command -v sheldon > /dev/null && eval "$(sheldon source)"
 command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
