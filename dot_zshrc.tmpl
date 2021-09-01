@@ -32,7 +32,7 @@ export FZF_DEFAULT_OPTS="
 --layout=reverse
 --height=65%
 --multi
---preview '([[ -d {} ]] && exa --all --all --color=always --group --group-directories-first {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'
+--preview '([[ -d {} ]] && exa --all --long --color=always --group-directories-first --no-permissions --no-user --no-time --icons {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'
 --prompt='∼ ' --pointer='▶' --marker='✓'
 "
 
@@ -103,7 +103,7 @@ fi
 # set list-colors to enable filename colorizing
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 # preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --all --all --color=always --group --group-directories-first $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --all --long --color=always --group-directories-first --no-permissions --no-user --no-time --icons $realpath'
 
 command -v sheldon > /dev/null && eval "$(sheldon source)"
 command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
