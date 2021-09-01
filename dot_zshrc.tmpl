@@ -102,9 +102,6 @@ fi
 # fzf-tab
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --all --long --color=always --group-directories-first --no-permissions --no-user --no-time --icons $realpath'
-{{ if eq .chezmoi.os "linux" -}}
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-{{- end }}
 
 command -v sheldon > /dev/null && eval "$(sheldon source)"
 command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
