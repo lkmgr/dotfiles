@@ -9,6 +9,8 @@ typeset -U path
 path+=("$HOME/.local/bin")
 export PATH
 
+export GPG_TTY=$(tty)
+
 export SHELDON_CONFIG_DIR="$HOME/.config/sheldon"
 export SHELDON_DATA_DIR="$HOME/.config/sheldon"
 
@@ -46,8 +48,6 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 
-alias cp='cp --reflink=auto'
-
 alias cl='clear'
 
 alias ll='exa --long --color-scale --icons --all --all --group --header --extended --group-directories-first'
@@ -78,6 +78,7 @@ alias twsw='timew summary :ids :week'
 alias twsm='timew summary :ids :month'
 
 {{ if eq .chezmoi.os "linux" -}}
+alias cp='cp --reflink=auto'
 alias sctl='sudo systemctl'
 alias jrunit='sudo journalctl -u'
 
