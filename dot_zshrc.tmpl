@@ -42,12 +42,6 @@ export FZF_DEFAULT_COMMAND="fd --hidden --color=always"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type f"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
-# Color Aliases
-alias ls='ls --color=auto'
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ip='ip -color=auto'
-
 alias cl='clear'
 
 alias ll='exa --long --color-scale --icons --all --all --group --header --extended --group-directories-first'
@@ -78,6 +72,12 @@ alias twsw='timew summary :ids :week'
 alias twsm='timew summary :ids :month'
 
 {{ if eq .chezmoi.os "linux" -}}
+# Color Aliases
+alias ls='ls --color=auto'
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+
 alias cp='cp --reflink=auto'
 alias sctl='sudo systemctl'
 alias jrunit='sudo journalctl -u'
