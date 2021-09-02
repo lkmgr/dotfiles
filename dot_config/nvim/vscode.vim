@@ -2,6 +2,7 @@
 
 call plug#begin(expand('~/.config/nvim/plugged-vscode'))
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
 " fzf?
 call plug#end()
 
