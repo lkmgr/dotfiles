@@ -1,3 +1,5 @@
 #!/bin/sh
 
-[[ -d "$HOME/.local/bin "]] || mkdir -p "$HOME/.local/bin"
+if [[ ! -d "$HOME/.local/bin" ]]; then
+  mkdir "$HOME/.local/bin"
+fi
