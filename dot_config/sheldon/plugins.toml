@@ -9,14 +9,8 @@ github = "zsh-users/zsh-completions"
 github = "zsh-users/zsh-autosuggestions"
 # use = ["{{ name }}.zsh"]
 
-[plugins.k]
-github = "supercrabtree/k"
-
 # [plugins.blackbox]
 # github = "StackExchange/blackbox"
-
-# [plugins.zsh-syntax-highlighting]
-# github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.fzf-tab]
 github = "Aloxaf/fzf-tab"
