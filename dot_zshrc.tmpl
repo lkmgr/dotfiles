@@ -1,3 +1,5 @@
+command -v direnv > /dev/null && eval "$(direnv hook zsh)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -106,7 +108,6 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --all --long --color=always --g
 command -v sheldon > /dev/null && eval "$(sheldon source)"
 command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
 command -v keychain > /dev/null && eval "$(keychain --eval --quiet id_ed25519)"
-command -v direnv > /dev/null && eval "$(direnv hook zsh)"
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
