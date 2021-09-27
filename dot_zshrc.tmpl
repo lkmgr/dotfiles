@@ -100,6 +100,10 @@ elif [[ -f /usr/share/fzf/key-bindings.zsh && -f /usr/share/fzf/completion.zsh ]
   # arch
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
+elif [[ -f /home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh && -f /home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.zsh ]]; then
+  # linux brew
+  source /home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.zsh
+  source /home/linuxbrew/.linuxbrew/opt/fzf/shell/completion.zsh
 fi
 
 # fzf-tab
