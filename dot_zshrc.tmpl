@@ -113,7 +113,8 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa --all --long --color=always --g
 command -v sheldon > /dev/null && eval "$(sheldon source)"
 command -v zoxide > /dev/null && eval "$(zoxide init zsh)"
 command -v keychain > /dev/null && eval "$(keychain --eval --quiet id_ed25519)"
-command -v direnv > /dev/null && eval "$(direnv hook zsh)" > /dev/null
+export DIRENV_LOG_FORMAT=
+command -v direnv > /dev/null && eval "$(direnv hook zsh)"
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
