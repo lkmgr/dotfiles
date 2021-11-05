@@ -23,6 +23,8 @@ HISTSIZE=10000
 SAVEHIST=200000
 # bindkey -e
 
+setopt share_history
+
 _fzf_compgen_path() {
   fd . "$1"
 }
