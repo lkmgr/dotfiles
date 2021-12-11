@@ -1,6 +1,0 @@
-#!/bin/sh
-
-{{ if eq .chezmoi.os "darwin" }}
-command -v z > /dev/null || brew install zoxide
-{{ end }}
-
