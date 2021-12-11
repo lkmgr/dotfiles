@@ -15,10 +15,11 @@ font pango:Hack Nerd Font 10
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+set $vol_notif dunstify -i audio-speakers -t 2000 -r 1743 -u low \\"Volume $(pamixer --get-volume-human)\\"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer -i 2 && $vol_notif"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer -d 2 && $vol_notif"
+bindsym XF86AudioMute exec --no-startup-id "pamixer -t && $vol_notif"
+# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
