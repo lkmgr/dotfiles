@@ -56,7 +56,7 @@ font-1 = siji:pixelsize=10;1
 ; modules-left = i3
 ; modules-center = mpd
 ; modules-right = filesystem alsa pulseaudio xkeyboard memory cpu eth temperature date powermenu
-modules-left = i3
+modules-left = i3 windowtitle
 modules-right = cpu memory network pulseaudio date powermenu
 
 tray-position = right
@@ -90,6 +90,14 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+
+[module/windowtitle]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 50
+label-empty = Empty
 
 
 [module/cpu]
