@@ -1,14 +1,15 @@
-@import "~/.cache/wal/colors-rofi-light.rasi"
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 
 configuration {
 	modi: [drun,run,window];
 /*	font: "mono 12";*/
+  font: "FantasqueSansMono Nerd Font 16";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
-/*	terminal: "rofi-sensible-terminal";*/
+	terminal: "kitty";
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*	run-command: "{cmd}";*/
@@ -16,7 +17,7 @@ configuration {
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
-	icon-theme: "Papirus";
+	icon-theme: "Papirus-Dark";
 /*	drun-match-fields: "name,generic,exec,categories,keywords";*/
 /*	drun-categories: ;*/
 /*	drun-show-actions: false;*/
@@ -28,7 +29,7 @@ configuration {
 /*	sorting-method: "normal";*/
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
-  sidebar-mode: true;
+	sidebar-mode: true;
 /*	hover-select: false;*/
 /*	eh: 1;*/
 /*	auto-select: false;*/
