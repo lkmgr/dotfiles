@@ -90,8 +90,9 @@ margin-bottom = 5
 [module/windowtitle]
 type = internal/xwindow
 format = <label>
+format-prefix = "  "
 label = %title%
-label-maxlen = 50
+label-maxlen = 70
 label-empty = Empty
 
 
@@ -101,6 +102,7 @@ interval = 1
 label = CPU %percentage%%
 format = <label>
 format-underline = #f90000
+format-prefix = " "
 
 
 [module/date]
@@ -159,6 +161,7 @@ type = internal/memory
 interval = 1
 format = <label>
 format-underline = #4bffdc
+format-prefix = " "
 label = MEM %percentage_used%%
 
 
@@ -168,6 +171,7 @@ interface = enp34s0
 interval = 1
 format-connected = <label-connected>
 format-connected-underline = #55aa55
+format-connected-prefix = "ﯱ "
 label-connected = %ifname% %downspeed% %upspeed%
 label-disconnected = not connected
 
@@ -177,7 +181,9 @@ type = internal/pulseaudio
 use-ui-max = false
 interval = 5
 format-volume = <label-volume>
+format-volume-prefix = "墳 "
 format-muted = <label-muted>
+format-muted-prefix = "婢 "
 label-volume = %percentage%%
 label-muted = muted
 
