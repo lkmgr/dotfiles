@@ -1,11 +1,10 @@
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 configuration {
-	modi: [drun,run,window];
-/*	font: "mono 12";*/
+	modi: [drun,calc,window,run];
   font: "FantasqueSansMono Nerd Font 16";
 /*	location: 0;*/
-/*	yoffset: 0;*/
+  yoffset: -100;
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
@@ -35,7 +34,7 @@ configuration {
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
-/*	combi-modi: "window,run";*/
+/* combi-modi: [drun,calc,run,window]; */
 /*	matching: "normal";*/
 /*	tokenize: true;*/
 /*	m: "-5";*/
