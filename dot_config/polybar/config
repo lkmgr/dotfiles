@@ -162,7 +162,7 @@ interval = 1
 format = <label>
 format-underline = #4bffdc
 format-prefix = " "
-label = MEM %percentage_used%%
+label = MEM %gb_used%/%gb_total%
 
 
 [module/network]
