@@ -17,8 +17,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Volume
 set $vol_notif dunstify -i audio-speakers -t 2000 -r 1743 -u low \\"Volume $(pamixer --get-volume-human)\\"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer -i 2 && $vol_notif"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer -d 2 && $vol_notif"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer -i 4 && $vol_notif"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer -d 4 && $vol_notif"
 bindsym XF86AudioMute exec --no-startup-id "pamixer -t && $vol_notif"
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
@@ -155,6 +155,9 @@ bindsym $mod+r mode "resize"
 gaps inner 10
 gaps outer 0
 
+default_border pixel 2
+default_floating_border pixel 2
+
 exec_always --no-startup-id picom --config $HOME/.config/picom.conf
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -163,9 +166,11 @@ set_from_resource $fg i3wm.color7 #ff0000
 set_from_resource $fg-alt i3wm.color1 #ff0000
 set_from_resource $bg i3wm.color0 #ff0000
 set_from_resource $fo i3wm.color4 #ff0000
+set_from_resource $c14 i3wm.color14 #ff0000
+set_from_resource $c09 i3wm.color9 #ff0000
 
 # class                 border  backgr. text indicator child_border
-client.focused          $fo     $bg     $fg  $bg       $bg
+client.focused          $fo     $bg     $fg  $fo       $fo
 client.focused_inactive $bg     $bg     $fg  $bg       $bg
 client.unfocused        $bg     $bg     $fg  $bg       $bg
 client.urgent           $fg-alt $bg     $fg  $bg       $bg
