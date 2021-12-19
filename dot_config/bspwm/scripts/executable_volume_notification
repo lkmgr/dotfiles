@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dunstify -i audio-speakers -t 2000 -r 1743 -u low "Volume $(pamixer --get-volume-human)"
+
