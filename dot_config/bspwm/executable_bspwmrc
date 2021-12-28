@@ -43,5 +43,6 @@ xsetroot -cursor_name left_ptr
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom --config ~/.config/picom.conf &
+pgrep -x playerctld > /dev/null || playerctld daemon &
 ~/.config/polybar/launch.sh &
 
