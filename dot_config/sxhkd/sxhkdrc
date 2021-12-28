@@ -25,6 +25,10 @@ super + alt + c
 XF86Audio{RaiseVolume,LowerVolume,Mute}
   pamixer {-i 3,-d 3,-t} && ~/.config/bspwm/scripts/volume_notification
 
+# media control
+super + {F9,F10,F11}
+  playerctl {play-pause,previous,next}
+
 # lock screen
 super + ctrl + shift + l
   betterlockscreen -l blur
