@@ -2,7 +2,8 @@
 
 configuration {
 	modi: [drun,calc,window,run];
-  font: "FantasqueSansMono Nerd Font 16";
+  font: "JetBrainsMono Nerd Font 15";
+  /* font: "FantasqueSansMono Nerd Font 16"; */
 /*	location: 0;*/
   yoffset: -100;
 /*	xoffset: 0;*/
