@@ -33,6 +33,10 @@ super + {F9,F10,F11}
 super + ctrl + shift + l
   betterlockscreen -l blur
 
+# notification history
+super + ctrl + n
+  dunstctl history-pop
+
 #
 # bspwm hotkeys
 #
