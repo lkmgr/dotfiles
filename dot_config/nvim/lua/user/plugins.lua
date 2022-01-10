@@ -74,22 +74,20 @@ return packer.startup({function(use)
   -- Misc
   use "kyazdani42/nvim-web-devicons"
   use {
+    "kyazdani42/nvim-tree.lua",
+    config = function() require("nvim-tree").setup() end,
+  }
+  use {
     "numToStr/Comment.nvim",
-    config = function()
-      require("user.plugins.comment").setup()
-    end,
+    config = function() require("user.plugins.comment").setup() end,
   }
   use {
     "folke/which-key.nvim",
-    config = function()
-      require("which-key").setup()
-    end,
+    config = function() require("which-key").setup() end,
   }
   use {
     "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup()
-    end,
+    config = function() require("lualine").setup() end,
   }
   use "romgrk/barbar.nvim"
 
