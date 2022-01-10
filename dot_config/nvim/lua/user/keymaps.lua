@@ -18,8 +18,8 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Explorer
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- Tree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -59,6 +59,7 @@ keymap("n", "<A-p>", ":BufferPin<CR>", opts)
 keymap("n", "<A-c>", ":BufferClose<CR>", opts)
 
 keymap("n", "<C-s>", ":BufferPick<CR>", opts)
+
 
 ---- i: Insert ----
 -- Fast escape
