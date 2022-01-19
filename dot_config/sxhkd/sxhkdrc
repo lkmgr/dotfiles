@@ -9,15 +9,19 @@
 # wm independent hotkeys
 #
 
+# show keybindings
+super + F1
+  ~/.config/sxhkd/show_keybindings
+
 # terminal emulator
 super + Return
   kitty
 
-# program launcher
+# rofi
 super + {_,shift,alt}+space
   rofi -show {drun,calc,run}
 
-# make sxhkd reload its configuration files:
+# reload sxhkd configuration
 super + alt + c
   pkill -USR1 -x sxhkd
 
@@ -64,6 +68,10 @@ super + y
 # swap the current node and the biggest window
 super + g
   bspc node -s biggest.window
+
+# move current window to preselected space
+super + shift + m
+  bspc node -n last.!automatic
 
 #
 # state/flags
@@ -143,10 +151,9 @@ super + ctrl + shift + space
 # super + alt + shift + {h,j,k,l}
 #   bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
-# Smart resize, will grow or shrink depending on location.
-# Will always grow for floating nodes.
+# smart resize, will grow or shrink depending on location
 super + alt + {h,j,k,l}
-  n=30; \
+  n=40; \
   { d1=left;   d2=right;  dx=-$n; dy=0;   \
   , d1=bottom; d2=top;    dx=0;   dy=$n;  \
   , d1=top;    d2=bottom; dx=0;   dy=-$n; \
