@@ -4,8 +4,8 @@ configuration {
 	modi: [drun,calc,window,run];
   font: "JetBrainsMono Nerd Font 15";
   /* font: "FantasqueSansMono Nerd Font 16"; */
-/*	location: 0;*/
-  yoffset: -100;
+  location: 2;
+  yoffset: 50;
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
