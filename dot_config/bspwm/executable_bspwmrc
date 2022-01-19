@@ -25,6 +25,10 @@ bspc config split_ratio 0.5
 
 bspc rule -a Pavucontrol state=floating
 bspc rule -a feh state=floating
+bspc rule -a firefox desktop='^1'
+bspc rule -a chromium desktop='^6' follow=off
+bspc rule -a discord desktop='^5' follow=off
+bspc rule -a code desktop='^3' follow=off
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
 # bspc rule -a mplayer2 state=floating
@@ -43,6 +47,9 @@ xsetroot -cursor_name left_ptr
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom --config ~/.config/picom.conf &
+pgrep -x dunst > /dev/null || dunst &
 pgrep -x playerctld > /dev/null || playerctld daemon &
+wal -R
+~/.fehbg &
 ~/.config/polybar/launch.sh &
 
