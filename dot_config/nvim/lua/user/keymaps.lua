@@ -31,34 +31,40 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "0", "^", opts)
 keymap("n", "^", "0", opts)
 
+keymap("n", "<leader>w", ":w<CR>", opts)
+
 -- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<C-t>", "<cmd>Telescope live_grep<CR>", opts)
 
 -- Buffers / barbar
-keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
-keymap("n", "<S-l>", ":BufferNext<CR>", opts)
-keymap("n", "<A-,>", ":BufferPrevious<CR>", opts)
-keymap("n", "<A-.>", ":BufferNext<CR>", opts)
-
-keymap("n", "<A-<>", ":BufferMovePrevious<CR>", opts)
-keymap("n", "<A->>", ":BufferMoveNext<CR>", opts)
-
-keymap("n", "<A-1>", ":BufferGoto 1<CR>", opts)
-keymap("n", "<A-2>", ":BufferGoto 2<CR>", opts)
-keymap("n", "<A-3>", ":BufferGoto 3<CR>", opts)
-keymap("n", "<A-4>", ":BufferGoto 4<CR>", opts)
-keymap("n", "<A-5>", ":BufferGoto 5<CR>", opts)
-keymap("n", "<A-6>", ":BufferGoto 6<CR>", opts)
-keymap("n", "<A-7>", ":BufferGoto 7<CR>", opts)
-keymap("n", "<A-8>", ":BufferGoto 8<CR>", opts)
-keymap("n", "<A-9>", ":BufferLast<CR>", opts)
-
-keymap("n", "<A-p>", ":BufferPin<CR>", opts)
-
-keymap("n", "<A-c>", ":BufferClose<CR>", opts)
-
-keymap("n", "<C-s>", ":BufferPick<CR>", opts)
+keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<A-h>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "<A-l>", ":BufferLineMoveNext<CR>", opts)
+-- keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
+-- keymap("n", "<S-l>", ":BufferNext<CR>", opts)
+-- keymap("n", "<A-,>", ":BufferPrevious<CR>", opts)
+-- keymap("n", "<A-.>", ":BufferNext<CR>", opts)
+--
+-- keymap("n", "<A-<>", ":BufferMovePrevious<CR>", opts)
+-- keymap("n", "<A->>", ":BufferMoveNext<CR>", opts)
+--
+-- keymap("n", "<A-1>", ":BufferGoto 1<CR>", opts)
+-- keymap("n", "<A-2>", ":BufferGoto 2<CR>", opts)
+-- keymap("n", "<A-3>", ":BufferGoto 3<CR>", opts)
+-- keymap("n", "<A-4>", ":BufferGoto 4<CR>", opts)
+-- keymap("n", "<A-5>", ":BufferGoto 5<CR>", opts)
+-- keymap("n", "<A-6>", ":BufferGoto 6<CR>", opts)
+-- keymap("n", "<A-7>", ":BufferGoto 7<CR>", opts)
+-- keymap("n", "<A-8>", ":BufferGoto 8<CR>", opts)
+-- keymap("n", "<A-9>", ":BufferLast<CR>", opts)
+--
+-- keymap("n", "<A-p>", ":BufferPin<CR>", opts)
+--
+-- keymap("n", "<A-c>", ":BufferClose<CR>", opts)
+--
+-- keymap("n", "<C-s>", ":BufferPick<CR>", opts)
 
 
 ---- i: Insert ----

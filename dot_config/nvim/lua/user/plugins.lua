@@ -55,9 +55,7 @@ return packer.startup({function(use)
   -- Telescope
   use {
     "nvim-telescope/telescope.nvim",
-    config = function()
-      require("user.plugins.telescope").setup()
-    end,
+    config = function() require("user.plugins.telescope").setup() end,
   }
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
@@ -71,12 +69,26 @@ return packer.startup({function(use)
   }
   use "p00f/nvim-ts-rainbow"
 
-  -- Misc
-  use "kyazdani42/nvim-web-devicons"
+  -- Buffers
+  use {
+    "akinsho/bufferline.nvim",
+    config = function() require("user.plugins.bufferline").setup() end,
+  }
+
+  -- Statusbar
+  use {
+    "nvim-lualine/lualine.nvim",
+    config = function() require("lualine").setup() end,
+  }
+
+  -- File Explorer
   use {
     "kyazdani42/nvim-tree.lua",
-    config = function() require("nvim-tree").setup() end,
+    config = function() require("user.plugins.nvim-tree").setup() end,
   }
+
+  -- Misc
+  use "kyazdani42/nvim-web-devicons"
   use {
     "numToStr/Comment.nvim",
     config = function() require("user.plugins.comment").setup() end,
@@ -85,11 +97,6 @@ return packer.startup({function(use)
     "folke/which-key.nvim",
     config = function() require("which-key").setup() end,
   }
-  use {
-    "nvim-lualine/lualine.nvim",
-    config = function() require("lualine").setup() end,
-  }
-  use "romgrk/barbar.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
