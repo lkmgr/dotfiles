@@ -1,0 +1,7 @@
+[".config/awesome/modules/vicious"]
+  type = "archive"
+  url = "https://github.com/vicious-widgets/vicious/archive/master.tar.gz"
+  exact = true
+  stripComponents = 1
+  refreshPeriod = "168h"
+
