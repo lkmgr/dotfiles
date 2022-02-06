@@ -1,7 +1,7 @@
 @import "~/.cache/wal/colors-rofi-dark.rasi"
 
 configuration {
-	modi: [drun,calc,window,run];
+	modi: [drun,window,run]; /* calc */
   font: "JetBrainsMono Nerd Font 15";
   /* font: "FantasqueSansMono Nerd Font 16"; */
   location: 2;
