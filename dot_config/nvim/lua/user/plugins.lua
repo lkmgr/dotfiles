@@ -67,12 +67,16 @@ return packer.startup({function(use)
       require("user.plugins.treesitter").setup()
     end,
   }
-  use "p00f/nvim-ts-rainbow"
+  -- use "p00f/nvim-ts-rainbow"
 
   -- Buffers
+  -- use {
+  --   "akinsho/bufferline.nvim",
+  --   config = function() require("user.plugins.bufferline").setup() end,
+  -- }
   use {
-    "akinsho/bufferline.nvim",
-    config = function() require("user.plugins.bufferline").setup() end,
+    "romgrk/barbar.nvim",
+    -- config = function() require("user.plugins.barbar").setup() end,
   }
 
   -- Statusbar

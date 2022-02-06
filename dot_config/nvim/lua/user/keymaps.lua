@@ -1,3 +1,5 @@
+-- local wrapTree = require("user.functions.wrap-tree")
+
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -37,19 +39,22 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<C-t>", "<cmd>Telescope live_grep<CR>", opts)
 
--- Buffers / barbar
-keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
-keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "<A-h>", ":BufferLineMovePrev<CR>", opts)
-keymap("n", "<A-l>", ":BufferLineMoveNext<CR>", opts)
--- keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
--- keymap("n", "<S-l>", ":BufferNext<CR>", opts)
+-- Buffers
+-- barbar
+-- keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
+-- keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
+-- keymap("n", "<A-h>", ":BufferLineMovePrev<CR>", opts)
+-- keymap("n", "<A-l>", ":BufferLineMoveNext<CR>", opts)
+
+-- bufferline
+keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
+keymap("n", "<S-l>", ":BufferNext<CR>", opts)
 -- keymap("n", "<A-,>", ":BufferPrevious<CR>", opts)
 -- keymap("n", "<A-.>", ":BufferNext<CR>", opts)
---
--- keymap("n", "<A-<>", ":BufferMovePrevious<CR>", opts)
--- keymap("n", "<A->>", ":BufferMoveNext<CR>", opts)
---
+
+keymap("n", "<A-h>", ":BufferMovePrevious<CR>", opts)
+keymap("n", "<A-l>", ":BufferMoveNext<CR>", opts)
+
 -- keymap("n", "<A-1>", ":BufferGoto 1<CR>", opts)
 -- keymap("n", "<A-2>", ":BufferGoto 2<CR>", opts)
 -- keymap("n", "<A-3>", ":BufferGoto 3<CR>", opts)
@@ -59,12 +64,12 @@ keymap("n", "<A-l>", ":BufferLineMoveNext<CR>", opts)
 -- keymap("n", "<A-7>", ":BufferGoto 7<CR>", opts)
 -- keymap("n", "<A-8>", ":BufferGoto 8<CR>", opts)
 -- keymap("n", "<A-9>", ":BufferLast<CR>", opts)
---
--- keymap("n", "<A-p>", ":BufferPin<CR>", opts)
---
--- keymap("n", "<A-c>", ":BufferClose<CR>", opts)
---
--- keymap("n", "<C-s>", ":BufferPick<CR>", opts)
+
+keymap("n", "<A-p>", ":BufferPin<CR>", opts)
+
+keymap("n", "<A-c>", ":BufferClose<CR>", opts)
+
+keymap("n", "<C-s>", ":BufferPick<CR>", opts)
 
 
 ---- i: Insert ----
