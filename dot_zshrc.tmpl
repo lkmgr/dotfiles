@@ -91,7 +91,7 @@ alias sctl='sudo systemctl'
 alias jrunit='sudo journalctl -u'
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
-alias yin="yay -Sl --aur | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S"
+alias yin="paru -Sl --aur | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'paru -Si {1}' --reverse | xargs -ro paru -S"
 alias pin="pacman -Sl | awk '{print \$2(\$4==\"\" ? \"\" : \" *\")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S"
 alias pupd="sudo pacman -Syu"
 alias pac="sudo pacman"
