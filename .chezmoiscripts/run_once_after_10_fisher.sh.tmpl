@@ -1,0 +1,8 @@
+#!{{ lookPath "fish" }}
+
+type fisher &>/dev/null || curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+fisher install patrickF1/fzf.fish
+fisher install nickeb96/puffer-fish
+fisher install jorgebucaran/autopair.fish
+fisher install gazorby/fish-abbreviation-tips
