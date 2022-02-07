@@ -15,6 +15,13 @@ ruled.client.connect_signal("request::rules", function()
         },
     }
 
+    ruled.client.append_rule {
+        id = "setslave",
+        rule = {},
+        properties = {},
+        callback = awful.client.setslave,
+    }
+
     -- Floating clients.
     ruled.client.append_rule {
         id = "floating",
