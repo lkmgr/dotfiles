@@ -1,5 +1,9 @@
 format = """
+{{- if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch")) }}
  \
+{{- else if (eq .chezmoi.os "darwin") }}
+ \
+{{- end }}
 $username\
 $hostname\
 $shlvl\
