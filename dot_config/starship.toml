@@ -1,0 +1,98 @@
+format = """
+ \
+$username\
+$hostname\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$cobol\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$fill \
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$time\
+$line_break\
+$jobs\
+$battery\
+$status\
+$shell\
+$character"""
+
+add_newline = true
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[✗](bold red)"
+
+[cmd_duration]
+min_time = 300
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 6
+truncation_symbol = "…/"
+read_only = ""
+home_symbol = " "
+
+[fill]
+symbol = "─"
+style = "241"
+
+[kubernetes]
+disabled = false
+format = 'on [⛵ $context \($namespace\)](dimmed green) '
+# [kubernetes.context_aliases]
+# "default" = "homelab"
+
+[time]
+disabled = false
