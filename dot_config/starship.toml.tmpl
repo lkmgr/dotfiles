@@ -20,7 +20,6 @@ $git_metrics\
 $git_status\
 $hg_branch\
 $docker_context\
-$package\
 $cmake\
 $cobol\
 $dart\
@@ -85,7 +84,7 @@ min_time = 300
 
 [directory]
 format = "[$path]($style)[$read_only]($read_only_style) "
-truncation_length = 6
+truncation_length = 5
 truncation_symbol = "…/"
 read_only = " "
 home_symbol = " "
@@ -95,8 +94,9 @@ symbol = "─"
 style = "241"
 
 [kubernetes]
-disabled = false
-format = 'on [⛵ $context \($namespace\)](dimmed green) '
+disabled = true
+format = '[$symbol $context](dimmed green) '
+symbol = "⛵"
 # [kubernetes.context_aliases]
 # "default" = "homelab"
 
