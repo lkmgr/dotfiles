@@ -19,6 +19,25 @@ function l --wraps exa --description 'ls with exa'
     end
 end
 
+function ll --wraps exa
+    if type -q exa
+        exa --all --group-directories-first --icons $argv
+    else
+        ls -ah $argv
+    end
+end
+
+functions -c cd orig_cd
+function cd
+    orig_cd $argv
+    exa --all --group-directories-first --icons
+end
+
+function md
+    mkdir $argv
+    cd $argv
+end
+
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx GPG_TTY (tty)
