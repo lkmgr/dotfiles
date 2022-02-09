@@ -9,23 +9,33 @@ echo '
 
 # fish
 if [ -d ~/.config/fish/completions ]; then
-  if command -v chezmoi &> /dev/null; then
-    # version {{ output "chezmoi" "--version" }}
+  {{- if lookPath "chezmoi" }}
+    # {{ output "chezmoi" "--version" | replace "\n" " " }}
     chezmoi completion fish --output ~/.config/fish/completions/chezmoi.fish
-  fi
-  if command -v flux &> /dev/null; then
+  {{- end }}
+
+  {{- if lookPath "flux" }}
+    # {{ output "flux" "--version" | replace "\n" " " }}
     flux completion fish > ~/.config/fish/completions/lux.fish
-  fi
-  if command -v helm &> /dev/null; then
+  {{- end }}
+
+  {{- if lookPath "helm" }}
+    # {{ output "helm" "version" | replace "\n" " " }}
     helm completion fish > ~/.config/fish/completions/helm.fish
-  fi
-  if command -v kustomize &> /dev/null; then
+  {{- end }}
+
+  {{- if lookPath "kustomize" }}
+    # {{ output "kustomize" "version" | replace "\n" " " }}
     kustomize completion fish > ~/.config/fish/completions/kustomize.fish
-  fi
-  if command -v velero &> /dev/null; then
+  {{- end }}
+
+  {{- if lookPath "velero" }}
+    # {{ output "velero" "version" "--client-only" | replace "\n" " " }}
     velero completion fish > ~/.config/fish/completions/velero.fish
-  fi
-  if command -v kubectl &> /dev/null; then
+  {{- end }}
+
+  {{- if lookPath "kubectl" }}
+    # {{ output "kubectl" "version" "--client=true" | replace "\n" " " }}
     kubectl completion fish > ~/.config/fish/completions/kubectl.fish
-  fi
+  {{- end }}
 fi
