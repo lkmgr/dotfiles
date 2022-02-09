@@ -38,4 +38,9 @@ if [ -d ~/.config/fish/completions ]; then
     # {{ output "kubectl" "version" "--client=true" | replace "\n" " " }}
     kubectl completion fish > ~/.config/fish/completions/kubectl.fish
   {{- end }}
+
+  {{- if lookPath "kubie" }}
+    # {{ output "kubie" "--version" | replace "\n" " " }}
+    curl -L https://raw.githubusercontent.com/sbstp/kubie/master/completion/kubie.fish -o ~/.config/fish/completions/kubie.fish
+  {{- end }}
 fi

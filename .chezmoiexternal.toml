@@ -12,8 +12,3 @@
   stripComponents = 1
   refreshPeriod = "72h"
 {{- end }}
-
-[".config/fish/completions/kubie.fish"]
-  type = "file"
-  url = "https://raw.githubusercontent.com/sbstp/kubie/master/completion/kubie.fish"
-  refreshPeriod = "72h"
