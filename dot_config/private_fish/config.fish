@@ -6,6 +6,11 @@
 #   source $file
 # end
 
+function fish_greeting
+    echo
+    color-bars
+end
+
 function l --wraps exa --description 'ls with exa'
     if type -q exa
         exa --long --color-scale --icons --all --all --group --header --group-directories-first $argv
@@ -17,6 +22,10 @@ end
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx GPG_TTY (tty)
+
+fish_add_path ~/.local/bin
+fish_add_path ~/.npm-global/bin
+fish_add_path ~/go/bin
 
 abbr g git
 abbr ga 'git add'
