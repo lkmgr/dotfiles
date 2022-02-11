@@ -82,3 +82,16 @@ fzf_configure_bindings --directory="ƒ" --git_log="¬" --git_status="ß" --proce
 if type -q starship
     starship init fish | source
 end
+
+if type -q zoxide
+    zoxide init fish | source
+end
+
+# if type -q keychain
+#     keychain --eval --quiet id_ed25519 | source
+# end
+
+if type -q direnv
+    direnv hook fish | source
+end
+
