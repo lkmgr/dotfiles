@@ -16,7 +16,7 @@ if [ -d ~/.config/fish/completions ]; then
 
   {{- if lookPath "flux" }}
     # {{ output "flux" "--version" | replace "\n" " " }}
-    flux completion fish > ~/.config/fish/completions/lux.fish
+    flux completion fish > ~/.config/fish/completions/flux.fish
   {{- end }}
 
   {{- if lookPath "helm" }}
