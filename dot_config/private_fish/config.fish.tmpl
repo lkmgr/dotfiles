@@ -79,6 +79,11 @@ set fzf_fd_opts --hidden --exclude=.git --exclude=node_modules
 fzf_configure_bindings --directory="ƒ" --git_log="¬" --git_status="ß" --processes="π"
 {{- end}}
 
+# mac
+# if type -q asdf
+#     source /usr/local/opt/asdf/libexec/asdf.fish
+# end
+
 if type -q starship
     starship init fish | source
 end
