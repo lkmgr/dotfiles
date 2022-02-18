@@ -5,7 +5,7 @@ configuration {
   font: "JetBrainsMono Nerd Font 15";
   /* font: "FantasqueSansMono Nerd Font 16"; */
   location: 2;
-  yoffset: 50;
+  yoffset: 80;
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
 	show-icons: true;
@@ -29,7 +29,7 @@ configuration {
 /*	sorting-method: "normal";*/
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
-	sidebar-mode: true;
+	sidebar-mode: false;
 /*	hover-select: false;*/
 /*	eh: 1;*/
 /*	auto-select: false;*/

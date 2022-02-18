@@ -18,7 +18,7 @@ super + Return
   kitty
 
 # rofi
-super + {_,shift,alt}+space
+super + {_,shift,ctrl}+space
   rofi -show {drun,calc,run}
 
 # reload sxhkd configuration
@@ -59,26 +59,19 @@ super + m
 
 # send current node to preselection
 super + y
-  bspc node -n 'last.!automatic.local'
-
-# balance desktop
-# super + b
-#   bspc desktop -B
+  bspc node -n last.!automatic.local
+  # bspc node -n last.!automatic
 
 # swap the current node and the biggest window
 super + g
-  bspc node -s biggest.window
-
-# move current window to preselected space
-super + shift + m
-  bspc node -n last.!automatic
+  bspc node -s biggest.local.window
 
 #
 # state/flags
 #
 
 # set the window state
-super + {t,shift + t,s,f}
+super + {t,shift + t,f,s}
   bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
@@ -109,12 +102,6 @@ super + {_,shift + }bracket{left,right}
 super + {grave,Tab}
   bspc {node,desktop} -f last
 
-# focus the older or newer node in the focus history
-super + {o,i}
-  bspc wm -h off; \
-  bspc node {older,newer} -f; \
-  bspc wm -h on
-
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
   bspc {desktop -f,node -d} '^{1-9,10}'
@@ -124,35 +111,27 @@ super + {_,shift + }{1-9,0}
 #
 
 # preselect the direction
-super + ctrl + {h,j,k,l}
+super + alt + {h,j,k,l}
   bspc node -p {west,south,north,east}
 
 # preselect the ratio
-super + ctrl + {1-9}
+super + alt + {1-9}
   bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-super + ctrl + space
+super + alt + space
   bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-super + ctrl + shift + space
+super + alt + ctrl + space
   bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
 # move/resize
 #
 
-# # expand a window by moving one of its side outward
-# super + alt + {h,j,k,l}
-#   bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
-
-# # contract a window by moving one of its side inward
-# super + alt + shift + {h,j,k,l}
-#   bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
 # smart resize, will grow or shrink depending on location
-super + alt + {h,j,k,l}
+super + ctrl + {h,j,k,l}
   n=40; \
   { d1=left;   d2=right;  dx=-$n; dy=0;   \
   , d1=bottom; d2=top;    dx=0;   dy=$n;  \
