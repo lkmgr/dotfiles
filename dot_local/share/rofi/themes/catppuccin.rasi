@@ -1,0 +1,7 @@
+* {
+    bg-black: #1E1E2E;
+    blue: #96CDFB;
+    fg-white: #D9E0EE;
+    fg-red: #F28FAD;
+}
+
