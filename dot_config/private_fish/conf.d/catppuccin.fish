@@ -18,7 +18,7 @@ set -l gray 6e6c7e
 
 # Syntax Highlighting
 set -g fish_color_normal $foreground
-set -g fish_color_command $blue
+set -g fish_color_command $green
 set -g fish_color_param $flamingo
 set -g fish_color_keyword $red
 set -g fish_color_quote $green
