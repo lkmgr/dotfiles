@@ -42,6 +42,8 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx GPG_TTY (tty)
 
+cat ~/.cache/wal/sequences
+
 fish_add_path ~/.local/bin
 fish_add_path ~/.npm-global/bin
 fish_add_path ~/go/bin
@@ -58,11 +60,20 @@ abbr gf 'git fetch'
 abbr gdiff 'git diff'
 abbr glog 'git log'
 
-abbr bi 'brew install'
-abbr bse 'brew search'
-abbr bud 'brew update'
-abbr bug 'brew upgrade'
-abbr bli 'brew list'
+if type -q brew
+  abbr bi 'brew install'
+  abbr bse 'brew search'
+  abbr bud 'brew update'
+  abbr bug 'brew upgrade'
+  abbr bli 'brew list'
+end
+
+abbr chz 'chezmoi'
+abbr chzd 'chezmoi diff'
+abbr chza 'chezmoi apply -v'
+abbr chzad 'chezmoi add'
+abbr chze 'chezmoi edit'
+abbr chzcd 'cd ~/.local/share/chezmoi'
 
 abbr npr 'npm run'
 

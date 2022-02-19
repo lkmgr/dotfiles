@@ -14,8 +14,9 @@ super + F1
   ~/.config/sxhkd/show_keybindings
 
 # terminal emulator
-super + Return
-  kitty
+super + {_,ctrl} + Return
+  {kitty, kitty --name scratchpad}
+
 
 # rofi
 super + {_,shift,ctrl}+space
@@ -63,7 +64,8 @@ super + y
   # bspc node -n last.!automatic
 
 # swap the current node and the biggest window
-super + g
+# super + g
+super + shift + Return
   bspc node -s biggest.local.window
 
 #

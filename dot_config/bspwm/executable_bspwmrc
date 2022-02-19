@@ -29,11 +29,7 @@ bspc rule -a firefox desktop='^1'
 bspc rule -a chromium desktop='^6' follow=off
 bspc rule -a discord desktop='^5' follow=off
 bspc rule -a code desktop='^3' follow=off
-# bspc rule -a Gimp desktop='^8' state=floating follow=on
-# bspc rule -a Chromium desktop='^2'
-# bspc rule -a mplayer2 state=floating
-# bspc rule -a Kupfer.py focus=on
-# bspc rule -a Screenkey manage=off
+bspc rule -a kitty:scratchpad monitor='HDMI-0' state=floating layer=above sticky=on rectangle=1500x600+1170+70
 
 . "${HOME}/.cache/wal/colors.sh"
 
@@ -49,7 +45,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom --config ~/.config/picom.conf &
 pgrep -x dunst > /dev/null || dunst &
 pgrep -x playerctld > /dev/null || playerctld daemon &
-wal -R
-~/.fehbg &
-~/.config/polybar/launch.sh &
+# wal -R
+$HOME/.fehbg &
+$HOME/.config/polybar/launch.sh &
 
