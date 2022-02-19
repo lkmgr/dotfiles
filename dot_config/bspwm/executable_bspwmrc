@@ -46,6 +46,6 @@ pgrep -x picom > /dev/null || picom --config ~/.config/picom.conf &
 pgrep -x dunst > /dev/null || dunst &
 pgrep -x playerctld > /dev/null || playerctld daemon &
 # wal -R
-$HOME/.fehbg &
-$HOME/.config/polybar/launch.sh &
+. "${HOME}/.fehbg" &
+. "${HOME}/.config/polybar/launch.sh" &
 
