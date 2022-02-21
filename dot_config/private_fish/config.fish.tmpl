@@ -68,6 +68,13 @@ if type -q brew
   abbr bli 'brew list'
 end
 
+if type -q timew
+  abbr tw 'timew'
+  abbr tws 'timew summary :ids'
+  abbr twsw 'timew summary :ids :week'
+  abbr twsm 'timew summary :ids :month'
+end
+
 abbr chz 'chezmoi'
 abbr chzd 'chezmoi diff'
 abbr chza 'chezmoi apply -v'
@@ -88,12 +95,13 @@ set fzf_fd_opts --hidden --exclude=.git --exclude=node_modules
 {{- if (eq .chezmoi.os "darwin") }}
 #                        OPTION +   f             l                s               p
 fzf_configure_bindings --directory="ƒ" --git_log="¬" --git_status="ß" --processes="π"
-{{- end}}
+{{- end }}
 
-# mac
-# if type -q asdf
-#     source /usr/local/opt/asdf/libexec/asdf.fish
-# end
+{{- if (eq .chezmoi.os "darwin") }}
+if type -q asdf; and test -f /usr/local/opt/asdf/libexec/asdf.fish
+    source /usr/local/opt/asdf/libexec/asdf.fish
+end
+{{ end }}
 
 if type -q starship
     starship init fish | source
