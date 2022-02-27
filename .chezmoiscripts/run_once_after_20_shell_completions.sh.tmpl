@@ -10,37 +10,37 @@ echo '
 # fish
 if [ -d ~/.config/fish/completions ]; then
   {{- if lookPath "chezmoi" }}
-    # {{ output "chezmoi" "--version" | replace "\n" " " }}
+    # {{ output "chezmoi" "--version" | sha256sum }}
     chezmoi completion fish --output ~/.config/fish/completions/chezmoi.fish
   {{- end }}
 
   {{- if lookPath "flux" }}
-    # {{ output "flux" "--version" | replace "\n" " " }}
+    # {{ output "flux" "--version" | sha256sum }}
     flux completion fish > ~/.config/fish/completions/flux.fish
   {{- end }}
 
   {{- if lookPath "helm" }}
-    # {{ output "helm" "version" | replace "\n" " " }}
+    # {{ output "helm" "version" | sha256sum }}
     helm completion fish > ~/.config/fish/completions/helm.fish
   {{- end }}
 
   {{- if lookPath "kustomize" }}
-    # {{ output "kustomize" "version" | replace "\n" " " }}
+    # {{ output "kustomize" "version" | sha256sum }}
     kustomize completion fish > ~/.config/fish/completions/kustomize.fish
   {{- end }}
 
   {{- if lookPath "velero" }}
-    # {{ output "velero" "version" "--client-only" | replace "\n" " " }}
+    # {{ output "velero" "version" "--client-only" | sha256sum }}
     velero completion fish > ~/.config/fish/completions/velero.fish
   {{- end }}
 
   {{- if lookPath "kubectl" }}
-    # {{ output "kubectl" "version" "--client=true" | replace "\n" " " }}
+    # {{ output "kubectl" "version" "--client=true" | sha256sum }}
     kubectl completion fish > ~/.config/fish/completions/kubectl.fish
   {{- end }}
 
   {{- if lookPath "kubie" }}
-    # {{ output "kubie" "--version" | replace "\n" " " }}
+    # {{ output "kubie" "--version" | sha256sum }}
     curl -L https://raw.githubusercontent.com/sbstp/kubie/master/completion/kubie.fish -o ~/.config/fish/completions/kubie.fish
   {{- end }}
 fi

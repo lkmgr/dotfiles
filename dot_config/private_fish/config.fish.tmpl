@@ -38,6 +38,12 @@ function md
     cd $argv
 end
 
+if test "$TERM" = "xterm-kitty"
+    function ssh --wraps ssh --description 'kitty ssh'
+        kitty +kitten ssh $argv
+    end
+end
+
 set -gx EDITOR nvim
 set -gx VISUAL nvim
 set -gx GPG_TTY (tty)
@@ -74,6 +80,11 @@ if type -q timew
   abbr twsm 'timew summary :ids :month'
 end
 
+if type -q systemctl
+  abbr sct 'sudo systemctl'
+  abbr sctu 'systemctl --user'
+end
+
 abbr chz 'chezmoi'
 abbr chzd 'chezmoi diff'
 abbr chza 'chezmoi apply -v'
@@ -104,10 +115,6 @@ end
 
 if type -q starship
     starship init fish | source
-end
-
-if type -q zoxide
-    zoxide init fish | source
 end
 
 # if type -q keychain
