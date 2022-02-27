@@ -1,5 +1,5 @@
 function cd
-    command cd $argv
+    builtin cd $argv
     if type -q exa
         exa --all --group-directories-first --icons
     else
