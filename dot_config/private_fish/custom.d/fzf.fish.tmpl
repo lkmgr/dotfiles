@@ -1,0 +1,10 @@
+if type -q exa
+    set fzf_preview_dir_cmd exa --all --group-directories-first --icons --color=always
+end
+
+set fzf_fd_opts --hidden --exclude=.git --exclude=node_modules --exclude=.cache
+
+{{- if (eq .chezmoi.os "darwin") }}
+#                        OPTION +   f             l                s               p
+fzf_configure_bindings --directory="ƒ" --git_log="¬" --git_status="ß" --processes="π"
+{{- end }}
