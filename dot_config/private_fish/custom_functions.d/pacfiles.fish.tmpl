@@ -1,4 +1,4 @@
-{{- if lookpath "pacman" }}
+{{- if lookPath "pacman" }}
 function pacfiles
   pacman -Qq | fzf --multi --preview 'cat (pacman -Si {1} | psub) (pacman -Fl {1} | awk "{print \$2}" | psub)' --reverse
 end

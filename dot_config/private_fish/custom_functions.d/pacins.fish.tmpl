@@ -1,4 +1,4 @@
-{{- if lookpath "pacman" }}
+{{- if lookPath "pacman" }}
 function pacins
   pacman -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'pacman -Si {1}' --reverse | xargs -ro sudo pacman -S
 end
