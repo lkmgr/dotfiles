@@ -39,6 +39,11 @@ if [ -d ~/.config/fish/completions ]; then
     kubectl completion fish > ~/.config/fish/completions/kubectl.fish
   {{- end }}
 
+  {{- if lookPath "stern" }}
+    # {{ output "stern" "--version" | sha256sum }}
+    stern --completion fish > ~/.config/fish/completions/stern.fish
+  {{- end }}
+
   {{- if lookPath "kubie" }}
     # {{ output "kubie" "--version" | sha256sum }}
     curl -L https://raw.githubusercontent.com/sbstp/kubie/master/completion/kubie.fish -o ~/.config/fish/completions/kubie.fish
