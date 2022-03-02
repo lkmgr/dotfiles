@@ -4,4 +4,4 @@ end
 
 set fzf_fd_opts --hidden --exclude=.git --exclude=node_modules --exclude=.cache
 
-fzf_configure_bindings --directory=\cf --git_log=\e\cl --git_status=\cs --history=\cr --variables=\cv --processes=\e\cp
+fzf_configure_bindings --directory=\ef --git_log=\e\cl --git_status=\es --history=\er --variables=\ev --processes=\e\cp
