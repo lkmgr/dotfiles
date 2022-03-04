@@ -8,9 +8,9 @@
 #           |_|                      
 #
 
-bm() { bspc monitor "$@" }
-bc() { bspc config "$@" }
-br() { bspc rule -a "$@" }
+bm() { bspc monitor "$@" & }
+bc() { bspc config "$@" & }
+br() { bspc rule -a "$@" & }
 bs() { pkill -x "$1"; { sleep 0.1; "$@" & }; }
 
 bm HDMI-0 -d 1 2 3 4 5
