@@ -3,3 +3,4 @@ node_modules
 .npm
 .cargo
 .cache
+.vscode/extensions
