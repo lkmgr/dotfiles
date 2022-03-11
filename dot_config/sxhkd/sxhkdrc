@@ -23,8 +23,8 @@ super + {_,shift,ctrl}+space
   rofi -show {drun,calc,run}
 
 # reload sxhkd configuration
-super + alt + c
-  pkill -USR1 -x sxhkd
+# super + alt + c
+#   pkill -USR1 -x sxhkd
 
 # volume control
 XF86Audio{RaiseVolume,LowerVolume,Mute}
@@ -41,6 +41,10 @@ super + ctrl + shift + l
 # notification history
 super + ctrl + n
   dunstctl history-pop
+
+# launch apps
+super + e ; {f,c,d,v}
+  {firefox,chromium,discord,code}
 
 #
 # bspwm hotkeys
@@ -59,7 +63,7 @@ super + m
   bspc desktop -l next
 
 # send current node to preselection
-super + y
+super + z
   bspc node -n last.!automatic.local
   # bspc node -n last.!automatic
 
