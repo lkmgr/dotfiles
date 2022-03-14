@@ -9,6 +9,7 @@ abbr gcl 'git clone'
 abbr gf 'git fetch'
 abbr gdiff 'git diff'
 abbr glog 'git log'
+abbr grb 'git rebase'
 
 if type -q brew
   abbr bi 'brew install'
