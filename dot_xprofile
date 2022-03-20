@@ -1,9 +1,8 @@
 export SXHKD_SHELL=/usr/bin/dash
 
-XCURSOR_THEME=macOSBigSur
+XCURSOR_THEME=macOSMonterey
 XCURSOR_SIZE=32
 
 xrandr --output DP-0 --scale 1.25x1.25
 
-/usr/lib/polkit-kde-authentication-agent-1 &
-
+/usr/bin/lxqt-policykit-agent &
