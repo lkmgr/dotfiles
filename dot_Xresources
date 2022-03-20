@@ -7,7 +7,7 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 Xcursor.size: 32
-Xcursor.theme: macOSBigSur
+Xcursor.theme: macOSMonterey
 
 *background: #1E1E2E
 *foreground: #D9E0EE
