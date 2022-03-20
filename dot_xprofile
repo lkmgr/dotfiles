@@ -3,6 +3,11 @@ export SXHKD_SHELL=/usr/bin/dash
 XCURSOR_THEME=macOSMonterey
 XCURSOR_SIZE=32
 
+xset r rate 220 35
+
 xrandr --output DP-0 --scale 1.25x1.25
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
 
 /usr/bin/lxqt-policykit-agent &

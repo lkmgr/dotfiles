@@ -71,7 +71,7 @@ return packer.startup({
       run = ":TSUpdate",
       config = function() require("user.plugins.treesitter").setup() end,
     }
-    use "p00f/nvim-ts-rainbow"
+    -- use "p00f/nvim-ts-rainbow"
 
     -- Buffers
     -- use {
