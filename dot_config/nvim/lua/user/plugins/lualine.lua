@@ -8,7 +8,7 @@ function M.setup()
 
   lualine.setup {
     options = {
-      theme = "catppuccin",
+      theme = "tokyonight",
     },
   }
 end

@@ -34,11 +34,11 @@ return packer.startup({
     -- Colorschemes
     -- use "lunarvim/onedarker.nvim"
     use "folke/tokyonight.nvim"
-    use {
-      "catppuccin/nvim",
-      as = "catppuccin",
-      config = function() require("user.plugins.catppuccin").setup() end,
-    }
+    -- use {
+    --   "catppuccin/nvim",
+    --   as = "catppuccin",
+    --   config = function() require("user.plugins.catppuccin").setup() end,
+    -- }
 
     -- Completion
     use { "hrsh7th/nvim-cmp", config = function() require("user.plugins.cmp").setup() end }
