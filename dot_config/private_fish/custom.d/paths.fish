@@ -7,3 +7,7 @@ if type -q gem; and test -d (gem environment gemdir)
   fish_add_path (gem environment gemdir)/bin
 end
 
+if type -q ruby; and type -q gem
+  fish_add_path (ruby -e 'puts Gem.user_dir')/bin
+end
+
