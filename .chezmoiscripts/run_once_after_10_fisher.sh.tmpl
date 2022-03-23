@@ -7,14 +7,12 @@ echo '
 |_| |___|___/_||_|___|_|_\
 '
 
-type fisher &>/dev/null || curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+if not type -q fisher
+  echo "installing fisher..."
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+end
 
-fisher install danhper/fish-ssh-agent
-fisher install decors/fish-colored-man
-fisher install franciscolourenco/done
-fisher install gazorby/fish-abbreviation-tips
-fisher install jethrokuan/z
-fisher install jorgebucaran/autopair.fish
-fisher install nickeb96/puffer-fish
-fisher install PatrickF1/fzf.fish
-# type nix &>/dev/null && fisher install lilyball/nix-env.fish
+# ~/.config/fish/fish_plugins hash: {{ include "dot_config/private_fish/fish_plugins.tmpl" | sha256sum }}
+fisher update
+echo "finished fisher setup"
+
