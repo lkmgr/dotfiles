@@ -1,6 +1,8 @@
 # dotfiles
 
+- **os**: Arch Linux / macOS
 - **shell**: `fish`
 - **terminal emulator**: `kitty`
 - **wm**: `bspwm`
-- **bar**: `polybar`/`eww`
+- **bar**: `polybar`
+- **editor**: `neovim`
