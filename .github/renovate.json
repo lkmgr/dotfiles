@@ -9,7 +9,7 @@
         "^\\.chezmoiexternal\\.toml$"
       ],
       "matchStrings": [
-        "# renovate: currentValue=(?<currentValue>.*)\\n.*https:\\/\\/github\\.com\\/(?<depName>\\w+\\/\\w+)\\/archive\\/(?<currentDigest>\\w+)\\.zip"
+        "# renovate: currentValue=(?<currentValue>.*)\\n.*(?<depName>https:\\/\\/github\\.com\\/\\w+\\/\\w+)\\/archive\\/(?<currentDigest>\\w+)\\.zip"
       ]
     }
   ]
