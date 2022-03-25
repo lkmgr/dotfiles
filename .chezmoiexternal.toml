@@ -1,3 +1,18 @@
+[".config/nvim"]
+  type = "archive"
+  url = "https://github.com/kabinspace/AstroVim/archive/fac241cf79580282e96fec7a3c8e10033bdce4dd.zip"
+  exact = false
+  stripComponents = 1
+  include = [
+    "*/lua/**/*",
+    "*/init.lua",
+    "*/.luacheckrc",
+    "*/.stylua.toml"
+  ]
+# [".config/nvim"]
+#   type = "git-repo"
+#   url = "https://github.com/kabinspace/AstroVim.git"
+#   refreshPeriod = "24h"
 {{- if eq .chezmoi.os "linux" }}
 [".config/awesome/modules/vicious"]
   type = "archive"
