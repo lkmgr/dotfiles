@@ -5,15 +5,12 @@
   exact = false
   stripComponents = 1
   include = [
+    "*/colors/**/*",
     "*/lua/**/*",
     "*/init.lua",
     "*/.luacheckrc",
     "*/.stylua.toml"
   ]
-# [".config/nvim"]
-#   type = "git-repo"
-#   url = "https://github.com/kabinspace/AstroVim.git"
-#   refreshPeriod = "24h"
 {{- if eq .chezmoi.os "linux" }}
 [".config/awesome/modules/vicious"]
   type = "archive"
