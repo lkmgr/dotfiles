@@ -1,0 +1,11 @@
+#!/bin/sh
+
+cb=$(xsel -o)
+if [ ! "$cb" ]; then
+  dunstify -t 2000 -u low "Clipboard is empty"
+  exit 1
+fi
+
+dunstify -i tv -t 3000 -u low "Opening in mpv: $cb"
+mpv "$(xsel -o)" &
+
