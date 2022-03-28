@@ -5,9 +5,10 @@ XCURSOR_SIZE=32
 
 xset r rate 230 40
 
-xrandr --output DP-0 --scale 1.25x1.25 --rate 59.95 --rotate left --pos 3840x-500
+xrandr --output HDMI-0 --pos 1800x350 --output HDMI-1 --pos 0x0 --scale 1.25x1.25 --rotate right --auto
 
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 
 /usr/bin/lxqt-policykit-agent &
+
