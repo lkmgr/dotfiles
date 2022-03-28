@@ -9,7 +9,7 @@ echo "--- RESTART ---" | tee -a /tmp/polybar.log
 PB_CONFIG=$HOME/.config/polybar/config.ini
 
 MONITOR=HDMI-0 polybar --reload --config=$PB_CONFIG main 2>&1 | tee -a /tmp/polybar.log & disown
-MONITOR=DP-0 polybar --reload --config=$PB_CONFIG secondary 2>&1 | tee -a /tmp/polybar.log & disown
+MONITOR=HDMI-1 polybar --reload --config=$PB_CONFIG secondary 2>&1 | tee -a /tmp/polybar.log & disown
 
 # MONITOR=HDMI-0 polybar --reload --config=$PB_CONFIG main_left 2>&1 | tee -a /tmp/polybar.log & disown
 # MONITOR=HDMI-0 polybar --reload --config=$PB_CONFIG main_center 2>&1 | tee -a /tmp/polybar.log & disown
