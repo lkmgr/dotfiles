@@ -4,13 +4,20 @@
   url = "https://github.com/kabinspace/AstroVim/archive/a894214df49b96f774a1d1ecd6531213721b86a0.zip"
   exact = false
   stripComponents = 1
-  include = [
-    "*/colors/**/*",
-    "*/lua/**/*",
-    "*/init.lua",
-    "*/.luacheckrc",
-    "*/.stylua.toml"
-  ]
+  # include = [
+  #   "*/colors/**/*",
+  #   "*/lua/**/*",
+  #   "*/init.lua",
+  #   "*/.luacheckrc",
+  #   "*/.stylua.toml"
+  # ]
+[".local/share/lunarvim/lvim"]
+  type = "archive"
+  # renovate: currentValue=rolling
+  url = "https://github.com/LunarVim/LunarVim/archive/7807f147c192fdb6aec7659a3098b4bf31852fcd.zip"
+  exact = true
+  stripComponents = 1
+
 {{- if eq .chezmoi.os "linux" }}
 [".config/awesome/modules/vicious"]
   type = "archive"
@@ -25,3 +32,4 @@
   stripComponents = 1
   refreshPeriod = "72h"
 {{- end }}
+
