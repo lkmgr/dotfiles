@@ -76,11 +76,24 @@ local config = {
     vscode_snippet_paths = {},
   },
 
-  -- Modify which-key registration
   ["which-key"] = {
-    -- Add bindings to the normal mode <leader> mappings
     register_n_leader = {
-      -- ["N"] = { "<cmd>tabnew<cr>", "New Buffer" },
+      f = {
+        name = "Telescope",
+        ["?"] = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+        b = { "<cmd>Telescope buffers<cr>", "Buffers" },
+        c = { "<cmd>Telescope commands<cr>", "Commands" },
+        f = { "<cmd>Telescope find_files<cr>", "Files" },
+        F = { "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "All Files" },
+        g = { "<cmd>Telescope live_grep<cr>", "Grep" },
+        h = { "<cmd>Telescope oldfiles<cr>", "History" },
+        k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+        m = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+        n = { "<cmd>Telescope notify<cr>", "Notifications" },
+        p = { "<cmd>Telescope project<cr>", "Projects" },
+        r = { "<cmd>Telescope registers<cr>", "Registers" },
+        t = { "<cmd>Telescope colorscheme<cr>", "Themes" },
+      },
     },
   },
 
@@ -114,7 +127,7 @@ local config = {
 
   -- Diagnostics configuration (for vim.diagnostics.config({}))
   diagnostics = {
-    virtual_text = true,
+    virtual_text = false,
     underline = true,
   },
 
@@ -159,15 +172,27 @@ local config = {
     local map = vim.api.nvim_set_keymap
     local unmap = vim.api.nvim_del_keymap
     local set = vim.opt
+
     -- Set options
-    set.relativenumber = true
+    set.cursorline = true
+    set.expandtab = true
+    set.iskeyword:append({ '-' })
+    set.number = true
+    set.relativenumber = false
+    set.whichwrap = 'b,s,<,>,[,]'
 
     -- Unmap existing key bindings
     unmap("n", "{");
     unmap("n", "}");
 
-    -- Set key bindings
+    -- normal mode
     map("n", "<C-s>", ":w!<CR>", opts)
+    map("n", "<A-j>", ":m .+1<CR>==", opts)
+    map("n", "<A-k>", ":m .-2<CR>==", opts)
+
+    -- visual block mode
+    map("x", "J", ":move '>+1<CR>gv-gv", opts)
+    map("x", "K", ":move '<-2<CR>gv-gv", opts)
 
     -- Set autocommands
     vim.cmd [[
