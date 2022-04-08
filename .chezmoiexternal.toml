@@ -1,7 +1,7 @@
 [".config/nvim"]
   type = "archive"
   # renovate: currentValue=main
-  url = "https://github.com/kabinspace/AstroVim/archive/79d014ae083c12a7d064a9ca1de3cffdb73fc8b0.zip"
+  url = "https://github.com/kabinspace/AstroVim/archive/11ce8517046f9197da74f6052925f644ad901b9b.zip"
   exact = false
   stripComponents = 1
   # include = [
