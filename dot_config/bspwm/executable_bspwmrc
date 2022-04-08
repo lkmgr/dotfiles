@@ -32,10 +32,11 @@ br Pavucontrol state=floating
 br feh state=floating
 br firefox desktop='1'
 br code desktop='2' follow=off
-br Lens desktop='4' follow=off
-br discord desktop='5' follow=off
+br Steam desktop='3' follow=off
+br Lens desktop='4' follow=off focus=off
+br discord desktop='5' follow=off focus=off
 br chromium desktop='6' follow=off
-br kitty:scratchpad monitor='HDMI-0' state=floating layer=above sticky=on rectangle=1500x600+1170+570
+br kitty:scratchpad monitor='HDMI-0' state=floating layer=above sticky=on rectangle=1500x600
 
 color_gray_2="#C3BAC6"
 color_red="#F28FAD"
