@@ -1,11 +1,12 @@
 -- vim general
 vim.opt.shell = "/bin/sh"
--- vim.opt.timeoutlen = 400
+vim.opt.timeoutlen = 400
+vim.opt.guifont = "JetBrainsMono Nerd Font:h14"
 
 -- lvim general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "catppuccin"
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -52,7 +53,7 @@ lvim.builtin.alpha.mode = "startify"
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 1
+lvim.builtin.nvimtree.show_icons.git = 0
 
 -- if you don't want all the parsers change this to a table of the ones you want
 lvim.builtin.treesitter.ensure_installed = {
@@ -72,6 +73,12 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+lvim.builtin.treesitter.rainbow = {
+  enable = true,
+  extended_mode = true,
+  max_file_lines = 1000,
+}
 
 -- generic LSP settings
 
@@ -100,11 +107,8 @@ lvim.builtin.treesitter.highlight.enabled = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "eslint_d" },
-  {
-    command = "black",
-    extra_args = { "--line-length", "99" }
-  },
-  -- { command = "prettier" },
+--   { command = "prettier" },
+  -- { command = "black", filetypes = { "python" } },
   -- { command = "isort", filetypes = { "python" } },
   -- {
   --   -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
@@ -121,11 +125,8 @@ formatters.setup {
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { command = "eslint_d" },
-  {
-    command = "flake8",
-    extra_args = { "--max-line-length", "99" },
-  },
   -- { command = "eslint" },
+  -- { command = "flake8", filetypes = { "python" } },
   -- {
   --   -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
   --   command = "shellcheck",
@@ -149,17 +150,35 @@ lvim.plugins = {
   -- },
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufRead",
-    setup = function()
-      vim.g.indentLine_enabled = 1
-      vim.g.indent_blankline_char = "▏"
-      vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
-      vim.g.indent_blankline_buftype_exclude = {"terminal"}
-      vim.g.indent_blankline_show_trailing_blankline_indent = false
-      vim.g.indent_blankline_show_first_indent_level = false
-      vim.g.indent_blankline_use_treesitter = true
-      vim.g.indent_blankline_show_current_context = true
-      vim.g.indent_blankline_show_current_context_start = true
+    -- event = "BufRead",
+    config = function()
+      -- vim.g.indentLine_enabled = 1
+      -- vim.g.indent_blankline_char = "▏"
+      -- vim.g.indent_blankline_filetype_exclude = {"help", "terminal", "dashboard"}
+      -- vim.g.indent_blankline_buftype_exclude = {"terminal"}
+      -- vim.g.indent_blankline_show_trailing_blankline_indent = false
+      -- vim.g.indent_blankline_show_first_indent_level = false
+      -- vim.g.indent_blankline_use_treesitter = true
+      -- vim.g.indent_blankline_show_current_context = true
+      -- vim.g.indent_blankline_show_current_context_start = true
+      require("indent_blankline").setup({
+        char = "▏",
+        filetype_exclude = {"help", "terminal", "dashboard"},
+        buftype_exclude = {"terminal"},
+        show_trailing_blankline_indent = false,
+        show_first_indent_level = true,
+        use_treesitter = true,
+        show_current_context = true,
+        show_current_context_start = true,
+        -- char_highlight_list = {
+        --   "IndentBlanklineIndent1",
+        --   "IndentBlanklineIndent2",
+        --   "IndentBlanklineIndent3",
+        --   "IndentBlanklineIndent4",
+        --   "IndentBlanklineIndent5",
+        --   "IndentBlanklineIndent6",
+        -- },
+      })
     end
   },
   {
@@ -179,7 +198,7 @@ lvim.plugins = {
   },
   {
     "ggandor/lightspeed.nvim",
-    -- event = "BufRead",
+    event = "BufRead",
   },
   -- {
   --   "wfxr/minimap.vim",
@@ -188,7 +207,111 @@ lvim.plugins = {
   --     vim.cmd("let g:minimap_auto_start = 1")
   --     vim.cmd("let g:minimap_auto_start_win_enter = 1")
   --   end,
-  -- }
+  -- },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+  {
+    "p00f/nvim-ts-rainbow",
+  },
+  {
+    "tpope/vim-surround",
+    keys = {"c", "d", "y"},
+  },
+  {
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require("catppuccin").setup({
+        transparent_background = true,
+        term_colors = false,
+        styles = {
+          comments = "italic",
+          functions = "NONE",
+          keywords = "NONE",
+          strings = "NONE",
+          variables = "NONE",
+        },
+        integrations = {
+          treesitter = true,
+          native_lsp = {
+            enabled = true,
+            virtual_text = {
+              errors = "italic",
+              hints = "italic",
+              warnings = "italic",
+              information = "italic",
+            },
+            underlines = {
+              errors = "underline",
+              hints = "underline",
+              warnings = "underline",
+              information = "underline",
+            },
+          },
+          lsp_trouble = false,
+          cmp = true,
+          lsp_saga = false,
+          gitgutter = false,
+          gitsigns = true,
+          telescope = true,
+          nvimtree = {
+            enabled = true,
+            show_root = true,
+            transparent_panel = true,
+          },
+          neotree = {
+            enabled = false,
+            show_root = false,
+            transparent_panel = false,
+          },
+          which_key = true,
+          indent_blankline = {
+            enabled = true,
+            colored_indent_levels = true,
+          },
+          dashboard = true,
+          neogit = false,
+          vim_sneak = false,
+          fern = false,
+          barbar = false,
+          bufferline = true,
+          markdown = true,
+          lightspeed = false,
+          ts_rainbow = true,
+          hop = false,
+          notify = true,
+          telekasten = true,
+          symbols_outline = true,
+        }
+      })
+      vim.cmd [[colorscheme catppuccin]]
+    end,
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+                    '<C-y>', '<C-e>', 'zt', 'zz', 'zb'},
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,       -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,             -- Function to run after the scrolling animation ends
+        performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+      })
+    end,
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
