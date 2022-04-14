@@ -34,6 +34,16 @@ lvim.builtin.telescope.defaults.mappings = {
   },
 }
 
+lvim.builtin.telescope.defaults.layout_strategy = "vertical"
+lvim.builtin.telescope.defaults.layout_config.vertical = {
+  preview_cutoff = 30,
+  preview_height = 0.6,
+  width = 0.9,
+  height = 0.9,
+}
+
+lvim.builtin.telescope.defaults.path_display = {}
+
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 -- lvim.builtin.which_key.mappings["t"] = {
