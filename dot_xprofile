@@ -3,7 +3,7 @@ export SXHKD_SHELL=/usr/bin/dash
 XCURSOR_THEME=macOSMonterey
 XCURSOR_SIZE=32
 
-xset r rate 230 40
+xset r rate 210 45
 
 xrandr --output HDMI-0 --pos 1800x350 --output HDMI-1 --pos 0x0 --scale 1.25x1.25 --rotate right --auto
 

@@ -1,6 +1,6 @@
 local _, actions = pcall(require, "telescope.actions")
 
-lvim.builtin.telescope.defaults.mappings = vim.tbl_extend("force", lvim.builtin.telescope.defaults.mappings, {
+lvim.builtin.telescope.defaults.mappings = {
   -- for input mode
   i = {
     ["<C-j>"] = actions.move_selection_next,
@@ -13,7 +13,7 @@ lvim.builtin.telescope.defaults.mappings = vim.tbl_extend("force", lvim.builtin.
     ["<C-j>"] = actions.move_selection_next,
     ["<C-k>"] = actions.move_selection_previous,
   },
-})
+}
 
 lvim.builtin.telescope.defaults.path_display = { shorten = 15 }
 
