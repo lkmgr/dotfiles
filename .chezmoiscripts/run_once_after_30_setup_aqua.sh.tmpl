@@ -12,7 +12,7 @@ newest_aqua_installer_version=v1.0.0
 if [ $(command -v aqua) ]; then
   current_aqua_version=$(aqua -v | head -n1 | cut -d" " -f3 | sed "s/^/v/")
 else
-  current_aqua_version=""
+  current_aqua_version="none"
 fi
 
 echo "aqua - newest version $newest_aqua_version - installed version $current_aqua_version"
