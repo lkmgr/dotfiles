@@ -44,8 +44,9 @@ if [ -d ~/.config/fish/completions ]; then
     stern --completion fish > ~/.config/fish/completions/stern.fish
   {{- end }}
 
-  {{- if lookPath "kubie" }}
-    # {{ output "kubie" "--version" | sha256sum }}
-    curl -L https://raw.githubusercontent.com/sbstp/kubie/master/completion/kubie.fish -o ~/.config/fish/completions/kubie.fish
-  {{- end }}
+  # {{- if lookPath "kubie" }}
+  #   # {{ output "kubie" "--version" | sha256sum }}
+  #   curl -L https://raw.githubusercontent.com/sbstp/kubie/master/completion/kubie.fish -o ~/.config/fish/completions/kubie.fish
+  # {{- end }}
 fi
+
