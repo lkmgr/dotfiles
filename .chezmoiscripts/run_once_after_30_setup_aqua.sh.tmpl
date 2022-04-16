@@ -24,7 +24,7 @@ if [ ! $(command -v aqua) ] || [ $newest_aqua_version != $current_aqua_version ]
 fi
 
 # .config/aqua/aqua.yaml hash: {{ include "dot_config/aqua/aqua.yaml.tmpl" | sha256sum }}
-# aqua install -a
+aqua install -a
 
 {{ end -}}
 
