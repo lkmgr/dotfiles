@@ -19,8 +19,8 @@ echo "aqua - newest version $newest_aqua_version - installed version $current_aq
 
 if [ ! $(command -v aqua) ] || [ $newest_aqua_version != $current_aqua_version ]; then
   echo "installing / upgrading aqua"
-  # curl -sSfL "https://raw.githubusercontent.com/aquaproj/aqua-installer/$newest_aqua_installer_version/aqua-installer" | \
-  #   bash -s -- -v "$newest_aqua_version" -i {{ .chezmoi.homeDir }}/.local/bin/aqua
+  curl -sSfL "https://raw.githubusercontent.com/aquaproj/aqua-installer/$newest_aqua_installer_version/aqua-installer" | \
+    bash -s -- -v "$newest_aqua_version" -i {{ .chezmoi.homeDir }}/.local/bin/aqua
 fi
 
 # .config/aqua/aqua.yaml hash: {{ include "dot_config/aqua/aqua.yaml.tmpl" | sha256sum }}
