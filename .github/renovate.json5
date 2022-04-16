@@ -2,7 +2,12 @@
   "dependencyDashboard": true,
   "semanticCommits": true,
   "rangeStrategy": "auto",
+  "extends": [
+    // aqua registry and package versions
+    "github>aquaproj/aqua-renovate-config:file#0.1.8(dot_config/aqua/aqua\\.yaml\\.tmpl)",
+  ],
   "regexManagers": [
+    // chezmoiexternal git commits
     {
       "datasourceTemplate": "git-refs",
       "fileMatch": [
@@ -11,14 +16,24 @@
       "matchStrings": [
         "# renovate: currentValue=(?<currentValue>.*)\\n.*(?<depName>https:\\/\\/github\\.com\\/\\w+\\/\\w+)\\/archive\\/(?<currentDigest>\\w+)\\.zip"
       ]
-    }
+    },
+    // versions in chezmoi shell scripts
+    {
+      "fileMatch": [
+        "\\.chezmoiscripts\\/.+\\.sh(?:\\.tmpl)?$"
+      ],
+      "matchStrings": [
+        "# renovate: depName=(?<depName>.*) datasource=(?<datasource>.*)\\n.*(?i)_version(?-i)=(?<currentValue>.+)\\b"
+      ],
+    },
   ],
   "packageRules": [
+    // automerge all except major
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true,
       "automergeType": "branch",
       "ignoreTests": true
-    }
-  ]
+    },
+  ],
 }
