@@ -1,16 +1,17 @@
-include tokyonight.conf
+include gruvbox-material.conf
 
+# font_family Blex Mono Nerd Font
 font_family JetBrainsMono Nerd Font
 
+disable_ligatures cursor
 enable_audio_bell no
+strip_trailing_spaces smart
 tab_bar_style powerline
 update_check_interval 0
+window_padding_width 6
 
 {{- if (eq .chezmoi.os "darwin") }}
 font_size 14
-window_padding_width 8
 {{- else }}
-shell fish
 font_size 11
-window_padding_width 4
 {{- end }}
