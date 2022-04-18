@@ -2,6 +2,7 @@
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "eslint_d" },
+  { command = "black", extra_args = { "--line-length", "120" } },
 --   { command = "prettier" },
   -- { command = "black", filetypes = { "python" } },
   -- { command = "isort", filetypes = { "python" } },
@@ -20,6 +21,7 @@ formatters.setup {
 local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   { command = "eslint_d" },
+  { command = "flake8", extra_args = { "--max-line-length", "120" } },
   -- { command = "eslint" },
   -- { command = "flake8", filetypes = { "python" } },
   -- {
