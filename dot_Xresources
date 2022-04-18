@@ -9,24 +9,40 @@ Xft.rgba: rgb
 Xcursor.size: 32
 Xcursor.theme: macOSMonterey
 
-*background: #24283b
-*foreground: #c0caf5
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! Gruvbox Material Dark
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! hard
+! *background: #1d2021
+! medium
+! *background: #282828
+! soft
+*background: #32302f
 
-*color0: #1D202F
-*color1: #f7768e
-*color2: #9ece6a
-*color3: #e0af68
-*color4: #7aa2f7
-*color5: #bb9af7
-*color6: #7dcfff
-*color7: #a9b1d6
+*foreground: #d4be98
 
-*color8: #414868
-*color9: #f7768e
-*color10: #9ece6a
-*color11: #e0af68
-*color12: #7aa2f7
-*color13: #bb9af7
-*color14: #7dcfff
-*color15: #c0caf5
+! Black + DarkGrey
+*color0:  #32302f
+*color8:  #32302f
+! DarkRed + Red
+*color1:  #ea6962
+*color9:  #ea6962
+! DarkGreen + Green
+*color2:  #a9b665
+*color10: #a9b665
+! DarkYellow + Yellow
+*color3:  #e78a4e
+*color11: #e78a4e
+! DarkBlue + Blue
+*color4:  #7daea3
+*color12: #7daea3
+! DarkMagenta + Magenta
+*color5:  #d3869b
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #89b482
+*color14: #89b482
+! LightGrey + White
+*color7:  #d4be98
+*color15: #d4be98
 
