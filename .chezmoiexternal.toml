@@ -8,7 +8,7 @@
 [".local/share/lunarvim/lvim"]
   type = "archive"
   # renovate: currentValue=rolling
-  url = "https://github.com/LunarVim/LunarVim/archive/10c7753d8e6f572974f9b9e0d0d8631cd13e60ea.zip"
+  url = "https://github.com/LunarVim/LunarVim/archive/1ae89bee93a01f2c64884ae8bed3f28681c2abff.zip"
   exact = true
   stripComponents = 1
 
