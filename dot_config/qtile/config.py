@@ -3,7 +3,7 @@ from modules.groups import groups  # noqa: F401
 from modules.layouts import layouts, floating_layout  # noqa: F401
 from modules.mouse import mouse  # noqa: F401
 from modules.hooks import *  # noqa: F401,F403
-from modules.screens import screens  # noqa: F401
+from modules.screens import widget_defaults, extension_defaults, screens  # noqa: F401
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
