@@ -2,7 +2,7 @@ import subprocess
 from libqtile import widget, bar
 from libqtile.config import Screen
 from libqtile.lazy import lazy
-from .vars import gap, home, wallpaper, theme, shades
+from .vars import gap, home, wallpaper, theme
 
 widget_defaults = dict(
     font="JetBrainsMono Nerd Font",
@@ -36,6 +36,10 @@ def sep_arrow_r(fg_color, bg_color=None):
     return widget.TextBox(text="\ue0b0", padding=0, fontsize=36, background=bg_color, foreground=fg_color)
 
 
+def sep_qtile():
+    return widget.Sep(background=theme["bg"], foreground=theme["red"], linewidth=3, padding=12, size_percent=60)
+
+
 def get_pamixer_volume():
     return subprocess.check_output(["pamixer", "--get-volume-human"], universal_newlines=True).strip()
 
@@ -43,63 +47,74 @@ def get_pamixer_volume():
 screen1 = Screen(
     top=bar.Bar(
         [
-            widget.GroupBox(background=shades[0], foreground="#ffffff"),
-            sep_circle_r(shades[0], shades[1]),
+            sep_circle_l(theme["bg"]),
+            widget.GroupBox(
+                background=theme["bg"],
+                foreground=theme["fg"],
+                use_mouse_wheel=False,
+            ),
+            sep_qtile(),
             # widget.Prompt(),
-            widget.CurrentScreen(background=shades[1]),
-            widget.CurrentLayoutIcon(background=shades[1], scale=0.5, padding=0),
-            widget.CurrentLayout(background=shades[1]),
-            sep_circle_r(shades[1]),
-            widget.WindowTabs(selected=("<b>[ ", " ]</b>")),
+            widget.CurrentScreen(background=theme["bg"], foreground=theme["fg"]),
+            widget.CurrentLayoutIcon(background=theme["bg"], foreground=theme["fg"], scale=0.5, padding=0),
+            widget.CurrentLayout(background=theme["bg"], foreground=theme["fg"]),
             # widget.WindowName(),
-            widget.Spacer(),
-            # widget.Chord(
-            #     chords_colors={
-            #         "launch": ("#ff0000", "#ffffff"),
-            #     },
-            #     name_transform=lambda name: name.upper(),
-            # ),
-            sep_circle_l(shades[7]),
-            widget.CheckUpdates(background=shades[7], distro="Arch_checkupdates", update_interval=300),
-            sep_circle_l(shades[6], shades[7]),
-            widget.CPU(background=shades[6], format="CPU {load_percent}%", update_interval=2),
-            sep_circle_l(shades[5], shades[6]),
-            widget.Memory(background=shades[5], format="RAM {MemPercent:.0f}%", update_interval=3),
-            sep_circle_l(shades[4], shades[5]),
-            widget.Net(background=shades[4], format="NET {down} ↓↑ {up}", prefix="M"),
-            sep_circle_l(shades[3], shades[4]),
-            widget.NvidiaSensors(background=shades[3], format="GPU {temp}°C"),
-            sep_circle_l(shades[2], shades[3]),
+            sep_circle_r(theme["bg"]),
+            widget.Spacer(length=30),
+            sep_circle_l(theme["bg"]),
+            widget.WindowTabs(
+                background=theme["bg"],
+                foreground=theme["fg"],
+                # selected=(f'<span foreground="{theme["magenta"]}"><b>[ ', " ]</b></span>"),
+                selected=("<b>[ ", " ]</b>"),
+            ),
+            sep_circle_r(theme["bg"]),
+            widget.Spacer(length=30),
+            sep_circle_l(theme["bg"]),
+            widget.CheckUpdates(
+                background=theme["bg"],
+                foreground=theme["fg"],
+                colour_have_updates=theme["fg"],
+                colour_no_updates=theme["fg"],
+                distro="Arch_checkupdates",
+                update_interval=300,
+            ),
+            sep_qtile(),
+            widget.CPU(background=theme["bg"], foreground=theme["fg"], format="CPU {load_percent}%", update_interval=2),
+            sep_qtile(),
+            widget.Memory(
+                background=theme["bg"], foreground=theme["fg"], format="RAM {MemPercent:.0f}%", update_interval=3
+            ),
+            sep_qtile(),
+            widget.Net(background=theme["bg"], foreground=theme["fg"], format="NET {down} ↓↑ {up}", prefix="M"),
+            sep_qtile(),
+            widget.NvidiaSensors(background=theme["bg"], foreground=theme["fg"], format="GPU {temp}°C"),
+            sep_qtile(),
             widget.Bluetooth(
-                background=shades[2],
+                background=theme["bg"],
+                foreground=theme["fg"],
                 fmt="BT {}",
                 hci="/dev_38_18_4C_59_FD_55",
                 mouse_callbacks={
                     "Button3": lazy.spawn(f"{home}/.local/bin/bluetooth-connect 38:18:4C:59:FD:55"),
                 },
             ),
-            # widget.Systray(background=shades[1]),
-            # widget.Volume(
-            #     background=shades[1],
-            #     fmt="VOL {}",
-            #     get_volume_command="pamixer --get-volume",
-            #     mute_command="pamixer -t",
-            #     update_interval=0.5,
-            #     volume_app="pavucontrol",
-            #     volume_down_command="pamixer -d 3",
-            #     volume_up_command="pamixer -i 3",
-            # ),
-            sep_circle_l(shades[1], shades[2]),
-            widget.GenPollText(background=shades[1], func=get_pamixer_volume, fmt="VOL {}", update_interval=0.5),
-            sep_circle_l(shades[0], shades[1]),
-            widget.Clock(background=shades[0], format="%d.%m.%Y %H:%M:%S"),
+            # widget.Systray(),
+            sep_qtile(),
+            widget.GenPollText(
+                background=theme["bg"],
+                foreground=theme["fg"],
+                func=get_pamixer_volume,
+                fmt="VOL {}",
+                update_interval=0.5,
+            ),
+            sep_qtile(),
+            widget.Clock(background=theme["bg"], foreground=theme["fg"], format="%d.%m.%Y %H:%M:%S"),
+            sep_circle_r(theme["bg"]),
         ],
         42,
-        # opacity=0,
-        background="#282C34",
-        # border_width=[0, 0, 2, 0],  # Draw top and bottom borders
-        # border_color="#00ff00",  # Borders are magenta
-        margin=[0, 0, gap, 0],
+        background="#00000000",
+        margin=[gap * 2, gap * 2, gap, gap * 2],
     ),
     left=bar.Gap(gap),
     right=bar.Gap(gap),
@@ -111,13 +126,29 @@ screen1 = Screen(
 screen2 = Screen(
     top=bar.Bar(
         [
-            widget.GroupBox(),
-            widget.WindowName(),
-            widget.CurrentLayout(),
-            widget.Clock(format="%d.%m.%Y %H:%M:%S"),
+            sep_circle_l(theme["bg"]),
+            widget.GroupBox(
+                background=theme["bg"],
+                foreground=theme["fg"],
+                use_mouse_wheel=False,
+            ),
+            sep_qtile(),
+            widget.CurrentScreen(background=theme["bg"], foreground=theme["fg"]),
+            # widget.CurrentLayoutIcon(background=theme["bg"], foreground=theme["fg"], scale=0.5, padding=0),
+            widget.CurrentLayout(background=theme["bg"], foreground=theme["fg"]),
+            sep_circle_r(theme["bg"]),
+            widget.Spacer(length=20),
+            sep_circle_l(theme["bg"]),
+            widget.WindowName(background=theme["bg"]),
+            sep_circle_r(theme["bg"]),
+            widget.Spacer(length=20),
+            sep_circle_l(theme["bg"]),
+            widget.Clock(background=theme["bg"], foreground=theme["fg"], format="%d.%m.%Y %H:%M:%S"),
+            sep_circle_r(theme["bg"]),
         ],
-        size=42,
-        margin=[0, 0, gap, 0],
+        42,
+        background="#00000000",
+        margin=[gap * 2, gap * 2, gap, gap * 2],
     ),
     left=bar.Gap(gap),
     right=bar.Gap(gap),

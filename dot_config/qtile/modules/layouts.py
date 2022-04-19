@@ -1,15 +1,17 @@
 from libqtile import layout
-from .vars import gap
+from .vars import gap, theme
 
-border_width = 5
+border_width = 4
+border_focus = theme["red"]
+border_normal = theme["bg"]
 
 layouts = [
     # layout.MonadTall(border_width=4, margin=10, ratio=0.65),
     layout.Columns(
-        border_focus="#881111",
-        border_focus_stack="#881111",
-        border_normal="#220000",
-        border_normal_stack="#220000",
+        border_focus=border_focus,
+        border_focus_stack=border_focus,
+        border_normal=border_normal,
+        border_normal_stack=border_normal,
         border_on_single=True,
         border_width=border_width,
         grow_amount=5,
@@ -20,10 +22,10 @@ layouts = [
     layout.Columns(
         name="column",
         num_columns=1,
-        border_focus="#881111",
-        border_focus_stack="#881111",
-        border_normal="#220000",
-        border_normal_stack="#220000",
+        border_focus=border_focus,
+        border_focus_stack=border_focus,
+        border_normal=border_normal,
+        border_normal_stack=border_normal,
         border_on_single=True,
         border_width=border_width,
         grow_amount=5,
@@ -32,8 +34,8 @@ layouts = [
         margin_on_single=gap,
     ),
     layout.Max(
-        border_focus="#881111",
-        border_normal="#220000",
+        border_focus=border_focus,
+        border_normal=border_normal,
         border_width=border_width,
         margin=gap,
     ),
@@ -43,8 +45,8 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     layout.MonadTall(
-        border_focus="#881111",
-        border_normal="#220000",
+        border_focus=border_focus,
+        border_normal=border_normal,
         border_width=border_width,
         margin=gap,
         ratio=0.65,
@@ -56,8 +58,8 @@ layouts = [
     # layout.Tile(),
     # layout.TreeTab(),
     layout.VerticalTile(
-        border_focus="#881111",
-        border_normal="#220000",
+        border_focus=border_focus,
+        border_normal=border_normal,
         border_width=border_width,
         margin=gap,
     ),
@@ -75,8 +77,8 @@ floating_layout = layout.Floating(
         # Match(title="branchdialog"),  # gitk
         # Match(title="pinentry"),  # GPG key password entry
     ],
-    border_focus="#881111",
-    border_normal="#220000",
+    border_focus=border_focus,
+    border_normal=border_normal,
     border_width=border_width,
     fullscreen_border_width=border_width,
     max_border_width=border_width,
