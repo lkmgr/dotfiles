@@ -9,40 +9,38 @@ Xft.rgba: rgb
 Xcursor.size: 32
 Xcursor.theme: macOSMonterey
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Gruvbox Material Dark
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! hard
-! *background: #1d2021
-! medium
-! *background: #282828
-! soft
-*background: #32302f
+! Catppuccin colorscheme
+*background: #1E1E2E
+*foreground: #D9E0EE
 
-*foreground: #d4be98
+! Gray
+*color0: #6E6C7E
+*color8: #988BA2
 
-! Black + DarkGrey
-*color0:  #32302f
-*color8:  #32302f
-! DarkRed + Red
-*color1:  #ea6962
-*color9:  #ea6962
-! DarkGreen + Green
-*color2:  #a9b665
-*color10: #a9b665
-! DarkYellow + Yellow
-*color3:  #e78a4e
-*color11: #e78a4e
-! DarkBlue + Blue
-*color4:  #7daea3
-*color12: #7daea3
-! DarkMagenta + Magenta
-*color5:  #d3869b
-*color13: #d3869b
-! DarkCyan + Cyan
-*color6:  #89b482
-*color14: #89b482
-! LightGrey + White
-*color7:  #d4be98
-*color15: #d4be98
+! Red
+*color1: #F28FAD
+*color9: #F28FAD
 
+! Green
+*color2: #ABE9B3
+*color10: #ABE9B3
+
+! Yellow
+*color3: #FAE3B0
+*color11:  #FAE3B0
+
+! Blue
+*color4: #96CDFB
+*color12: #96CDFB
+
+! Maguve
+*color5: #DDB6F2
+*color13: #DDB6F2
+
+! Pink
+*color6: #F5C2E7
+*color14: #F5C2E7
+
+! Whites
+*color7: #C3BAC6
+*color15: #D9E0EE
