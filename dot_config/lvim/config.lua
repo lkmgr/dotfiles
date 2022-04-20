@@ -7,6 +7,7 @@ vim.opt.guifont = "JetBrainsMono Nerd Font:h14"
 lvim.log.level = "warn"
 lvim.format_on_save = true
 lvim.colorscheme = "catppuccin"
+lvim.builtin.lualine.options.theme = "catppuccin"
 
 require("user.keymaps")
 require("user.telescope")

@@ -61,7 +61,7 @@ M.config = function()
       barbar = false,
       bufferline = true,
       markdown = true,
-      lightspeed = false,
+      lightspeed = true,
       ts_rainbow = true,
       hop = false,
       notify = true,
@@ -72,5 +72,3 @@ M.config = function()
 end
 
 return M
-
-
