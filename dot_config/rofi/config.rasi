@@ -1,6 +1,6 @@
 configuration {
 	modi: "drun,run,calc,window";
-  lines: 5;
+  lines: 7;
   font: "JetBrainsMono Nerd Font 15";
 	show-icons: true;
 	icon-theme: "Papirus-Dark";
@@ -28,17 +28,17 @@ window {
     height: 365px;
     width: 900px;
     border: 5px;
-    border-color: @bg-black;
-    background-color: @bg-black;
+    border-color: @border-col;
+    background-color: @bg-col;
 }
 
 mainbox {
-    background-color: @bg-black;
+    background-color: @bg-col;
 }
 
 inputbar {
     children: [prompt,entry];
-    background-color: @bg-black;
+    background-color: @bg-col;
     border-radius: 5px;
     padding: 2px;
 }
@@ -46,7 +46,7 @@ inputbar {
 prompt {
     background-color: @blue;
     padding: 6px;
-    text-color: @bg-black;
+    text-color: @bg-col;
     border-radius: 5px;
     margin: 20px 0px 0px 20px;
 }
@@ -59,8 +59,8 @@ textbox-prompt-colon {
 entry {
     padding: 6px;
     margin: 20px 0px 0px 10px;
-    text-color: @fg-white;
-    background-color: @bg-black;
+    text-color: @fg-col;
+    background-color: @bg-col;
 }
 
 listview {
@@ -68,13 +68,13 @@ listview {
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
     columns: 2;
-    background-color: @bg-black;
+    background-color: @bg-col;
 }
 
 element {
     padding: 5px;
-    background-color: @bg-black;
-    text-color: @fg-white;
+    background-color: @bg-col;
+    text-color: @fg-col;
 }
 
 element-icon {
@@ -82,8 +82,8 @@ element-icon {
 }
 
 element selected {
-    background-color: @bg-black;
-    text-color: @fg-red;
+    background-color: @selected-col;
+    text-color: @fg-col2;
 }
 
 mode-switcher {
@@ -92,14 +92,14 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-black;
-    text-color: @fg-white;
+    background-color: @bg-col-light;
+    text-color: @grey;
     vertical-align: 0.5; 
     horizontal-align: 0.5;
 }
 
 button selected {
-    background-color: @bg-black;
+    background-color: @bg-col;
     text-color: @blue;
 }
 
