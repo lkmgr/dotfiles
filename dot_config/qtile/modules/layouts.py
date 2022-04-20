@@ -2,8 +2,8 @@ from libqtile import layout
 from .vars import gap, theme
 
 border_width = 4
-border_focus = theme["red"]
-border_normal = theme["bg"]
+border_focus = theme["active_border"]
+border_normal = theme["inactive_border"]
 
 layouts = [
     # layout.MonadTall(border_width=4, margin=10, ratio=0.65),

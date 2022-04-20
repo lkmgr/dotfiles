@@ -37,7 +37,7 @@ def sep_arrow_r(fg_color, bg_color=None):
 
 
 def sep_qtile():
-    return widget.Sep(background=theme["bg"], foreground=theme["red"], linewidth=3, padding=12, size_percent=60)
+    return widget.Sep(background=theme["bg"], foreground=theme["sep"], linewidth=3, padding=12, size_percent=60)
 
 
 def get_pamixer_volume():
