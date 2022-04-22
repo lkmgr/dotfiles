@@ -4,14 +4,16 @@ from .vars import gap, theme
 border_width = 4
 border_focus = theme["active_border"]
 border_normal = theme["inactive_border"]
+border_focus_stack = theme["active_border_stack"]
+border_normal_stack = theme["inactive_border_stack"]
 
 layouts = [
     # layout.MonadTall(border_width=4, margin=10, ratio=0.65),
     layout.Columns(
         border_focus=border_focus,
-        border_focus_stack=border_focus,
+        border_focus_stack=border_focus_stack,
         border_normal=border_normal,
-        border_normal_stack=border_normal,
+        border_normal_stack=border_normal_stack,
         border_on_single=True,
         border_width=border_width,
         grow_amount=5,
@@ -23,9 +25,9 @@ layouts = [
         name="column",
         num_columns=1,
         border_focus=border_focus,
-        border_focus_stack=border_focus,
+        border_focus_stack=border_focus_stack,
         border_normal=border_normal,
-        border_normal_stack=border_normal,
+        border_normal_stack=border_normal_stack,
         border_on_single=True,
         border_width=border_width,
         grow_amount=5,
