@@ -95,6 +95,23 @@ home_symbol = " "
 symbol = "─"
 style = "241"
 
+[git_metrics]
+disabled = false
+
+[git_status]
+# conflicted = ""
+# up_to_date = ""
+untracked = ""
+# stashed = ""
+stashed = ""
+modified = ""
+staged = ""
+# renamed = ""
+deleted = ""
+ahead = "⇡${count}"
+diverged = "⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+
 [kubernetes]
 disabled = false
 format = '[$symbol $context \($namespace\)](bold bright-green) '

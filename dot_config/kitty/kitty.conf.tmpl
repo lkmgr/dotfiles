@@ -1,17 +1,23 @@
 include colors/catppuccin.conf
 
-# font_family Blex Mono Nerd Font
-font_family JetBrainsMono Nerd Font
+# font_family JetBrainsMono Nerd Font
 
+font_family JetBrains Mono Regular Nerd Font Complete
+bold_font JetBrains Mono Bold Nerd Font Complete
+italic_font iM Writing Mono S Italic Nerd Font Complete
+bold_italic_font iM Writing Mono S Bold Italic Nerd Font Complete
+
+confirm_os_window_close 0
 disable_ligatures cursor
 enable_audio_bell no
 strip_trailing_spaces smart
 tab_bar_style powerline
 update_check_interval 0
-window_padding_width 6
+window_padding_width 8
 
 {{- if (eq .chezmoi.os "darwin") }}
 font_size 14
 {{- else }}
-font_size 11
+font_size 12
 {{- end }}
+
