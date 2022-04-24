@@ -37,9 +37,16 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "gj", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "K", vim.lsp.buf.hover, { desc = "Hover symbol details" })
 
+-- Terminal
+map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+
 -- Save and Quit
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "Write" })
 map("n", "<C-q>", "<cmd>q<CR>", { desc = "Quit" })
+
+-- Remap for dealing with word wrap
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- disable Ex mode:
 map("n", "Q", "<Nop>")
@@ -60,8 +67,8 @@ map("v", "<A-k>", "<cmd>m .-2<CR>==", { desc = "move text up" })
 
 
 -- Move text up and down
-map("x", "J", "<cmd>move '>+1<CR>gv-gv", { desc = "Move text down" })
-map("x", "K", "<cmd>move '<-2<CR>gv-gv", { desc = "Move text up" })
-map("x", "<A-j>", "<cmd>move '>+1<CR>gv-gv", { desc = "Move text down" })
-map("x", "<A-k>", "<cmd>move '<-2<CR>gv-gv", { desc = "Move text up" })
+map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move text down" })
+map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move text up" })
+map("x", "<A-j>", ":move '>+1<CR>gv-gv", { desc = "Move text down" })
+map("x", "<A-k>", ":move '<-2<CR>gv-gv", { desc = "Move text up" })
 

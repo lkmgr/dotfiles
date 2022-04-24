@@ -265,6 +265,17 @@ require('packer').startup {
     }
 
 
+    -- Terminal
+    use {
+      "akinsho/toggleterm.nvim",
+      cmd = "ToggleTerm",
+      module = { "toggleterm", "toggleterm.terminal" },
+      config = function()
+        require("configs.toggleterm").config()
+      end,
+    }
+
+
     -- colorscheme
     use {
       "olimorris/onedarkpro.nvim",
@@ -272,6 +283,17 @@ require('packer').startup {
         require("configs.onedarkpro").config()
       end,
     }
+
+
+    -- Smooth scrolling
+    use {
+      "karb94/neoscroll.nvim",
+      event = { "BufRead", "BufNewFile" },
+      config = function()
+        require("configs.neoscroll").config()
+      end,
+    }
+
 
     --use {
     --  "catppuccin/nvim",

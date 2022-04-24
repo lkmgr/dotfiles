@@ -9,3 +9,11 @@ cmd("BufWritePost", {
   pattern = "plugins.lua",
 })
 
+augroup("yank_highlight", {})
+cmd("TextYankPost", {
+  desc = "Highlight Yank",
+  group = "yank_highlight",
+  callback = function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 }) end,
+  pattern = "*",
+})
+
