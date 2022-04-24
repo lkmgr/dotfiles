@@ -162,6 +162,15 @@ require('packer').startup {
 
     use "b0o/SchemaStore.nvim"
 
+    use {
+      "jose-elias-alvarez/null-ls.nvim",
+      requires = { "nvim-lua/plenary.nvim" },
+      event = { "BufRead", "BufNewFile" },
+      config = function()
+        require("configs.null-ls").config()
+      end,
+    }
+
 
     -- cmp
     use {
