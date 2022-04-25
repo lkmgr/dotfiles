@@ -4,20 +4,25 @@ symlinked/
 
 {{- if ne .chezmoi.os "linux" }}
 .config/awesome/
-.config/betterlockscreenrc
 .config/bspwm/
-.config/chromium-flags.conf
 .config/dunst/
 .config/fontconfig/
 .config/gtk-3.0/
-.config/gtkrc-2.0
 .config/i3/
 .config/paru/paru.conf
-.config/picom.conf
 .config/polybar/
+.config/qtile/
 .config/rofi/
 .config/sxhkd/
-.local/share/rofi
+
+.config/betterlockscreenrc
+.config/chromium-flags.conf
+.config/gtkrc-2.0
+.config/picom.conf
+
+.local/share/rofi/
+
+.gtkrc-2.0
 .Xresources
 .xprofile
 {{- end }}
