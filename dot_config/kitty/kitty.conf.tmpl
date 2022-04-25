@@ -16,6 +16,9 @@ update_check_interval 0
 window_padding_width 8
 
 {{- if (eq .chezmoi.os "darwin") }}
+shell /usr/local/bin/fish --interactive --login
+macos_option_as_alt yes
+map cmd+shift+t new_tab_with_cwd
 font_size 14
 {{- else }}
 font_size 12
