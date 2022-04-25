@@ -9,7 +9,8 @@ if type -q ruby
 end
 
 if type -q aqua
-  fish_add_path ~/.local/share/aqua/bin
+  # fish_add_path ~/.local/share/aqua/bin
+  fish_add_path "$AQUA_ROOT_DIR/bin"
 end
 
 # if type -q gem; and test -d (gem environment gemdir)
