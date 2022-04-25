@@ -1,4 +1,3 @@
-{{ if (eq .chezmoi.os "linux") -}}
 #!{{ lookPath "bash" }}
 
 set -eufo pipefail
@@ -25,6 +24,3 @@ fi
 
 # .config/aqua/aqua.yaml hash: {{ include "dot_config/aqua/aqua.yaml.tmpl" | sha256sum }}
 aqua install --all --only-link
-
-{{ end -}}
-
