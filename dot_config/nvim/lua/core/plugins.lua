@@ -12,6 +12,10 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   }
 end
 
+local function userconf(name)
+  return string.format('require("configs.%s").config()', name)
+end
+
 require("packer").startup {
   function(use)
     use "wbthomason/packer.nvim"
@@ -43,24 +47,18 @@ require("packer").startup {
     use {
       "mrjones2014/smart-splits.nvim",
       module = "smart-splits",
-      config = function()
-        require("configs.smart-splits").config()
-      end,
+      config = userconf "smart-splits",
     }
 
     use {
       "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("configs.icons").config()
-      end,
+      config = userconf "icons",
     }
 
     use {
       "akinsho/bufferline.nvim",
       after = "nvim-web-devicons",
-      config = function()
-        require("configs.bufferline").config()
-      end,
+      config = userconf "bufferline",
     }
 
     use "moll/vim-bbye"
@@ -75,17 +73,13 @@ require("packer").startup {
         "kyazdani42/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
       },
-      config = function()
-        require("configs.neo-tree").config()
-      end,
+      config = userconf "neo-tree",
     }
 
     use {
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
-      config = function()
-        require("configs.lualine").config()
-      end,
+      config = userconf "lualine",
     }
 
     -- Treesitter
@@ -103,9 +97,7 @@ require("packer").startup {
         "TSDisableAll",
         "TSEnableAll",
       },
-      config = function()
-        require("configs.treesitter").config()
-      end,
+      config = userconf "treesitter",
     }
 
     -- try nvim-treesitter-textobjects
@@ -129,9 +121,7 @@ require("packer").startup {
     use {
       "numToStr/Comment.nvim",
       event = { "BufRead", "BufNewFile" },
-      config = function()
-        require("configs.comment").config()
-      end,
+      config = userconf "comment",
     }
 
     -- LSP
@@ -165,9 +155,7 @@ require("packer").startup {
       "jose-elias-alvarez/null-ls.nvim",
       requires = { "nvim-lua/plenary.nvim" },
       event = { "BufRead", "BufNewFile" },
-      config = function()
-        require("configs.null-ls").config()
-      end,
+      config = userconf "null-ls",
     }
 
     -- cmp
@@ -178,9 +166,7 @@ require("packer").startup {
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
       },
-      config = function()
-        require("configs.cmp").config()
-      end,
+      conf = userconf "cmp",
     }
 
     use {
@@ -212,9 +198,7 @@ require("packer").startup {
     use {
       "L3MON4D3/LuaSnip",
       -- after = "friendly-snippets",
-      config = function()
-        require("configs.luasnip").config()
-      end,
+      config = userconf "luasnip",
     }
 
     -- telescope
@@ -226,9 +210,7 @@ require("packer").startup {
         "nvim-lua/plenary.nvim",
         "kyazdani42/nvim-web-devicons",
       },
-      config = function()
-        require("configs.telescope").config()
-      end,
+      config = userconf "telescope",
     }
 
     use {
@@ -244,9 +226,7 @@ require("packer").startup {
     use {
       "lewis6991/gitsigns.nvim",
       event = { "BufRead", "BufNewFile" },
-      config = function()
-        require("configs.gitsigns").config()
-      end,
+      config = userconf "gitsigns",
     }
 
     -- Dashboard
@@ -261,17 +241,13 @@ require("packer").startup {
     -- Indent Guides
     use {
       "lukas-reineke/indent-blankline.nvim",
-      config = function()
-        require("configs.indent-blankline").config()
-      end,
+      config = userconf "indent-blankline",
     }
 
     -- which-key
     use {
       "folke/which-key.nvim",
-      config = function()
-        require("configs.which-key").config()
-      end,
+      config = userconf "which-key",
     }
 
     -- Terminal
@@ -279,18 +255,14 @@ require("packer").startup {
       "akinsho/toggleterm.nvim",
       cmd = "ToggleTerm",
       module = { "toggleterm", "toggleterm.terminal" },
-      config = function()
-        require("configs.toggleterm").config()
-      end,
+      config = userconf "toggleterm",
     }
 
     -- Smooth scrolling
     use {
       "karb94/neoscroll.nvim",
       event = { "BufRead", "BufNewFile" },
-      config = function()
-        require("configs.neoscroll").config()
-      end,
+      config = userconf "neoscroll",
     }
 
     -- Lightspeed
@@ -300,26 +272,14 @@ require("packer").startup {
     -- mini.nvim - Surround
     use {
       "echasnovski/mini.nvim",
-      config = function()
-        require("configs.mini").config()
-      end,
+      config = userconf "mini",
     }
 
     -- colorscheme
     use {
       "olimorris/onedarkpro.nvim",
-      config = function()
-        require("configs.onedarkpro").config()
-      end,
+      config = userconf "onedarkpro",
     }
-
-    --use {
-    --  "catppuccin/nvim",
-    --  as = "catppuccin",
-    --  config = function()
-    --    require("configs.catppuccin").config()
-    --  end,
-    --}
 
     if packer_bootstrap then
       require("packer").sync()
