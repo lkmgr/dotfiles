@@ -17,3 +17,18 @@ cmd("TextYankPost", {
   pattern = "*",
 })
 
+-- Remove kitty padding inside nvim
+augroup("kitty_padding", {})
+cmd("VimEnter", {
+  desc = "Remove kitty padding on enter",
+  group = "kitty_padding",
+  command = ":silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=0",
+  pattern = "*",
+})
+cmd("VimLeave", {
+  desc = "Reset kitty padding on leave",
+  group = "kitty_padding",
+  command = ":silent !kitty @ --to=$KITTY_LISTEN_ON set-spacing padding=default",
+  pattern = "*",
+})
+

@@ -285,21 +285,25 @@ require('packer').startup {
     }
 
 
-    -- colorscheme
-    use {
-      "olimorris/onedarkpro.nvim",
-      config = function()
-        require("configs.onedarkpro").config()
-      end,
-    }
-
-
     -- Smooth scrolling
     use {
       "karb94/neoscroll.nvim",
       event = { "BufRead", "BufNewFile" },
       config = function()
         require("configs.neoscroll").config()
+      end,
+    }
+
+
+    -- Lightspeed
+    use "ggandor/lightspeed.nvim"
+
+
+    -- colorscheme
+    use {
+      "olimorris/onedarkpro.nvim",
+      config = function()
+        require("configs.onedarkpro").config()
       end,
     }
 

@@ -18,12 +18,15 @@ function M.config()
       layout_strategy = "horizontal",
       layout_config = {
         horizontal = {
-          prompt_position = "top",
           preview_width = 0.55,
+          prompt_position = "top",
           results_width = 0.8,
         },
         vertical = {
-          mirror = false,
+          mirror = true,
+          preview_cutoff = 30,
+          preview_height = 0.65,
+          prompt_position = "top",
         },
         width = 0.9,
         height = 0.85,
@@ -92,7 +95,11 @@ function M.config()
         },
       },
     },
-    pickers = {},
+    pickers = {
+      live_grep = {
+        layout_strategy = "vertical",
+      },
+    },
     extensions = {},
   }
 end
