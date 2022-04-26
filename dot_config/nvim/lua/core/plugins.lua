@@ -155,11 +155,6 @@ require("packer").startup {
       },
     }
 
-    use {
-      "hrsh7th/cmp-nvim-lsp",
-      after = "nvim-cmp",
-    }
-
     use "b0o/SchemaStore.nvim"
 
     use {
@@ -175,7 +170,11 @@ require("packer").startup {
     -- cmp
     use {
       "hrsh7th/nvim-cmp",
-      event = "InsertEnter",
+      -- event = "InsertEnter",
+      requires = {
+        "L3MON4D3/LuaSnip",
+        "rafamadriz/friendly-snippets",
+      },
       config = function()
         require("configs.cmp").config()
       end,
@@ -183,32 +182,37 @@ require("packer").startup {
 
     use {
       "hrsh7th/cmp-buffer",
-      after = "nvim-cmp",
+      -- after = "nvim-cmp",
     }
 
     use {
       "hrsh7th/cmp-path",
-      after = "nvim-cmp",
+      -- after = "nvim-cmp",
+    }
+
+    use {
+      "hrsh7th/cmp-nvim-lsp",
+      -- after = "nvim-cmp",
+    }
+
+    use {
+      "saadparwaiz1/cmp_luasnip",
+      -- after = "nvim-cmp",
     }
 
 
     -- Snippets
     use {
       "rafamadriz/friendly-snippets",
-      after = "nvim-cmp",
+      -- after = "nvim-cmp",
     }
 
     use {
       "L3MON4D3/LuaSnip",
-      after = "friendly-snippets",
+      -- after = "friendly-snippets",
       config = function()
         require("configs.luasnip").config()
       end,
-    }
-
-    use {
-      "saadparwaiz1/cmp_luasnip",
-      after = "nvim-cmp",
     }
 
 
