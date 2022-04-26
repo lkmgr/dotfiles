@@ -1,11 +1,11 @@
-include colors/catppuccin.conf
+include colors/onedarkpro.conf
 
-# font_family JetBrainsMono Nerd Font
+font_family JetBrainsMono Nerd Font
 
-font_family JetBrains Mono Regular Nerd Font Complete
-bold_font JetBrains Mono Bold Nerd Font Complete
-italic_font iM Writing Mono S Italic Nerd Font Complete
-bold_italic_font iM Writing Mono S Bold Italic Nerd Font Complete
+# font_family JetBrains Mono Regular Nerd Font Complete
+# bold_font JetBrains Mono Bold Nerd Font Complete
+# italic_font iM Writing Mono S Italic Nerd Font Complete
+# bold_italic_font iM Writing Mono S Bold Italic Nerd Font Complete
 
 confirm_os_window_close 0
 disable_ligatures cursor
@@ -15,12 +15,15 @@ tab_bar_style powerline
 update_check_interval 0
 window_padding_width 8
 
-{{- if (eq .chezmoi.os "darwin") }}
+allow_remote_control socket-only
+listen_on unix:/tmp/mykitty
+
+{{ if (eq .chezmoi.os "darwin") }}
 shell /usr/local/bin/fish --interactive --login
 macos_option_as_alt yes
 map cmd+shift+t new_tab_with_cwd
-font_size 14
-{{- else }}
+font_size 15
+{{ else }}
 font_size 12
-{{- end }}
+{{ end }}
 
