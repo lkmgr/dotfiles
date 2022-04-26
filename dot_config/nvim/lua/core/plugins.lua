@@ -5,11 +5,11 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
-require('packer').startup {
+require("packer").startup {
   function(use)
-    use 'wbthomason/packer.nvim'
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-lua/popup.nvim'
+    use "wbthomason/packer.nvim"
+    use "nvim-lua/plenary.nvim"
+    use "nvim-lua/popup.nvim"
 
     use {
       'rcarriga/nvim-notify',
@@ -21,8 +21,8 @@ require('packer').startup {
     }
 
     use {
-      'MunifTanjim/nui.nvim',
-      module = 'nui',
+      "MunifTanjim/nui.nvim",
+      module = "nui",
     }
 
     use {
@@ -296,7 +296,17 @@ require('packer').startup {
 
 
     -- Lightspeed
+    -- TODO: Fix highlighting for f/F/t/T with onedarkpro
     use "ggandor/lightspeed.nvim"
+
+
+    -- mini.nvim - Surround
+    use {
+      "echasnovski/mini.nvim",
+      config = function()
+        require("configs.mini").config()
+      end,
+    }
 
 
     -- colorscheme
