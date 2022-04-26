@@ -15,6 +15,7 @@ function M.config()
     debug = false,
     sources = {
       formatting.eslint_d,
+      formatting.stylua,
       diagnostics.eslint_d,
     },
     on_attach = function(client)

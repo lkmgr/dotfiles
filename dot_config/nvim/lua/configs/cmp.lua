@@ -35,7 +35,7 @@ function M.config()
     cmp.setup {
       preselect = cmp.PreselectMode.None,
       formatting = {
-        -- fields
+        fields = { "kind", "abbr", "menu" },
         format = function(_, vim_item)
           -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
           vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
@@ -64,10 +64,10 @@ function M.config()
         },
       },
       sources = {
-        { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
-        { name = "buffer", priority = 500 },
-        { name = "path", priority = 250 },
+        { name = "nvim_lsp", priority = 100 },
+        { name = "luasnip", priority = 75 },
+        { name = "buffer", priority = 50 },
+        { name = "path", priority = 25 },
       },
       mapping = {
         ["<Up>"] = cmp.mapping.select_prev_item(),
@@ -117,4 +117,3 @@ function M.config()
 end
 
 return M
-

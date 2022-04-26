@@ -8,21 +8,27 @@ function M.config()
 
   which_key.setup {
     window = {
-      border = "rounded",
+      border = "single",
       position = "bottom",
       margin = { 1, 0, 1, 0 },
       padding = { 2, 2, 2, 2 },
       winblend = 0,
     },
+    layout = {
+      height = { min = 4, max = 35 },
+      width = { min = 20, max = 50 },
+      spacing = 5,
+      align = "center",
+    },
   }
 
   which_key.register({
-    ["w"] = { "<cmd>w<CR>", "Save" },
-    ["q"] = { "<cmd>q<CR>", "Quit" },
-    ["h"] = { "<cmd>nohl<CR>", "No Highlight" },
-    ["e"] = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
-    ["o"] = { "<cmd>Neotree focus<CR>", "Focus Neotree" },
-    ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+    w = { "<cmd>w<CR>", "Save" },
+    q = { "<cmd>q<CR>", "Quit" },
+    h = { "<cmd>nohl<CR>", "No Highlight" },
+    e = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
+    o = { "<cmd>Neotree focus<CR>", "Focus Neotree" },
+    c = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 
     p = {
       name = "Packer",

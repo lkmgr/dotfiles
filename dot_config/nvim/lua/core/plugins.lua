@@ -1,8 +1,15 @@
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 local packer_bootstrap = nil
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+  packer_bootstrap = vim.fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
 end
 
 require("packer").startup {
@@ -12,7 +19,7 @@ require("packer").startup {
     use "nvim-lua/popup.nvim"
 
     use {
-      'rcarriga/nvim-notify',
+      "rcarriga/nvim-notify",
       after = "telescope.nvim",
       config = function()
         require("configs.notify").config()
@@ -81,7 +88,6 @@ require("packer").startup {
       end,
     }
 
-
     -- Treesitter
     use {
       "nvim-treesitter/nvim-treesitter",
@@ -119,7 +125,6 @@ require("packer").startup {
       after = "nvim-treesitter",
     }
 
-
     -- Comments
     use {
       "numToStr/Comment.nvim",
@@ -129,13 +134,12 @@ require("packer").startup {
       end,
     }
 
-
     -- LSP
     use {
       "neovim/nvim-lspconfig",
       event = "BufWinEnter",
       config = function()
-        require("configs.lsp")
+        require "configs.lsp"
       end,
     }
 
@@ -165,7 +169,6 @@ require("packer").startup {
         require("configs.null-ls").config()
       end,
     }
-
 
     -- cmp
     use {
@@ -200,7 +203,6 @@ require("packer").startup {
       -- after = "nvim-cmp",
     }
 
-
     -- Snippets
     use {
       "rafamadriz/friendly-snippets",
@@ -214,7 +216,6 @@ require("packer").startup {
         require("configs.luasnip").config()
       end,
     }
-
 
     -- telescope
     use {
@@ -239,7 +240,6 @@ require("packer").startup {
       end,
     }
 
-
     -- Git integration
     use {
       "lewis6991/gitsigns.nvim",
@@ -248,7 +248,6 @@ require("packer").startup {
         require("configs.gitsigns").config()
       end,
     }
-
 
     -- Dashboard
     use {
@@ -259,7 +258,6 @@ require("packer").startup {
       end,
     }
 
-
     -- Indent Guides
     use {
       "lukas-reineke/indent-blankline.nvim",
@@ -268,7 +266,6 @@ require("packer").startup {
       end,
     }
 
-
     -- which-key
     use {
       "folke/which-key.nvim",
@@ -276,7 +273,6 @@ require("packer").startup {
         require("configs.which-key").config()
       end,
     }
-
 
     -- Terminal
     use {
@@ -288,7 +284,6 @@ require("packer").startup {
       end,
     }
 
-
     -- Smooth scrolling
     use {
       "karb94/neoscroll.nvim",
@@ -298,11 +293,9 @@ require("packer").startup {
       end,
     }
 
-
     -- Lightspeed
     -- TODO: Fix highlighting for f/F/t/T with onedarkpro
     use "ggandor/lightspeed.nvim"
-
 
     -- mini.nvim - Surround
     use {
@@ -312,7 +305,6 @@ require("packer").startup {
       end,
     }
 
-
     -- colorscheme
     use {
       "olimorris/onedarkpro.nvim",
@@ -320,7 +312,6 @@ require("packer").startup {
         require("configs.onedarkpro").config()
       end,
     }
-
 
     --use {
     --  "catppuccin/nvim",
@@ -331,7 +322,7 @@ require("packer").startup {
     --}
 
     if packer_bootstrap then
-      require('packer').sync()
+      require("packer").sync()
     end
   end,
   config = {
