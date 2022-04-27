@@ -166,7 +166,7 @@ require("packer").startup {
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
       },
-      conf = userconf "cmp",
+      config = userconf "cmp",
     }
 
     use {

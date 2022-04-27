@@ -25,13 +25,17 @@ function M.config()
       transparency = false, -- Use a transparent background?
       terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
       window_unfocussed_color = true, -- When the window is out of focus, change the normal background?
-    }
+    },
   }
 
   onedarkpro.load()
 
-  --vim.api.nvim_command("colorscheme catppuccin")
+  -- OneDarkPro purple for context indentlines
+  vim.cmd [[highlight IndentBlanklineContextChar guifg=#c678dd gui=nocombine]]
+  vim.cmd [[highlight IndentBlanklineContextStart guisp=#c678dd gui=underline]]
+
+  -- Transparent bg for current line blame
+  vim.cmd [[highlight GitSignsCurrentLineBlame ctermfg=12 guifg=#5c6370 guibg=#00000000]]
 end
 
 return M
-

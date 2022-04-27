@@ -3,6 +3,7 @@ local M = {}
 function M.config()
   local cmp_status_ok, cmp = pcall(require, "cmp")
   local snip_status_ok, luasnip = pcall(require, "luasnip")
+
   if cmp_status_ok and snip_status_ok then
     local kind_icons = {
       Text = "",
@@ -35,7 +36,7 @@ function M.config()
     cmp.setup {
       preselect = cmp.PreselectMode.None,
       formatting = {
-        fields = { "kind", "abbr", "menu" },
+        -- fields = { "kind", "abbr", "menu" },
         format = function(_, vim_item)
           -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
           vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
@@ -64,10 +65,10 @@ function M.config()
         },
       },
       sources = {
-        { name = "nvim_lsp", priority = 100 },
-        { name = "luasnip", priority = 75 },
-        { name = "buffer", priority = 50 },
-        { name = "path", priority = 25 },
+        { name = "nvim_lsp", priority = 1000 },
+        { name = "luasnip", priority = 750 },
+        { name = "buffer", priority = 500 },
+        { name = "path", priority = 250 },
       },
       mapping = {
         ["<Up>"] = cmp.mapping.select_prev_item(),

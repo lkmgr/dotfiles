@@ -20,6 +20,7 @@ local options = {
   pumheight = 10, -- Height of the pop up menu
   relativenumber = false, -- Show relative numberline
   scrolloff = 8, -- Number of lines to keep above and below the cursor
+  shell = "/usr/local/bin/fish",
   shiftwidth = 2, -- Number of space inserted for indentation
   showmode = false, -- Disable showing modes in command line
   sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
@@ -49,4 +50,3 @@ vim.g.do_filetype_lua = 1 -- use filetype.lua
 vim.g.did_load_filetypes = 0 -- don't use filetype.vim
 
 -- vim.api.nvim_command(("colorscheme %s"):format('onedark'))
-

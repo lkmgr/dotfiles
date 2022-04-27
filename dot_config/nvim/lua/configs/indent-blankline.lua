@@ -7,8 +7,8 @@ function M.config()
   end
 
   -- OneDarkPro purple
-  vim.cmd [[highlight IndentBlanklineContextChar guifg=#c678dd gui=nocombine]]
-  vim.cmd [[highlight IndentBlanklineContextStart guisp=#c678dd gui=underline]]
+  -- vim.cmd [[highlight IndentBlanklineContextChar guifg=#c678dd gui=nocombine]]
+  -- vim.cmd [[highlight IndentBlanklineContextStart guisp=#c678dd gui=underline]]
 
   indent_blankline.setup {
     char = "▏",
@@ -42,4 +42,3 @@ function M.config()
 end
 
 return M
-

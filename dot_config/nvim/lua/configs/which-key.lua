@@ -18,7 +18,7 @@ function M.config()
       height = { min = 4, max = 35 },
       width = { min = 20, max = 50 },
       spacing = 5,
-      align = "center",
+      align = "left",
     },
   }
 
