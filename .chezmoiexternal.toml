@@ -1,16 +1,14 @@
 # [".config/nvim"]
 #   type = "archive"
-#   # renovate: currentValue=main
 #   url = "https://github.com/kabinspace/AstroVim/archive/1367d3bcff035c7f73bb849e7a55f3516e9cffa5.zip"
 #   exact = false
 #   stripComponents = 1
 
-[".local/share/lunarvim/lvim"]
-  type = "archive"
-  # renovate: currentValue=rolling
-  url = "https://github.com/LunarVim/LunarVim/archive/3de829e76ed3d90b25250b1ab76f6425146af9d2.zip"
-  exact = true
-  stripComponents = 1
+# [".local/share/lunarvim/lvim"]
+#   type = "archive"
+#   url = "https://github.com/LunarVim/LunarVim/archive/3de829e76ed3d90b25250b1ab76f6425146af9d2.zip"
+#   exact = true
+#   stripComponents = 1
 
 {{- if eq .chezmoi.os "linux" }}
 [".config/awesome/modules/vicious"]
