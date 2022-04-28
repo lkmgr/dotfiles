@@ -269,7 +269,7 @@ require("packer").startup {
     -- TODO: Fix highlighting for f/F/t/T with onedarkpro
     use "ggandor/lightspeed.nvim"
 
-    -- mini.nvim - Surround
+    -- mini.nvim - Surround, Pairs
     use {
       "echasnovski/mini.nvim",
       config = userconf "mini",
