@@ -275,6 +275,13 @@ require("packer").startup {
       config = userconf "mini",
     }
 
+    -- Trouble
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = userconf "trouble",
+    }
+
     -- colorscheme
     use {
       "olimorris/onedarkpro.nvim",

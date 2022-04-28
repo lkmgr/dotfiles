@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  local status_ok, bufferline = pcall(require, 'bufferline')
+  local status_ok, bufferline = pcall(require, "bufferline")
   if not status_ok then
     return
   end
@@ -14,9 +14,9 @@ function M.config()
       buffer_close_icon = "",
       modified_icon = "●",
       close_icon = "",
-      close_command = "bdelete! %d",
+      close_command = "Bdelete! %d",
       left_mouse_command = "buffer %d",
-      right_mouse_command = "bdelete! %d",
+      right_mouse_command = "Bdelete! %d",
       middle_mouse_command = nil,
       -- U+2590 ▐ Right half block, this character is right aligned so the
       -- background highlight doesn't appear in the middle
@@ -24,7 +24,7 @@ function M.config()
       indicator_icon = "▎",
       left_trunc_marker = "",
       right_trunc_marker = "",
-      separator_style = "slant",
+      separator_style = "thick",
       name_formatter = nil,
       tab_size = 18,
       max_name_length = 18,

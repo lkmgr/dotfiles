@@ -51,27 +51,123 @@ function M.config()
 
     g = {
       name = "Git",
-      j = { function() require("gitsigns").next_hunk() end, "Next Hunk" },
-      k = { function() require("gitsigns").prev_hunk() end, "Prev Hunk" },
-      l = { function() require("gitsigns").blame_line() end, "Blame" },
-      p = { function() require("gitsigns").preview_hunk() end, "Preview Hunk" },
-      h = { function() require("gitsigns").reset_hunk() end, "Reset Hunk" },
-      r = { function() require("gitsigns").reset_buffer() end, "Reset Buffer" },
-      s = { function() require("gitsigns").stage_hunk() end, "Stage Hunk" },
-      u = { function() require("gitsigns").undo_stage_hunk() end, "Undo Stage Hunk" },
-      d = { function() require("gitsigns").diffthis() end, "Diff" },
-      g = { function() require("core.utils").toggle_term_cmd "lazygit" end, "Lazygit" },
+      j = {
+        function()
+          require("gitsigns").next_hunk()
+        end,
+        "Next Hunk",
+      },
+      k = {
+        function()
+          require("gitsigns").prev_hunk()
+        end,
+        "Prev Hunk",
+      },
+      l = {
+        function()
+          require("gitsigns").blame_line()
+        end,
+        "Blame",
+      },
+      p = {
+        function()
+          require("gitsigns").preview_hunk()
+        end,
+        "Preview Hunk",
+      },
+      h = {
+        function()
+          require("gitsigns").reset_hunk()
+        end,
+        "Reset Hunk",
+      },
+      r = {
+        function()
+          require("gitsigns").reset_buffer()
+        end,
+        "Reset Buffer",
+      },
+      s = {
+        function()
+          require("gitsigns").stage_hunk()
+        end,
+        "Stage Hunk",
+      },
+      u = {
+        function()
+          require("gitsigns").undo_stage_hunk()
+        end,
+        "Undo Stage Hunk",
+      },
+      d = {
+        function()
+          require("gitsigns").diffthis()
+        end,
+        "Diff",
+      },
+      g = {
+        function()
+          require("core.utils").toggle_term_cmd "lazygit"
+        end,
+        "Lazygit",
+      },
     },
 
     s = {
       name = "Search",
-      R = { function() require("telescope.builtin").oldfiles() end, "Open Recent File" },
-      c = { function() require("telescope.builtin").commands() end, "Commands" },
-      f = { function() require("telescope.builtin").find_files() end, "Find File" },
-      h = { function() require("telescope.builtin").help_tags() end, "Find Help" },
-      k = { function() require("telescope.builtin").keymaps() end, "Keymaps" },
-      r = { function() require("telescope.builtin").registers() end, "Registers" },
-      t = { function() require("telescope.builtin").live_grep() end, "Find Text" },
+      R = {
+        function()
+          require("telescope.builtin").oldfiles()
+        end,
+        "Open Recent File",
+      },
+      c = {
+        function()
+          require("telescope.builtin").commands()
+        end,
+        "Commands",
+      },
+      f = {
+        function()
+          require("telescope.builtin").find_files()
+        end,
+        "Find File",
+      },
+      h = {
+        function()
+          require("telescope.builtin").help_tags()
+        end,
+        "Find Help",
+      },
+      k = {
+        function()
+          require("telescope.builtin").keymaps()
+        end,
+        "Keymaps",
+      },
+      r = {
+        function()
+          require("telescope.builtin").registers()
+        end,
+        "Registers",
+      },
+      t = {
+        function()
+          require("telescope.builtin").live_grep()
+        end,
+        "Find Text",
+      },
+    },
+
+    t = {
+      name = "Trouble",
+      t = { "<cmd>Trouble<CR>", "Open Trouble" },
+      w = { "<cmd>Trouble workspace_diagnostics<CR>", "Workspace Diagnostics" },
+      e = { "<cmd>Trouble document_diagnostics<CR>", "Document Diagnostics" },
+      l = { "<cmd>Trouble loclist<CR>", "Location List" },
+      q = { "<cmd>Trouble quickfix<CR>", "Quickfix" },
+      d = { "<cmd>Trouble lsp_definitions<CR>", "LSP Definitions" },
+      r = { "<cmd>Trouble lsp_references<CR>", "LSP References" },
     },
   }, {
     prefix = "<leader>",
@@ -80,4 +176,3 @@ function M.config()
 end
 
 return M
-

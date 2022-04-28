@@ -6,6 +6,8 @@ function M.config()
     return
   end
 
+  -- TODO: pcall
+  local trouble = require "trouble.providers.telescope"
   local actions = require "telescope.actions"
 
   telescope.setup {
@@ -59,9 +61,11 @@ function M.config()
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
           ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-          ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-          ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          -- ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+          -- ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           ["<C-l>"] = actions.complete_tag,
+
+          ["<C-q>"] = trouble.open_with_trouble,
         },
 
         n = {
@@ -73,8 +77,8 @@ function M.config()
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
           ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-          ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
-          ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+          -- ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+          -- ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
           ["j"] = actions.move_selection_next,
           ["k"] = actions.move_selection_previous,
@@ -92,6 +96,8 @@ function M.config()
 
           ["<PageUp>"] = actions.results_scrolling_up,
           ["<PageDown>"] = actions.results_scrolling_down,
+
+          ["<C-q>"] = trouble.open_with_trouble,
         },
       },
     },
@@ -105,4 +111,3 @@ function M.config()
 end
 
 return M
-
