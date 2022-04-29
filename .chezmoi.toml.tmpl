@@ -7,3 +7,9 @@ pager = "less -R"
 
 [diff]
   exclude = ["externals"]
+
+{{- if lookPath "nvim" }}
+[merge]
+  command = "nvim -d"
+{{- end }}
+
