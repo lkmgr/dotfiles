@@ -8,12 +8,8 @@ function M.config()
 
   lsp_installer.setup {
     ensure_installed = {
-      "dockerls",
-      "graphql",
-      "jsonls",
       "sumneko_lua",
       "tsserver",
-      "yamlls",
     },
   }
 end

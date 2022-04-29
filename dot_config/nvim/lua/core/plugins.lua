@@ -127,16 +127,21 @@ require("packer").startup {
     -- LSP
     use {
       "neovim/nvim-lspconfig",
-      -- after = "nvim-lsp-installer",
-      config = function()
-        require "configs.lsp"
+      module = "lspconfig",
+      opt = true,
+      setup = function()
+        require("core.utils").defer_plugin "nvim-lspconfig"
       end,
+      tag = "v0.1.3",
     }
 
     use {
       "williamboman/nvim-lsp-installer",
-      -- event = "BufWinEnter",
-      config = userconf "nvim-lsp-installer",
+      after = "nvim-lspconfig",
+      config = function()
+        require("configs.nvim-lsp-installer").config()
+        require "configs.lsp"
+      end,
     }
 
     use "b0o/SchemaStore.nvim"
