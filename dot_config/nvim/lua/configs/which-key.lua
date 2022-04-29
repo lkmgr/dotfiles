@@ -169,6 +169,12 @@ function M.config()
       d = { "<cmd>Trouble lsp_definitions<CR>", "LSP Definitions" },
       r = { "<cmd>Trouble lsp_references<CR>", "LSP References" },
     },
+
+    z = {
+      name = "Misc",
+      f = { "<cmd>.!figlet<CR>", "Figlet" },
+      s = { "<cmd>.!figlet -f small<CR>", "Figlet Small" },
+    },
   }, {
     prefix = "<leader>",
     nowait = true,
