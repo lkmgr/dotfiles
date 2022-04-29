@@ -10,6 +10,7 @@ pager = "less -R"
 
 {{- if lookPath "nvim" }}
 [merge]
-  command = "nvim -d"
+  args = ["-d"]
+  command = "nvim"
 {{- end }}
 
