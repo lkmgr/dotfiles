@@ -1,0 +1,5 @@
+{{- if lookPath "nvim" }}
+function vimdiff --wraps nvim --description 'nvim diff'
+  nvim -d $argv
+end
+{{- end }}
