@@ -127,7 +127,7 @@ require("packer").startup {
     -- LSP
     use {
       "neovim/nvim-lspconfig",
-      event = "BufWinEnter",
+      -- after = "nvim-lsp-installer",
       config = function()
         require "configs.lsp"
       end,
@@ -135,18 +135,8 @@ require("packer").startup {
 
     use {
       "williamboman/nvim-lsp-installer",
-      -- after = "lspconfig",
-      module = "nvim-lsp-installer",
-      cmd = {
-        "LspInstall",
-        "LspInstallInfo",
-        "LspPrintInstalled",
-        "LspRestart",
-        "LspStart",
-        "LspStop",
-        "LspUninstall",
-        "LspUninstallAll",
-      },
+      -- event = "BufWinEnter",
+      config = userconf "nvim-lsp-installer",
     }
 
     use "b0o/SchemaStore.nvim"
