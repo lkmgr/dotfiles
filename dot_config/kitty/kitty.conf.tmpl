@@ -18,12 +18,25 @@ window_padding_width 8
 allow_remote_control socket-only
 listen_on unix:/tmp/mykitty
 
+tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{index}: {title}"
+
+map ctrl+alt+1 goto_tab 1
+map ctrl+alt+2 goto_tab 2
+map ctrl+alt+3 goto_tab 3
+map ctrl+alt+4 goto_tab 4
+map ctrl+alt+5 goto_tab 5
+map ctrl+alt+6 goto_tab 6
+map ctrl+alt+7 goto_tab 7
+map ctrl+alt+8 goto_tab 8
+map ctrl+alt+9 goto_tab 9
+
 {{ if (eq .chezmoi.os "darwin") }}
 shell /usr/local/bin/fish --interactive --login
 macos_option_as_alt yes
 map cmd+shift+t new_tab_with_cwd
 font_size 15
 {{ else }}
+map ctrl+shift+alt+t new_tab_with_cwd
 font_size 12
 {{ end }}
 
