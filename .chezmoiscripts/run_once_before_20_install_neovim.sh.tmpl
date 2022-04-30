@@ -1,0 +1,12 @@
+{{- if (eq .chezmoi.os "linux") }}
+{{-   if (eq .chezmoi.osRelease.id "ubuntu" ) }}
+
+#!{{ lookPath "bash" }}
+
+curl https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.tar.gz --output /tmp/nvim-linux64.tar.gz
+tar xzvf /tmp/nvim-linux64.tar.gz
+cp /tmp/nvim-linux64/bin/nvim ~/.local/bin
+
+{{-   end }}
+{{- end }}
+
