@@ -46,6 +46,8 @@ function M.config()
       TRACE = "✎",
     },
   }
+
+  vim.notify = notify
 end
 
 return M

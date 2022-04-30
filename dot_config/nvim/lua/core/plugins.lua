@@ -153,6 +153,11 @@ require("packer").startup {
       config = userconf "null-ls",
     }
 
+    use {
+      "j-hui/fidget.nvim",
+      config = userconf "fidget",
+    }
+
     -- cmp
     use {
       "hrsh7th/nvim-cmp",
