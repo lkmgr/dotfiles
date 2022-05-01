@@ -1,0 +1,15 @@
+shell = "bash -c '{}'"
+
+[[items]]
+file = "~/.Xresources"
+template = "xresources"
+subtemplate = "default-256"
+start = "! Start flavours"
+end = "! End flavours"
+
+[[items]]
+file = "~/.config/kitty/base16.conf"
+template = "kitty"
+subtemplate = "default-256"
+rewrite = true
+
