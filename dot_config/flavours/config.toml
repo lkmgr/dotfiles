@@ -21,3 +21,10 @@ file = "~/.config/fish/custom.d/colors.fish"
 template = "fish"
 rewrite = true
 
+# Qtile
+[[items]]
+file = "~/.config/qtile/modules/vars.py"
+template = "qtile"
+start = "# Start flavours"
+end = "# End flavours"
+
