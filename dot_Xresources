@@ -10,25 +10,24 @@ Xcursor.size: 32
 Xcursor.theme: macOSMonterey
 
 ! Start flavours
-! Base16 OneDark
-! Scheme: Lalit Magant (http://github.com/tilal6991)
+! Base16 OneDarkX
 
-#define base00 #282c34
-#define base01 #353b45
-#define base02 #3e4451
-#define base03 #545862
-#define base04 #565c64
-#define base05 #abb2bf
-#define base06 #b6bdca
-#define base07 #c8ccd4
-#define base08 #e06c75
-#define base09 #d19a66
-#define base0A #e5c07b
-#define base0B #98c379
-#define base0C #56b6c2
-#define base0D #61afef
-#define base0E #c678dd
-#define base0F #be5046
+#define base00 #282C34
+#define base01 #353B45
+#define base02 #434956
+#define base03 #505868
+#define base04 #8D95A7
+#define base05 #ABB2BF
+#define base06 #CFD3DA
+#define base07 #F0F2F4
+#define base08 #E06C75
+#define base09 #D19A66
+#define base0A #E5C07B
+#define base0B #98C379
+#define base0C #56B6C2
+#define base0D #61AFEF
+#define base0E #C678DD
+#define base0F #BE5046
 
 *foreground:   base05
 #ifdef background_opacity

@@ -1,5 +1,6 @@
 shell = "bash -c '{}'"
 
+# Xresources
 [[items]]
 file = "~/.Xresources"
 template = "xresources"
@@ -7,9 +8,16 @@ subtemplate = "default-256"
 start = "! Start flavours"
 end = "! End flavours"
 
+# Kitty
 [[items]]
 file = "~/.config/kitty/base16.conf"
 template = "kitty"
 subtemplate = "default-256"
+rewrite = true
+
+# Fish
+[[items]]
+file = "~/.config/fish/custom.d/colors.fish"
+template = "fish"
 rewrite = true
 
