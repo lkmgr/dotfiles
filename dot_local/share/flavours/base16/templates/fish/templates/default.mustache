@@ -10,6 +10,8 @@ set -l color7 {{base05-hex}}
 set -l color8 {{base03-hex}}
 set -l color15 {{base07-hex}}
 
+set -l darkgray {{base04-hex}}
+
 # Syntax Highlighting
 set -g fish_color_normal $color5
 set -g fish_color_command $color4
@@ -24,7 +26,7 @@ set -g fish_color_selection --background=$color8
 set -g fish_color_search_match --background=$color8
 set -g fish_color_operator $color5
 set -g fish_color_escape $color3
-set -g fish_color_autosuggestion $color7
+set -g fish_color_autosuggestion $darkgray
 set -g fish_color_cancel $color1
 
 # Prompt

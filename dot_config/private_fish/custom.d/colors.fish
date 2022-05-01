@@ -10,6 +10,8 @@ set -l color7 ABB2BF
 set -l color8 505868
 set -l color15 F0F2F4
 
+set -l darkgray 8D95A7
+
 # Syntax Highlighting
 set -g fish_color_normal $color5
 set -g fish_color_command $color4
@@ -24,7 +26,7 @@ set -g fish_color_selection --background=$color8
 set -g fish_color_search_match --background=$color8
 set -g fish_color_operator $color5
 set -g fish_color_escape $color3
-set -g fish_color_autosuggestion $color7
+set -g fish_color_autosuggestion $darkgray
 set -g fish_color_cancel $color1
 
 # Prompt
