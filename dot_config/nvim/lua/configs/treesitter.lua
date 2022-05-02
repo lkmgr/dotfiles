@@ -13,7 +13,7 @@ function M.config()
     ignore_install = {},
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = false, -- true?
+      additional_vim_regex_highlighting = false, -- check if needed
     },
     incremental_selection = {
       enable = true,
@@ -25,7 +25,7 @@ function M.config()
       },
     },
     indent = {
-      enable = false, -- true? -- disable for yaml?
+      enable = true, -- disable for yaml?
     },
 
     ---- external modules
@@ -50,4 +50,3 @@ function M.config()
 end
 
 return M
-
