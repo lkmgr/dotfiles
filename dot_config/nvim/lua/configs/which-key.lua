@@ -24,6 +24,7 @@ function M.config()
 
   which_key.register({
     w = { "<cmd>w<CR>", "Save" },
+    m = { "<cmd>noautocmd w<CR>", "Save without formatting" },
     q = { "<cmd>q<CR>", "Quit" },
     h = { "<cmd>nohl<CR>", "No Highlight" },
     e = { "<cmd>Neotree toggle<CR>", "Toggle Neotree" },
