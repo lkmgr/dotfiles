@@ -1,7 +1,7 @@
 from libqtile import layout
 from .vars import gap, theme
 
-border_width = 4
+border_width = 6
 border_focus = theme["active_border"]
 border_normal = theme["inactive_border"]
 border_focus_stack = theme["active_border_stack"]
