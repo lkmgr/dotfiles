@@ -77,7 +77,7 @@ screen1 = Screen(
             sep_qtile(),
             # widget.WindowName(),
             # sep_circle_r(theme["bg"]),
-            # widget.Spacer(length=30),
+            # widget.Spacer(),
             # sep_circle_l(theme["bg"]),
             widget.WindowTabs(
                 background=theme["bg"],
@@ -86,7 +86,7 @@ screen1 = Screen(
                 selected=("<b>[ ", " ]</b>"),
             ),
             # sep_circle_r(theme["bg"]),
-            # widget.Spacer(length=30),
+            # widget.Spacer(),
             # sep_circle_l(theme["bg"]),
             widget.CheckUpdates(
                 background=theme["bg"],

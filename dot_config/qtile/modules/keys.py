@@ -52,6 +52,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control", "shift"], "l", lazy.spawn("betterlockscreen -l blur"), desc="Lock Screen"),
+    Key([], "Print", lazy.spawn("flameshot gui"), desc="Open Flameshot GUI"),
     # Launch
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "space", lazy.spawn("rofi -show drun"), desc="rofi drun"),
