@@ -61,7 +61,10 @@ require("packer").startup {
       config = userconf "bufferline",
     }
 
-    use "moll/vim-bbye"
+    use {
+      "famiu/bufdelete.nvim",
+      cmd = { "Bdelete", "Bwipeout" },
+    }
 
     use {
       "nvim-neo-tree/neo-tree.nvim",
@@ -132,7 +135,7 @@ require("packer").startup {
       setup = function()
         require("core.utils").defer_plugin "nvim-lspconfig"
       end,
-      tag = "v0.1.3",
+      -- tag = "v0.1.3",
     }
 
     use {

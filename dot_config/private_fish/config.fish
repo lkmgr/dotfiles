@@ -8,9 +8,9 @@ if test -d $__fish_config_dir/custom_functions.d
     set -gp fish_function_path $__fish_config_dir/custom_functions.d
 end
 
-if type -q asdf; and test -f /usr/local/opt/asdf/libexec/asdf.fish
-    source /usr/local/opt/asdf/libexec/asdf.fish
-end
+# if type -q asdf; and test -f /usr/local/opt/asdf/libexec/asdf.fish
+#     source /usr/local/opt/asdf/libexec/asdf.fish
+# end
 
 if type -q starship
     starship init fish | source

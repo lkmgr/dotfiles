@@ -12,6 +12,7 @@ function M.config()
   local code_actions = null_ls.builtins.code_actions
 
   local sources = {}
+  local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
   -- JavaScript / TypeScript
   table.insert(sources, formatting.eslint_d)
@@ -24,12 +25,14 @@ function M.config()
   null_ls.setup {
     debug = false,
     sources = sources,
-    on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
+    on_attach = function(client, bufnr)
+      if client.supports_method "textDocument/formatting" then
         -- Format on save
+        vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
         vim.api.nvim_create_autocmd("BufWritePre", {
           desc = "Auto format before save",
-          pattern = "<buffer>",
+          group = augroup,
+          buffer = bufnr,
           callback = vim.lsp.buf.formatting_sync,
         })
       end
@@ -38,4 +41,3 @@ function M.config()
 end
 
 return M
-

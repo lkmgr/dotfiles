@@ -18,3 +18,7 @@ if type -q aqua
   set -gx AQUA_ROOT_DIR ~/.local/share/aqua
 end
 
+if type -q volta
+  set -gx VOLTA_HOME ~/.volta
+end
+
