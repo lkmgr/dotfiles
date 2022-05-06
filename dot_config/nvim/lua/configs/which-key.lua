@@ -122,6 +122,12 @@ function M.config()
         end,
         "Open Recent File",
       },
+      b = {
+        function()
+          require("telescope.builtin").buffers()
+        end,
+        "Buffers",
+      },
       c = {
         function()
           require("telescope.builtin").commands()

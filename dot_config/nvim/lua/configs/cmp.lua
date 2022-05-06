@@ -33,13 +33,20 @@ function M.config()
       TypeParameter = "",
     }
 
+    local menu = {
+      nvim_lsp = "[LSP]",
+      luasnip = "[SNIP]",
+      buffer = "[BUF]",
+      path = "[PATH]",
+    }
+
     cmp.setup {
       preselect = cmp.PreselectMode.None,
       formatting = {
         -- fields = { "kind", "abbr", "menu" },
-        format = function(_, vim_item)
+        format = function(entry, vim_item)
           -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+          vim_item.kind = string.format("%s %s %s", kind_icons[vim_item.kind], vim_item.kind, menu[entry.source.name])
           return vim_item
         end,
       },
@@ -48,13 +55,13 @@ function M.config()
           luasnip.lsp_expand(args.body)
         end,
       },
-      duplicates = {
-        nvim_lsp = 1,
-        luasnip = 1,
-        cmp_tabnine = 1,
-        buffer = 1,
-        path = 1,
-      },
+      -- duplicates = {
+      --   nvim_lsp = 1,
+      --   luasnip = 1,
+      --   cmp_tabnine = 1,
+      --   buffer = 1,
+      --   path = 1,
+      -- },
       confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,

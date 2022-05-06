@@ -61,10 +61,11 @@ require("packer").startup {
       config = userconf "bufferline",
     }
 
-    use {
-      "famiu/bufdelete.nvim",
-      cmd = { "Bdelete", "Bwipeout" },
-    }
+    use "moll/vim-bbye"
+    -- use {
+    --   "famiu/bufdelete.nvim",
+    --   cmd = { "Bdelete", "Bwipeout" },
+    -- }
 
     use {
       "nvim-neo-tree/neo-tree.nvim",
@@ -79,6 +80,7 @@ require("packer").startup {
       config = userconf "neo-tree",
     }
 
+    -- Statusline
     use {
       "nvim-lualine/lualine.nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
