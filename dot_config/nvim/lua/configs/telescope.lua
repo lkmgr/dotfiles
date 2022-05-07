@@ -105,6 +105,9 @@ function M.config()
       live_grep = {
         layout_strategy = "vertical",
       },
+      current_buffer_fuzzy_find = {
+        layout_strategy = "vertical",
+      },
     },
     extensions = {},
   }

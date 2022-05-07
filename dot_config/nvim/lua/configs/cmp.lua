@@ -33,20 +33,20 @@ function M.config()
       TypeParameter = "",
     }
 
-    local menu = {
-      nvim_lsp = "[LSP]",
-      luasnip = "[SNIP]",
-      buffer = "[BUF]",
-      path = "[PATH]",
-    }
+    -- local menu = {
+    --   nvim_lsp = "[LSP]",
+    --   luasnip = "[SNIP]",
+    --   buffer = "[BUF]",
+    --   path = "[PATH]",
+    -- }
 
     cmp.setup {
       preselect = cmp.PreselectMode.None,
       formatting = {
         -- fields = { "kind", "abbr", "menu" },
         format = function(entry, vim_item)
-          -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-          vim_item.kind = string.format("%s %s %s", kind_icons[vim_item.kind], vim_item.kind, menu[entry.source.name])
+          vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+          -- vim_item.kind = string.format("%s %s %s", kind_icons[vim_item.kind], vim_item.kind, menu[entry.source.name])
           return vim_item
         end,
       },
