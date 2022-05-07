@@ -14,10 +14,8 @@ function M.setup()
 
   local config = {
     virtual_text = true,
-    signs = {
-      active = signs,
-    },
-    update_in_insert = false,
+    signs = { active = signs },
+    update_in_insert = true,
     underline = true,
     severity_sort = true,
     float = {
@@ -42,9 +40,7 @@ function M.setup()
 end
 
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  -- if client.resolved_capabilities.document_highlight then
-  if client.server_capabilities.documentHighlightProvider then
+  if client.resolved_capabilities.document_highlight then
     vim.api.nvim_create_augroup("lsp_document_highlight", {})
     vim.api.nvim_create_autocmd("CursorHold", {
       group = "lsp_document_highlight",
@@ -61,10 +57,7 @@ end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" or client.name == "jsonls" or client.name == "html" or client.name == "sumneko_lua" then
-    if vim.fn.has "nvim-0.7" then
-      client.resolved_capabilities.document_formatting = false
-    end
-    client.server_capabilities.documentFormattingProvider = false
+    client.resolved_capabilities.document_formatting = false
   end
 
   vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, { desc = "Format file with LSP" })
@@ -72,12 +65,23 @@ M.on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if status_ok then
-  capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-end
+-- from cmp_nvim_lsp plugin
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
 
 M.capabilities = capabilities
 

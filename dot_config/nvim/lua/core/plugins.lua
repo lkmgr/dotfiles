@@ -77,6 +77,9 @@ require("packer").startup {
         "kyazdani42/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
       },
+      setup = function()
+        vim.g.neo_tree_remove_legacy_commands = true
+      end,
       config = userconf "neo-tree",
     }
 
@@ -107,7 +110,7 @@ require("packer").startup {
 
     -- try nvim-treesitter-textobjects
 
-    -- us {
+    -- use {
     --   "p00f/nvim-ts-rainbow",
     --   after = "nvim-treesitter",
     -- }
@@ -185,11 +188,6 @@ require("packer").startup {
     }
 
     use {
-      "hrsh7th/cmp-nvim-lsp",
-      -- after = "nvim-cmp",
-    }
-
-    use {
       "saadparwaiz1/cmp_luasnip",
       -- after = "nvim-cmp",
     }
@@ -230,7 +228,10 @@ require("packer").startup {
     -- Git integration
     use {
       "lewis6991/gitsigns.nvim",
-      event = { "BufRead", "BufNewFile" },
+      opt = true,
+      setup = function()
+        require("core.utils").defer_plugin "gitsigns.nvim"
+      end,
       config = userconf "gitsigns",
     }
 
@@ -239,9 +240,6 @@ require("packer").startup {
       "goolord/alpha-nvim",
       requires = { "kyazdani42/nvim-web-devicons" },
       config = userconf "alpha",
-      -- config = function()
-      --   require("alpha").setup(require("alpha.themes.startify").config)
-      -- end,
     }
 
     -- Indent Guides
@@ -271,11 +269,18 @@ require("packer").startup {
       config = userconf "neoscroll",
     }
 
+    -- Autopairs
+    use {
+      "windwp/nvim-autopairs",
+      event = "InsertEnter",
+      config = userconf "autopairs",
+    }
+
     -- Lightspeed
     -- TODO: Fix highlighting for f/F/t/T with onedarkpro
     use "ggandor/lightspeed.nvim"
 
-    -- mini.nvim - Surround, Pairs, Trailspace
+    -- mini.nvim - Surround, Trailspace
     use {
       "echasnovski/mini.nvim",
       config = userconf "mini",

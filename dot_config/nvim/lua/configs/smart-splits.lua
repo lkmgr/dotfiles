@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  local status_ok, smart_splits = pcall(require, 'smart-splits')
+  local status_ok, smart_splits = pcall(require, "smart-splits")
   if not status_ok then
     return
   end
@@ -9,13 +9,13 @@ function M.config()
   smart_splits.setup {
     -- Ignored filetypes (only while resizing)
     ignored_filetypes = {
-      'nofile',
-      'quickfix',
-      'qf',
-      'prompt',
+      "nofile",
+      "quickfix",
+      "qf",
+      "prompt",
     },
     -- Ignored buffer types (only while resizing)
-    ignored_buftypes = { 'nofile', 'NvimTree' },
+    ignored_buftypes = { "nofile", "NvimTree" },
     -- when moving cursor between splits left or right,
     -- place the cursor on the same row of the *screen*
     -- regardless of line numbers. False by default.

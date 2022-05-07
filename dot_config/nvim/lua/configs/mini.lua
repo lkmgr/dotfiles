@@ -22,11 +22,6 @@ function M.config()
     }
   end
 
-  local pairs_ok, pairs = pcall(require, "mini.pairs")
-  if pairs_ok then
-    pairs.setup()
-  end
-
   local trailspace_ok, trailspace = pcall(require, "mini.trailspace")
   if trailspace_ok then
     trailspace.setup()
