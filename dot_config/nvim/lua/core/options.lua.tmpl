@@ -65,8 +65,10 @@ local options = {
     loaded_zipPlugin = true, -- disable zip
     loaded_vimball = true, -- disable vimball
     loaded_vimballPlugin = true, -- disable vimball
-  }
+  },
 }
+
+vim.opt.formatoptions:remove { "c", "r", "o" }
 
 for scope, table in pairs(options) do
   for setting, value in pairs(table) do
@@ -75,4 +77,3 @@ for scope, table in pairs(options) do
 end
 
 -- vim.api.nvim_command(("colorscheme %s"):format('onedark'))
-

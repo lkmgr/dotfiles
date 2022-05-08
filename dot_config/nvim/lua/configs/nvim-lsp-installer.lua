@@ -12,6 +12,7 @@ function M.config()
       "html",
       "jsonls",
       "sumneko_lua",
+      "taplo",
       "tsserver",
       "yamlls",
     },

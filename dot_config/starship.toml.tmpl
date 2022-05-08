@@ -1,3 +1,11 @@
+# vim: ft=toml
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+command_timeout = 30000
+
 format = """
 {{- if (eq .chezmoi.os "linux") }}
 {{-   if (eq .chezmoi.osRelease.id "arch" ) }}
@@ -8,74 +16,34 @@ format = """
 {{- end }}
 $username\
 $hostname\
-$shlvl\
-$singularity\
 $kubernetes\
 $directory\
-$vcsh\
 $git_branch\
 $git_commit\
 $git_state\
 $git_metrics\
 $git_status\
-$hg_branch\
 $docker_context\
 $cmake\
-$cobol\
-$dart\
 $deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
 $golang\
 $helm\
-$java\
-$julia\
-$kotlin\
 $lua\
-$nim\
 $nodejs\
-$ocaml\
-$perl\
-$php\
-$pulumi\
-$purescript\
 $python\
-$rlang\
-$red\
-$ruby\
-$rust\
-$scala\
-$swift\
 $terraform\
-$vlang\
 $vagrant\
-$zig\
 $nix_shell\
-$conda\
 $fill \
 $memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$azure\
-$env_var\
-$crystal\
-$custom\
 $sudo\
 $cmd_duration\
 $time\
 $line_break\
 $jobs\
-$battery\
 $status\
 $shell\
 $character"""
-
-add_newline = true
-
-command_timeout = 30000
 
 [character]
 success_symbol = "[❯](bold green)"
@@ -114,10 +82,11 @@ behind = "⇣${count}"
 
 [kubernetes]
 disabled = false
-format = '[$symbol $context \($namespace\)](bold bright-green) '
-symbol = "⛵"
+format = '[$symbol $context \($namespace\)](bright-green) '
+symbol = "\uf21a "
 # [kubernetes.context_aliases]
 # "default" = "homelab"
 
 [time]
 disabled = false
+
