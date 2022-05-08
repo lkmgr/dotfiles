@@ -34,22 +34,31 @@ cmd("VimLeave", {
   pattern = "*",
 })
 
-augroup("no_auto_comments", {})
+-- Custom local opts
+augroup("custom_local_opts", {})
 cmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
   desc = "No auto comment leader",
-  group = "no_auto_comments",
+  group = "custom_local_opts",
   callback = function()
     vim.opt_local.formatoptions:remove { "c", "r", "o" }
   end,
   pattern = "*",
 })
 
-augroup("no_buf_listed", {})
 cmd("FileType", {
   desc = "QF nobuflisted",
-  group = "no_buf_listed",
+  group = "custom_local_opts",
   callback = function()
     vim.opt_local.buflisted = false
   end,
   pattern = "qf",
+})
+
+cmd("FileType", {
+  desc = "Cursorcolumns",
+  group = "custom_local_opts",
+  callback = function()
+    vim.opt_local.cursorcolumn = true
+  end,
+  pattern = { "yaml", "yml" },
 })

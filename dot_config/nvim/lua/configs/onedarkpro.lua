@@ -26,6 +26,9 @@ function M.config()
       terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
       window_unfocussed_color = true, -- When the window is out of focus, change the normal background?
     },
+    hlgroups = {
+      CursorColumn = { bg = "${cursorline}" },
+    },
   }
 
   onedarkpro.load()
