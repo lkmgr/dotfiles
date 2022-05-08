@@ -13,7 +13,9 @@ augroup("yank_highlight", {})
 cmd("TextYankPost", {
   desc = "Highlight Yank",
   group = "yank_highlight",
-  callback = function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 400 }) end,
+  callback = function()
+    vim.highlight.on_yank { higroup = "IncSearch", timeout = 400 }
+  end,
   pattern = "*",
 })
 
@@ -32,3 +34,22 @@ cmd("VimLeave", {
   pattern = "*",
 })
 
+augroup("no_auto_comments", {})
+cmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
+  desc = "No auto comment leader",
+  group = "no_auto_comments",
+  callback = function()
+    vim.opt_local.formatoptions:remove { "c", "r", "o" }
+  end,
+  pattern = "*",
+})
+
+augroup("no_buf_listed", {})
+cmd("FileType", {
+  desc = "QF nobuflisted",
+  group = "no_buf_listed",
+  callback = function()
+    vim.opt_local.buflisted = false
+  end,
+  pattern = "qf",
+})

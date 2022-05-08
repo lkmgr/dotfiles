@@ -15,7 +15,6 @@ map("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
 map("n", "<leader>h", "<cmd>nohl<CR>", { desc = "No Highlight" })
 map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neotree" })
 map("n", "<leader>o", "<cmd>Neotree focus<CR>", { desc = "Focus Neotree" })
-map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
 map("n", "<leader>fn", "<cmd>enew<CR>", { desc = "New File" })
 map("n", "<leader><space>", function()
   require("telescope.builtin").buffers()
@@ -26,6 +25,8 @@ end, { desc = "Search current buffer" })
 map("n", "<leader>?", function()
   require("telescope.builtin").resume()
 end, { desc = "Resume Telescope" })
+map("n", "<S-h>", "^", { desc = "Move to first char of line" })
+map("n", "<S-l>", "$", { desc = "Move to end of line" })
 
 -- Packer
 map("n", "<leader>pc", "<cmd>PackerCompile<CR>", { desc = "Packer Compile" })
@@ -130,11 +131,13 @@ map("n", "<leader>sy", function()
   require("telescope.builtin").find_files { hidden = true }
 end, { desc = "Find Hidden File" })
 
--- bufferline
-map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
-map("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
-map("n", "<A-s-l>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer tab right" })
-map("n", "<A-s-h>", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
+-- Buffers
+map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
+map("n", "<C-c>", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
+map("n", "<A-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
+map("n", "<A-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
+map("n", "<A-S-l>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer tab right" })
+map("n", "<A-S-h>", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
 
 -- Trouble
 map("n", "<leader>tt", "<cmd>Trouble<CR>", { desc = "Open Trouble" })
