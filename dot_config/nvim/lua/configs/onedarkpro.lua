@@ -6,8 +6,10 @@ function M.config()
     return
   end
 
+  vim.o.background = "dark"
+
   onedarkpro.setup {
-    theme = "onedark",
+    -- theme = "onedark",
     styles = {
       strings = "NONE", -- Style that is applied to strings
       comments = "italic", -- Style that is applied to comments
@@ -33,6 +35,7 @@ function M.config()
 
   onedarkpro.load()
 
+  -- TODO: Move to hlgroups
   -- OneDarkPro purple for context indentlines
   vim.cmd [[highlight IndentBlanklineContextChar guifg=#c678dd gui=nocombine]]
   vim.cmd [[highlight IndentBlanklineContextStart guisp=#c678dd gui=underline]]

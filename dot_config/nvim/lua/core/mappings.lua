@@ -1,4 +1,5 @@
 local map = vim.keymap.set
+local utils = require "core.utils"
 
 -- ##################
 -- ##### NORMAL #####
@@ -179,6 +180,9 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- misc
 map("n", "<leader>zf", "<cmd>.!figlet<CR>", { desc = "Figlet" })
 map("n", "<leader>zs", "<cmd>.!figlet -f small<CR>", { desc = "Figlet Small" })
+map("n", "<leader>zt", function()
+  utils.toggle_theme()
+end, { desc = "Toggle Theme" })
 
 -- disable Ex mode:
 map("n", "Q", "<Nop>")

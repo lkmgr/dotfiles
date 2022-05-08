@@ -84,15 +84,15 @@ require("packer").startup {
     }
 
     -- Statusline
-    -- use {
-    --   "nvim-lualine/lualine.nvim",
-    --   requires = { "kyazdani42/nvim-web-devicons" },
-    --   config = userconf "lualine",
-    -- }
     use {
-      "feline-nvim/feline.nvim",
-      config = userconf "feline",
+      "nvim-lualine/lualine.nvim",
+      requires = { "kyazdani42/nvim-web-devicons" },
+      config = userconf "lualine",
     }
+    -- use {
+    --   "feline-nvim/feline.nvim",
+    --   config = userconf "feline",
+    -- }
 
     -- Treesitter
     use {
