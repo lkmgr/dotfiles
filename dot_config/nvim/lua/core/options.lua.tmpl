@@ -69,6 +69,7 @@ local options = {
 }
 
 vim.opt.formatoptions:remove { "c", "r", "o" }
+vim.opt.shortmess:append "c"
 
 for scope, table in pairs(options) do
   for setting, value in pairs(table) do
