@@ -33,7 +33,9 @@ function M.config()
           desc = "Auto format before save",
           group = augroup,
           buffer = bufnr,
-          callback = vim.lsp.buf.formatting_sync,
+          callback = function()
+            vim.lsp.buf.formatting_sync(nil, 5000)
+          end,
         })
       end
     end,
