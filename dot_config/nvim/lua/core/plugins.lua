@@ -175,31 +175,14 @@ require("packer").startup {
       "hrsh7th/nvim-cmp",
       -- event = "InsertEnter",
       requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "saadparwaiz1/cmp_luasnip",
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
       },
       config = userconf "cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-buffer",
-      -- after = "nvim-cmp",
-    }
-
-    use {
-      "hrsh7th/cmp-path",
-      -- after = "nvim-cmp",
-    }
-
-    use {
-      "saadparwaiz1/cmp_luasnip",
-      -- after = "nvim-cmp",
-    }
-
-    -- Snippets
-    use {
-      "rafamadriz/friendly-snippets",
-      -- after = "nvim-cmp",
     }
 
     use {
