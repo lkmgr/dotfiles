@@ -4,6 +4,11 @@ return {
     preferences = {
       disable_suggestions = true,
     },
+    plugins = {
+      {
+        name = "typescript-styled-plugin",
+      },
+    },
   },
   handlers = {
     ["textDocument/publishDiagnostics"] = function() end,

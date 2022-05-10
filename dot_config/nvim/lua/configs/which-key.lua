@@ -20,6 +20,11 @@ function M.config()
       spacing = 5,
       align = "left",
     },
+    key_labels = {
+      ["<space>"] = "<SPC>",
+      ["<cr>"] = "<RET>",
+      ["<tab>"] = "<TAB>",
+    },
   }
 
   which_key.register({

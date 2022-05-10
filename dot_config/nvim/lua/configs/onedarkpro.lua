@@ -30,6 +30,8 @@ function M.config()
     },
     hlgroups = {
       CursorColumn = { bg = "${cursorline}" },
+      -- NeoTreeWinSeparator = { bg = "${bg}", fg = "${bg}" },
+      NeoTreeWinSeparator = { bg = "${color_column}", fg = "${color_column}" },
     },
   }
 
