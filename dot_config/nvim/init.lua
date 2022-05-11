@@ -1,6 +1,12 @@
 pcall(require, "impatient")
 
-require "core.options"
-require "core.plugins"
-require "core.autocmds"
-require "core.mappings"
+local load = function(mod)
+  package.loaded[mod] = nil
+  return require(mod)
+end
+
+load "core.options"
+load "core.plugins"
+load "core.autocmds"
+load "core.mappings"
+load "core.commands"

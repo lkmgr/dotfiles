@@ -74,7 +74,9 @@ function M.config()
       },
       sources = {
         { name = "nvim_lsp", priority = 1000 },
-        { name = "luasnip", priority = 750 },
+        { name = "nvim_lsp_signature_help", priority = 900 },
+        { name = "nvim_lua", priority = 800 },
+        { name = "luasnip", priority = 750, keyword_length = 2 },
         { name = "buffer", priority = 500 },
         { name = "path", priority = 250 },
       },
