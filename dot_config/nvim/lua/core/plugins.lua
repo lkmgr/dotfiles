@@ -98,36 +98,13 @@ require("packer").startup {
     use {
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
-      event = { "BufRead", "BufNewFile" },
-      cmd = {
-        "TSInstall",
-        "TSInstallInfo",
-        "TSInstallSync",
-        "TSUninstall",
-        "TSUpdate",
-        "TSUpdateSync",
-        "TSDisableAll",
-        "TSEnableAll",
-      },
       config = userconf "treesitter",
     }
 
-    -- try nvim-treesitter-textobjects
-
-    -- use {
-    --   "p00f/nvim-ts-rainbow",
-    --   after = "nvim-treesitter",
-    -- }
-
-    use {
-      "windwp/nvim-ts-autotag",
-      after = "nvim-treesitter",
-    }
-
-    use {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      after = "nvim-treesitter",
-    }
+    use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "windwp/nvim-ts-autotag"
+    use "JoosepAlviste/nvim-ts-context-commentstring"
+    -- use "p00f/nvim-ts-rainbow"
 
     -- Comments
     use {
@@ -144,7 +121,6 @@ require("packer").startup {
       setup = function()
         require("core.utils").defer_plugin "nvim-lspconfig"
       end,
-      -- tag = "v0.1.3",
     }
 
     use {
@@ -173,7 +149,6 @@ require("packer").startup {
     -- cmp
     use {
       "hrsh7th/nvim-cmp",
-      -- event = "InsertEnter",
       requires = {
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
