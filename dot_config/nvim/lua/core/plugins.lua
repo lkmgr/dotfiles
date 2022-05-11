@@ -22,6 +22,8 @@ require("packer").startup {
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim"
 
+    use "lewis6991/impatient.nvim"
+
     use {
       "rcarriga/nvim-notify",
       after = "telescope.nvim",
