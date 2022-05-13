@@ -22,7 +22,7 @@ cmd("TextYankPost", {
 })
 
 local init_group = augroup("enter_group", {})
-cmd({ "VimEnter", "FocusGained" }, {
+cmd("VimEnter", {
   desc = "Set theme by time of day",
   group = init_group,
   callback = function()
