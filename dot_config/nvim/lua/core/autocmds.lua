@@ -21,15 +21,15 @@ cmd("TextYankPost", {
   pattern = "*",
 })
 
-local init_group = augroup("enter_group", {})
-cmd("VimEnter", {
-  desc = "Set theme by time of day",
-  group = init_group,
-  callback = function()
-    utils.set_theme_by_hour(8, 18)
-  end,
-  pattern = "*",
-})
+-- local init_group = augroup("enter_group", {})
+-- cmd("VimEnter", {
+--   desc = "Set theme by time of day",
+--   group = init_group,
+--   callback = function()
+--     utils.set_theme_by_hour(8, 18)
+--   end,
+--   pattern = "*",
+-- })
 
 -- Remove kitty padding inside nvim
 local kitty_padding = augroup("kitty_padding", {})

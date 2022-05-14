@@ -26,21 +26,16 @@ require("packer").startup {
 
     use {
       "rcarriga/nvim-notify",
-      after = "telescope.nvim",
       config = function()
         require("configs.notify").config()
         require("telescope").load_extension "notify"
       end,
     }
 
-    use {
-      "MunifTanjim/nui.nvim",
-      module = "nui",
-    }
+    use "MunifTanjim/nui.nvim"
 
     use {
       "antoinemadec/FixCursorHold.nvim",
-      event = { "BufRead", "BufNewFile" },
       config = function()
         vim.g.cursorhold_updatetime = 100
       end,
@@ -48,7 +43,6 @@ require("packer").startup {
 
     use {
       "mrjones2014/smart-splits.nvim",
-      module = "smart-splits",
       config = userconf "smart-splits",
     }
 
@@ -59,7 +53,6 @@ require("packer").startup {
 
     use {
       "akinsho/bufferline.nvim",
-      after = "nvim-web-devicons",
       config = userconf "bufferline",
     }
 
@@ -72,16 +65,11 @@ require("packer").startup {
     use {
       "nvim-neo-tree/neo-tree.nvim",
       branch = "v2.x",
-      module = "neo-tree",
-      cmd = "Neotree",
       requires = {
         "nvim-lua/plenary.nvim",
         "kyazdani42/nvim-web-devicons",
         "MunifTanjim/nui.nvim",
       },
-      setup = function()
-        vim.g.neo_tree_remove_legacy_commands = true
-      end,
       config = userconf "neo-tree",
     }
 
@@ -111,23 +99,16 @@ require("packer").startup {
     -- Comments
     use {
       "numToStr/Comment.nvim",
-      event = { "BufRead", "BufNewFile" },
       config = userconf "comment",
     }
 
     -- LSP
     use {
       "neovim/nvim-lspconfig",
-      module = "lspconfig",
-      opt = true,
-      setup = function()
-        require("core.utils").defer_plugin "nvim-lspconfig"
-      end,
     }
 
     use {
       "williamboman/nvim-lsp-installer",
-      after = "nvim-lspconfig",
       config = function()
         require("configs.nvim-lsp-installer").config()
         require "configs.lsp"
@@ -139,7 +120,6 @@ require("packer").startup {
     use {
       "jose-elias-alvarez/null-ls.nvim",
       requires = { "nvim-lua/plenary.nvim" },
-      event = { "BufRead", "BufNewFile" },
       config = userconf "null-ls",
     }
 
@@ -166,15 +146,12 @@ require("packer").startup {
 
     use {
       "L3MON4D3/LuaSnip",
-      -- after = "friendly-snippets",
       config = userconf "luasnip",
     }
 
     -- telescope
     use {
       "nvim-telescope/telescope.nvim",
-      cmd = "Telescope",
-      module = "telescope",
       requires = {
         "nvim-lua/plenary.nvim",
         "kyazdani42/nvim-web-devicons",
@@ -184,7 +161,6 @@ require("packer").startup {
 
     use {
       "nvim-telescope/telescope-fzf-native.nvim",
-      after = "telescope.nvim",
       run = "make",
       config = function()
         require("telescope").load_extension "fzf"
@@ -194,10 +170,6 @@ require("packer").startup {
     -- Git integration
     use {
       "lewis6991/gitsigns.nvim",
-      opt = true,
-      setup = function()
-        require("core.utils").defer_plugin "gitsigns.nvim"
-      end,
       config = userconf "gitsigns",
     }
 
@@ -223,22 +195,18 @@ require("packer").startup {
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
-      cmd = "ToggleTerm",
-      module = { "toggleterm", "toggleterm.terminal" },
       config = userconf "toggleterm",
     }
 
     -- Smooth scrolling
     use {
       "karb94/neoscroll.nvim",
-      event = { "BufRead", "BufNewFile" },
       config = userconf "neoscroll",
     }
 
     -- Autopairs
     use {
       "windwp/nvim-autopairs",
-      event = "InsertEnter",
       config = userconf "autopairs",
     }
 
