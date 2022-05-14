@@ -21,8 +21,15 @@ require("packer").startup {
     use "wbthomason/packer.nvim"
     use "nvim-lua/plenary.nvim"
     use "nvim-lua/popup.nvim"
-
     use "lewis6991/impatient.nvim"
+    use "MunifTanjim/nui.nvim"
+    use { "kyazdani42/nvim-web-devicons", config = userconf "icons" }
+    use {
+      "antoinemadec/FixCursorHold.nvim",
+      config = function()
+        vim.g.cursorhold_updatetime = 100
+      end,
+    }
 
     use {
       "rcarriga/nvim-notify",
@@ -32,81 +39,28 @@ require("packer").startup {
       end,
     }
 
-    use "MunifTanjim/nui.nvim"
+    use { "mrjones2014/smart-splits.nvim", config = userconf "smart-splits" }
 
-    use {
-      "antoinemadec/FixCursorHold.nvim",
-      config = function()
-        vim.g.cursorhold_updatetime = 100
-      end,
-    }
-
-    use {
-      "mrjones2014/smart-splits.nvim",
-      config = userconf "smart-splits",
-    }
-
-    use {
-      "kyazdani42/nvim-web-devicons",
-      config = userconf "icons",
-    }
-
-    use {
-      "akinsho/bufferline.nvim",
-      config = userconf "bufferline",
-    }
-
+    -- Buffers
+    use { "akinsho/bufferline.nvim", config = userconf "bufferline" }
     use "moll/vim-bbye"
-    -- use {
-    --   "famiu/bufdelete.nvim",
-    --   cmd = { "Bdelete", "Bwipeout" },
-    -- }
+    -- use "famiu/bufdelete.nvim"
 
-    use {
-      "nvim-neo-tree/neo-tree.nvim",
-      branch = "v2.x",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "kyazdani42/nvim-web-devicons",
-        "MunifTanjim/nui.nvim",
-      },
-      config = userconf "neo-tree",
-    }
+    use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = userconf "neo-tree" }
 
-    -- Statusline
-    use {
-      "nvim-lualine/lualine.nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = userconf "lualine",
-    }
-    -- use {
-    --   "feline-nvim/feline.nvim",
-    --   config = userconf "feline",
-    -- }
+    use { "nvim-lualine/lualine.nvim", config = userconf "lualine" }
+    -- use { "feline-nvim/feline.nvim", config = userconf "feline" }
 
     -- Treesitter
-    use {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = userconf "treesitter",
-    }
-
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = userconf "treesitter" }
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "windwp/nvim-ts-autotag"
     use "JoosepAlviste/nvim-ts-context-commentstring"
     -- use "p00f/nvim-ts-rainbow"
 
-    -- Comments
-    use {
-      "numToStr/Comment.nvim",
-      config = userconf "comment",
-    }
+    use { "numToStr/Comment.nvim", config = userconf "comment" }
 
-    -- LSP
-    use {
-      "neovim/nvim-lspconfig",
-    }
-
+    -- LSP/Diagnostics
     use {
       "williamboman/nvim-lsp-installer",
       config = function()
@@ -114,51 +68,27 @@ require("packer").startup {
         require "configs.lsp"
       end,
     }
-
+    use "neovim/nvim-lspconfig"
+    use { "jose-elias-alvarez/null-ls.nvim", config = userconf "null-ls" }
+    use { "j-hui/fidget.nvim", config = userconf "fidget" }
+    use { "folke/trouble.nvim", config = userconf "trouble" }
     use "b0o/SchemaStore.nvim"
 
-    use {
-      "jose-elias-alvarez/null-ls.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-      config = userconf "null-ls",
-    }
-
-    use {
-      "j-hui/fidget.nvim",
-      config = userconf "fidget",
-    }
-
     -- cmp
-    use {
-      "hrsh7th/nvim-cmp",
-      requires = {
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-        "hrsh7th/cmp-cmdline",
-        "hrsh7th/cmp-nvim-lsp-signature-help",
-        "hrsh7th/cmp-nvim-lua",
-        "saadparwaiz1/cmp_luasnip",
-        "L3MON4D3/LuaSnip",
-        "rafamadriz/friendly-snippets",
-      },
-      config = userconf "cmp",
-    }
+    use { "hrsh7th/nvim-cmp", config = userconf "cmp" }
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-nvim-lsp-signature-help"
+    use "hrsh7th/cmp-nvim-lua"
+    use "saadparwaiz1/cmp_luasnip"
 
-    use {
-      "L3MON4D3/LuaSnip",
-      config = userconf "luasnip",
-    }
+    -- Snippets
+    use { "L3MON4D3/LuaSnip", config = userconf "luasnip" }
+    use "rafamadriz/friendly-snippets"
 
-    -- telescope
-    use {
-      "nvim-telescope/telescope.nvim",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "kyazdani42/nvim-web-devicons",
-      },
-      config = userconf "telescope",
-    }
-
+    -- Telescope
+    use { "nvim-telescope/telescope.nvim", config = userconf "telescope" }
     use {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make",
@@ -167,71 +97,22 @@ require("packer").startup {
       end,
     }
 
-    -- Git integration
-    use {
-      "lewis6991/gitsigns.nvim",
-      config = userconf "gitsigns",
-    }
-
     -- Dashboard
-    use {
-      "goolord/alpha-nvim",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      config = userconf "alpha",
-    }
-
-    -- Indent Guides
-    use {
-      "lukas-reineke/indent-blankline.nvim",
-      config = userconf "indent-blankline",
-    }
-
-    -- which-key
-    use {
-      "folke/which-key.nvim",
-      config = userconf "which-key",
-    }
-
-    -- Terminal
-    use {
-      "akinsho/toggleterm.nvim",
-      config = userconf "toggleterm",
-    }
-
-    -- Smooth scrolling
-    use {
-      "karb94/neoscroll.nvim",
-      config = userconf "neoscroll",
-    }
-
-    -- Autopairs
-    use {
-      "windwp/nvim-autopairs",
-      config = userconf "autopairs",
-    }
-
-    -- Lightspeed
-    -- TODO: Fix highlighting for f/F/t/T with onedarkpro
-    use "ggandor/lightspeed.nvim"
+    use { "goolord/alpha-nvim", config = userconf "alpha" }
 
     -- mini.nvim - Surround, Trailspace
-    use {
-      "echasnovski/mini.nvim",
-      config = userconf "mini",
-    }
+    use { "echasnovski/mini.nvim", config = userconf "mini" }
 
-    -- Trouble
-    use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = userconf "trouble",
-    }
+    use { "lewis6991/gitsigns.nvim", config = userconf "gitsigns" }
+    use { "lukas-reineke/indent-blankline.nvim", config = userconf "indent-blankline" }
+    use { "folke/which-key.nvim", config = userconf "which-key" }
+    use { "akinsho/toggleterm.nvim", config = userconf "toggleterm" }
+    use { "karb94/neoscroll.nvim", config = userconf "neoscroll" }
+    use { "windwp/nvim-autopairs", config = userconf "autopairs" }
+    use "ggandor/lightspeed.nvim"
 
     -- colorscheme
-    use {
-      "olimorris/onedarkpro.nvim",
-      config = userconf "onedarkpro",
-    }
+    use { "olimorris/onedarkpro.nvim", config = userconf "onedarkpro" } -- TODO: fix lightspeed highlights
 
     if packer_bootstrap then
       require("packer").sync()
