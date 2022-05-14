@@ -1,0 +1,4 @@
+default:
+  extension: .py
+  output: colors
+
