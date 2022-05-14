@@ -1,7 +1,13 @@
 # custom configs
-for file in $__fish_config_dir/custom.d/*.fish
-  source $file
-end
+# for file in $__fish_config_dir/custom.d/*.fish
+#   source $file
+# end
+source custom.d/global-colors.fish
+source custom.d/theme.fish
+source custom.d/abbrs.fish
+source custom.d/env.fish
+source custom.d/fzf.fish
+source custom.d/paths.fish
 
 # prepend custom function path to fish_function_path
 if test -d $__fish_config_dir/custom_functions.d

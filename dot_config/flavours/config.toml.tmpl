@@ -7,13 +7,21 @@ template = "kitty"
 subtemplate = "default-256"
 rewrite = true
 
-# Fish
+# Fish Theme
 [[items]]
-file = "~/.config/fish/custom.d/colors.fish"
+file = "~/.config/fish/custom.d/theme.fish"
 template = "fish"
+subtemplate = "theme"
 rewrite = true
 
-{{- if (eq .chezmoi.os "linux") }}
+# Fish global colors
+[[items]]
+file = "~/.config/fish/custom.d/global-colors.fish"
+template = "fish"
+subtemplate = "global-colors"
+rewrite = true
+
+{{ if (eq .chezmoi.os "linux") }}
 # Qtile
 [[items]]
 file = "~/.config/qtile/modules/vars.py"
