@@ -7,6 +7,7 @@ theme_colors = [
     "#{{base05-hex}}",
     "#{{base06-hex}}",
     "#{{base07-hex}}",
+
     "#{{base08-hex}}",
     "#{{base09-hex}}",
     "#{{base0A-hex}}",
@@ -18,13 +19,18 @@ theme_colors = [
 ]
 
 theme = dict(
-    bg=theme_colors[0],
-    fg=theme_colors[5],
+    bg="#00000000",
+    fg=theme_colors[6],
     active_border=theme_colors[8],
     inactive_border=theme_colors[4],
     active_border_stack=theme_colors[9],
     inactive_border_stack=theme_colors[3],
     bell_border=theme_colors[10],
     sep=theme_colors[8],
+    # GroupBox
+    gb_inactive=theme_colors[4],
+    gb_active=theme_colors[7],
+    gb_selected=theme_colors[8],
+    gb_other_screen=theme_colors[11],
 )
 
