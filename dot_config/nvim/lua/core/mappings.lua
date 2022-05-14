@@ -180,9 +180,8 @@ map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- misc
 map("n", "<leader>zf", "<cmd>.!figlet<CR>", { desc = "Figlet" })
 map("n", "<leader>zs", "<cmd>.!figlet -f small<CR>", { desc = "Figlet Small" })
-map("n", "<leader>zt", function()
-  utils.toggle_theme()
-end, { desc = "Toggle Theme" })
+map("n", "<leader>zt", utils.toggle_theme, { desc = "Toggle Theme" })
+map("n", "<leader>zu", utils.open_uri_under_cursor, { desc = "Open URI under Cursor" })
 
 -- disable Ex mode:
 map("n", "Q", "<Nop>")
