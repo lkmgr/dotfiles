@@ -18,12 +18,6 @@ function M.toggle_term_cmd(term_details)
   M.user_terminals[term_key]:toggle()
 end
 
-function M.defer_plugin(plugin, timeout)
-  vim.defer_fn(function()
-    require("packer").loader(plugin)
-  end, timeout or 0)
-end
-
 function M.toggle_theme()
   if vim.o.background == "dark" then
     vim.o.background = "light"
@@ -32,15 +26,15 @@ function M.toggle_theme()
   end
 end
 
-function M.set_theme_by_hour(start_hour, end_hour)
-  local time = tonumber(vim.fn.strftime "%H")
-  if time < start_hour or time > end_hour then
-    vim.o.background = "dark"
-  else
-    vim.o.background = "light"
-  end
-  -- vim.cmd [[doautoall ColorScheme]]
-end
+-- function M.set_theme_by_hour(start_hour, end_hour)
+--   local time = tonumber(vim.fn.strftime "%H")
+--   if time < start_hour or time > end_hour then
+--     vim.o.background = "dark"
+--   else
+--     vim.o.background = "light"
+--   end
+--   -- vim.cmd [[doautoall ColorScheme]]
+-- end
 
 function M.open_uri_under_cursor()
   local function open_uri(uri)
