@@ -1,0 +1,16 @@
+packages:
+  - type: github_release
+    repo_owner: denisidoro
+    repo_name: navi
+    asset: "navi-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}"
+    description: An interactive cheatsheet tool for the command-line
+    replacements:
+      darwin: apple-darwin
+      windows: pc-windows-gnu
+      linux: unknown-linux-musl
+      amd64: x86_64
+    format: tar.gz
+    # format_overrides:
+    #   - goos: windows
+    #     format: zip
+
