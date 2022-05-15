@@ -27,7 +27,6 @@ theme_colors = [
 ]
 
 theme = dict(
-    # bg=theme_colors[0],
     bg="#00000000",
     fg=theme_colors[6],
     active_border=theme_colors[8],
