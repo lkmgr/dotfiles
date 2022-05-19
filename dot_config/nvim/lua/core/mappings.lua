@@ -215,3 +215,14 @@ map("x", "J", ":move '>+1<CR>gv-gv", { desc = "Move text down" })
 map("x", "K", ":move '<-2<CR>gv-gv", { desc = "Move text up" })
 map("x", "<A-j>", ":move '>+1<CR>gv-gv", { desc = "Move text down" })
 map("x", "<A-k>", ":move '<-2<CR>gv-gv", { desc = "Move text up" })
+
+-- ####################
+-- ##### TERMINAL #####
+-- ####################
+
+-- Improved Terminal Mappings
+map("t", "<esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+map("t", "<C-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window navigation" })
+map("t", "<C-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal down window navigation" })
+map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
+map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })

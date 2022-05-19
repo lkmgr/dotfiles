@@ -124,5 +124,7 @@ require("packer").startup {
         return require("packer.util").float { border = "rounded" }
       end,
     },
+    auto_clean = true,
+    compile_on_sync = true,
   },
 }
