@@ -9,9 +9,6 @@ else
   set -gx VISUAL vi
 end
 
-set -gx GPG_TTY (tty)
-set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
-
 if type -q aqua
   set -gx AQUA_CONFIG ~/.config/aqua/aqua.yaml
   set -gx AQUA_GLOBAL_CONFIG ~/.config/aqua/aqua.yaml
@@ -21,4 +18,9 @@ end
 if type -q volta
   set -gx VOLTA_HOME ~/.volta
 end
+
+set -gx GPG_TTY (tty)
+set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
+
+set -gx BAT_THEME base16-256
 
