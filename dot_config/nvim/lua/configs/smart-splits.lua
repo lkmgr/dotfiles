@@ -15,7 +15,7 @@ function M.config()
       "prompt",
     },
     -- Ignored buffer types (only while resizing)
-    ignored_buftypes = { "nofile", "NvimTree" },
+    ignored_buftypes = { "nofile" },
     -- when moving cursor between splits left or right,
     -- place the cursor on the same row of the *screen*
     -- regardless of line numbers. False by default.

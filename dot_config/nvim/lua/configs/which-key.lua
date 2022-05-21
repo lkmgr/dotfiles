@@ -6,6 +6,13 @@ function M.config()
     return
   end
 
+  local show = which_key.show
+  which_key.show = function(keys, opts)
+    if vim.bo.filetype ~= "TelescopePrompt" then
+      show(keys, opts)
+    end
+  end
+
   which_key.setup {
     window = {
       border = "single",
