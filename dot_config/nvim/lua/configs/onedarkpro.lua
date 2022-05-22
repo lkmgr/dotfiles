@@ -26,13 +26,12 @@ function M.config()
       cursorline = true, -- Use cursorline highlighting?
       transparency = false, -- Use a transparent background?
       terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
-      window_unfocussed_color = true, -- When the window is out of focus, change the normal background?
+      window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
     },
     hlgroups = {
       CursorColumn = { bg = "${cursorline}" },
       LightspeedCursor = { link = "lCursor" },
-      -- NeoTreeWinSeparator = { bg = "${bg}", fg = "${bg}" },
-      NeoTreeWinSeparator = { bg = "${color_column}", fg = "${color_column}" },
+      -- NeoTreeWinSeparator = { bg = "${color_column}", fg = "${color_column}" },
       TreesitterContext = { bg = "#333842" },
     },
   }
