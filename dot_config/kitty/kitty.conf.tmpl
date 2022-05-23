@@ -20,9 +20,6 @@ tab_bar_style powerline
 update_check_interval 0
 window_padding_width 8
 
-background_opacity 0.9
-dynamic_background_opacity no
-
 allow_remote_control socket-only
 listen_on unix:/tmp/mykitty
 
@@ -46,5 +43,7 @@ font_size 15
 {{ else }}
 map ctrl+shift+alt+t new_tab_with_cwd
 font_size 12
+background_opacity 0.9
+dynamic_background_opacity no
 {{ end }}
 
