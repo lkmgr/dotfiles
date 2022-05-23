@@ -82,6 +82,7 @@ require("packer").startup {
     use "hrsh7th/cmp-cmdline"
     use "hrsh7th/cmp-nvim-lsp-signature-help"
     use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-nvim-lsp"
     use "saadparwaiz1/cmp_luasnip"
 
     -- Snippets
