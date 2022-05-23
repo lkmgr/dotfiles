@@ -1,3 +1,5 @@
+local async = require "plenary.async"
+
 local M = {}
 
 -- term_details can be either a string for just a command or
@@ -63,6 +65,17 @@ function M.open_uri_under_cursor()
   if open_uri("https://github.com/" .. string.match(word_under_cursor, regex_plugin_url)) then
     return
   end
+end
+
+function M.packer_snap_and_sync()
+  async.run(function()
+    vim.notify.async("Creating Packer Snapshot and Syncing...", "info", {
+      title = "Packer",
+    })
+  end)
+  local snap_shot_time = os.date "!%Y-%m-%dT%TZ"
+  vim.cmd("PackerSnapshot " .. snap_shot_time .. ".json")
+  vim.cmd "PackerSync"
 end
 
 return M

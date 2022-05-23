@@ -33,7 +33,8 @@ map("n", "<S-l>", "$", { desc = "Move to end of line" })
 map("n", "<leader>pc", "<cmd>PackerCompile<CR>", { desc = "Packer Compile" })
 map("n", "<leader>pi", "<cmd>PackerInstall<CR>", { desc = "Packer Install" })
 map("n", "<leader>ps", "<cmd>PackerSync<CR>", { desc = "Packer Sync" })
-map("n", "<leader>pS", "<cmd>PackerStatus<CR>", { desc = "Packer Status" })
+map("n", "<leader>pS", utils.packer_snap_and_sync, { desc = "Packer Snapshot and Sync" })
+map("n", "<leader>pt", "<cmd>PackerStatus<CR>", { desc = "Packer Status" })
 map("n", "<leader>pu", "<cmd>PackerUpdate<CR>", { desc = "Packer Update" })
 
 -- Diagnostics
@@ -73,7 +74,7 @@ map("n", "<leader>gd", function()
   require("gitsigns").diffthis()
 end, { desc = "View git diff" })
 map("n", "<leader>gg", function()
-  require("core.utils").toggle_term_cmd "lazygit"
+  utils.toggle_term_cmd "lazygit"
 end, { desc = "Lazygit" })
 
 -- smart-splits
