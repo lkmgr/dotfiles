@@ -68,14 +68,34 @@ function M.open_uri_under_cursor()
 end
 
 function M.packer_snap_and_sync()
-  async.run(function()
-    vim.notify.async("Creating Packer Snapshot and Syncing...", "info", {
-      title = "Packer",
-    })
-  end)
+  -- async.run(function()
+  --   vim.notify.async("Creating Packer Snapshot and Syncing...", "info", {
+  --     title = "Packer",
+  --   })
+  -- end)
+  vim.notify("Creating Packer Snapshot and Syncing...", "info", { title = "Packer" })
   local snap_shot_time = os.date "!%Y-%m-%dT%TZ"
   vim.cmd("PackerSnapshot " .. snap_shot_time .. ".json")
   vim.cmd "PackerSync"
+end
+
+function M.null_ls_providers(filetype)
+  local registered = {}
+  local sources_avail, sources = pcall(require, "null-ls.sources")
+  if sources_avail then
+    for _, source in ipairs(sources.get_available(filetype)) do
+      for method in pairs(source.methods) do
+        registered[method] = registered[method] or {}
+        table.insert(registered[method], source.name)
+      end
+    end
+  end
+  return registered
+end
+
+function M.null_ls_sources(filetype, source)
+  local methods_avail, methods = pcall(require, "null-ls.methods")
+  return methods_avail and M.null_ls_providers(filetype)[methods.internal[source]] or {}
 end
 
 return M

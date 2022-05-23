@@ -1,5 +1,7 @@
-local M = { hl = {}, provider = {}, conditional = {} }
+local utils = require "core.utils"
 local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
+
+local M = { hl = {}, provider = {}, conditional = {}, mode = {} }
 
 local function hl_by_name(name)
   return string.format("#%06x", vim.api.nvim_get_hl_by_name(name.group, true)[name.prop])
@@ -33,6 +35,26 @@ M.modes = {
   ["!"] = { "SHELL", "Inactive", colors.gray },
 }
 
+function M.mode.text()
+  return function()
+    return M.modes[vim.fn.mode()][1]
+  end
+end
+
+function M.mode.hl(fg)
+  if not fg then
+    fg = colors.bg
+  end
+  return function()
+    return {
+      name = "FelineMode" .. M.modes[vim.fn.mode()][2],
+      fg = fg,
+      bg = M.modes[vim.fn.mode()][3],
+      style = "bold",
+    }
+  end
+end
+
 function M.hl.group(hlgroup, base)
   return vim.tbl_deep_extend(
     "force",
@@ -46,18 +68,24 @@ function M.hl.fg(hlgroup, base)
 end
 
 function M.hl.mode(base)
-  local lualine_avail, lualine = pcall(require, "lualine.themes." .. vim.g.colors_name)
   return function()
     return M.hl.group(
       "Feline" .. M.modes[vim.fn.mode()][2],
-      vim.tbl_deep_extend(
-        "force",
-        lualine_avail and lualine[M.modes[vim.fn.mode()][2]:lower()].a
-          or { fg = C.bg_1, bg = M.modes[vim.fn.mode()][3] },
-        base or {}
-      )
+      vim.tbl_deep_extend("force", { fg = colors.bg, bg = M.modes[vim.fn.mode()][3] }, base or {})
     )
   end
+  -- local lualine_avail, lualine = pcall(require, "lualine.themes." .. vim.g.colors_name)
+  -- return function()
+  --   return M.hl.group(
+  --     "Feline" .. M.modes[vim.fn.mode()][2],
+  --     vim.tbl_deep_extend(
+  --       "force",
+  --       lualine_avail and lualine[M.modes[vim.fn.mode()][2]:lower()].a
+  --         or { fg = C.bg_1, bg = M.modes[vim.fn.mode()][3] },
+  --       base or {}
+  --     )
+  --   )
+  -- end
 end
 
 function M.provider.lsp_progress()
@@ -80,8 +108,8 @@ function M.provider.lsp_client_names(expand_null_ls)
     local buf_client_names = {}
     for _, client in ipairs(vim.lsp.buf_get_clients(0)) do
       if client.name == "null-ls" and expand_null_ls then
-        -- vim.list_extend(buf_client_names, astronvim.null_ls_sources(vim.bo.filetype, "FORMATTING"))
-        -- vim.list_extend(buf_client_names, astronvim.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
+        vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "FORMATTING"))
+        vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
       else
         table.insert(buf_client_names, client.name)
       end
