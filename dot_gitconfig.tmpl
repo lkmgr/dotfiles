@@ -1,25 +1,25 @@
 [user]
-	name = {{ .gitname }}
-	email = {{ .gitmail }}
-	; signingkey = 95D33F8C
+  name = {{ .gitname }}
+  email = {{ .gitmail }}
+  ; signingkey = 95D33F8C
 [pull]
-	ff = only
+  ff = only
 ; [credential]
-; 	helper = osxkeychain
+;   helper = osxkeychain
 ; [commit]
-; 	gpgsign = true
+;   gpgsign = true
 ; [gpg]
-; 	program = /usr/local/bin/gpg
+;   program = /usr/local/bin/gpg
 [color]
-	ui = true
+  ui = true
 [rebase]
-	autoStash = true
+  autoStash = true
 [fetch]
-	prune = true
+  prune = true
 
 {{- if lookPath "delta" }}
 [core]
-	pager = delta
+  pager = delta
 [interactive]
   diffFilter = delta --color-only
 [delta]
