@@ -1,13 +1,14 @@
+## GIT ##
 abbr g git
 abbr ga 'git add'
 abbr gs 'git status'
 abbr gc 'git commit'
 abbr gco 'git checkout'
+abbr gcl 'git clone'
+abbr gf 'git fetch'
 abbr gp 'git push'
 abbr gpf 'git push --force-with-lease'
 abbr gpl 'git pull'
-abbr gcl 'git clone'
-abbr gf 'git fetch'
 abbr gdiff 'git diff'
 abbr glog 'git log'
 abbr grb 'git rebase'

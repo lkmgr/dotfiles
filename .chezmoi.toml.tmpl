@@ -1,4 +1,19 @@
+{{- $gitname := "" -}}
+{{- $gitmail := "" -}}
+
+{{- if and (hasKey . "gitname") (hasKey . "gitmail") -}}
+{{-   $gitname = .gitname -}}
+{{-   $gitmail = .gitmail -}}
+{{- else -}}
+{{-   $gitname = promptString "Git Name" -}}
+{{-   $gitmail = promptString "Git Mail Address" -}}
+{{- end -}}
+
 pager = "less -R"
+
+[data]
+  gitname = {{ $gitname | quote }}
+  gitmail = {{ $gitmail | quote }}
 
 [git]
   autoCommit = false
@@ -11,7 +26,7 @@ pager = "less -R"
 
 {{- if lookPath "nvim" }}
 [merge]
-  args = ["-d"]
   command = "nvim"
+  args = ["-d"]
 {{- end }}
 
