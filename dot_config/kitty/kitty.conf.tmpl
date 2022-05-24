@@ -40,6 +40,18 @@ shell /usr/local/bin/fish --interactive --login
 macos_option_as_alt yes
 map cmd+shift+t new_tab_with_cwd
 font_size 15
+
+# using kitty windows on mac only
+window_border_width 2pt
+map cmd+enter new_window
+map shift+cmd+d close_window
+map ctrl+shift+] next_window
+map ctrl+shift+[ previous_window
+
+map cmd+w close_window
+map cmd+shift+w close_tab
+map cmd+j next_window
+map cmd+k previous_window
 {{ else }}
 map ctrl+shift+alt+t new_tab_with_cwd
 font_size 12
