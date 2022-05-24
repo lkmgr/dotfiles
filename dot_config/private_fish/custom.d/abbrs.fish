@@ -1,17 +1,19 @@
-## GIT ##
 abbr g git
 abbr ga 'git add'
-abbr gs 'git status'
 abbr gc 'git commit'
-abbr gco 'git checkout'
 abbr gcl 'git clone'
+abbr gco 'git checkout'
+abbr gd 'git diff'
+abbr gdh 'git diff HEAD'
 abbr gf 'git fetch'
+abbr gl 'git log'
 abbr gp 'git push'
 abbr gpf 'git push --force-with-lease'
 abbr gpl 'git pull'
-abbr gdiff 'git diff'
-abbr glog 'git log'
+abbr gr 'git restore'
 abbr grb 'git rebase'
+abbr grs 'git restore --staged'
+abbr gs 'git status'
 
 if type -q brew
   abbr bi 'brew install'
