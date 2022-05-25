@@ -15,6 +15,20 @@ abbr grb 'git rebase'
 abbr grs 'git restore --staged'
 abbr gs 'git status'
 
+abbr chz 'chezmoi'
+abbr chzd 'chezmoi diff'
+abbr chza 'chezmoi apply -v'
+abbr chzad 'chezmoi add'
+abbr chze 'chezmoi edit'
+abbr chzcd 'cd ~/.local/share/chezmoi'
+
+abbr npr 'npm run'
+
+abbr v nvim
+
+abbr k kubectl
+abbr kie kubie
+
 if type -q brew
   abbr bi 'brew install'
   abbr bse 'brew search'
@@ -35,16 +49,8 @@ if type -q systemctl
   abbr sctu 'systemctl --user'
 end
 
-abbr chz 'chezmoi'
-abbr chzd 'chezmoi diff'
-abbr chza 'chezmoi apply -v'
-abbr chzad 'chezmoi add'
-abbr chze 'chezmoi edit'
-abbr chzcd 'cd ~/.local/share/chezmoi'
+if type -q docker
+  abbr dco 'docker compose'
+  abbr dcou 'docker compose up -d && docker compose logs -f'
+end
 
-abbr npr 'npm run'
-
-abbr v nvim
-
-abbr k kubectl
-abbr kie kubie
