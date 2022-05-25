@@ -15,6 +15,7 @@ function M.config()
       -- "taplo", -- fails on mac
       "tsserver",
       "yamlls",
+      "eslint",
     },
   }
 end

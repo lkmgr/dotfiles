@@ -74,3 +74,12 @@ cmd("FileType", {
   end,
   pattern = { "yaml", "yml" },
 })
+
+-- ESLint FixAll
+local eslint_group = augroup("eslint_group", {})
+cmd("BufWritePre", {
+  desc = "ESLint FixAll",
+  group = eslint_group,
+  command = "EslintFixAll",
+  pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
+})
