@@ -18,6 +18,7 @@ function M.config()
       selection_strategy = "reset",
       sorting_strategy = "ascending",
       layout_strategy = "horizontal",
+      file_ignore_patterns = { "package%-lock%.json", "yarn%.lock" },
       layout_config = {
         horizontal = {
           preview_width = 0.55,
