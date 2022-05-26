@@ -6,52 +6,25 @@ function M.config()
     return
   end
 
-  local hl = require("core.status").hl
   local provider = require("core.status").provider
   local conditional = require("core.status").conditional
   local mode = require("core.status").mode
+  local icons = require("core.status").icons
 
   local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
   -- local color_utils = require("onedarkpro.utils")
-
-  local theme = {
-    bg = colors.bg,
-    fg = colors.fg,
-    red = colors.red,
-    orange = colors.orange,
-    yellow = colors.yellow,
-    green = colors.green,
-    cyan = colors.cyan,
-    blue = colors.blue,
-    purple = colors.purple,
-    white = colors.white,
-    black = colors.black,
-    gray = colors.gray,
-    highlight = colors.highlight,
-    bg_statusline = colors.bg_statusline,
-    fg_gutter = colors.fg_gutter,
-    fg_sidebar = colors.fg_sidebar,
-  }
-
-  local icons = {
-    left = "",
-    right = "",
-    -- right = "",
-    vim_icon = " ",
-    vi_mode_icon = " ",
-    position_icon = " ",
-  }
 
   feline.setup {
     components = {
       active = {
         {
-          { provider = " " .. icons.vim_icon, hl = mode.hl() },
+          { provider = icons.vim, hl = mode.hl() },
           { provider = mode.text(), hl = mode.hl() },
           { provider = provider.spacer(1), hl = mode.hl(), right_sep = icons.right },
           { provider = provider.spacer(1) },
           { provider = "git_branch", hl = { fg = colors.green, style = "bold" }, icon = " " },
-          { provider = provider.spacer(2), enabled = conditional.git_available },
+          { provider = provider.spacer(1), enabled = conditional.git_available },
+          { provider = " ", hl = { fg = colors.fg }, enabled = conditional.git_available },
           {
             provider = {
               name = "file_info",
@@ -63,31 +36,38 @@ function M.config()
             },
           },
           { provider = provider.spacer(1) },
-          { provider = "git_diff_added", hl = { fg = colors.orange }, icon = "  " },
+          { provider = "", hl = { fg = colors.fg }, enabled = conditional.git_changed },
+          { provider = "git_diff_added", hl = { fg = colors.green }, icon = "  " },
           { provider = "git_diff_changed", hl = { fg = colors.yellow }, icon = " 柳" },
-          { provider = "git_diff_removed", hl = { fg = colors.green }, icon = "  " },
+          { provider = "git_diff_removed", hl = { fg = colors.red }, icon = "  " },
           { provider = provider.spacer(2), enabled = conditional.git_changed },
-          { provider = "diagnostic_errors", hl = { fg = colors.cyan }, icon = "  " },
-          { provider = "diagnostic_warnings", hl = { fg = colors.blue }, icon = "  " },
+          { provider = " ", hl = { fg = colors.fg } },
+          { provider = "diagnostic_errors", hl = { fg = colors.red }, icon = "  " },
+          { provider = "diagnostic_warnings", hl = { fg = colors.yellow }, icon = "  " },
           { provider = "diagnostic_info", hl = { fg = colors.gray }, icon = "  " },
-          { provider = "diagnostic_hints", hl = { fg = colors.yellow }, icon = "  " },
+          { provider = "diagnostic_hints", hl = { fg = colors.blue }, icon = "  " },
         },
         {
           {
+            provider = { name = "file_type", opts = { filetype_icon = true, case = "lowercase" } },
+            enabled = conditional.has_filetype,
+          },
+          { provider = " ", hl = { fg = colors.fg } },
+          {
             provider = provider.lsp_client_names(true),
             -- short_provider = provider.lsp_client_names(),
-            icon = "   ",
+            icon = icons.lsp,
             truncate_hide = true,
             hl = { fg = colors.purple },
           },
+          { provider = " ", hl = { fg = colors.fg } },
           { provider = provider.spacer(1) },
           { provider = provider.treesitter_status, hl = { fg = colors.green } },
           { provider = provider.spacer(1) },
+          { provider = "", hl = { fg = colors.fg } },
           {
-            provider = {
-              name = "position",
-              opts = { padding = true },
-            },
+            provider = { name = "position" },
+            icon = icons.position,
           },
           { provider = provider.spacer(1) },
           { provider = "line_percentage", hl = mode.hl(), left_sep = icons.left },
@@ -98,10 +78,7 @@ function M.config()
         {
           { provider = provider.spacer(1) },
           {
-            provider = {
-              name = "file_info",
-              opts = { type = "relative" },
-            },
+            provider = { name = "file_info", opts = { type = "relative" } },
           },
         },
       },

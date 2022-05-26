@@ -1,16 +1,17 @@
 local utils = require "core.utils"
 local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
 
-local M = { hl = {}, provider = {}, conditional = {}, mode = {} }
+local M = { provider = {}, conditional = {}, mode = {}, icons = {} }
 
-local function hl_by_name(name)
-  return string.format("#%06x", vim.api.nvim_get_hl_by_name(name.group, true)[name.prop])
-end
-
-local function hl_prop(group, prop)
-  local status_ok, color = pcall(hl_by_name, { group = group, prop = prop })
-  return status_ok and color or nil
-end
+M.icons = {
+  left = "",
+  right = "",
+  -- right = "",
+  vim = "  ",
+  position = "  ",
+  lsp = "   ",
+  ts = " ",
+}
 
 M.modes = {
   ["n"] = { "NORMAL", "Normal", colors.blue },
@@ -55,58 +56,10 @@ function M.mode.hl(fg)
   end
 end
 
-function M.hl.group(hlgroup, base)
-  return vim.tbl_deep_extend(
-    "force",
-    base or {},
-    { fg = hl_prop(hlgroup, "foreground"), bg = hl_prop(hlgroup, "background") }
-  )
-end
-
-function M.hl.fg(hlgroup, base)
-  return vim.tbl_deep_extend("force", base or {}, { fg = hl_prop(hlgroup, "foreground") })
-end
-
-function M.hl.mode(base)
-  return function()
-    return M.hl.group(
-      "Feline" .. M.modes[vim.fn.mode()][2],
-      vim.tbl_deep_extend("force", { fg = colors.bg, bg = M.modes[vim.fn.mode()][3] }, base or {})
-    )
-  end
-  -- local lualine_avail, lualine = pcall(require, "lualine.themes." .. vim.g.colors_name)
-  -- return function()
-  --   return M.hl.group(
-  --     "Feline" .. M.modes[vim.fn.mode()][2],
-  --     vim.tbl_deep_extend(
-  --       "force",
-  --       lualine_avail and lualine[M.modes[vim.fn.mode()][2]:lower()].a
-  --         or { fg = C.bg_1, bg = M.modes[vim.fn.mode()][3] },
-  --       base or {}
-  --     )
-  --   )
-  -- end
-end
-
-function M.provider.lsp_progress()
-  local Lsp = vim.lsp.util.get_progress_messages()[1]
-  return Lsp
-      and string.format(
-        " %%<%s %s %s (%s%%%%) ",
-        ((Lsp.percentage or 0) >= 70 and { "", "", "" } or { "", "", "" })[math.floor(
-          vim.loop.hrtime() / 12e7
-        ) % 3 + 1],
-        Lsp.title or "",
-        Lsp.message or "",
-        Lsp.percentage or 0
-      )
-    or ""
-end
-
 function M.provider.lsp_client_names(expand_null_ls)
   return function()
     local buf_client_names = {}
-    for _, client in ipairs(vim.lsp.buf_get_clients(0)) do
+    for _, client in pairs(vim.lsp.buf_get_clients(0)) do
       if client.name == "null-ls" and expand_null_ls then
         vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "FORMATTING"))
         vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
@@ -120,7 +73,7 @@ end
 
 function M.provider.treesitter_status()
   local ts = vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()]
-  return (ts and next(ts)) and " 綠TS" or ""
+  return (ts and next(ts)) and M.icons.ts .. "TS" or ""
 end
 
 function M.provider.spacer(n)
