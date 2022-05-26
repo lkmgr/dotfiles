@@ -6,33 +6,30 @@ function M.config()
     return
   end
 
+  local utils = require "core.utils"
   local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
 
   local theme = {
     normal = {
       a = { bg = colors.green, fg = colors.bg },
-      b = { bg = colors.fg_gutter, fg = colors.green },
+      b = { bg = colors.fg_gutter, fg = colors.fg_sidebar },
       c = { bg = colors.bg_statusline, fg = colors.fg_sidebar },
     },
 
     insert = {
       a = { bg = colors.blue, fg = colors.bg },
-      b = { bg = colors.fg_gutter, fg = colors.blue },
     },
 
     command = {
       a = { bg = colors.purple, fg = colors.bg },
-      b = { bg = colors.fg_gutter, fg = colors.purple },
     },
 
     visual = {
       a = { bg = colors.yellow, fg = colors.bg },
-      b = { bg = colors.fg_gutter, fg = colors.yellow },
     },
 
     replace = {
       a = { bg = colors.red, fg = colors.bg },
-      b = { bg = colors.fg_gutter, fg = colors.red },
     },
 
     inactive = {
@@ -61,21 +58,37 @@ function M.config()
           separator = "",
           padding = { left = 1, right = 0 },
         },
-        { "mode", padding = { left = 1, right = 2 } },
+        { "mode", padding = 1 },
       },
       lualine_b = {
-        { "filename", path = 1 },
-        "branch",
+        { "filename", path = 1, shorting_target = 70 },
       },
-      lualine_c = { "diagnostics", "diff" },
-      lualine_x = {},
+      lualine_c = { "branch", "diagnostics", "diff" },
+      lualine_x = {
+        {
+          function()
+            local buf_client_names = {}
+            for _, client in pairs(vim.lsp.buf_get_clients(0)) do
+              if client.name == "null-ls" then
+                vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "FORMATTING"))
+                vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
+              else
+                table.insert(buf_client_names, client.name)
+              end
+            end
+            return table.concat(buf_client_names, ", ")
+          end,
+          icon = "  LSP:",
+          color = { fg = colors.purple },
+        },
+      },
       lualine_y = { "filetype", "progress" },
       lualine_z = {
-        { "location", separator = "", left_padding = 2 },
+        { "location", separator = "", padding = 1 },
       },
     },
     inactive_sections = {
-      lualine_a = { "filename" },
+      lualine_a = { { "filename", path = 1 } },
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},
