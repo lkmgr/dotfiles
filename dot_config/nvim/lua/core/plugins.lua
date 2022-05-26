@@ -48,8 +48,8 @@ require("packer").startup {
 
     use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = userconf "neo-tree" }
 
-    -- use { "nvim-lualine/lualine.nvim", config = userconf "lualine" }
-    use { "feline-nvim/feline.nvim", config = userconf "feline" }
+    use { "nvim-lualine/lualine.nvim", config = userconf "lualine" }
+    -- use { "feline-nvim/feline.nvim", config = userconf "feline" }
 
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = userconf "treesitter" }
