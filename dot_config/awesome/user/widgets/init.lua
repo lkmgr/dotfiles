@@ -1,10 +1,10 @@
-local awful = require("awful")
+local awful = require "awful"
 -- local hotkeys_popup = require("awful.hotkeys_popup")
 -- local beautiful = require("beautiful")
-local wibox = require("wibox")
+local wibox = require "wibox"
 
 -- local vars = require("user.vars")
-local mod = require("user.bindings.mod")
+local mod = require "user.bindings.mod"
 
 local _M = {}
 
@@ -27,31 +27,45 @@ local _M = {}
 
 _M.textclock = wibox.widget.textclock(" %d.%m.%Y %H:%M:%S ", 1)
 
-function _M.create_promptbox() return awful.widget.prompt() end
+function _M.create_promptbox()
+  return awful.widget.prompt()
+end
 
 function _M.create_layoutbox(s)
-    return awful.widget.layoutbox({
-        screen = s,
-        buttons = {
-            awful.button({}, 1, function() awful.layout.inc(1) end),
-            awful.button({}, 3, function() awful.layout.inc(-1) end),
-        },
-    })
+  return awful.widget.layoutbox {
+    screen = s,
+    buttons = {
+      awful.button({}, 1, function()
+        awful.layout.inc(1)
+      end),
+      awful.button({}, 3, function()
+        awful.layout.inc(-1)
+      end),
+    },
+  }
 end
 
 function _M.create_taglist(s)
-    return awful.widget.taglist({
-        screen = s,
-        filter = awful.widget.taglist.filter.all,
-        buttons = {
-            awful.button({}, 1, function(t) t:view_only() end),
-            awful.button({ mod.super }, 1,
-                         function(t) if client.focus then client.focus:move_to_tag(t) end end),
-            awful.button({}, 3, awful.tag.viewtoggle),
-            awful.button({ mod.super }, 3,
-                         function(t) if client.focus then client.focus:toggle_tag(t) end end),
-        },
-    })
+  return awful.widget.taglist {
+    screen = s,
+    filter = awful.widget.taglist.filter.all,
+    buttons = {
+      awful.button({}, 1, function(t)
+        t:view_only()
+      end),
+      awful.button({ mod.super }, 1, function(t)
+        if client.focus then
+          client.focus:move_to_tag(t)
+        end
+      end),
+      awful.button({}, 3, awful.tag.viewtoggle),
+      awful.button({ mod.super }, 3, function(t)
+        if client.focus then
+          client.focus:toggle_tag(t)
+        end
+      end),
+    },
+  }
 end
 
 -- function _M.create_tasklist(s)
@@ -72,25 +86,24 @@ end
 -- end
 
 function _M.create_wibox(s)
-    return awful.wibar({
-        position = "top",
-        screen = s,
-        widget = {
-            layout = wibox.layout.align.horizontal,
-            -- Left widgets
-            { layout = wibox.layout.fixed.horizontal, s.taglist, s.promptbox },
-            -- s.mytasklist, -- Middle widget
-            { layout = wibox.layout.flex.horizontal },
-            -- Right widgets
-            {
-                layout = wibox.layout.fixed.horizontal,
-                wibox.widget.systray(),
-                _M.textclock,
-                s.layoutbox,
-            },
-        },
-    })
+  return awful.wibar {
+    position = "top",
+    screen = s,
+    widget = {
+      layout = wibox.layout.align.horizontal,
+      -- Left widgets
+      { layout = wibox.layout.fixed.horizontal, s.taglist, s.promptbox },
+      -- s.mytasklist, -- Middle widget
+      { layout = wibox.layout.flex.horizontal },
+      -- Right widgets
+      {
+        layout = wibox.layout.fixed.horizontal,
+        wibox.widget.systray(),
+        _M.textclock,
+        s.layoutbox,
+      },
+    },
+  }
 end
 
 return _M
-

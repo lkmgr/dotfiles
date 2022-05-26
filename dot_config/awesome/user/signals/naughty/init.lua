@@ -1,6 +1,6 @@
-local naughty = require("naughty")
-local beautiful = require("beautiful")
-local awful = require("awful")
+local naughty = require "naughty"
+local beautiful = require "beautiful"
+local awful = require "awful"
 
 local dpi = beautiful.xresources.apply_dpi
 
@@ -24,17 +24,16 @@ naughty.config.presets.warn = naughty.config.presets.critical
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 naughty.connect_signal("request::display_error", function(message, startup)
-    naughty.notification({
-        urgency = "critical",
-        title = "Oops, an error happened" .. (startup and " during startup!" or "!"),
-        message = message,
-    })
+  naughty.notification {
+    urgency = "critical",
+    title = "Oops, an error happened" .. (startup and " during startup!" or "!"),
+    message = message,
+  }
 end)
 
 naughty.connect_signal("request::display", function(n)
-    -- local appicon = n.icon or n.app_icon
-    -- if not appicon then appicon = beautiful.notification_icon end
+  -- local appicon = n.icon or n.app_icon
+  -- if not appicon then appicon = beautiful.notification_icon end
 
-    naughty.layout.box({ notification = n })
+  naughty.layout.box { notification = n }
 end)
-

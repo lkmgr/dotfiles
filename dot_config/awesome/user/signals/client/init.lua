@@ -1,10 +1,11 @@
-local awful = require("awful")
+local awful = require "awful"
 -- local wibox = require("wibox")
-require("awful.autofocus")
+require "awful.autofocus"
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter",
-                      function(c) c:activate({ context = "mouse_enter", raise = false }) end)
+client.connect_signal("mouse::enter", function(c)
+  c:activate { context = "mouse_enter", raise = false }
+end)
 
 -- client.connect_signal("request::titlebars", function(c)
 --     -- buttons for the titlebar
@@ -39,4 +40,3 @@ client.connect_signal("mouse::enter",
 --         layout = wibox.layout.stack,
 --     }
 -- end)
-
