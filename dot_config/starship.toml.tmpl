@@ -7,13 +7,7 @@ add_newline = true
 command_timeout = 30000
 
 format = """
-{{- if (eq .chezmoi.os "linux") }}
-{{-   if (eq .chezmoi.osRelease.id "arch" ) }}
- \
-{{-   end }}
-{{- else if (eq .chezmoi.os "darwin") }}
- \
-{{- end }}
+[ ](bold purple)\
 $username\
 $hostname\
 $kubernetes\
