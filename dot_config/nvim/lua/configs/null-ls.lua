@@ -14,17 +14,23 @@ function M.config()
   local sources = {}
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-  -- JavaScript / TypeScript
   -- table.insert(sources, formatting.eslint_d)
   -- table.insert(sources, diagnostics.eslint_d)
   -- table.insert(sources, code_actions.eslint_d)
 
-  -- Lua
+  table.insert(
+    sources,
+    formatting.prettierd.with {
+      extra_filetypes = { "json5" },
+    }
+  )
+
   table.insert(sources, formatting.stylua)
 
   null_ls.setup {
     debug = false,
     sources = sources,
+    update_in_insert = true,
     on_attach = function(client, bufnr)
       if client.supports_method "textDocument/formatting" then
         -- Format on save
