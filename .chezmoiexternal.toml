@@ -13,14 +13,14 @@
 {{- if eq .chezmoi.os "linux" }}
 [".config/awesome/modules/vicious"]
   type = "archive"
-  url = "https://github.com/vicious-widgets/vicious/archive/master.tar.gz"
+  # renovate: currentValue=master
+  url = "https://github.com/vicious-widgets/vicious/archive/4d3025400e565958aadb0738a1dba388fa543d44.zip"
   exact = true
   stripComponents = 1
-  refreshPeriod = "168h"
 [".config/awesome/modules/bling"]
   type = "archive"
-  url = "https://github.com/BlingCorp/bling/archive/master.tar.gz"
+  # renovate: currentValue=master
+  url = "https://github.com/BlingCorp/bling/archive/6e4ecb334c3764483d04b4e6bfc15abf98043bef.zip"
   exact = true
   stripComponents = 1
-  refreshPeriod = "72h"
 {{- end }}
