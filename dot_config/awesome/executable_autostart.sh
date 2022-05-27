@@ -1,6 +1,7 @@
 #!/bin/sh
 
-/home/lukas/.fehbg &
-pgrep -x picom > /dev/null || picom --config ~/.config/picom.conf &
-pgrep -x playerctld > /dev/null || playerctld daemon &
+run() { pkill -x "$1"; { sleep 0.1; "$@" & }; }
+
+run picom --config ~/.config/picom.conf --experimental-backends
+run playerctld daemon
 
