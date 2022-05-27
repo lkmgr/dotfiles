@@ -40,7 +40,8 @@ function M.config()
           group = augroup,
           buffer = bufnr,
           callback = function()
-            vim.lsp.buf.formatting_sync(nil, 5000)
+            -- vim.lsp.buf.formatting_sync(nil, 5000)
+            vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 5000 }
           end,
         })
       end
