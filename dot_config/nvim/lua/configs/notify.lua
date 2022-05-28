@@ -26,7 +26,7 @@ function M.config()
     timeout = 5000,
 
     -- Max number of columns for messages
-    max_width = nil,
+    max_width = 60,
     -- Max number of lines for a message
     max_height = nil,
 
@@ -35,7 +35,7 @@ function M.config()
     background_colour = "Normal",
 
     -- Minimum width for notification windows
-    minimum_width = 40,
+    minimum_width = 35,
 
     -- Icons for the different levels
     icons = {

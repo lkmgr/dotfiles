@@ -33,6 +33,7 @@ function M.config()
       LightspeedCursor = { link = "lCursor" },
       -- NeoTreeWinSeparator = { bg = "${color_column}", fg = "${color_column}" },
       TreesitterContext = { bg = "#333842" },
+      NeoTreeGitUntracked = { fg = "#808a9e" },
     },
   }
 

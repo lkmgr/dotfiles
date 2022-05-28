@@ -21,10 +21,10 @@ function M.config()
       -- U+2590 ▐ Right half block, this character is right aligned so the
       -- background highlight doesn't appear in the middle
       -- alternatives:  right aligned => ▕ ▐ ,  left aligned => ▍
-      indicator_icon = "▎",
+      -- indicator_icon = "▎",
       left_trunc_marker = "",
       right_trunc_marker = "",
-      separator_style = "thick",
+      separator_style = "slant",
       name_formatter = nil,
       tab_size = 18,
       max_name_length = 18,
