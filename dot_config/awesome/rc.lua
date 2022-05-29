@@ -8,7 +8,7 @@ local naughty = require "naughty"
 
 local config_dir = gears.filesystem.get_configuration_dir()
 
-beautiful.init(config_dir .. "themes/xcolor")
+beautiful.init(config_dir .. "themes/xcolor/theme.lua")
 
 require "user.bindings"
 require "user.rules"

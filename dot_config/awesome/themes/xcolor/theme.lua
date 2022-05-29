@@ -10,7 +10,7 @@ local default_themes_path = gfs.get_themes_dir()
 local theme = dofile(default_themes_path .. "default/theme.lua")
 
 -- wallpaper
-theme.wallpaper = gfs.get_configuration_dir() .. "theme/bg.jpg"
+theme.wallpaper = gfs.get_configuration_dir() .. "themes/xcolor/bg.jpg"
 
 -- icon theme
 theme.icon_theme = "/usr/share/icons/Papirus-Dark/128x128/apps/"

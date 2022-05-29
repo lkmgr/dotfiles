@@ -5,7 +5,6 @@ return {
   },
   global = {
     key = require "user.bindings.global.key",
-    mouse = require "user.bindings.global.mouse",
   },
   mod = require "user.bindings.mod",
 }

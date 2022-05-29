@@ -11,7 +11,7 @@ menubar.utils.terminal = vars.terminal
 -- session
 awful.keyboard.append_global_keybindings {
   group = "session",
-  awful.key({ mod.super, mod.alt }, "l", function()
+  awful.key({ mod.super, mod.ctrl, mod.shift }, "l", function()
     awful.spawn.with_shell "betterlockscreen -l blur"
   end, { description = "lock screen" }),
 }
@@ -21,7 +21,7 @@ awful.keyboard.append_global_keybindings {
   group = "awesome",
   awful.key({ mod.super }, "F1", hotkeys_popup.show_help, { description = "show help" }),
   awful.key({ mod.super, mod.ctrl }, "r", awesome.restart, { description = "reload awesome" }),
-  awful.key({ mod.super, mod.shift }, "q", awesome.quit, { description = "quit awesome" }),
+  awful.key({ mod.super, mod.ctrl }, "q", awesome.quit, { description = "quit awesome" }),
 }
 
 -- launcher
@@ -71,9 +71,9 @@ awful.keyboard.append_global_keybindings {
 -- tag
 awful.keyboard.append_global_keybindings {
   group = "tag",
-  awful.key({ mod.super }, "Left", awful.tag.viewprev, { description = "view previous" }),
-  awful.key({ mod.super }, "Right", awful.tag.viewnext, { description = "view next" }),
-  awful.key({ mod.super }, "Escape", awful.tag.history.restore, { description = "go back" }),
+  awful.key({ mod.super }, "bracketleft", awful.tag.viewprev, { description = "view previous" }),
+  awful.key({ mod.super }, "bracketright", awful.tag.viewnext, { description = "view next" }),
+  -- awful.key({ mod.super }, "grave", awful.tag.history.restore, { description = "go back" }),
   awful.key {
     modifiers = { mod.super },
     keygroup = "numrow",
@@ -134,18 +134,20 @@ awful.keyboard.append_global_keybindings {
   awful.key({ mod.super }, "k", function()
     awful.client.focus.byidx(-1)
   end, { description = "focus previous by index", group = "client" }),
-  awful.key({ mod.super }, "Tab", function()
+
+  awful.key({ mod.super }, "grave", function()
     awful.client.focus.history.previous()
     if client.focus then
       client.focus:raise()
     end
   end, { description = "go back", group = "client" }),
-  awful.key({ mod.super, mod.ctrl }, "j", function()
-    awful.screen.focus_relative(1)
-  end, { description = "focus the next screen", group = "screen" }),
-  awful.key({ mod.super, mod.ctrl }, "k", function()
+
+  awful.key({ mod.super }, "comma", function()
     awful.screen.focus_relative(-1)
   end, { description = "focus the previous screen", group = "screen" }),
+  awful.key({ mod.super }, "period", function()
+    awful.screen.focus_relative(1)
+  end, { description = "focus the next screen", group = "screen" }),
   -- awful.key({ mod.super, mod.ctrl }, "n",
   --     function ()
   --         local c = awful.client.restore()
@@ -194,10 +196,10 @@ awful.keyboard.append_global_keybindings {
     awful.tag.incncol(-1, nil, true)
   end, { description = "decrease the number of columns", group = "layout" }),
 
-  awful.key({ mod.super, mod.alt }, "space", function()
+  awful.key({ mod.super }, "Tab", function()
     awful.layout.inc(1)
   end, { description = "select next", group = "layout" }),
-  awful.key({ mod.super, mod.alt, mod.shift }, "space", function()
+  awful.key({ mod.super, mod.shift }, "Tab", function()
     awful.layout.inc(-1)
   end, { description = "select previous", group = "layout" }),
 }
