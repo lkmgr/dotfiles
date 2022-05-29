@@ -17,7 +17,8 @@ configuration {
   display-calc: "  Calc";
 }
 
-@theme "catppuccin"
+/* @theme "catppuccin" */
+@theme "base16"
 
 element-text, element-icon , mode-switcher {
     background-color: inherit;
