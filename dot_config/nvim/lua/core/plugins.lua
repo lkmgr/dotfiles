@@ -112,7 +112,7 @@ require("packer").startup {
     use { "karb94/neoscroll.nvim", config = userconf "neoscroll" }
     use { "windwp/nvim-autopairs", config = userconf "autopairs" }
     use { "rrethy/vim-hexokinase", run = "make hexokinase", config = userconf "hexokinase" }
-    use "Shatur/neovim-session-manager"
+    use { "Shatur/neovim-session-manager", config = userconf "session-manager" }
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme
