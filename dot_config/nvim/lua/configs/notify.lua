@@ -47,6 +47,8 @@ function M.config()
     },
   }
 
+  require("telescope").load_extension "notify"
+
   vim.notify = notify
 end
 

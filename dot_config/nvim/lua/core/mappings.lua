@@ -132,6 +132,7 @@ end, { desc = "Find Text" })
 map("n", "<leader>sy", function()
   require("telescope.builtin").find_files { hidden = true }
 end, { desc = "Find Hidden File" })
+map("n", "<leader>sp", "<cmd>Telescope projects<CR>", { desc = "Projects" })
 
 -- Buffers
 map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
@@ -166,6 +167,29 @@ map("n", "<leader>lf", vim.lsp.buf.formatting_sync, { desc = "Format" })
 map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Info" })
 map("n", "<leader>lI", "<cmd>LspInstallInfo<CR>", { desc = "Install Info" })
 map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+
+-- DAP
+local dap_loaded, _ = pcall(require, "dap")
+if dap_loaded then
+  map("n", "<F5>", require("dap").continue, { desc = "DAP Continue" })
+  map("n", "<F10>", require("dap").step_over, { desc = "DAP Step Over" })
+  map("n", "<F11>", require("dap").step_into, { desc = "DAP Step Into" })
+  map("n", "<F12>", require("dap").step_out, { desc = "DAP Step Out" })
+
+  map("n", "<leader>dt", require("dap").toggle_breakpoint, { desc = "Toggle Breakpoint" })
+  map("n", "<leader>db", require("dap").step_back, { desc = "Step Back" })
+  map("n", "<leader>dc", require("dap").continue, { desc = "Continue" })
+  map("n", "<leader>dC", require("dap").run_to_cursor, { desc = "Run To Cursor" })
+  map("n", "<leader>dd", require("dap").disconnect, { desc = "Disconnect" })
+  map("n", "<leader>dg", require("dap").session, { desc = "Get Session" })
+  map("n", "<leader>di", require("dap").step_into, { desc = "Step Into" })
+  map("n", "<leader>do", require("dap").step_over, { desc = "Step Over" })
+  map("n", "<leader>du", require("dap").step_out, { desc = "Step Out" })
+  map("n", "<leader>dp", require("dap").pause, { desc = "Pause" })
+  map("n", "<leader>dr", require("dap").repl.toggle, { desc = "Toggle Repl" })
+  map("n", "<leader>ds", require("dap").continue, { desc = "Start" })
+  map("n", "<leader>dq", require("dap").close, { desc = "Quit" })
+end
 
 -- Terminal
 map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })

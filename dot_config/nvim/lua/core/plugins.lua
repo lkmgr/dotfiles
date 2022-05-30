@@ -31,13 +31,7 @@ require("packer").startup {
       end,
     }
 
-    use {
-      "rcarriga/nvim-notify",
-      config = function()
-        require("configs.notify").config()
-        require("telescope").load_extension "notify"
-      end,
-    }
+    use { "rcarriga/nvim-notify", config = userconf "notify" }
 
     use { "mrjones2014/smart-splits.nvim", config = userconf "smart-splits" }
 
@@ -105,6 +99,9 @@ require("packer").startup {
     -- mini.nvim - Surround, Trailspace
     use { "echasnovski/mini.nvim", config = userconf "mini" }
 
+    -- DAP
+    use { "mfussenegger/nvim-dap", config = userconf "dap" }
+
     use { "lewis6991/gitsigns.nvim", config = userconf "gitsigns" }
     use { "lukas-reineke/indent-blankline.nvim", config = userconf "indent-blankline" }
     use { "folke/which-key.nvim", config = userconf "which-key" }
@@ -113,6 +110,7 @@ require("packer").startup {
     use { "windwp/nvim-autopairs", config = userconf "autopairs" }
     use { "rrethy/vim-hexokinase", run = "make hexokinase", config = userconf "hexokinase" }
     use { "Shatur/neovim-session-manager", config = userconf "session-manager" }
+    use { "ahmedkhalf/project.nvim", config = userconf "project" }
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme
