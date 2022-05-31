@@ -26,7 +26,7 @@ function M.config()
     timeout = 5000,
 
     -- Max number of columns for messages
-    max_width = 60,
+    max_width = nil,
     -- Max number of lines for a message
     max_height = nil,
 
