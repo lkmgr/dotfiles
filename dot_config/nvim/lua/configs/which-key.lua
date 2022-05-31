@@ -35,7 +35,7 @@ function M.config()
   }
 
   which_key.register({
-    f = { name = "Files" },
+    d = { name = "DAP" },
     g = { name = "Git" },
     l = { name = "LSP" },
     p = { name = "Packer" },
