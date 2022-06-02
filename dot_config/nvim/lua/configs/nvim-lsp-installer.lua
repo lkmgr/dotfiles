@@ -8,14 +8,15 @@ function M.config()
 
   lsp_installer.setup {
     ensure_installed = {
+      -- "taplo", -- fails on mac
       "cssls",
+      "emmet_ls",
+      "eslint",
       "html",
       "jsonls",
       "sumneko_lua",
-      -- "taplo", -- fails on mac
       "tsserver",
       "yamlls",
-      "eslint",
     },
   }
 end
