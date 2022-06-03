@@ -164,19 +164,6 @@ map("n", "<leader>tr", "<cmd>Trouble lsp_references<CR>", { desc = "LSP Referenc
 map("n", "<A-j>", "<cmd>m .+1<CR>==", { desc = "Move text down" })
 map("n", "<A-k>", "<cmd>m .-2<CR>==", { desc = "Move text up" })
 
--- LSP
-map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration of current symbol" })
-map("n", "gd", vim.lsp.buf.definition, { desc = "Show the definition of current symbol" })
-map("n", "gI", vim.lsp.buf.implementation, { desc = "Go to implementation of current symbol" })
-map("n", "gr", vim.lsp.buf.references, { desc = "References of current symbol" })
-map("n", "K", vim.lsp.buf.hover, { desc = "Hover symbol details" })
-map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
-map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Hover Diagnostic" })
-map("n", "<leader>lf", vim.lsp.buf.formatting_sync, { desc = "Format" })
-map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Info" })
-map("n", "<leader>lI", "<cmd>LspInstallInfo<CR>", { desc = "Install Info" })
-map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
-
 -- DAP
 local dap_loaded, _ = pcall(require, "dap")
 if dap_loaded then

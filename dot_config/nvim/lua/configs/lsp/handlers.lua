@@ -1,3 +1,5 @@
+local map = vim.keymap.set
+
 local M = {}
 
 function M.setup()
@@ -64,7 +66,29 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
   end
 
-  vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, { desc = "Format file with LSP" })
+  -- Enable completion triggered by <c-x><c-o>
+  -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
+  -- Buffer mappings
+  map("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration of current symbol", buffer = bufnr })
+  map("n", "gd", vim.lsp.buf.definition, { desc = "Show the definition of current symbol", buffer = bufnr })
+  map("n", "gI", vim.lsp.buf.implementation, { desc = "Go to implementation of current symbol", buffer = bufnr })
+  map("n", "gr", vim.lsp.buf.references, { desc = "References of current symbol", buffer = bufnr })
+  map("n", "K", vim.lsp.buf.hover, { desc = "Hover symbol details", buffer = bufnr })
+  map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action", buffer = bufnr })
+  map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Hover Diagnostic", buffer = bufnr })
+  map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format", buffer = bufnr })
+  map("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "Info", buffer = bufnr })
+  map("n", "<leader>lI", "<cmd>LspInstallInfo<CR>", { desc = "Install Info", buffer = bufnr })
+  map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename", buffer = bufnr })
+  map("n", "<leader>lt", vim.lsp.buf.type_definition, { desc = "Go to type definition", buffer = bufnr })
+  map("n", "<leader>lwl", function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, { desc = "List Workspace Folders", buffer = bufnr })
+  map("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder", buffer = bufnr })
+  map("n", "<leader>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace Folder", buffer = bufnr })
+
+  vim.api.nvim_create_user_command("Format", vim.lsp.buf.format, { desc = "Format file with LSP" })
   lsp_highlight_document(client)
 end
 

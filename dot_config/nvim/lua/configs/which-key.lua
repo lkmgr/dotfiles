@@ -37,7 +37,10 @@ function M.config()
   which_key.register({
     d = { name = "DAP" },
     g = { name = "Git" },
-    l = { name = "LSP" },
+    l = {
+      name = "LSP",
+      w = { name = "Workspace Folders" },
+    },
     p = { name = "Packer" },
     s = { name = "Telescope" },
     t = { name = "Trouble" },
