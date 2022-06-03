@@ -112,6 +112,7 @@ require("packer").startup {
     use { "Shatur/neovim-session-manager", config = userconf "session-manager" }
     use { "ahmedkhalf/project.nvim", config = userconf "project" }
     use "ggandor/lightspeed.nvim"
+    use "yamatsum/nvim-nonicons"
 
     -- colorscheme
     use { "olimorris/onedarkpro.nvim", config = userconf "onedarkpro" } -- TODO: fix lightspeed highlights
