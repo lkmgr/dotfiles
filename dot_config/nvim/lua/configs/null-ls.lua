@@ -18,12 +18,12 @@ function M.config()
   -- table.insert(sources, diagnostics.eslint_d)
   -- table.insert(sources, code_actions.eslint_d)
 
-  table.insert(
-    sources,
-    formatting.prettierd.with {
-      extra_filetypes = { "json5" },
-    }
-  )
+  -- table.insert(
+  --   sources,
+  --   formatting.prettierd.with {
+  --     extra_filetypes = { "json5" },
+  --   }
+  -- )
 
   table.insert(sources, formatting.stylua)
 

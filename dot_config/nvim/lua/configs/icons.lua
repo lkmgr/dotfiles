@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  local status_ok, icons = pcall(require, 'nvim-web-devicons')
+  local status_ok, icons = pcall(require, "nvim-web-devicons")
   if not status_ok then
     return
   end
@@ -12,13 +12,14 @@ function M.config()
     -- DevIcon will be appended to `name`
     override = {
       deb = { icon = "", name = "Deb" },
+      graphql = { icon = "", name = "GraphQL" },
       lock = { icon = "", name = "Lock" },
       mp3 = { icon = "", name = "Mp3" },
       mp4 = { icon = "", name = "Mp4" },
       out = { icon = "", name = "Out" },
       ["robots.txt"] = { icon = "ﮧ", name = "Robots" },
-      ttf = { icon = "", name = "TrueTypeFont" },
       rpm = { icon = "", name = "Rpm" },
+      ttf = { icon = "", name = "TrueTypeFont" },
       woff = { icon = "", name = "WebOpenFontFormat" },
       woff2 = { icon = "", name = "WebOpenFontFormat2" },
       xz = { icon = "", name = "Xz" },
@@ -31,4 +32,3 @@ function M.config()
 end
 
 return M
-

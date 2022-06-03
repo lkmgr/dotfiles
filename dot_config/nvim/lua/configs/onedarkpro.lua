@@ -34,6 +34,7 @@ function M.config()
       -- NeoTreeWinSeparator = { bg = "${color_column}", fg = "${color_column}" },
       TreesitterContext = { bg = "#333842" },
       NeoTreeGitUntracked = { fg = "#808a9e" },
+      DevIconGraphQL = { fg = "#c956ff" },
     },
   }
 
