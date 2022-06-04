@@ -64,6 +64,15 @@ function M.config()
           ["[]"] = "@class.outer",
         },
       },
+      swap = {
+        enable = true,
+        swap_next = {
+          ["gz"] = "@parameter.inner",
+        },
+        swap_previous = {
+          ["gZ"] = "@parameter.inner",
+        },
+      },
     },
 
     -- nvim-ts-rainbow

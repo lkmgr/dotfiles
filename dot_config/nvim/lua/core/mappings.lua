@@ -148,6 +148,8 @@ map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
 map("n", "<C-c>", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
 map("n", "<A-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
 map("n", "<A-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
 map("n", "<A-S-l>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer tab right" })
 map("n", "<A-S-h>", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
 
@@ -207,6 +209,10 @@ map("n", "<leader>zu", utils.open_uri_under_cursor, { desc = "Open URI under Cur
 -- disable Ex mode:
 map("n", "Q", "<Nop>")
 
+-- Don't yank on x
+map("n", "x", '"_x', { silent = true })
+map("n", "X", '"_X', { silent = true })
+
 -- ##################
 -- ##### INSERT #####
 -- ##################
@@ -226,6 +232,13 @@ map("v", ">", ">gv", { desc = "indent line" })
 -- Move text up and down
 map("v", "<A-j>", "<cmd>m .+1<CR>==", { desc = "move text down" })
 map("v", "<A-k>", "<cmd>m .-2<CR>==", { desc = "move text up" })
+
+-- Don't yank on x
+map("v", "x", '"_x', { silent = true })
+map("v", "X", '"_X', { silent = true })
+
+-- Don't yank on visual paste
+map("v", "p", '"_dP', { silent = true })
 
 -- ##################
 -- ##### VBLOCK #####
