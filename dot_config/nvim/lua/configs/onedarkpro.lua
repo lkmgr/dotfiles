@@ -38,7 +38,7 @@ function M.config()
     },
   }
 
-  onedarkpro.load()
+  -- onedarkpro.load()
 
   -- TODO: Move to hlgroups
   -- OneDarkPro purple for context indentlines

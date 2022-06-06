@@ -112,10 +112,10 @@ require("packer").startup {
     use { "Shatur/neovim-session-manager", config = conf "session-manager" }
     use { "ahmedkhalf/project.nvim", config = conf "project" }
     use "ggandor/lightspeed.nvim"
-    use "yamatsum/nvim-nonicons"
 
     -- colorscheme
-    use { "olimorris/onedarkpro.nvim", config = conf "onedarkpro" } -- TODO: fix lightspeed highlights
+    -- use { "olimorris/onedarkpro.nvim", config = conf "onedarkpro" } -- TODO: fix lightspeed highlights
+    use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
 
     if packer_bootstrap then
       require("packer").sync()

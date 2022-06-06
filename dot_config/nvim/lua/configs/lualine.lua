@@ -7,42 +7,43 @@ function M.config()
   end
 
   local utils = require "core.utils"
-  local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
+  -- local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
 
-  local theme = {
-    normal = {
-      a = { bg = colors.green, fg = colors.bg },
-      b = { bg = colors.fg_gutter, fg = colors.fg_sidebar },
-      c = { bg = colors.bg_statusline, fg = colors.fg_sidebar },
-    },
-
-    insert = {
-      a = { bg = colors.blue, fg = colors.bg },
-    },
-
-    command = {
-      a = { bg = colors.purple, fg = colors.bg },
-    },
-
-    visual = {
-      a = { bg = colors.yellow, fg = colors.bg },
-    },
-
-    replace = {
-      a = { bg = colors.red, fg = colors.bg },
-    },
-
-    inactive = {
-      a = { bg = colors.bg_statusline, fg = colors.blue },
-      b = { bg = colors.bg_statusline, fg = colors.fg_gutter, gui = "bold" },
-      c = { bg = colors.bg_statusline, fg = colors.fg_gutter },
-    },
-  }
+  -- local theme = {
+  --   normal = {
+  --     a = { bg = colors.green, fg = colors.bg },
+  --     b = { bg = colors.fg_gutter, fg = colors.fg_sidebar },
+  --     c = { bg = colors.bg_statusline, fg = colors.fg_sidebar },
+  --   },
+  --
+  --   insert = {
+  --     a = { bg = colors.blue, fg = colors.bg },
+  --   },
+  --
+  --   command = {
+  --     a = { bg = colors.purple, fg = colors.bg },
+  --   },
+  --
+  --   visual = {
+  --     a = { bg = colors.yellow, fg = colors.bg },
+  --   },
+  --
+  --   replace = {
+  --     a = { bg = colors.red, fg = colors.bg },
+  --   },
+  --
+  --   inactive = {
+  --     a = { bg = colors.bg_statusline, fg = colors.blue },
+  --     b = { bg = colors.bg_statusline, fg = colors.fg_gutter, gui = "bold" },
+  --     c = { bg = colors.bg_statusline, fg = colors.fg_gutter },
+  --   },
+  -- }
 
   lualine.setup {
     options = {
       -- theme = bubbles_theme,
-      theme = theme,
+      -- theme = theme,
+      theme = "catppuccin",
       component_separators = "|",
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline", "alpha" },
@@ -79,7 +80,7 @@ function M.config()
             return table.concat(buf_client_names, ", ")
           end,
           icon = "  LSP:",
-          color = { fg = colors.purple },
+          -- color = { fg = colors.purple },
         },
       },
       lualine_y = { "filetype", "progress" },

@@ -6,25 +6,34 @@ function M.config()
     return
   end
 
+  local colors = require("catppuccin.api.colors").get_colors()
+
   catppuccin.setup {
     transparent_background = false,
     term_colors = false,
     styles = {
       comments = "italic",
+      conditionals = "italic",
+      loops = "italic",
       functions = "italic",
       keywords = "italic",
       strings = "NONE",
-      variables = "italic",
+      variables = "NONE",
+      numbers = "NONE",
+      booleans = "italic",
+      properties = "NONE",
+      types = "NONE",
+      operators = "NONE",
     },
     integrations = {
       treesitter = true,
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = "italic",
-          hints = "italic",
-          warnings = "italic",
-          information = "italic",
+          errors = "NONE",
+          hints = "NONE",
+          warnings = "NONE",
+          information = "NONE",
         },
         underlines = {
           errors = "underline",
@@ -33,7 +42,7 @@ function M.config()
           information = "underline",
         },
       },
-      lsp_trouble = false,
+      lsp_trouble = true,
       cmp = true,
       lsp_saga = false,
       gitgutter = false,
@@ -46,13 +55,13 @@ function M.config()
       },
       neotree = {
         enabled = true,
-        show_root = false,
-        transparent_panel = false,
+        show_root = true,
+        transparent_panel = true,
       },
       which_key = true,
       indent_blankline = {
         enabled = true,
-        colored_indent_levels = false,
+        colored_indent_levels = true,
       },
       dashboard = true,
       neogit = false,
@@ -61,17 +70,26 @@ function M.config()
       barbar = false,
       bufferline = true,
       markdown = true,
-      lightspeed = false,
-      ts_rainbow = false,
+      lightspeed = true,
+      ts_rainbow = true,
       hop = false,
       notify = true,
       telekasten = true,
       symbols_outline = true,
-    }
+    },
   }
 
-  vim.api.nvim_command("colorscheme catppuccin")
+  catppuccin.remap {
+    CursorColumn = { bg = "#3B3F52" },
+    IndentBlanklineContextChar = { fg = colors.mauve },
+    IndentBlanklineContextStart = { sp = colors.mauve, style = "underline" },
+    LightspeedPendingChangeOpArea = { style = "NONE" },
+    LightspeedPendingOpArea = { style = "NONE" },
+    LightspeedUniqueChar = { style = "NONE" },
+  }
+
+  vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha
+  vim.api.nvim_command "colorscheme catppuccin"
 end
 
 return M
-

@@ -1,5 +1,6 @@
 local utils = require "core.utils"
-local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
+-- local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
+local colors = require("catppuccin.api.colors").get_colors()
 
 local M = { provider = {}, conditional = {}, mode = {}, icons = {} }
 
@@ -19,21 +20,21 @@ M.modes = {
   ["i"] = { "INSERT", "Insert", colors.green },
   ["ic"] = { "INSERT", "Insert", colors.green },
   ["t"] = { "TERMINAL", "Insert", colors.green },
-  ["v"] = { "VISUAL", "Visual", colors.purple },
-  ["V"] = { "V-LINE", "Visual", colors.purple },
-  [""] = { "V-BLOCK", "Visual", colors.purple },
+  ["v"] = { "VISUAL", "Visual", colors.mauve },
+  ["V"] = { "V-LINE", "Visual", colors.mauve },
+  [""] = { "V-BLOCK", "Visual", colors.mauve },
   ["R"] = { "REPLACE", "Replace", colors.red },
   ["Rv"] = { "V-REPLACE", "Replace", colors.red },
-  ["s"] = { "SELECT", "Visual", colors.orange },
-  ["S"] = { "S-LINE", "Visual", colors.orange },
-  [""] = { "S-BLOCK", "Visual", colors.orange },
-  ["c"] = { "COMMAND", "Command", colors.yellow },
-  ["cv"] = { "COMMAND", "Command", colors.yellow },
-  ["ce"] = { "COMMAND", "Command", colors.yellow },
-  ["r"] = { "PROMPT", "Inactive", colors.gray },
-  ["rm"] = { "MORE", "Inactive", colors.gray },
-  ["r?"] = { "CONFIRM", "Inactive", colors.gray },
-  ["!"] = { "SHELL", "Inactive", colors.gray },
+  ["s"] = { "SELECT", "Visual", colors.mauve },
+  ["S"] = { "S-LINE", "Visual", colors.mauve },
+  [""] = { "S-BLOCK", "Visual", colors.mauve },
+  ["c"] = { "COMMAND", "Command", colors.mantle },
+  ["cv"] = { "COMMAND", "Command", colors.mantle },
+  ["ce"] = { "COMMAND", "Command", colors.mantle },
+  ["r"] = { "PROMPT", "Inactive", colors.surface1 },
+  ["rm"] = { "MORE", "Inactive", colors.surface1 },
+  ["r?"] = { "CONFIRM", "Inactive", colors.surface1 },
+  ["!"] = { "SHELL", "Inactive", colors.surface1 },
 }
 
 function M.mode.text()
