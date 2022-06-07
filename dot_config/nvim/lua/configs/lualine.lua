@@ -7,6 +7,7 @@ function M.config()
   end
 
   local utils = require "core.utils"
+  local colors = require("catppuccin.api.colors").get_colors()
   -- local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
 
   -- local theme = {
@@ -80,7 +81,7 @@ function M.config()
             return table.concat(buf_client_names, ", ")
           end,
           icon = "  LSP:",
-          -- color = { fg = colors.purple },
+          color = { fg = colors.mauve },
         },
       },
       lualine_y = { "filetype", "progress" },

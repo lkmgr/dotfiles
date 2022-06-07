@@ -6,7 +6,9 @@ function M.config()
     return
   end
 
-  treesitter_context.setup()
+  treesitter_context.setup {
+    -- separator = "┄",
+  }
 end
 
 return M

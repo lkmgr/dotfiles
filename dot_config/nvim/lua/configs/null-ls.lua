@@ -15,12 +15,12 @@ function M.config()
     -- formatting.eslint_d,
     -- diagnostics.eslint_d,
     -- code_actions.eslint_d,
-    formatting.prettierd.with {
-      extra_filetypes = { "json5" },
-    },
+    -- formatting.prettierd.with {
+    --   extra_filetypes = { "json5" },
+    -- },
     formatting.stylua,
     diagnostics.yamllint,
-    diagnostics.ansiblelint,
+    -- diagnostics.ansiblelint,
   }
 
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

@@ -141,6 +141,9 @@ end, { desc = "Find Hidden File" })
 map("n", "<leader>sT", function()
   require("telescope.builtin").current_buffer_fuzzy_find()
 end, { desc = "Current Buffer Fuzzy Find" })
+map("n", "<leader>ss", function()
+  require("telescope.builtin").grep_string()
+end, { desc = "Search Hovered String" })
 map("n", "<leader>sp", "<cmd>Telescope projects<CR>", { desc = "Projects" })
 
 -- Buffers

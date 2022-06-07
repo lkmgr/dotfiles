@@ -81,6 +81,7 @@ function M.config()
 
   catppuccin.remap {
     CursorColumn = { bg = "#3B3F52" },
+    DevIconGraphQL = { fg = "#c956ff" },
     IndentBlanklineContextChar = { fg = colors.mauve },
     IndentBlanklineContextStart = { sp = colors.mauve, style = "underline" },
     LightspeedPendingChangeOpArea = { style = "NONE" },
