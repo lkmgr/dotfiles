@@ -102,7 +102,8 @@ require("packer").startup {
     -- DAP
     use { "mfussenegger/nvim-dap", config = conf "dap" }
 
-    use { "lewis6991/gitsigns.nvim", config = conf "gitsigns" }
+    use { "tanvirtin/vgit.nvim", config = conf "vgit" }
+    -- use { "lewis6991/gitsigns.nvim", config = conf "gitsigns" }
     use { "lukas-reineke/indent-blankline.nvim", config = conf "indent-blankline" }
     use { "folke/which-key.nvim", config = conf "which-key" }
     use { "akinsho/toggleterm.nvim", config = conf "toggleterm" }
