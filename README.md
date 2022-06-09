@@ -1,11 +1,12 @@
 # dotfiles
 
 - **os**: Arch Linux / macOS
-- **shell**: `fish`
+- **shell**: `fish` with starship prompt
 - **terminal emulator**: `kitty`
 - **wm**: `Qtile` or `bspwm` (with Polybar)
 - **editor**: `neovim`
 - **font**: Cascadia Code with `calt` and `ss01` font features to get cursive italics
+- **colorscheme**: base16, automatically changed out in config files with `flavours`
 
 ## desktop
 ![Screenshot_20220609_223624](https://user-images.githubusercontent.com/7467162/172940208-ca0146ee-7e3d-49f4-8a7d-ce70bc0dbebe.png)
