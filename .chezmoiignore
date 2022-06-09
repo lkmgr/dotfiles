@@ -1,6 +1,5 @@
 .github
 README.md
-symlinked/
 
 {{- if ne .chezmoi.os "linux" }}
 .config/awesome/
@@ -8,7 +7,6 @@ symlinked/
 .config/dunst/
 .config/fontconfig/
 .config/gtk-3.0/
-.config/i3/
 .config/paru/paru.conf
 .config/polybar/
 .config/qtile/
