@@ -49,6 +49,7 @@ require("packer").startup {
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = conf "treesitter" }
     use { "nvim-treesitter/nvim-treesitter-context", config = conf "treesitter-context" }
     use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "RRethy/nvim-treesitter-textsubjects"
     use "windwp/nvim-ts-autotag"
     use "JoosepAlviste/nvim-ts-context-commentstring"
     -- use "p00f/nvim-ts-rainbow"
