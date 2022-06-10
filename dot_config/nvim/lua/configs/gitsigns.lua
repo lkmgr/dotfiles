@@ -12,9 +12,12 @@ function M.config()
   gitsigns.setup {
     current_line_blame = true,
     current_line_blame_opts = {
-      delay = 400,
+      virt_text = true,
+      virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+      delay = 250,
+      ignore_whitespace = true,
     },
-    current_line_blame_formatter = "    <author>, <author_time:%Y-%m-%d> - <summary>",
+    current_line_blame_formatter = "   <author>, <author_time:%R> • <summary>",
   }
 end
 
