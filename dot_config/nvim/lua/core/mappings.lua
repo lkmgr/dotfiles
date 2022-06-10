@@ -52,7 +52,7 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "gj", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
 -- Git
---[[ map("n", "<leader>gj", function()
+map("n", "<leader>gj", function()
   require("gitsigns").next_hunk()
 end, { desc = "Next git hunk" })
 map("n", "<leader>gk", function()
@@ -81,7 +81,7 @@ map("n", "<leader>gd", function()
 end, { desc = "View git diff" })
 map("n", "<leader>gg", function()
   utils.toggle_term_cmd "lazygit"
-end, { desc = "Lazygit" }) ]]
+end, { desc = "Lazygit" })
 
 -- smart-splits
 map("n", "<C-h>", function()
