@@ -16,6 +16,8 @@ local options = {
     history = 100, -- Number of commands to remember in a history table
     hlsearch = true, -- Highlight all the matches of search pattern
     ignorecase = true, -- Case insensitive searching
+    list = true,
+    listchars = { tab = "→ ", trail = "•", nbsp = "␣", precedes = "⟨", extends = "⟩" },
     mouse = "a", -- Enable mouse support
     number = true, -- Show numberline
     pumheight = 10, -- Height of the pop up menu
@@ -23,6 +25,7 @@ local options = {
     scrolloff = 8, -- Number of lines to keep above and below the cursor
     shell = "{{ lookPath "fish" }}",
     shiftwidth = 2, -- Number of space inserted for indentation
+    showbreak = "↪ ",
     showmode = false, -- Disable showing modes in command line
     sidescrolloff = 8, -- Number of columns to keep at the sides of the cursor
     signcolumn = "yes", -- Always show the sign column
