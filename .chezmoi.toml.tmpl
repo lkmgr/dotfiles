@@ -1,13 +1,5 @@
-{{- $gitname := "" -}}
-{{- $gitmail := "" -}}
-
-{{- if and (hasKey . "gitname") (hasKey . "gitmail") -}}
-{{-   $gitname = .gitname -}}
-{{-   $gitmail = .gitmail -}}
-{{- else -}}
-{{-   $gitname = promptString "Git Name" -}}
-{{-   $gitmail = promptString "Git Mail Address" -}}
-{{- end -}}
+{{- $gitname := promptString "Git Name" -}}
+{{- $gitmail := promptString "Git Mail Address" -}}
 
 pager = "less -R"
 
