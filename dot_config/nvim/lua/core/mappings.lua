@@ -144,6 +144,9 @@ end, { desc = "Current Buffer Fuzzy Find" })
 map("n", "<leader>ss", function()
   require("telescope.builtin").grep_string()
 end, { desc = "Search Hovered String" })
+map("n", "<leader>sF", function()
+  require("telescope.builtin").treesitter()
+end, { desc = "Treesitter" })
 map("n", "<leader>sp", "<cmd>Telescope projects<CR>", { desc = "Projects" })
 
 -- Buffers
