@@ -44,6 +44,7 @@ require("packer").startup {
 
     use { "nvim-lualine/lualine.nvim", config = conf "lualine" }
     -- use { "feline-nvim/feline.nvim", config = conf "feline" }
+    use { "SmiteshP/nvim-navic", config = conf "navic" }
 
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = conf "treesitter" }
