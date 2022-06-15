@@ -1,3 +1,5 @@
+local navic = require "nvim-navic"
+
 local map = vim.keymap.set
 
 local M = {}
@@ -61,9 +63,16 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client, bufnr)
-  if client.name == "tsserver" or client.name == "jsonls" or client.name == "html" or client.name == "sumneko_lua" then
+  local navic_enabled = { "tsserver", "sumneko_lua", "jsonls" }
+  local formatting_disabled = { "tsserver", "jsonls", "html", "sumneko_lua" }
+
+  if vim.tbl_contains(formatting_disabled, client.name) then
     -- nvim 0.7: client.resolved_capabilities.document_formatting
     client.server_capabilities.documentFormattingProvider = false
+  end
+
+  if vim.tbl_contains(navic_enabled, client.name) then
+    navic.attach(client, bufnr)
   end
 
   -- Enable completion triggered by <c-x><c-o>

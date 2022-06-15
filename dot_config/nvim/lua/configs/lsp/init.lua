@@ -3,8 +3,6 @@ if not status_ok then
   return
 end
 
-local navic = require "nvim-navic"
-
 local handlers = require "configs.lsp.handlers"
 handlers.setup()
 
@@ -23,7 +21,6 @@ for _, server in ipairs(servers) do
         old_on_attach(client, bufnr)
       end
       handlers.on_attach(client, bufnr)
-      navic.attach(client, bufnr)
     end,
     capabilities = vim.tbl_deep_extend("force", handlers.capabilities, lspconfig[server].capabilities or {}),
   }
