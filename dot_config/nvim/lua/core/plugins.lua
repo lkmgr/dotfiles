@@ -106,7 +106,6 @@ require("packer").startup {
 
     -- Blame previews, Git hunk management
     use { "lewis6991/gitsigns.nvim", config = conf "gitsigns" }
-    -- use { "tanvirtin/vgit.nvim", config = conf "vgit" }
 
     -- Git diff views
     use { "sindrets/diffview.nvim", config = conf "diffview" }
@@ -121,7 +120,6 @@ require("packer").startup {
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme
-    -- use { "olimorris/onedarkpro.nvim", config = conf "onedarkpro" } -- TODO: fix lightspeed highlights
     use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
 
     if packer_bootstrap then
