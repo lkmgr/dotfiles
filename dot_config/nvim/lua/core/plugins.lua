@@ -118,7 +118,6 @@ require("packer").startup {
     use { "windwp/nvim-autopairs", config = conf "autopairs" }
     use { "rrethy/vim-hexokinase", run = "make hexokinase", config = conf "hexokinase" }
     use { "Shatur/neovim-session-manager", config = conf "session-manager" }
-    use { "ahmedkhalf/project.nvim", config = conf "project" }
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme
