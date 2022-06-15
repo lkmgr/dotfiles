@@ -58,5 +58,6 @@ keys = [
     Key([mod], "space", lazy.spawn("rofi -show drun"), desc="rofi drun"),
     Key([mod, "shift"], "space", lazy.spawn("rofi -show calc"), desc="rofi calc"),
     Key([mod, "control"], "space", lazy.spawn("rofi -show run"), desc="rofi run"),
+    Key([mod, alt], "space", lazy.spawn("rofimoji"), desc="open rofimoji"),
     Key([mod, "control"], "Return", lazy.group["scratchpad"].dropdown_toggle("term")),
 ]
