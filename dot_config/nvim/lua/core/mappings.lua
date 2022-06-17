@@ -126,6 +126,9 @@ end, { desc = "Commands" })
 map("n", "<leader>sf", function()
   require("telescope.builtin").find_files()
 end, { desc = "Find File" })
+map("n", "<leader>sF", function()
+  require("telescope.builtin").find_files { hidden = true, no_ignore = true }
+end, { desc = "Find File with hidden" })
 map("n", "<leader>sh", function()
   require("telescope.builtin").help_tags()
 end, { desc = "Find Help" })
@@ -138,19 +141,25 @@ end, { desc = "Registers" })
 map("n", "<leader>st", function()
   require("telescope.builtin").live_grep()
 end, { desc = "Find Text" })
+map("n", "<leader>sT", function()
+  require("telescope.builtin").live_grep {
+    additional_args = function(args)
+      return vim.list_extend(args, { "--hidden", "--no-ignore" })
+    end,
+  }
+end, { desc = "Find Text in all files" })
 map("n", "<leader>sy", function()
   require("telescope.builtin").find_files { hidden = true }
 end, { desc = "Find Hidden File" })
-map("n", "<leader>sT", function()
+map("n", "<leader>su", function()
   require("telescope.builtin").current_buffer_fuzzy_find()
 end, { desc = "Current Buffer Fuzzy Find" })
 map("n", "<leader>ss", function()
   require("telescope.builtin").grep_string()
 end, { desc = "Search Hovered String" })
-map("n", "<leader>sF", function()
+map("n", "<leader>sy", function()
   require("telescope.builtin").treesitter()
 end, { desc = "Treesitter" })
-map("n", "<leader>sp", "<cmd>Telescope projects<CR>", { desc = "Projects" })
 
 -- Buffers
 map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
