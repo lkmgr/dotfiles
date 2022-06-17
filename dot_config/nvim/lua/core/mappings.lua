@@ -82,6 +82,9 @@ end, { desc = "View git diff" })
 map("n", "<leader>gg", function()
   utils.toggle_term_cmd "lazygit"
 end, { desc = "Lazygit" })
+map("n", "<leader>gf", function()
+  utils.toggle_term_cmd "gitui"
+end, { desc = "GitUI" })
 
 -- smart-splits
 map("n", "<C-h>", function()
