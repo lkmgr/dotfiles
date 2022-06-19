@@ -113,7 +113,6 @@ require("packer").startup {
     use { "lukas-reineke/indent-blankline.nvim", config = conf "indent-blankline" }
     use { "folke/which-key.nvim", config = conf "which-key" }
     use { "akinsho/toggleterm.nvim", config = conf "toggleterm" }
-    use { "karb94/neoscroll.nvim", config = conf "neoscroll" }
     use { "windwp/nvim-autopairs", config = conf "autopairs" }
     use { "rrethy/vim-hexokinase", run = "make hexokinase", config = conf "hexokinase" }
     use { "Shatur/neovim-session-manager", config = conf "session-manager" }
