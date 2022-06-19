@@ -32,8 +32,8 @@ end, { desc = "Search current buffer" })
 map("n", "<leader>/", function()
   require("telescope.builtin").resume()
 end, { desc = "Resume Telescope" })
-map("n", "<S-h>", "^", { desc = "Move to first char of line" })
-map("n", "<S-l>", "$", { desc = "Move to end of line" })
+-- map("n", "<S-h>", "^", { desc = "Move to first char of line" })
+-- map("n", "<S-l>", "$", { desc = "Move to end of line" })
 
 -- Packer
 map("n", "<leader>pc", "<cmd>PackerCompile<CR>", { desc = "Packer Compile" })
