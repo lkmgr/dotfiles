@@ -18,9 +18,10 @@ function M.setup()
 
   local config = {
     underline = true,
-    virtual_text = {
-      severity = vim.diagnostic.severity.WARN,
-    },
+    virtual_text = false,
+    -- virtual_text = {
+    --   severity = vim.diagnostic.severity.ERROR,
+    -- },
     signs = { active = signs },
     update_in_insert = true,
     severity_sort = true,
