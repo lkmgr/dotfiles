@@ -25,9 +25,9 @@ function M.config()
       },
     },
     indent = {
-      enable = false,
-      -- enable = true,
-      -- disable = { "yaml" },
+      -- enable = false,
+      enable = true,
+      disable = { "yaml" },
     },
 
     ---- external modules
