@@ -161,6 +161,16 @@ map("n", "<leader>sy", function()
   require("telescope.builtin").treesitter()
 end, { desc = "Treesitter" })
 
+map("n", "<leader>sze", function()
+  require("telescope.builtin").symbols { sources = { "emoji" } }
+end, { desc = "Emoji" })
+map("n", "<leader>szg", function()
+  require("telescope.builtin").symbols { sources = { "gitmoji" } }
+end, { desc = "Gitmoji" })
+map("n", "<leader>szn", function()
+  require("telescope.builtin").symbols { sources = { "nerd" } }
+end, { desc = "Nerd" })
+
 -- Buffers
 map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
 map("n", "<C-c>", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })

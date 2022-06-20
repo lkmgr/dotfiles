@@ -42,7 +42,10 @@ function M.config()
       w = { name = "Workspace Folders" },
     },
     p = { name = "Packer" },
-    s = { name = "Telescope" },
+    s = {
+      name = "Telescope",
+      z = { name = "Symbols" },
+    },
     t = { name = "Trouble" },
     z = { name = "Misc" },
   }, {
