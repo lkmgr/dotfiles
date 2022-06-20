@@ -172,8 +172,8 @@ map("n", "<leader>szn", function()
 end, { desc = "Nerd" })
 
 -- Buffers
-map("n", "<leader>c", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
-map("n", "<C-c>", "<cmd>Bdelete!<CR>", { desc = "Close Buffer" })
+map("n", "<leader>c", "<cmd>lua MiniBufremove.delete(nil, true)<CR>", { desc = "Close Buffer" })
+map("n", "<C-c>", "<cmd>lua MiniBufremove.delete(nil, true)<CR>", { desc = "Close Buffer" })
 map("n", "<A-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
 map("n", "<A-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
 map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })

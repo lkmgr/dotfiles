@@ -37,8 +37,6 @@ require("packer").startup {
 
     -- Buffers
     use { "akinsho/bufferline.nvim", config = conf "bufferline" }
-    use "moll/vim-bbye"
-    -- use "famiu/bufdelete.nvim"
 
     use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = conf "neo-tree" }
 

@@ -14,9 +14,9 @@ function M.config()
       buffer_close_icon = "",
       modified_icon = "●",
       close_icon = "",
-      close_command = "Bdelete! %d",
+      close_command = "lua MiniBufremove.delete(%d, true)",
       left_mouse_command = "buffer %d",
-      right_mouse_command = "Bdelete! %d",
+      right_mouse_command = "lua MiniBufremove.delete(%d, true)",
       middle_mouse_command = nil,
       -- U+2590 ▐ Right half block, this character is right aligned so the
       -- background highlight doesn't appear in the middle

@@ -90,6 +90,11 @@ function M.config()
       query_updaters = "abcdefghijklmnopqrstuvwxyz0123456789_-.",
     }
   end
+
+  local bufremove_ok, bufremove = pcall(require, "mini.bufremove")
+  if bufremove_ok then
+    bufremove.setup()
+  end
 end
 
 return M
