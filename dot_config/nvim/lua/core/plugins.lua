@@ -95,10 +95,7 @@ require("packer").startup {
       end,
     }
 
-    -- Dashboard
-    use { "goolord/alpha-nvim", config = conf "alpha" }
-
-    -- mini.nvim - Surround, Trailspace
+    -- mini.nvim - Surround, Trailspace, Sessions, Starter
     use { "echasnovski/mini.nvim", config = conf "mini" }
 
     -- DAP
@@ -115,7 +112,6 @@ require("packer").startup {
     use { "akinsho/toggleterm.nvim", config = conf "toggleterm" }
     use { "windwp/nvim-autopairs", config = conf "autopairs" }
     use { "rrethy/vim-hexokinase", run = "make hexokinase", config = conf "hexokinase" }
-    use { "Shatur/neovim-session-manager", config = conf "session-manager" }
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme

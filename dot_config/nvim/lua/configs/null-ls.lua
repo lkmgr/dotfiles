@@ -19,7 +19,7 @@ function M.config()
     --   extra_filetypes = { "json5" },
     -- },
     formatting.stylua,
-    diagnostics.yamllint,
+    -- diagnostics.yamllint,
     -- diagnostics.ansiblelint,
   }
 
