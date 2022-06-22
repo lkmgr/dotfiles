@@ -46,7 +46,8 @@ function M.config()
       name = "Telescope",
       z = { name = "Symbols" },
     },
-    t = { name = "Trouble" },
+    t = { name = "Terminal" },
+    y = { name = "Trouble" },
     z = { name = "Misc" },
   }, {
     prefix = "<leader>",

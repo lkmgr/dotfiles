@@ -183,13 +183,13 @@ map("n", "<A-S-l>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer tab rig
 map("n", "<A-S-h>", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
 
 -- Trouble
-map("n", "<leader>tt", "<cmd>Trouble<CR>", { desc = "Open Trouble" })
-map("n", "<leader>tw", "<cmd>Trouble workspace_diagnostics<CR>", { desc = "Workspace Diagnostics" })
-map("n", "<leader>te", "<cmd>Trouble document_diagnostics<CR>", { desc = "Document Diagnostics" })
-map("n", "<leader>tl", "<cmd>Trouble loclist<CR>", { desc = "Location List" })
-map("n", "<leader>tq", "<cmd>Trouble quickfix<CR>", { desc = "Quickfix" })
-map("n", "<leader>td", "<cmd>Trouble lsp_definitions<CR>", { desc = "LSP Definitions" })
-map("n", "<leader>tr", "<cmd>Trouble lsp_references<CR>", { desc = "LSP References" })
+map("n", "<leader>yt", "<cmd>Trouble<CR>", { desc = "Open Trouble" })
+map("n", "<leader>yw", "<cmd>Trouble workspace_diagnostics<CR>", { desc = "Workspace Diagnostics" })
+map("n", "<leader>ye", "<cmd>Trouble document_diagnostics<CR>", { desc = "Document Diagnostics" })
+map("n", "<leader>yl", "<cmd>Trouble loclist<CR>", { desc = "Location List" })
+map("n", "<leader>yq", "<cmd>Trouble quickfix<CR>", { desc = "Quickfix" })
+map("n", "<leader>yd", "<cmd>Trouble lsp_definitions<CR>", { desc = "LSP Definitions" })
+map("n", "<leader>yr", "<cmd>Trouble lsp_references<CR>", { desc = "LSP References" })
 
 -- move text up and down
 map("n", "<A-j>", "<cmd>m .+1<CR>==", { desc = "Move text down" })
@@ -220,6 +220,9 @@ end
 
 -- Terminal
 map("n", "<C-\\>", "<cmd>ToggleTerm<CR>", { desc = "Toggle Terminal" })
+map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
+map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "ToggleTerm horizontal split" })
+map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "ToggleTerm vertical split" })
 
 -- Save and Quit
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "Write" })
@@ -284,8 +287,8 @@ map("x", "<A-k>", ":move '<-2<CR>gv-gv", { desc = "Move text up" })
 -- ####################
 
 -- Improved Terminal Mappings
--- map("t", "<esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
-map("t", "<C-h>", "<c-\\><c-n><c-w>h", { desc = "Terminal left window navigation" })
-map("t", "<C-j>", "<c-\\><c-n><c-w>j", { desc = "Terminal down window navigation" })
-map("t", "<C-k>", "<c-\\><c-n><c-w>k", { desc = "Terminal up window navigation" })
-map("t", "<C-l>", "<c-\\><c-n><c-w>l", { desc = "Terminal right window naviation" })
+map("t", "<esc>", "<C-\\><C-n>", { desc = "Terminal normal mode" })
+map("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal left window navigation" })
+map("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal down window navigation" })
+map("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal up window navigation" })
+map("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal right window naviation" })
