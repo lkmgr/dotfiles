@@ -9,7 +9,7 @@ function M.config()
   local colors = require("catppuccin.api.colors").get_colors()
 
   catppuccin.setup {
-    transparent_background = false,
+    transparent_background = true,
     term_colors = false,
     styles = {
       comments = "italic",

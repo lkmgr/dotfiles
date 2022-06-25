@@ -36,7 +36,7 @@ require("packer").startup {
     use { "mrjones2014/smart-splits.nvim", config = conf "smart-splits" }
 
     -- Buffers
-    use { "akinsho/bufferline.nvim", config = conf "bufferline" }
+    use { "noib3/nvim-cokeline", config = conf "cokeline" }
 
     use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = conf "neo-tree" }
 
