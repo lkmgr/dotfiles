@@ -98,6 +98,7 @@ require("packer").startup {
 
     -- DAP
     use { "mfussenegger/nvim-dap", config = conf "dap" }
+    use { "rcarriga/nvim-dap-ui" }
 
     -- Blame previews, Git hunk management
     use { "lewis6991/gitsigns.nvim", config = conf "gitsigns" }
