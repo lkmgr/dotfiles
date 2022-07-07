@@ -40,6 +40,7 @@ keys = [
     Key([mod], "period", lazy.to_screen(0), desc="Focus right Screen"),
     # Window state
     Key([mod], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
+    Key([mod], "g", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     # Media
     Key([], "XF86AudioMute", lazy.spawn("pamixer -t"), desc="Toggle Audio Mute"),
