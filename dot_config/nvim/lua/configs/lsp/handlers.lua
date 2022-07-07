@@ -17,8 +17,11 @@ function M.setup()
   end
 
   local config = {
-    underline = true,
+    -- underline = true,
     virtual_text = false,
+    underline = {
+      severity = { min = vim.diagnostic.severity.WARN },
+    },
     -- virtual_text = {
     --   severity = vim.diagnostic.severity.ERROR,
     -- },
