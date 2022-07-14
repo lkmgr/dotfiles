@@ -12,15 +12,15 @@ function M.config()
     transparent_background = false,
     term_colors = false,
     styles = {
-      comments = "italic",
-      conditionals = "italic",
-      loops = "italic",
-      functions = "italic",
-      keywords = "italic",
+      comments = { "italic" },
+      conditionals = { "italic" },
+      loops = { "italic" },
+      functions = { "italic" },
+      keywords = { "italic" },
       strings = "NONE",
       variables = "NONE",
       numbers = "NONE",
-      booleans = "italic",
+      booleans = { "italic" },
       properties = "NONE",
       types = "NONE",
       operators = "NONE",
@@ -76,17 +76,17 @@ function M.config()
       notify = true,
       telekasten = true,
       symbols_outline = true,
+      mini = true,
     },
-  }
-
-  catppuccin.remap {
-    CursorColumn = { bg = "#3B3F52" },
-    DevIconGraphQL = { fg = "#c956ff" },
-    IndentBlanklineContextChar = { fg = colors.mauve },
-    IndentBlanklineContextStart = { sp = colors.mauve, style = "underline" },
-    LightspeedPendingChangeOpArea = { style = "NONE" },
-    LightspeedPendingOpArea = { style = "NONE" },
-    LightspeedUniqueChar = { style = "NONE" },
+    custom_highlights = {
+      CursorColumn = { bg = "#3B3F52" },
+      DevIconGraphQL = { fg = "#c956ff" },
+      IndentBlanklineContextChar = { fg = colors.mauve },
+      IndentBlanklineContextStart = { sp = colors.mauve, style = { "underline" } },
+      LightspeedPendingChangeOpArea = { style = "NONE" },
+      LightspeedPendingOpArea = { style = "NONE" },
+      LightspeedUniqueChar = { style = "NONE" },
+    },
   }
 
   vim.g.catppuccin_flavour = "frappe" -- latte, frappe, macchiato, mocha

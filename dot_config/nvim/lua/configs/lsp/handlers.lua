@@ -1,4 +1,4 @@
-local navic = require "nvim-navic"
+-- local navic = require "nvim-navic"
 
 local map = vim.keymap.set
 
@@ -67,7 +67,7 @@ local function lsp_highlight_document(client)
 end
 
 M.on_attach = function(client, bufnr)
-  local navic_enabled = { "tsserver", "sumneko_lua", "jsonls" }
+  -- local navic_enabled = { "tsserver", "sumneko_lua", "jsonls" }
   local formatting_disabled = { "tsserver", "jsonls", "html", "sumneko_lua" }
 
   if vim.tbl_contains(formatting_disabled, client.name) then
@@ -75,9 +75,9 @@ M.on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
   end
 
-  if vim.tbl_contains(navic_enabled, client.name) then
-    navic.attach(client, bufnr)
-  end
+  -- if vim.tbl_contains(navic_enabled, client.name) then
+  --   navic.attach(client, bufnr)
+  -- end
 
   -- Enable completion triggered by <c-x><c-o>
   -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")

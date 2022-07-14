@@ -36,13 +36,13 @@ require("packer").startup {
     use { "mrjones2014/smart-splits.nvim", config = conf "smart-splits" }
 
     -- Buffers
-    use { "noib3/nvim-cokeline", config = conf "cokeline" }
+    use { "akinsho/bufferline.nvim", config = conf "bufferline" }
 
     use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = conf "neo-tree" }
 
     use { "nvim-lualine/lualine.nvim", config = conf "lualine" }
     -- use { "feline-nvim/feline.nvim", config = conf "feline" }
-    use { "SmiteshP/nvim-navic", config = conf "navic" }
+    -- use { "SmiteshP/nvim-navic", config = conf "navic" }
 
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = conf "treesitter" }
@@ -93,7 +93,7 @@ require("packer").startup {
       end,
     }
 
-    -- mini.nvim - Surround, Trailspace, Sessions, Starter
+    -- mini.nvim - Surround, Trailspace, Starter
     use { "echasnovski/mini.nvim", config = conf "mini" }
 
     -- DAP

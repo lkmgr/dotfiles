@@ -172,13 +172,13 @@ end, { desc = "Nerd" })
 -- Buffers
 map("n", "<leader>c", "<cmd>lua MiniBufremove.delete(nil, true)<CR>", { desc = "Close Buffer" })
 map("n", "<C-c>", "<cmd>lua MiniBufremove.delete(nil, true)<CR>", { desc = "Close Buffer" })
-map("n", "<A-l>", "<Plug>(cokeline-focus-next)", { desc = "Next buffer tab" })
-map("n", "<A-h>", "<Plug>(cokeline-focus-prev)", { desc = "Previous buffer tab" })
-map("n", "<Tab>", "<Plug>(cokeline-focus-next)", { desc = "Next buffer tab" })
-map("n", "<S-Tab>", "<Plug>(cokeline-focus-prev)", { desc = "Previous buffer tab" })
-map("n", "<A-S-l>", "<Plug>(cokeline-switch-next)", { desc = "Move buffer tab right" })
-map("n", "<A-S-h>", "<Plug>(cokeline-switch-prev)", { desc = "Move buffer tab left" })
-map("n", "<C-p>", "<Plug>(cokeline-pick-focus)", { desc = "Pick buffer" })
+
+map("n", "<A-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
+map("n", "<A-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
+map("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer tab" })
+map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer tab" })
+map("n", "<A-S-l>", "<cmd>BufferLineMoveNext<CR>", { desc = "Move buffer tab right" })
+map("n", "<A-S-h>", "<cmd>BufferLineMovePrev<CR>", { desc = "Move buffer tab left" })
 
 -- Trouble
 map("n", "<leader>yt", "<cmd>Trouble<CR>", { desc = "Open Trouble" })

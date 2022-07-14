@@ -7,6 +7,8 @@ xset r rate 210 45
 
 xrandr --output HDMI-0 --pos 1800x350 --output HDMI-1 --pos 0x0 --scale 1.25x1.25 --rotate right --auto
 
+udiskie &
+
 eval $(gnome-keyring-daemon --start)
 export SSH_AUTH_SOCK
 

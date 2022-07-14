@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-  local configs = { "bufremove", "starter", "surround", "trailspace" }
+  local configs = { "bufremove", "surround", "trailspace" }
 
   for _, config in ipairs(configs) do
     local ok, loaded = pcall(require, "configs.mini." .. config)
