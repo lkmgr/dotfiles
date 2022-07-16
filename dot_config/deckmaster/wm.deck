@@ -1,0 +1,95 @@
+# vim: set ft=toml:
+
+background = "backgrounds/wallhaven-57rmg1.jpg"
+
+[[keys]]
+  index = 0
+  [keys.widget]
+    id = "command"
+    [keys.widget.config]
+      command = "echo 'MAIN'; echo 'DECK'"
+      layout = "0x6+72x30;0x30+72x30"
+  [keys.action]
+    deck = "main.deck"
+
+[[keys]]
+  index = 1
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "1"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 1"
+
+[[keys]]
+  index = 2
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "2"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 2"
+
+[[keys]]
+  index = 3
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "3"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 3"
+
+[[keys]]
+  index = 4
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "4"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 4"
+
+[[keys]]
+  index = 5
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "5"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 5"
+
+[[keys]]
+  index = 6
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "6"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 6"
+
+[[keys]]
+  index = 7
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "7"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 7"
+
+[[keys]]
+  index = 8
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "8"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 8"
+
+[[keys]]
+  index = 9
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      label = "9"
+  [keys.action]
+    exec = "qtile cmd-obj -o screen -f toggle_group -a 9"
+

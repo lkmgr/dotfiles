@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ddcutil -d 1 setvcp 10 $1 $2
+ddcutil -d 2 setvcp 10 $1 $2
+

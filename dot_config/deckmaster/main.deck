@@ -1,0 +1,120 @@
+# vim: set ft=toml:
+
+background = "backgrounds/wallhaven-57rmg1.jpg"
+
+[[keys]]
+  index = 0
+  [keys.widget]
+    id = "command"
+    [keys.widget.config]
+      command = "echo 'WM'; echo 'DECK'"
+      layout = "0x6+72x30;0x30+72x30"
+  [keys.action]
+    deck = "wm.deck"
+
+[[keys]]
+  index = 1
+  [keys.widget]
+    id = "top"
+    [keys.widget.config]
+      mode = "cpu"
+      fillColor = "#d497de"
+
+[[keys]]
+  index = 2
+  [keys.widget]
+    id = "top"
+    [keys.widget.config]
+      mode = "memory"
+
+[[keys]]
+  index = 3
+  [keys.widget]
+    id = "time"
+    [keys.widget.config]
+      format = "%l;%d;%M"
+      font = "regular;bold;regular"
+
+[[keys]]
+  index = 4
+  [keys.widget]
+    id = "time"
+    [keys.widget.config]
+      format = "%H;%i;%s"
+      font = "bold;regular;thin"
+
+[[keys]]
+  index = 5
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-volume-low.png"
+      label = "Lower Vol"
+      fontsize = 8
+  [keys.action]
+    keycode = "VolumeDown"
+  [keys.action_hold]
+    keycode = "Mute"
+
+[[keys]]
+  index = 6
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-volume-high.png"
+      label = "Raise Vol"
+      fontsize = 8
+  [keys.action]
+    keycode = "VolumeUp"
+  [keys.action_hold]
+    keycode = "Mute"
+
+[[keys]]
+  index = 7
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-zzz.png"
+      label = "Deck Sleep"
+  [keys.action]
+    device = "sleep"
+
+[[keys]]
+  index = 8
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-dim.png"
+      label = "D Dim"
+  [keys.action]
+    device = "brightness-10"
+
+[[keys]]
+  index = 9
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-bright.png"
+      label = "D Bright"
+  [keys.action]
+    device = "brightness+10"
+
+[[keys]]
+  index = 13
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-dim.png"
+      label = "M Dim"
+  [keys.action]
+    exec = "adjust-monitor-brightness - 5"
+
+[[keys]]
+  index = 14
+  [keys.widget]
+    id = "button"
+    [keys.widget.config]
+      icon = "assets/twemoji-bright.png"
+      label = "M Bright"
+  [keys.action]
+    exec = "adjust-monitor-brightness + 5"
