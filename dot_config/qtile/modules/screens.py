@@ -116,7 +116,8 @@ screen1 = Screen(
                     "Button3": lazy.spawn(f"{home}/.local/bin/bluetooth-connect 38:18:4C:59:FD:55"),
                 },
             ),
-            # widget.Systray(),
+            sep_qtile(),
+            widget.Systray(),
             sep_qtile(),
             widget.GenPollText(
                 background=theme["bg"],
