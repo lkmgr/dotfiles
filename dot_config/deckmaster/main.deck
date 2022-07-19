@@ -100,6 +100,14 @@ background = "backgrounds/wallhaven-57rmg1.jpg"
     device = "brightness+10"
 
 [[keys]]
+  index = 10
+  [keys.widget]
+    id = "command"
+    [keys.widget.config]
+      command = "echo 'Volume'; pamixer --get-volume-human"
+      layout = "0x6+72x30;0x30+72x30"
+
+[[keys]]
   index = 13
   [keys.widget]
     id = "button"
