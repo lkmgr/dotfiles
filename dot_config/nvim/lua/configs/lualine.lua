@@ -7,7 +7,7 @@ function M.config()
   end
 
   local utils = require "core.utils"
-  local colors = require("catppuccin.api.colors").get_colors()
+  local colors = require("catppuccin.palettes").get_palette()
   -- local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
 
   -- local theme = {

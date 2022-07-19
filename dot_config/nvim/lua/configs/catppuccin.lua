@@ -6,42 +6,52 @@ function M.config()
     return
   end
 
-  local colors = require("catppuccin.api.colors").get_colors()
+  local colors = require("catppuccin.palettes").get_palette()
 
   catppuccin.setup {
+    dim_inactive = {
+      enabled = true,
+      shade = "dark",
+      percentage = 0.05,
+    },
     transparent_background = false,
     term_colors = false,
+    compile = {
+      enabled = false,
+      path = vim.fn.stdpath "cache" .. "/catppuccin",
+    },
     styles = {
       comments = { "italic" },
       conditionals = { "italic" },
       loops = { "italic" },
       functions = { "italic" },
       keywords = { "italic" },
-      strings = "NONE",
-      variables = "NONE",
-      numbers = "NONE",
+      strings = {},
+      variables = {},
+      numbers = {},
       booleans = { "italic" },
-      properties = "NONE",
-      types = "NONE",
-      operators = "NONE",
+      properties = {},
+      types = {},
+      operators = {},
     },
     integrations = {
       treesitter = true,
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = "NONE",
-          hints = "NONE",
-          warnings = "NONE",
-          information = "NONE",
+          errors = {},
+          hints = {},
+          warnings = {},
+          information = {},
         },
         underlines = {
-          errors = "underline",
-          hints = "underline",
-          warnings = "underline",
-          information = "underline",
+          errors = { "underline" },
+          hints = { "underline" },
+          warnings = { "underline" },
+          information = { "underline" },
         },
       },
+      coc_nvim = false,
       lsp_trouble = true,
       cmp = true,
       lsp_saga = false,
@@ -50,13 +60,17 @@ function M.config()
       telescope = true,
       nvimtree = {
         enabled = false,
-        show_root = false,
+        show_root = true,
         transparent_panel = false,
       },
       neotree = {
         enabled = true,
         show_root = true,
         transparent_panel = true,
+      },
+      dap = {
+        enabled = true,
+        enable_ui = true,
       },
       which_key = true,
       indent_blankline = {
@@ -83,9 +97,9 @@ function M.config()
       DevIconGraphQL = { fg = "#c956ff" },
       IndentBlanklineContextChar = { fg = colors.mauve },
       IndentBlanklineContextStart = { sp = colors.mauve, style = { "underline" } },
-      LightspeedPendingChangeOpArea = { style = "NONE" },
-      LightspeedPendingOpArea = { style = "NONE" },
-      LightspeedUniqueChar = { style = "NONE" },
+      LightspeedPendingChangeOpArea = { style = {} },
+      LightspeedPendingOpArea = { style = {} },
+      LightspeedUniqueChar = { style = {} },
     },
   }
 
