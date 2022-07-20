@@ -4,6 +4,7 @@ README.md
 {{- if ne .chezmoi.os "linux" }}
 .config/awesome/
 .config/bspwm/
+.config/deckmaster/
 .config/dunst/
 .config/fontconfig/
 .config/gtk-3.0/
