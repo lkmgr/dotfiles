@@ -19,6 +19,18 @@ function M.config()
       sorting_strategy = "ascending",
       layout_strategy = "horizontal",
       file_ignore_patterns = { "package%-lock%.json", "yarn%.lock" },
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--hidden",
+        "--trim",
+        "--glob=!.git/",
+      },
       layout_config = {
         horizontal = {
           preview_width = 0.55,
@@ -103,6 +115,10 @@ function M.config()
       },
     },
     pickers = {
+      find_files = {
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+        hidden = true,
+      },
       live_grep = {
         layout_strategy = "vertical",
       },
