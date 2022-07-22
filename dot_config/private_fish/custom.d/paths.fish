@@ -17,6 +17,8 @@ if type -q volta
   fish_add_path ~/.volta/bin
 end
 
+fish_add_path ~/.krew/bin
+
 # if type -q gem; and test -d (gem environment gemdir)
 #   fish_add_path (gem environment gemdir)/bin
 # end
