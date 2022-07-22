@@ -93,8 +93,11 @@ require("packer").startup {
       end,
     }
 
-    -- mini.nvim - Surround, Trailspace, Starter
+    -- mini.nvim
     use { "echasnovski/mini.nvim", config = conf "mini" }
+
+    -- surround
+    use { "kylechui/nvim-surround", config = conf "surround" }
 
     -- DAP
     use { "mfussenegger/nvim-dap", config = conf "dap" }
