@@ -113,9 +113,9 @@ background = "backgrounds/wallhaven-57rmg1.jpg"
     id = "button"
     [keys.widget.config]
       icon = "assets/twemoji-dim.png"
-      label = "M Dim"
+      label = "Mon 15%"
   [keys.action]
-    exec = "adjust-monitor-brightness - 5"
+    exec = "set-monitor-brightness 15"
 
 [[keys]]
   index = 14
@@ -123,6 +123,6 @@ background = "backgrounds/wallhaven-57rmg1.jpg"
     id = "button"
     [keys.widget.config]
       icon = "assets/twemoji-bright.png"
-      label = "M Bright"
+      label = "Mon 45%"
   [keys.action]
-    exec = "adjust-monitor-brightness + 5"
+    exec = "set-monitor-brightness 45"
