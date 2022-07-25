@@ -1,14 +1,13 @@
 local M = {}
 
 function M.config()
-  local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
+  local status_ok, mason_lspconfig = pcall(require, "mason-lspconfig")
   if not status_ok then
     return
   end
 
-  lsp_installer.setup {
+  mason_lspconfig.setup {
     ensure_installed = {
-      -- "taplo", -- fails on mac
       "cssls",
       "emmet_ls",
       "eslint",
