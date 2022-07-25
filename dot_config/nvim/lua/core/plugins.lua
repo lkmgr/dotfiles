@@ -23,6 +23,7 @@ require("packer").startup {
     use "nvim-lua/popup.nvim"
     use "lewis6991/impatient.nvim"
     use "MunifTanjim/nui.nvim"
+    use "stevearc/dressing.nvim"
     use { "kyazdani42/nvim-web-devicons", config = conf "icons" }
     use {
       "antoinemadec/FixCursorHold.nvim",
