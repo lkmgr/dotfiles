@@ -166,11 +166,9 @@ function M.config()
     },
     event_handlers = {
       {
-        event = "vim_buffer_enter",
+        event = "neo_tree_buffer_enter",
         handler = function(_)
-          if vim.bo.filetype == "neo-tree" then
-            vim.wo.signcolumn = "auto"
-          end
+          vim.opt_local.signcolumn = "auto"
         end,
       },
     },
