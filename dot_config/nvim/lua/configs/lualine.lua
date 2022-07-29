@@ -8,42 +8,9 @@ function M.config()
 
   local utils = require "core.utils"
   local colors = require("catppuccin.palettes").get_palette()
-  -- local colors = require("onedarkpro").get_colors(vim.g.onedarkpro_style)
-
-  -- local theme = {
-  --   normal = {
-  --     a = { bg = colors.green, fg = colors.bg },
-  --     b = { bg = colors.fg_gutter, fg = colors.fg_sidebar },
-  --     c = { bg = colors.bg_statusline, fg = colors.fg_sidebar },
-  --   },
-  --
-  --   insert = {
-  --     a = { bg = colors.blue, fg = colors.bg },
-  --   },
-  --
-  --   command = {
-  --     a = { bg = colors.purple, fg = colors.bg },
-  --   },
-  --
-  --   visual = {
-  --     a = { bg = colors.yellow, fg = colors.bg },
-  --   },
-  --
-  --   replace = {
-  --     a = { bg = colors.red, fg = colors.bg },
-  --   },
-  --
-  --   inactive = {
-  --     a = { bg = colors.bg_statusline, fg = colors.blue },
-  --     b = { bg = colors.bg_statusline, fg = colors.fg_gutter, gui = "bold" },
-  --     c = { bg = colors.bg_statusline, fg = colors.fg_gutter },
-  --   },
-  -- }
 
   lualine.setup {
     options = {
-      -- theme = bubbles_theme,
-      -- theme = theme,
       theme = "catppuccin",
       component_separators = "|",
       section_separators = { left = "", right = "" },
@@ -84,21 +51,23 @@ function M.config()
           color = { fg = colors.mauve },
         },
       },
-      lualine_y = { "filetype", "progress" },
+      lualine_y = { "filetype" },
       lualine_z = {
-        { "location", separator = "", padding = 1 },
+        { "location", icon = "", separator = "", padding = 1 },
       },
     },
     inactive_sections = {
-      lualine_a = { { "filename", path = 1 } },
+      lualine_a = {},
       lualine_b = {},
-      lualine_c = {},
+      lualine_c = { { "filename", path = 1 } },
       lualine_x = {},
       lualine_y = {},
       lualine_z = { "location" },
     },
     tabline = {},
-    extensions = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = { "nvim-dap-ui", "toggleterm" },
   }
 end
 

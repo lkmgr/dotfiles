@@ -96,7 +96,10 @@ function M.config()
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
         },
-        ["<CR>"] = cmp.mapping.confirm { select = false },
+        ["<CR>"] = cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        },
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -107,10 +110,7 @@ function M.config()
           else
             fallback()
           end
-        end, {
-          "i",
-          "s",
-        }),
+        end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -119,10 +119,7 @@ function M.config()
           else
             fallback()
           end
-        end, {
-          "i",
-          "s",
-        }),
+        end, { "i", "s" }),
       },
     }
 

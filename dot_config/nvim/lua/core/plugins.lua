@@ -59,9 +59,10 @@ require("packer").startup {
     -- LSP/Diagnostics
     use {
       "williamboman/mason.nvim",
-      config = function()
-        require("mason").setup()
-      end,
+      config = conf "mason",
+      -- config = function()
+      --   require("mason").setup()
+      -- end,
     }
     use {
       "williamboman/mason-lspconfig.nvim",
