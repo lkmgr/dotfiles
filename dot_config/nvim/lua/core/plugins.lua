@@ -60,14 +60,10 @@ require("packer").startup {
     use {
       "williamboman/mason.nvim",
       config = conf "mason",
-      -- config = function()
-      --   require("mason").setup()
-      -- end,
     }
     use {
       "williamboman/mason-lspconfig.nvim",
       config = function()
-        require("configs.mason-lspconfig").config()
         require "configs.lsp"
       end,
     }

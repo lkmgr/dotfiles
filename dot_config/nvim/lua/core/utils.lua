@@ -98,4 +98,41 @@ function M.null_ls_sources(filetype, source)
   return methods_avail and M.null_ls_providers(filetype)[methods.internal[source]] or {}
 end
 
+-- Auto-install credit: https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/blob/3e9534a04e2850fa9bd107556c679b993a8b14e7/lua/mason-tool-installer/init.lua
+local do_install = function(p, version)
+  if version then
+    vim.notify(string.format("[Mason] Auto-Updating %s to %s...", p.name, version), vim.log.levels.INFO)
+  else
+    vim.notify(string.format("[Mason] Installing %s...", p.name), vim.log.levels.INFO)
+  end
+  p:on("install:success", function()
+    vim.notify(string.format("[Mason] Successfully installed %s", p.name), vim.log.levels.INFO)
+  end)
+  p:on("install:failed", function()
+    vim.notify(string.format("[Mason] Failed installing %s", p.name), vim.log.levels.ERROR)
+  end)
+  p:install { version = version }
+end
+
+function M.update_mason_servers()
+  local mr_ok, mr = pcall(require, "mason-registry")
+  local conf_ok, mason_config = pcall(require, "configs.mason")
+  if not mr_ok or not conf_ok then
+    return
+  end
+
+  for _, name in ipairs(mason_config.ensure_installed) do
+    local p = mr.get_package(name)
+    if p:is_installed() then
+      p:check_new_version(function(ok, version)
+        if ok then
+          do_install(p, version.latest_version)
+        end
+      end)
+    else
+      do_install(p)
+    end
+  end
+end
+
 return M

@@ -83,3 +83,10 @@ cmd("BufWritePre", {
   command = "EslintFixAll",
   pattern = { "*.tsx", "*.ts", "*.jsx", "*.js" },
 })
+
+local mason_group = augroup("mason_group", { clear = true })
+cmd("VimEnter", {
+  desc = "Auto update Mason servers",
+  group = mason_group,
+  callback = require("core.utils").update_mason_servers,
+})
