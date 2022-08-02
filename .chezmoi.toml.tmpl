@@ -1,5 +1,5 @@
-{{- $gitname := promptString "Git Name" -}}
-{{- $gitmail := promptString "Git Mail Address" -}}
+{{- $gitname := promptStringOnce . "gitname" "Git Name" -}}
+{{- $gitmail := promptStringOnce . "gitmail" "Git Mail Address" -}}
 
 pager = "less -R"
 
