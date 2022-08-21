@@ -1,8 +1,0 @@
-global-colors:
-  extension: .fish
-  output: colors
-
-theme:
-  extension: .fish
-  output: colors
-
