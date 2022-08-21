@@ -14,3 +14,5 @@ export SSH_AUTH_SOCK
 
 /usr/bin/lxqt-policykit-agent &
 
+wal -R
+

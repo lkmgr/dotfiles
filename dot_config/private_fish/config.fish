@@ -1,9 +1,6 @@
-# custom configs
-# for file in $__fish_config_dir/custom.d/*.fish
-#   source $file
-# end
-source $__fish_config_dir/custom.d/global-colors.fish
-source $__fish_config_dir/custom.d/theme.fish
+source ~/.cache/wal/custom-fish-global-colors.fish
+source ~/.cache/wal/custom-fish.fish
+
 source $__fish_config_dir/custom.d/abbrs.fish
 source $__fish_config_dir/custom.d/env.fish
 source $__fish_config_dir/custom.d/fzf.fish
