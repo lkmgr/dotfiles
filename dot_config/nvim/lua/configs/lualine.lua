@@ -7,11 +7,11 @@ function M.config()
   end
 
   local utils = require "core.utils"
-  local colors = require("catppuccin.palettes").get_palette()
+  -- local colors = require("catppuccin.palettes").get_palette()
 
   lualine.setup {
     options = {
-      theme = "catppuccin",
+      theme = "rose-pine",
       component_separators = "|",
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline", "alpha" },
@@ -48,7 +48,8 @@ function M.config()
             return table.concat(buf_client_names, ", ")
           end,
           icon = "  LSP:",
-          color = { fg = colors.mauve },
+          -- color = { fg = colors.mauve },
+          color = { fg = "#c4a7e7" },
         },
       },
       lualine_y = { "filetype" },

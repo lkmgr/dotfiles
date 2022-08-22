@@ -121,7 +121,8 @@ require("packer").startup {
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme
-    use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
+    -- use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
+    use { "rose-pine/neovim", as = "rose-pine", tag = "v1.*", config = conf "rosepine" }
 
     if packer_bootstrap then
       require("packer").sync()
