@@ -122,7 +122,9 @@ require("packer").startup {
 
     -- colorscheme
     -- use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
-    use { "rose-pine/neovim", as = "rose-pine", tag = "v1.*", config = conf "rosepine" }
+    -- use { "rose-pine/neovim", as = "rose-pine", tag = "v1.*", config = conf "rosepine" }
+    -- use { "rebelot/kanagawa.nvim", config = conf "kanagawa" }
+    use { "EdenEast/nightfox.nvim", config = conf "nightfox" }
 
     if packer_bootstrap then
       require("packer").sync()
