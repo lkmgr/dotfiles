@@ -3,7 +3,7 @@
 " Based on https://gist.github.com/BurntSushi/393546a65db38d57cedcfd72c6d89bf3
 
 " Reset all settings to default
-sanitize tridactyllocal tridactylsync
+" sanitize tridactyllocal tridactylsync
 
 unbind <C-a>
 unbind <C-x>
@@ -27,5 +27,5 @@ bind J tabnext
 
 bind x tabclose
 
-set editorcmd kitty lvim
+set editorcmd kitty nvim
 
