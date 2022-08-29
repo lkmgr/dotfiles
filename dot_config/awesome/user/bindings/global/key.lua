@@ -143,11 +143,11 @@ awful.keyboard.append_global_keybindings {
   end, { description = "go back", group = "client" }),
 
   awful.key({ mod.super }, "comma", function()
-    awful.screen.focus_relative(-1)
-  end, { description = "focus the previous screen", group = "screen" }),
+    awful.screen.focus(2)
+  end, { description = "focus screen 2", group = "screen" }),
   awful.key({ mod.super }, "period", function()
-    awful.screen.focus_relative(1)
-  end, { description = "focus the next screen", group = "screen" }),
+    awful.screen.focus(1)
+  end, { description = "focus screen 1", group = "screen" }),
   -- awful.key({ mod.super, mod.ctrl }, "n",
   --     function ()
   --         local c = awful.client.restore()

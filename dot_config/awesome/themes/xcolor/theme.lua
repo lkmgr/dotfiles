@@ -18,7 +18,7 @@ theme.icon_theme = "/usr/share/icons/Papirus-Dark/128x128/apps/"
 
 -- font
 theme.font_name = "JetBrainsMono Nerd Font"
-theme.font_size = "14"
+theme.font_size = "12"
 theme.font = theme.font_name .. " " .. theme.font_size
 
 -- xresources colors
@@ -45,7 +45,7 @@ theme.xlightgray = "#CFD3DA"
 theme.urgent_red = "#D13426"
 
 -- general
-theme.bg_normal = theme.xwhite
+theme.bg_normal = theme.xbg
 theme.bg_focus = theme.xred
 theme.bg_urgent = theme.urgent_red
 theme.bg_minimize = theme.bg_normal
@@ -57,7 +57,7 @@ theme.fg_urgent = theme.bg_normal
 theme.fg_minimize = theme.bg_normal
 
 -- borders
-theme.useless_gap = dpi(10)
+theme.useless_gap = dpi(8)
 theme.border_width = dpi(5)
 theme.border_color_normal = theme.xbrblack
 theme.border_color_active = theme.bg_focus

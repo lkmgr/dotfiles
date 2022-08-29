@@ -8,11 +8,15 @@ local naughty = require "naughty"
 
 local config_dir = gears.filesystem.get_configuration_dir()
 
-beautiful.init(config_dir .. "themes/xcolor/theme.lua")
+beautiful.init(config_dir .. "themes/pywal/theme.lua")
 
 require "user.bindings"
 require "user.rules"
-require "user.signals"
+require "user.signals.client"
+require "user.signals.naughty"
+require "user.signals.ruled"
+require "user.signals.screen"
+require "user.signals.tag"
 
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)

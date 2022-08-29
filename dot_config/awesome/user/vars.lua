@@ -24,5 +24,9 @@ return {
     l.magnifier,
     l.corner.nw,
   },
-  tags = { " 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 " },
+  layout_by_screen_idx = {
+    [1] = l.tile,
+    [2] = l.tile.bottom,
+  },
+  tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
 }
