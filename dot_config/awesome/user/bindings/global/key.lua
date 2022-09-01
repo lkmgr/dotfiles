@@ -73,7 +73,7 @@ awful.keyboard.append_global_keybindings {
   group = "tag",
   awful.key({ mod.super }, "bracketleft", awful.tag.viewprev, { description = "view previous" }),
   awful.key({ mod.super }, "bracketright", awful.tag.viewnext, { description = "view next" }),
-  -- awful.key({ mod.super }, "grave", awful.tag.history.restore, { description = "go back" }),
+  awful.key({ mod.super }, "grave", awful.tag.history.restore, { description = "go back" }),
   awful.key {
     modifiers = { mod.super },
     keygroup = "numrow",
@@ -135,12 +135,12 @@ awful.keyboard.append_global_keybindings {
     awful.client.focus.byidx(-1)
   end, { description = "focus previous by index", group = "client" }),
 
-  awful.key({ mod.super }, "grave", function()
-    awful.client.focus.history.previous()
-    if client.focus then
-      client.focus:raise()
-    end
-  end, { description = "go back", group = "client" }),
+  -- awful.key({ mod.super }, "grave", function()
+  --   awful.client.focus.history.previous()
+  --   if client.focus then
+  --     client.focus:raise()
+  --   end
+  -- end, { description = "go back", group = "client" }),
 
   awful.key({ mod.super }, "comma", function()
     awful.screen.focus(2)

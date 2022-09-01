@@ -17,7 +17,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
   local screen_layout = vars.layout_by_screen_idx[s.index]
   awful.tag(vars.tags, s, screen_layout)
 
-  s.promptbox = widgets.create_promptbox()
+  -- s.promptbox = widgets.create_promptbox()
   s.layoutbox = widgets.create_layoutbox(s)
   s.taglist = widgets.create_taglist(s)
   s.tasklist = widgets.create_tasklist(s)

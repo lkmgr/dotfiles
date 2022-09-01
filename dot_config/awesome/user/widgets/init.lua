@@ -27,20 +27,30 @@ _M.awesomemenu = {
   },
 }
 
-_M.mainmenu = awful.menu {
-  items = {
-    { "awesome", _M.awesomemenu, beautiful.awesome_icon },
-    { "open terminal", vars.terminal },
+-- _M.mainmenu = awful.menu {
+--   items = {
+--     { "awesome", _M.awesomemenu, beautiful.awesome_icon },
+--     { "open terminal", vars.terminal },
+--   },
+-- }
+
+-- _M.launcher = awful.widget.launcher { image = beautiful.awesome_icon, menu = _M.mainmenu }
+
+_M.launcher = awful.widget.launcher {
+  image = beautiful.awesome_icon,
+  menu = awful.menu {
+    items = {
+      { "awesome", _M.awesomemenu, beautiful.awesome_icon },
+      { "open terminal", vars.terminal },
+    },
   },
 }
 
-_M.launcher = awful.widget.launcher { image = beautiful.awesome_icon, menu = _M.mainmenu }
+_M.textclock = wibox.widget.textclock("%d.%m.%Y %H:%M:%S", 1)
 
-_M.textclock = wibox.widget.textclock(" %d.%m.%Y %H:%M:%S ", 1)
-
-function _M.create_promptbox()
-  return awful.widget.prompt()
-end
+-- function _M.create_promptbox()
+--   return awful.widget.prompt()
+-- end
 
 function _M.create_layoutbox(s)
   return awful.widget.layoutbox {
@@ -172,7 +182,7 @@ function _M.create_wibox(s)
     widget = {
       layout = wibox.layout.align.horizontal,
       -- Left widgets
-      { layout = wibox.layout.fixed.horizontal, _M.launcher, s.taglist, s.promptbox },
+      { layout = wibox.layout.fixed.horizontal, _M.launcher, s.taglist },
       -- s.mytasklist, -- Middle widget
       -- { layout = wibox.layout.flex.horizontal },
       s.tasklist,
