@@ -11,7 +11,7 @@ function M.config()
 
   lualine.setup {
     options = {
-      theme = "rose-pine",
+      theme = "nordfox",
       component_separators = "|",
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "NvimTree", "neo-tree", "dashboard", "Outline", "alpha" },
