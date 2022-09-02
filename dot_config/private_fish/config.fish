@@ -17,6 +17,10 @@ end
 #     source /usr/local/opt/asdf/libexec/asdf.fish
 # end
 
+if test -f /opt/homebrew/bin/brew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+end
+
 if type -q starship
   starship init fish | source
 end
