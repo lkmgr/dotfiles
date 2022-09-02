@@ -2,6 +2,9 @@
 #!{{ lookPath "bash" }}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
+# taps
+tap "homebrew/cask-fonts"
+
 # formulas
 brew "git"
 brew "fish"
@@ -13,6 +16,7 @@ brew "neovim", args: ["HEAD"]
 # casks
 cask "linearmouse"
 cask "stats"
+cask "font-cascadia-code-pl"
 
 EOF
 
