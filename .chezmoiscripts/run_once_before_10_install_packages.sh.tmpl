@@ -1,0 +1,17 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!{{ lookPath "bash" }}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+# formulas
+brew "git"
+brew "fish"
+
+# HEAD versions
+brew "neovim", args: ["HEAD"]
+
+# casks
+cask "linearmouse"
+
+EOF
+
+{{ end -}}
