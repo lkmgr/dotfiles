@@ -10,7 +10,7 @@ function M.config()
     -- integrated
     ensure_installed = "all",
     sync_install = false,
-    ignore_install = {},
+    ignore_install = { "phpdoc" }, -- not working on ARM Mac
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false, -- check if needed
