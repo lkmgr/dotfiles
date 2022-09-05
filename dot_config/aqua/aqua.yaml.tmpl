@@ -8,11 +8,8 @@ registries:
     path: registry.yaml
 
 packages:
-  - name: BurntSushi/ripgrep@13.0.0
   - name: FiloSottile/age@v1.0.0
-  # - name: Peltoche/lsd@0.23.0
   - name: ajeetdsouza/zoxide@v0.8.3
-  # - name: dandavison/delta@0.14.0
   - name: derailed/k9s@v0.26.3
   - name: extrawurst/gitui@v0.21.0
   - name: fluxcd/flux2@v0.33.0
@@ -24,14 +21,20 @@ packages:
   - name: kubernetes/kubectl@v1.25.0
   - name: mikefarah/yq@v4.27.3
   - name: mozilla/sops@v3.7.3
-  # - name: ogham/exa@v0.10.1
-  - name: sharkdp/bat@v0.22.0
-  - name: sharkdp/fd@v8.4.0
   - name: starship/starship@v1.10.2
   - name: stedolan/jq@jq-1.6
   - name: stern/stern@v1.21.0
   - name: twpayne/chezmoi@v2.22.1
   - name: wagoodman/dive@v0.10.0
+
+{{- if and (ne .chezmoi.os "darwin") (ne .chezmoi.arch "arm64") }}
+  - name: ogham/exa@v0.10.1
+  - name: Peltoche/lsd@0.23.0
+  - name: dandavison/delta@0.14.0
+  - name: sharkdp/bat@v0.22.0
+  - name: sharkdp/fd@v8.4.0
+  - name: BurntSushi/ripgrep@13.0.0
+{{- end }}
 
   # - name: denisidoro/navi@v2.20.1
   #   registry: local
