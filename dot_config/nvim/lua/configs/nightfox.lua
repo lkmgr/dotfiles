@@ -38,7 +38,10 @@ function M.config()
         lightspeed = true,
         lsp_trouble = true,
         mini = true,
-        native_lsp = true,
+        native_lsp = {
+          enable = true,
+          background = true,
+        },
         neotree = true,
         notify = true,
         telescope = true,
