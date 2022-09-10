@@ -15,10 +15,6 @@ if type -q aqua
   set -gx AQUA_ROOT_DIR ~/.local/share/aqua
 end
 
-if type -q volta
-  set -gx VOLTA_HOME ~/.volta
-end
-
 set -gx GPG_TTY (tty)
 set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
 

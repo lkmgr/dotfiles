@@ -13,10 +13,6 @@ if type -q aqua
   fish_add_path "$AQUA_ROOT_DIR/bin"
 end
 
-if type -q volta
-  fish_add_path ~/.volta/bin
-end
-
 fish_add_path ~/.krew/bin
 
 # if type -q gem; and test -d (gem environment gemdir)
