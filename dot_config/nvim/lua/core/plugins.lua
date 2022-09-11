@@ -42,8 +42,6 @@ require("packer").startup {
     use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = conf "neo-tree" }
 
     use { "nvim-lualine/lualine.nvim", config = conf "lualine" }
-    -- use { "feline-nvim/feline.nvim", config = conf "feline" }
-    -- use { "SmiteshP/nvim-navic", config = conf "navic" }
 
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = conf "treesitter" }
