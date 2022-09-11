@@ -117,14 +117,15 @@ require("packer").startup {
     use { "folke/which-key.nvim", config = conf "which-key" }
     use { "akinsho/toggleterm.nvim", config = conf "toggleterm" }
     use { "windwp/nvim-autopairs", config = conf "autopairs" }
-    use { "rrethy/vim-hexokinase", run = "make hexokinase", config = conf "hexokinase" }
+    -- use { "rrethy/vim-hexokinase", run = "make hexokinase", config = conf "hexokinase" }
+    use { "NvChad/nvim-colorizer.lua", config = conf "colorizer" }
     use "ggandor/lightspeed.nvim"
 
     -- colorscheme
     -- use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
     -- use { "rose-pine/neovim", as = "rose-pine", tag = "v1.*", config = conf "rosepine" }
     -- use { "rebelot/kanagawa.nvim", config = conf "kanagawa" }
-    use { "EdenEast/nightfox.nvim", config = conf "nightfox" }
+    use { "EdenEast/nightfox.nvim", config = conf "themes.nightfox" }
 
     if packer_bootstrap then
       require("packer").sync()
