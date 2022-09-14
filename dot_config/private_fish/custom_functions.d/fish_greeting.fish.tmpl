@@ -1,4 +1,6 @@
+{{- if ne .chezmoi.os "darwin" -}}
 function fish_greeting
     echo
     color-bars
 end
+{{ end -}}
