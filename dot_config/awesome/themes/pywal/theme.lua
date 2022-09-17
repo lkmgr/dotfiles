@@ -60,6 +60,8 @@ theme.border_color_normal = theme.x_black2
 theme.border_color_active = theme.x_cyan
 theme.border_color_marked = theme.x_magenta
 
+theme.border_radius = 10
+
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:

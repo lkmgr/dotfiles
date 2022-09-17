@@ -4,6 +4,7 @@ local hotkeys_popup = require "awful.hotkeys_popup"
 local wibox = require "wibox"
 local gears = require "gears"
 
+local helpers = require "user.helpers"
 local mod = require "user.bindings.mod"
 local vars = require "user.vars"
 
@@ -179,10 +180,16 @@ function _M.create_wibox(s)
   return awful.wibar {
     position = "top",
     screen = s,
-    widget = {
+    -- shape = helpers.rrect(20),
+    height = 40,
+    widget = wibox.container.margin({
       layout = wibox.layout.align.horizontal,
       -- Left widgets
-      { layout = wibox.layout.fixed.horizontal, _M.launcher, s.taglist },
+      {
+        layout = wibox.layout.fixed.horizontal,
+        _M.launcher,
+        s.taglist,
+      },
       -- s.mytasklist, -- Middle widget
       -- { layout = wibox.layout.flex.horizontal },
       s.tasklist,
@@ -193,7 +200,7 @@ function _M.create_wibox(s)
         _M.textclock,
         s.layoutbox,
       },
-    },
+    }, 0, 0, 0, 0),
   }
 end
 

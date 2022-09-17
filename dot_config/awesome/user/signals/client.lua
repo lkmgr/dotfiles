@@ -1,4 +1,7 @@
 local awful = require "awful"
+local beautiful = require "beautiful"
+local gears = require "gears"
+local helpers = require "user.helpers"
 -- local wibox = require("wibox")
 require "awful.autofocus"
 
@@ -6,6 +9,25 @@ require "awful.autofocus"
 client.connect_signal("mouse::enter", function(c)
   c:activate { context = "mouse_enter", raise = false }
 end)
+
+if beautiful.border_radius and beautiful.border_radius > 0 then
+  client.connect_signal("manage", function(c, startup)
+    if not c.fullscreen and not c.maximized then
+      c.shape = helpers.rrect(beautiful.border_radius)
+    end
+  end)
+
+  local function no_round_corners(c)
+    if c.fullscreen or c.maximized then
+      c.shape = gears.shape.rectangle
+    else
+      c.shape = helpers.rrect(beautiful.border_radius)
+    end
+  end
+
+  client.connect_signal("property::fullscreen", no_round_corners)
+  client.connect_signal("property::maximized", no_round_corners)
+end
 
 -- client.connect_signal("request::manage", function(c)
 --   if awesome.startup then

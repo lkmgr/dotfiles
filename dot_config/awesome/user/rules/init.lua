@@ -1,6 +1,8 @@
 local awful = require "awful"
 local ruled = require "ruled"
 
+local vars = require "user.vars"
+
 -- Rules to apply to new clients.
 ruled.client.connect_signal("request::rules", function()
   -- All clients will match this rule.
@@ -64,9 +66,30 @@ ruled.client.connect_signal("request::rules", function()
   --     properties = { titlebars_enabled = true },
   -- }
 
-  -- Set Firefox to always map on the tag named "2" on screen 1.
-  -- ruled.client.append_rule {
-  --     rule       = { class = "Firefox"     },
-  --     properties = { screen = 1, tag = "2" }
-  -- }
+  ruled.client.append_rules {
+    {
+      rule = { class = "firefox" },
+      properties = { tag = vars.tags[1] },
+    },
+    {
+      rule = { class = "Steam" },
+      properties = { tag = vars.tags[3] },
+    },
+    {
+      rule = { class = "Lens" },
+      properties = { tag = vars.tags[4] },
+    },
+    {
+      rule = { class = "discord" },
+      properties = { tag = vars.tags[5] },
+    },
+    {
+      rule = { class = "chromium" },
+      properties = { tag = vars.tags[6] },
+    },
+    {
+      rule = { class = "Thunderbird" },
+      properties = { tag = vars.tags[7] },
+    },
+  }
 end)
