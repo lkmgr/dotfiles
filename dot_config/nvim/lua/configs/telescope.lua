@@ -40,7 +40,7 @@ function M.config()
         vertical = {
           mirror = true,
           preview_cutoff = 30,
-          preview_height = 0.65,
+          preview_height = 0.55,
           prompt_position = "top",
         },
         width = 0.9,
