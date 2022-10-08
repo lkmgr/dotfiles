@@ -12,9 +12,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   }
 end
 
-local function conf(name)
-  return string.format('require("configs.%s").config()', name)
-end
+local function conf(name) return string.format('require("configs.%s")', name) end
 
 require("packer").startup {
   function(use)
@@ -54,9 +52,7 @@ require("packer").startup {
     }
     use {
       "williamboman/mason-lspconfig.nvim",
-      config = function()
-        require "configs.lsp"
-      end,
+      config = conf "lsp",
     }
     use "neovim/nvim-lspconfig"
     use { "jose-elias-alvarez/null-ls.nvim", config = conf "null-ls" }
@@ -79,7 +75,10 @@ require("packer").startup {
     }
 
     -- Snippets
-    use { "L3MON4D3/LuaSnip", config = conf "luasnip" }
+    use {
+      "L3MON4D3/LuaSnip",
+      config = function() require("luasnip/loaders/from_vscode").lazy_load() end,
+    }
     use "rafamadriz/friendly-snippets"
 
     -- Telescope
@@ -87,16 +86,18 @@ require("packer").startup {
     use {
       "nvim-telescope/telescope-fzf-native.nvim",
       run = "make",
-      config = function()
-        require("telescope").load_extension "fzf"
-      end,
+      config = function() require("telescope").load_extension "fzf" end,
     }
 
     -- mini.nvim
     use { "echasnovski/mini.nvim", config = conf "mini" }
 
     -- Surround
-    use { "kylechui/nvim-surround", config = conf "surround" }
+    -- use { "kylechui/nvim-surround", config = conf "surround" }
+    use {
+      "kylechui/nvim-surround",
+      config = function() require("nvim-surround").setup() end,
+    }
 
     -- DAP
     use { "mfussenegger/nvim-dap", config = conf "dap" }
@@ -120,15 +121,11 @@ require("packer").startup {
     -- use { "rebelot/kanagawa.nvim", config = conf "kanagawa" }
     use { "EdenEast/nightfox.nvim", config = conf "themes.nightfox" }
 
-    if packer_bootstrap then
-      require("packer").sync()
-    end
+    if packer_bootstrap then require("packer").sync() end
   end,
   config = {
     display = {
-      open_fn = function()
-        return require("packer.util").float { border = "rounded" }
-      end,
+      open_fn = function() return require("packer.util").float { border = "rounded" } end,
     },
     auto_clean = true,
     compile_on_sync = true,

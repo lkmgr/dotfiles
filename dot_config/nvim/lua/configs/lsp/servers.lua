@@ -1,6 +1,4 @@
-local M = {}
-
-M.ensure_installed = {
+return {
   -- LSP
   "css-lsp",
   "emmet-ls",
@@ -18,14 +16,3 @@ M.ensure_installed = {
   "chrome-debug-adapter",
   "node-debug2-adapter",
 }
-
-function M.config()
-  local status_ok, mason = pcall(require, "mason")
-  if not status_ok then
-    return
-  end
-
-  mason.setup()
-end
-
-return M
