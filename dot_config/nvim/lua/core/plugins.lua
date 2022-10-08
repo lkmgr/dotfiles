@@ -25,12 +25,6 @@ require("packer").startup {
     use "MunifTanjim/nui.nvim"
     use "stevearc/dressing.nvim"
     use { "kyazdani42/nvim-web-devicons", config = conf "icons" }
-    use {
-      "antoinemadec/FixCursorHold.nvim",
-      config = function()
-        vim.g.cursorhold_updatetime = 100
-      end,
-    }
 
     use { "rcarriga/nvim-notify", config = conf "notify" }
 
