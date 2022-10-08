@@ -40,19 +40,14 @@ if cmp_status_ok and snip_status_ok then
   cmp.setup {
     preselect = cmp.PreselectMode.None,
     formatting = {
-      -- fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
         vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-        -- vim_item.kind = string.format("%s %s %s", kind_icons[vim_item.kind], vim_item.kind, menu[entry.source.name])
         vim_item.menu = menu[entry.source.name]
         return vim_item
       end,
     },
     snippet = {
-      expand = function(args)
-        luasnip.lsp_expand(args.body)
-      end,
+      expand = function(args) luasnip.lsp_expand(args.body) end,
     },
     -- duplicates = {
     --   nvim_lsp = 1,

@@ -1,7 +1,5 @@
 local status_ok, neotree = pcall(require, "neo-tree")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 vim.g.neo_tree_remove_legacy_commands = true
 
@@ -164,9 +162,7 @@ neotree.setup {
   event_handlers = {
     {
       event = "neo_tree_buffer_enter",
-      handler = function(_)
-        vim.opt_local.signcolumn = "auto"
-      end,
+      handler = function(_) vim.opt_local.signcolumn = "auto" end,
     },
   },
 }

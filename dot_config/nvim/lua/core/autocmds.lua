@@ -1,23 +1,11 @@
--- local utils = require "core.utils"
-
 local cmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-
--- augroup("packer_plugins", {})
--- cmd("BufWritePost", {
---   desc = "Auto Compile plugins.lua file",
---   group = "packer_plugins",
---   command = "source <afile> | PackerCompile",
---   pattern = "plugins.lua",
--- })
 
 local yank_highlight = augroup("yank_highlight", {})
 cmd("TextYankPost", {
   desc = "Highlight Yank",
   group = yank_highlight,
-  callback = function()
-    vim.highlight.on_yank { higroup = "IncSearch", timeout = 400 }
-  end,
+  callback = function() vim.highlight.on_yank { higroup = "IncSearch", timeout = 400 } end,
   pattern = "*",
 })
 
@@ -51,27 +39,21 @@ local custom_local_opts = augroup("custom_local_opts", {})
 cmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
   desc = "No auto comment leader",
   group = custom_local_opts,
-  callback = function()
-    vim.opt_local.formatoptions:remove { "c", "r", "o" }
-  end,
+  callback = function() vim.opt_local.formatoptions:remove { "c", "r", "o" } end,
   pattern = "*",
 })
 
 cmd("FileType", {
   desc = "QF nobuflisted",
   group = custom_local_opts,
-  callback = function()
-    vim.opt_local.buflisted = false
-  end,
+  callback = function() vim.opt_local.buflisted = false end,
   pattern = "qf",
 })
 
 cmd("FileType", {
   desc = "Cursorcolumns",
   group = custom_local_opts,
-  callback = function()
-    vim.opt_local.cursorcolumn = true
-  end,
+  callback = function() vim.opt_local.cursorcolumn = true end,
   pattern = { "yaml", "yml" },
 })
 

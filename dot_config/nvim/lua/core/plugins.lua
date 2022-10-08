@@ -13,6 +13,7 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 local function conf(name) return string.format('require("configs.%s")', name) end
+local function callsetup(name) return string.format('require("%s").setup()', name) end
 
 require("packer").startup {
   function(use)
@@ -36,7 +37,7 @@ require("packer").startup {
 
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", config = conf "treesitter" }
-    use { "nvim-treesitter/nvim-treesitter-context", config = conf "treesitter-context" }
+    use { "nvim-treesitter/nvim-treesitter-context", config = callsetup "treesitter-context" }
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use "RRethy/nvim-treesitter-textsubjects"
     use "windwp/nvim-ts-autotag"
@@ -46,14 +47,8 @@ require("packer").startup {
     use { "numToStr/Comment.nvim", config = conf "comment" }
 
     -- LSP/Diagnostics
-    use {
-      "williamboman/mason.nvim",
-      config = conf "mason",
-    }
-    use {
-      "williamboman/mason-lspconfig.nvim",
-      config = conf "lsp",
-    }
+    use { "williamboman/mason.nvim", config = callsetup "mason" }
+    use { "williamboman/mason-lspconfig.nvim", config = conf "lsp" }
     use "neovim/nvim-lspconfig"
     use { "jose-elias-alvarez/null-ls.nvim", config = conf "null-ls" }
     use { "j-hui/fidget.nvim", config = conf "fidget" }
@@ -94,10 +89,7 @@ require("packer").startup {
 
     -- Surround
     -- use { "kylechui/nvim-surround", config = conf "surround" }
-    use {
-      "kylechui/nvim-surround",
-      config = function() require("nvim-surround").setup() end,
-    }
+    use { "kylechui/nvim-surround", config = callsetup "nvim-surround" }
 
     -- DAP
     use { "mfussenegger/nvim-dap", config = conf "dap" }

@@ -6,9 +6,7 @@ local M = {}
 -- a complete table to provide full access to configuration when calling Terminal:new()
 M.user_terminals = {}
 function M.toggle_term_cmd(term_details)
-  if type(term_details) == "string" then
-    term_details = { cmd = term_details, hidden = true }
-  end
+  if type(term_details) == "string" then term_details = { cmd = term_details, hidden = true } end
   local term_key = term_details.cmd
   if vim.v.count > 0 and term_details.count == nil then
     term_details.count = vim.v.count
@@ -45,7 +43,6 @@ function M.open_uri_under_cursor()
       uri = '"' .. uri .. '"'
       vim.cmd("!xdg-open " .. uri .. " > /dev/null")
       vim.cmd "mode"
-      -- print(uri)
       return true
     else
       return false
@@ -56,9 +53,7 @@ function M.open_uri_under_cursor()
 
   -- any uri with a protocol segment
   local regex_protocol_uri = "%a*:%/%/[%a%d%#%[%]%-%%+:;!$@/?&=_.,~*()]*"
-  if open_uri(string.match(word_under_cursor, regex_protocol_uri)) then
-    return
-  end
+  if open_uri(string.match(word_under_cursor, regex_protocol_uri)) then return end
 
   -- consider anything that looks like string/string a github link
   local regex_plugin_url = "[%a%d%-%.%_]*%/[%a%d%-%.%_]*"
@@ -68,11 +63,6 @@ function M.open_uri_under_cursor()
 end
 
 function M.packer_snap_and_sync()
-  -- async.run(function()
-  --   vim.notify.async("Creating Packer Snapshot and Syncing...", "info", {
-  --     title = "Packer",
-  --   })
-  -- end)
   vim.notify("Creating Packer Snapshot and Syncing...", "info", { title = "Packer" })
   local snap_shot_time = os.date "!%Y-%m-%dT%TZ"
   vim.cmd("PackerSnapshot " .. snap_shot_time .. ".json")
@@ -101,33 +91,34 @@ end
 -- Auto-install credit: https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/blob/3e9534a04e2850fa9bd107556c679b993a8b14e7/lua/mason-tool-installer/init.lua
 local do_install = function(p, version)
   if version then
-    vim.notify(string.format("[Mason] Auto-Updating %s to %s...", p.name, version), vim.log.levels.INFO)
+    vim.notify(
+      string.format("[Mason] Auto-Updating %s to %s...", p.name, version),
+      vim.log.levels.INFO
+    )
   else
     vim.notify(string.format("[Mason] Installing %s...", p.name), vim.log.levels.INFO)
   end
-  p:on("install:success", function()
-    vim.notify(string.format("[Mason] Successfully installed %s", p.name), vim.log.levels.INFO)
-  end)
-  p:on("install:failed", function()
-    vim.notify(string.format("[Mason] Failed installing %s", p.name), vim.log.levels.ERROR)
-  end)
+  p:on(
+    "install:success",
+    function() vim.notify(string.format("[Mason] Successfully installed %s", p.name), vim.log.levels.INFO) end
+  )
+  p:on(
+    "install:failed",
+    function() vim.notify(string.format("[Mason] Failed installing %s", p.name), vim.log.levels.ERROR) end
+  )
   p:install { version = version }
 end
 
 function M.update_mason_servers()
   local mr_ok, mr = pcall(require, "mason-registry")
-  local conf_ok, mason_config = pcall(require, "configs.mason")
-  if not mr_ok or not conf_ok then
-    return
-  end
+  local conf_ok, ensure_installed = pcall(require, "configs.lsp.servers")
+  if not mr_ok or not conf_ok then return end
 
-  for _, name in ipairs(mason_config.ensure_installed) do
+  for _, name in ipairs(ensure_installed) do
     local p = mr.get_package(name)
     if p:is_installed() then
       p:check_new_version(function(ok, version)
-        if ok then
-          do_install(p, version.latest_version)
-        end
+        if ok then do_install(p, version.latest_version) end
       end)
     else
       do_install(p)

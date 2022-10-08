@@ -1,10 +1,7 @@
 local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 local utils = require "core.utils"
--- local colors = require("catppuccin.palettes").get_palette()
 
 lualine.setup {
   options = {
@@ -18,9 +15,7 @@ lualine.setup {
   sections = {
     lualine_a = {
       {
-        function()
-          return " "
-        end,
+        function() return " " end,
         separator = "",
         padding = { left = 1, right = 0 },
       },
@@ -36,8 +31,14 @@ lualine.setup {
           local buf_client_names = {}
           for _, client in pairs(vim.lsp.buf_get_clients(0)) do
             if client.name == "null-ls" then
-              vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "FORMATTING"))
-              vim.list_extend(buf_client_names, utils.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS"))
+              vim.list_extend(
+                buf_client_names,
+                utils.null_ls_sources(vim.bo.filetype, "FORMATTING")
+              )
+              vim.list_extend(
+                buf_client_names,
+                utils.null_ls_sources(vim.bo.filetype, "DIAGNOSTICS")
+              )
             else
               table.insert(buf_client_names, client.name)
             end
@@ -45,7 +46,6 @@ lualine.setup {
           return table.concat(buf_client_names, ", ")
         end,
         icon = "  LSP:",
-        -- color = { fg = colors.mauve },
         color = { fg = "#c4a7e7" },
       },
     },

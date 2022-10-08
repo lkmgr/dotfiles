@@ -1,7 +1,5 @@
 local status_ok, null_ls = pcall(require, "null-ls")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
 local formatting = null_ls.builtins.formatting
@@ -34,10 +32,7 @@ null_ls.setup {
         desc = "Auto format before save",
         group = augroup,
         buffer = bufnr,
-        callback = function()
-          -- vim.lsp.buf.formatting_sync(nil, 5000)
-          vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 5000 }
-        end,
+        callback = function() vim.lsp.buf.format { bufnr = bufnr, timeout_ms = 5000 } end,
       })
     end
   end,

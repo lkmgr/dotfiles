@@ -1,7 +1,5 @@
 local status_ok, catppuccin = pcall(require, "catppuccin")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 local cp = require("catppuccin.palettes").get_palette()
 

@@ -18,18 +18,12 @@ map("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Toggle Neotree" })
 map("n", "<leader>o", "<cmd>Neotree focus<CR>", { desc = "Focus Neotree" })
 map("n", "<leader>r", require("smart-splits").start_resize_mode, { desc = "Start Window Resize Mode" })
 map("n", "<leader>n", "<cmd>lua MiniStarter.open()<CR>", { desc = "Open Dashboard" })
-map("n", "<leader>f", function()
-  require("telescope.builtin").find_files()
-end, { desc = "Telescope Find File" })
-map("n", "<leader>j", function()
-  require("telescope.builtin").live_grep()
-end, { desc = "Telescope Find Text" })
+map("n", "<leader>f", function() require("telescope.builtin").find_files() end, { desc = "Telescope Find File" })
+map("n", "<leader>j", function() require("telescope.builtin").live_grep() end, { desc = "Telescope Find Text" })
 map("n", "<C-_>", function() -- CTRL-/
   require("telescope.builtin").current_buffer_fuzzy_find()
 end, { desc = "Search current buffer" })
-map("n", "<leader>/", function()
-  require("telescope.builtin").resume()
-end, { desc = "Resume Telescope" })
+map("n", "<leader>/", function() require("telescope.builtin").resume() end, { desc = "Resume Telescope" })
 map("n", "<S-h>", "^", { desc = "Move to first char of line" })
 map("n", "<S-l>", "$", { desc = "Move to end of line" })
 
@@ -50,124 +44,77 @@ map("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 map("n", "gj", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
 -- Git
-map("n", "<leader>gj", function()
-  require("gitsigns").next_hunk()
-end, { desc = "Next git hunk" })
-map("n", "<leader>gk", function()
-  require("gitsigns").prev_hunk()
-end, { desc = "Previous git hunk" })
-map("n", "<leader>gl", function()
-  require("gitsigns").blame_line()
-end, { desc = "View git blame" })
-map("n", "<leader>gp", function()
-  require("gitsigns").preview_hunk()
-end, { desc = "Preview git hunk" })
-map("n", "<leader>gh", function()
-  require("gitsigns").reset_hunk()
-end, { desc = "Reset git hunk" })
-map("n", "<leader>gr", function()
-  require("gitsigns").reset_buffer()
-end, { desc = "Reset git buffer" })
-map("n", "<leader>gs", function()
-  require("gitsigns").stage_hunk()
-end, { desc = "Stage git hunk" })
-map("n", "<leader>gu", function()
-  require("gitsigns").undo_stage_hunk()
-end, { desc = "Unstage git hunk" })
-map("n", "<leader>gd", function()
-  require("gitsigns").diffthis()
-end, { desc = "View git diff" })
-map("n", "<leader>gg", function()
-  utils.toggle_term_cmd "lazygit"
-end, { desc = "Lazygit" })
-map("n", "<leader>gf", function()
-  utils.toggle_term_cmd "gitui"
-end, { desc = "GitUI" })
+map("n", "<leader>gj", function() require("gitsigns").next_hunk() end, { desc = "Next git hunk" })
+map("n", "<leader>gk", function() require("gitsigns").prev_hunk() end, { desc = "Previous git hunk" })
+map("n", "<leader>gl", function() require("gitsigns").blame_line() end, { desc = "View git blame" })
+map("n", "<leader>gp", function() require("gitsigns").preview_hunk() end, { desc = "Preview git hunk" })
+map("n", "<leader>gh", function() require("gitsigns").reset_hunk() end, { desc = "Reset git hunk" })
+map("n", "<leader>gr", function() require("gitsigns").reset_buffer() end, { desc = "Reset git buffer" })
+map("n", "<leader>gs", function() require("gitsigns").stage_hunk() end, { desc = "Stage git hunk" })
+map("n", "<leader>gu", function() require("gitsigns").undo_stage_hunk() end, { desc = "Unstage git hunk" })
+map("n", "<leader>gd", function() require("gitsigns").diffthis() end, { desc = "View git diff" })
+map("n", "<leader>gg", function() utils.toggle_term_cmd "lazygit" end, { desc = "Lazygit" })
+map("n", "<leader>gf", function() utils.toggle_term_cmd "gitui" end, { desc = "GitUI" })
 
 -- smart-splits
-map("n", "<C-h>", function()
-  require("smart-splits").move_cursor_left()
-end, { desc = "Move to left split" })
-map("n", "<C-j>", function()
-  require("smart-splits").move_cursor_down()
-end, { desc = "Move to below split" })
-map("n", "<C-k>", function()
-  require("smart-splits").move_cursor_up()
-end, { desc = "Move to above split" })
-map("n", "<C-l>", function()
-  require("smart-splits").move_cursor_right()
-end, { desc = "Move to right split" })
+map("n", "<C-h>", function() require("smart-splits").move_cursor_left() end, { desc = "Move to left split" })
+map("n", "<C-j>", function() require("smart-splits").move_cursor_down() end, { desc = "Move to below split" })
+map("n", "<C-k>", function() require("smart-splits").move_cursor_up() end, { desc = "Move to above split" })
+map("n", "<C-l>", function() require("smart-splits").move_cursor_right() end, { desc = "Move to right split" })
 
-map("n", "<C-Up>", function()
-  require("smart-splits").resize_up()
-end, { desc = "Resize split up" })
-map("n", "<C-Down>", function()
-  require("smart-splits").resize_down()
-end, { desc = "Resize split down" })
-map("n", "<C-Left>", function()
-  require("smart-splits").resize_left()
-end, { desc = "Resize split left" })
-map("n", "<C-Right>", function()
-  require("smart-splits").resize_right()
-end, { desc = "Resize split right" })
+map("n", "<C-Up>", function() require("smart-splits").resize_up() end, { desc = "Resize split up" })
+map("n", "<C-Down>", function() require("smart-splits").resize_down() end, { desc = "Resize split down" })
+map("n", "<C-Left>", function() require("smart-splits").resize_left() end, { desc = "Resize split left" })
+map("n", "<C-Right>", function() require("smart-splits").resize_right() end, { desc = "Resize split right" })
 
 -- Telescope
-map("n", "<leader>sR", function()
-  require("telescope.builtin").oldfiles()
-end, { desc = "Open Recent File" })
-map("n", "<leader>sb", function()
-  require("telescope.builtin").buffers()
-end, { desc = "Buffers" })
-map("n", "<leader>sc", function()
-  require("telescope.builtin").commands()
-end, { desc = "Commands" })
-map("n", "<leader>sf", function()
-  require("telescope.builtin").find_files()
-end, { desc = "Find File" })
-map("n", "<leader>sF", function()
-  require("telescope.builtin").find_files { hidden = true, no_ignore = true }
-end, { desc = "Find File with hidden" })
-map("n", "<leader>sh", function()
-  require("telescope.builtin").help_tags()
-end, { desc = "Find Help" })
-map("n", "<leader>sk", function()
-  require("telescope.builtin").keymaps()
-end, { desc = "Keymaps" })
-map("n", "<leader>sr", function()
-  require("telescope.builtin").registers()
-end, { desc = "Registers" })
-map("n", "<leader>st", function()
-  require("telescope.builtin").live_grep()
-end, { desc = "Find Text" })
+map("n", "<leader>sR", function() require("telescope.builtin").oldfiles() end, { desc = "Open Recent File" })
+map("n", "<leader>sb", function() require("telescope.builtin").buffers() end, { desc = "Buffers" })
+map("n", "<leader>sc", function() require("telescope.builtin").commands() end, { desc = "Commands" })
+map("n", "<leader>sf", function() require("telescope.builtin").find_files() end, { desc = "Find File" })
+map(
+  "n",
+  "<leader>sF",
+  function() require("telescope.builtin").find_files { hidden = true, no_ignore = true } end,
+  { desc = "Find File with hidden" }
+)
+map("n", "<leader>sh", function() require("telescope.builtin").help_tags() end, { desc = "Find Help" })
+map("n", "<leader>sk", function() require("telescope.builtin").keymaps() end, { desc = "Keymaps" })
+map("n", "<leader>sr", function() require("telescope.builtin").registers() end, { desc = "Registers" })
+map("n", "<leader>st", function() require("telescope.builtin").live_grep() end, { desc = "Find Text" })
 map("n", "<leader>sT", function()
   require("telescope.builtin").live_grep {
-    additional_args = function(args)
-      return vim.list_extend(args, { "--hidden", "--no-ignore" })
-    end,
+    additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore" }) end,
   }
 end, { desc = "Find Text in all files" })
-map("n", "<leader>sy", function()
-  require("telescope.builtin").find_files { hidden = true }
-end, { desc = "Find Hidden File" })
-map("n", "<leader>su", function()
-  require("telescope.builtin").current_buffer_fuzzy_find()
-end, { desc = "Current Buffer Fuzzy Find" })
-map("n", "<leader>ss", function()
-  require("telescope.builtin").grep_string()
-end, { desc = "Search Hovered String" })
-map("n", "<leader>sy", function()
-  require("telescope.builtin").treesitter()
-end, { desc = "Treesitter" })
+map(
+  "n",
+  "<leader>sy",
+  function() require("telescope.builtin").find_files { hidden = true } end,
+  { desc = "Find Hidden File" }
+)
+map(
+  "n",
+  "<leader>su",
+  function() require("telescope.builtin").current_buffer_fuzzy_find() end,
+  { desc = "Current Buffer Fuzzy Find" }
+)
+map("n", "<leader>ss", function() require("telescope.builtin").grep_string() end, { desc = "Search Hovered String" })
+map("n", "<leader>sy", function() require("telescope.builtin").treesitter() end, { desc = "Treesitter" })
 
-map("n", "<leader>sze", function()
-  require("telescope.builtin").symbols { sources = { "emoji" } }
-end, { desc = "Emoji" })
-map("n", "<leader>szg", function()
-  require("telescope.builtin").symbols { sources = { "gitmoji" } }
-end, { desc = "Gitmoji" })
-map("n", "<leader>szn", function()
-  require("telescope.builtin").symbols { sources = { "nerd" } }
-end, { desc = "Nerd" })
+map(
+  "n",
+  "<leader>sze",
+  function() require("telescope.builtin").symbols { sources = { "emoji" } } end,
+  { desc = "Emoji" }
+)
+map(
+  "n",
+  "<leader>szg",
+  function() require("telescope.builtin").symbols { sources = { "gitmoji" } } end,
+  { desc = "Gitmoji" }
+)
+map("n", "<leader>szn", function() require("telescope.builtin").symbols { sources = { "nerd" } } end, { desc = "Nerd" })
 
 -- Buffers
 map("n", "<leader>c", "<cmd>lua MiniBufremove.delete(nil, true)<CR>", { desc = "Close Buffer" })
