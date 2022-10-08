@@ -30,7 +30,6 @@ require("packer").startup {
 
     use { "mrjones2014/smart-splits.nvim", config = conf "smart-splits" }
 
-    -- Buffers
     use { "akinsho/bufferline.nvim", config = conf "bufferline" }
 
     use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", config = conf "neo-tree" }
@@ -65,15 +64,19 @@ require("packer").startup {
     use { "folke/trouble.nvim", config = conf "trouble" }
     use "b0o/SchemaStore.nvim"
 
-    -- cmp
-    use { "hrsh7th/nvim-cmp", config = conf "cmp" }
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-cmdline"
-    use "hrsh7th/cmp-nvim-lsp-signature-help"
-    use "hrsh7th/cmp-nvim-lua"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "saadparwaiz1/cmp_luasnip"
+    use {
+      "hrsh7th/nvim-cmp",
+      config = conf "cmp",
+      requires = {
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-nvim-lsp",
+        "saadparwaiz1/cmp_luasnip",
+      },
+    }
 
     -- Snippets
     use { "L3MON4D3/LuaSnip", config = conf "luasnip" }
@@ -92,17 +95,15 @@ require("packer").startup {
     -- mini.nvim
     use { "echasnovski/mini.nvim", config = conf "mini" }
 
-    -- surround
+    -- Surround
     use { "kylechui/nvim-surround", config = conf "surround" }
 
     -- DAP
     use { "mfussenegger/nvim-dap", config = conf "dap" }
     use { "rcarriga/nvim-dap-ui" }
 
-    -- Blame previews, Git hunk management
+    -- Git
     use { "lewis6991/gitsigns.nvim", config = conf "gitsigns" }
-
-    -- Git diff views
     use { "sindrets/diffview.nvim", config = conf "diffview" }
 
     use { "lukas-reineke/indent-blankline.nvim", config = conf "indent-blankline" }
@@ -111,9 +112,9 @@ require("packer").startup {
     use { "windwp/nvim-autopairs", config = conf "autopairs" }
     -- use { "rrethy/vim-hexokinase", run = "make hexokinase", config = conf "hexokinase" }
     use { "NvChad/nvim-colorizer.lua", config = conf "colorizer" }
-    use "ggandor/lightspeed.nvim"
+    use { "ggandor/lightspeed.nvim" }
 
-    -- colorscheme
+    -- Colorschemes
     -- use { "catppuccin/nvim", as = "catppuccin", config = conf "catppuccin" }
     -- use { "rose-pine/neovim", as = "rose-pine", tag = "v1.*", config = conf "rosepine" }
     -- use { "rebelot/kanagawa.nvim", config = conf "kanagawa" }
