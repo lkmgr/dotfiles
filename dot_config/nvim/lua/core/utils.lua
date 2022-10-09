@@ -57,9 +57,7 @@ function M.open_uri_under_cursor()
 
   -- consider anything that looks like string/string a github link
   local regex_plugin_url = "[%a%d%-%.%_]*%/[%a%d%-%.%_]*"
-  if open_uri("https://github.com/" .. string.match(word_under_cursor, regex_plugin_url)) then
-    return
-  end
+  if open_uri("https://github.com/" .. string.match(word_under_cursor, regex_plugin_url)) then return end
 end
 
 function M.packer_snap_and_sync()
@@ -91,10 +89,7 @@ end
 -- Auto-install credit: https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim/blob/3e9534a04e2850fa9bd107556c679b993a8b14e7/lua/mason-tool-installer/init.lua
 local do_install = function(p, version)
   if version then
-    vim.notify(
-      string.format("[Mason] Auto-Updating %s to %s...", p.name, version),
-      vim.log.levels.INFO
-    )
+    vim.notify(string.format("[Mason] Auto-Updating %s to %s...", p.name, version), vim.log.levels.INFO)
   else
     vim.notify(string.format("[Mason] Installing %s...", p.name), vim.log.levels.INFO)
   end
@@ -124,6 +119,23 @@ function M.update_mason_servers()
       do_install(p)
     end
   end
+end
+
+-- Credit: https://github.com/numToStr/BufOnly.nvim/blob/30579c2851743b00c4547c324a16f2c1cfa5a41c/lua/BufOnly.lua
+function M.buf_only()
+  local cur = vim.api.nvim_get_current_buf()
+  local deleted, modified = 0, 0
+
+  for _, n in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_get_option(n, "modified") then
+      modified = modified + 1
+    elseif n ~= cur and (vim.api.nvim_buf_get_option(n, "modifiable")) then
+      vim.api.nvim_buf_delete(n, {})
+      deleted = deleted + 1
+    end
+  end
+
+  print("BufOnly: " .. deleted .. " deleted buffer(s), " .. modified .. " modified buffer(s)")
 end
 
 return M
