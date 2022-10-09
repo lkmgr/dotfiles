@@ -47,6 +47,7 @@ end
 if type -q systemctl
   abbr sct 'sudo systemctl'
   abbr sctu 'systemctl --user'
+  abbr jrc 'sudo journalctl'
 end
 
 if type -q docker
