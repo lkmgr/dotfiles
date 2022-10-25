@@ -5,7 +5,7 @@ include "/home/lukas/.gtkrc-2.0.mine"
 gtk-theme-name="Catppuccin-blue"
 gtk-icon-theme-name="Papirus-Dark"
 gtk-font-name="SF Pro Text 10"
-gtk-cursor-theme-name="macOSMonterey"
+gtk-cursor-theme-name="macOS-Monterey"
 gtk-cursor-theme-size=32
 gtk-toolbar-style=GTK_TOOLBAR_BOTH
 gtk-toolbar-icon-size=GTK_ICON_SIZE_LARGE_TOOLBAR

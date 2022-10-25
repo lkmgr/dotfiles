@@ -6,6 +6,6 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-Xcursor.size: 32
-Xcursor.theme: macOSMonterey
+Xcursor.size: 40
+Xcursor.theme: macOS-Monterey
 
