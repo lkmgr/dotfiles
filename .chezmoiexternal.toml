@@ -15,9 +15,17 @@
   type = "archive"
   url = "https://github.com/ful1e5/apple_cursor/archive/main.tar.gz"
   exact = true
-  stripComponents = 2
+  stripComponents = 3
   refreshPeriod = "72h"
   include = ["*/bitmaps/macOS-Monterey/*.png"]
+
+[".icons/macOS-Monterey-White"]
+  type = "archive"
+  url = "https://github.com/ful1e5/apple_cursor/archive/main.tar.gz"
+  exact = true
+  stripComponents = 3
+  refreshPeriod = "72h"
+  include = ["*/bitmaps/macOS-Monterey-White/*.png"]
 
 [".config/awesome/modules/vicious"]
   type = "archive"
