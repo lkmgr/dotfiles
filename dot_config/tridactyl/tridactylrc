@@ -2,6 +2,8 @@
 
 " Based on https://gist.github.com/BurntSushi/393546a65db38d57cedcfd72c6d89bf3
 
+" Run :viewconfig --user to get runtime config changes
+
 " Reset all settings to default
 " sanitize tridactyllocal tridactylsync
 
@@ -13,7 +15,7 @@ bind / fillcmdline find
 bind ? fillcmdline find -?
 bind n findnext 1
 bind N findnext -1
-bind ,h nohlsearch
+bind <Space>h nohlsearch
 
 set findcase smart
 
@@ -27,5 +29,23 @@ bind J tabnext
 
 bind x tabclose
 
+bind gd tabdetach
+
+bind u undo tab
+bind U undo window
+
 set editorcmd kitty nvim
 
+set newtab about:blank
+
+autocmd DocStart youtube.com mode ignore
+
+" Only hint search results on Google and DDG
+bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
+bindurl www.google.com F hint -Jbc #search div:not(.action-menu) > a
+
+bindurl ^https://duckduckgo.com f hint -Jc [data-testid="result-title-a"]
+bindurl ^https://duckduckgo.com F hint -Jbc [data-testid="result-title-a"]
+
+autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+autocmd DocStart ^http(s?)://www.amazon.de js tri.excmds.urlmodify("-t", "www", "smile")
