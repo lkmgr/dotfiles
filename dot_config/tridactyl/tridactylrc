@@ -7,6 +7,8 @@
 " Reset all settings to default
 " sanitize tridactyllocal tridactylsync
 
+autocmd DocLoad twitter.com urlmodify -t twitter.com nitter.net
+
 unbind <C-a>
 unbind <C-x>
 unbind <C-f>
