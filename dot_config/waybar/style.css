@@ -31,7 +31,7 @@
 
 * {
   font-family: FontAwesome, FantasqueSansMono Nerd Font;
-  font-size: 16px;
+  font-size: 17px;
   min-height: 0;
 }
 
@@ -74,12 +74,14 @@
 #cpu,
 #memory,
 #clock,
-#tray {
+#tray,
+#temperature {
   background-color: @surface0;
   /* padding: 0.5rem 1rem; */
   padding-left: 1rem;
   padding-right: 1rem;
   /* border-radius: 1.5rem; */
+  color: @text;
 }
 
 #workspaces,
@@ -92,7 +94,7 @@
   margin: 0 4px;
 }
 
-#network {
+#cpu {
   border-radius: 1.5rem 0 0 1.5rem;
   margin-left: 4px;
 }
@@ -103,6 +105,11 @@
 }
 
 #clock {
+  border-radius: 1.5rem;
+  margin-left: 4px;
+}
+
+#tray {
   border-radius: 1.5rem;
   margin-left: 4px;
 }
