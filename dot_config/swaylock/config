@@ -1,0 +1,9 @@
+image=HDMI-A-1:~/Pictures/Wallpapers/wallhaven-72ejd9.png
+scaling=fill
+color=4C515B
+indicator-radius=320
+indicator-thickness=10
+inside-color=00000022
+key-hl-color=97B5C9
+ring-color=AAAAAA
+line-uses-inside
