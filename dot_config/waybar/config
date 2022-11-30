@@ -1,8 +1,8 @@
-// vim: set ft=jsonc:sw=4:
+// vim: set ft=jsonc:sw=4:et
 [{
     "layer": "top",
     // "position": "bottom",
-    "output": "DP-1",
+    "output": "HDMI-A-1",
     "height": 36,
     "spacing": 0,
     "margin-top": 5,
@@ -33,17 +33,17 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": " {icon} ",
         "format-muted": "muted  ",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""],
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " ", " "],
         },
         "on-click": "pavucontrol",
     },
@@ -73,7 +73,7 @@
 }, {
     "layer": "top",
     // "position": "bottom",
-    "output": "HDMI-A-1",
+    "output": "DP-1",
     "height": 36,
     "spacing": 0,
     "margin-top": 5,
@@ -104,17 +104,17 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": " {icon}",
+        "format-bluetooth": "{volume}% {icon} ",
+        "format-bluetooth-muted": " {icon} ",
         "format-muted": "muted  ",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""],
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [" ", " ", " "],
         },
         "on-click": "pavucontrol",
     },
