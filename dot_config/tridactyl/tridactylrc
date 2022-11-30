@@ -7,8 +7,6 @@
 " Reset all settings to default
 " sanitize tridactyllocal tridactylsync
 
-autocmd DocLoad twitter.com urlmodify -t twitter.com nitter.net
-
 unbind <C-a>
 unbind <C-x>
 unbind <C-f>
@@ -51,3 +49,4 @@ bindurl ^https://duckduckgo.com F hint -Jbc [data-testid="result-title-a"]
 
 autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
 autocmd DocStart ^http(s?)://www.amazon.de js tri.excmds.urlmodify("-t", "www", "smile")
+autocmd DocStart ^http(s?)://twitter.com js tri.excmds.urlmodify("-t", "twitter.com", "nitter.net")
