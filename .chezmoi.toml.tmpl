@@ -1,11 +1,22 @@
 {{- $gitname := promptStringOnce . "gitname" "Git Name" -}}
 {{- $gitmail := promptStringOnce . "gitmail" "Git Mail Address" -}}
 
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
 pager = "less -R"
+encryption = "age"
 
 [data]
   gitname = {{ $gitname | quote }}
   gitmail = {{ $gitmail | quote }}
+  osid = {{ $osid | quote }}
+
+[age]
+  identity = "~/.config/sops/age/keys.txt"
+  recipient = "age1mjwvxuph2r4kvz8lkew4gvfj6xkgyps7mqj724y9akvdd99ljycsur2jrq"
 
 [git]
   autoCommit = false
