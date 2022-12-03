@@ -42,8 +42,9 @@ map ctrl+alt+7 goto_tab 7
 map ctrl+alt+8 goto_tab 8
 map ctrl+alt+9 goto_tab 9
 
-{{ if (eq .chezmoi.os "darwin") }}
 shell {{ lookPath "fish" }} --interactive --login
+
+{{ if (eq .chezmoi.os "darwin") }}
 macos_option_as_alt yes
 map cmd+shift+t new_tab_with_cwd
 font_size 15
