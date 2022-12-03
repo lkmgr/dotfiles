@@ -2,13 +2,13 @@
 [{
     "layer": "top",
     // "position": "bottom",
-    "output": "HDMI-A-1",
+    "output": "DP-1",
     "height": 36,
     "spacing": 0,
     "margin-top": 5,
     "modules-left": ["wlr/workspaces"],
     "modules-center": ["custom/media"],
-    "modules-right": ["pulseaudio", "cpu", "temperature#cpu", "memory", "clock", "tray"],
+    "modules-right": ["pulseaudio", "cpu", "temperature#cpu", "memory", "custom/gpu_usage", "custom/gpu_temp", "network", "clock", "tray"],
     "wlr/workspaces": {
         "format": "{name} {icon}",
         "on-click": "activate",
@@ -59,6 +59,21 @@
     "memory": {
         "format": "{}% ",
     },
+    "custom/gpu_usage": {
+        "exec": "cat /sys/class/drm/card0/device/gpu_busy_percent",
+        "format": "{}%  ",
+        "interval": 2,
+    },
+    "custom/gpu_temp": {
+        "exec": "echo \"$(cat /sys/class/drm/card0/device/hwmon/hwmon3/temp1_input) / 1000\" | bc",
+        "format": "{}°C ",
+        "interval": 2,
+    },
+    "network": {
+        "interface": "enp34s0",
+        "interval": 2,
+        "format": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    },
     "clock": {
         "timezone": "Europe/Berlin",
         "interval": 1,
@@ -73,7 +88,7 @@
 }, {
     "layer": "top",
     // "position": "bottom",
-    "output": "DP-1",
+    "output": "HDMI-A-1",
     "height": 36,
     "spacing": 0,
     "margin-top": 5,

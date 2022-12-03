@@ -73,6 +73,9 @@
 #network,
 #cpu,
 #memory,
+#custom-gpu_usage,
+#custom-gpu_temp,
+#network,
 #clock,
 #tray,
 #temperature {
@@ -99,7 +102,7 @@
   margin-left: 4px;
 }
 
-#memory {
+#network {
   border-radius: 0 1.5rem 1.5rem 0;
   margin-right: 4px;
 }
