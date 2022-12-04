@@ -1,15 +1,3 @@
-# [".config/nvim"]
-#   type = "archive"
-#   url = "https://github.com/kabinspace/AstroVim/archive/1367d3bcff035c7f73bb849e7a55f3516e9cffa5.zip"
-#   exact = false
-#   stripComponents = 1
-
-# [".local/share/lunarvim/lvim"]
-#   type = "archive"
-#   url = "https://github.com/LunarVim/LunarVim/archive/3de829e76ed3d90b25250b1ab76f6425146af9d2.zip"
-#   exact = true
-#   stripComponents = 1
-
 {{- if eq .chezmoi.os "linux" }}
 [".icons/macOS-Monterey"]
   type = "archive"
@@ -25,17 +13,17 @@
   stripComponents = 1
   refreshPeriod = "72h"
 
-[".config/awesome/modules/vicious"]
-  type = "archive"
-  # renovate: currentValue=master
-  url = "https://github.com/vicious-widgets/vicious/archive/4d3025400e565958aadb0738a1dba388fa543d44.zip"
-  exact = true
-  stripComponents = 1
+# [".config/awesome/modules/vicious"]
+#   type = "archive"
+#   # renovate: currentValue=master
+#   url = "https://github.com/vicious-widgets/vicious/archive/4d3025400e565958aadb0738a1dba388fa543d44.zip"
+#   exact = true
+#   stripComponents = 1
 
-[".config/awesome/modules/bling"]
-  type = "archive"
-  # renovate: currentValue=master
-  url = "https://github.com/BlingCorp/bling/archive/e6de047ced41051236a390b081105f598cb0ad8b.zip"
-  exact = true
-  stripComponents = 1
+# [".config/awesome/modules/bling"]
+#   type = "archive"
+#   # renovate: currentValue=master
+#   url = "https://github.com/BlingCorp/bling/archive/e6de047ced41051236a390b081105f598cb0ad8b.zip"
+#   exact = true
+#   stripComponents = 1
 {{- end }}
