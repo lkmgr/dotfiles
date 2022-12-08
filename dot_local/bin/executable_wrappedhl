@@ -3,7 +3,7 @@
 cd ~
 
 export _JAVA_AWT_WM_NONREPARENTING=1
-export XCURSOR_SIZE=24
+export XCURSOR_SIZE=32
 
 export XDG_DATA_DIRS=~/.local/share:/usr/local/share:/usr/share
 export XDG_CONFIG_DIRS=/etc/xdg
