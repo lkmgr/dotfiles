@@ -3,29 +3,16 @@ README.md
 archive
 
 {{- if ne .chezmoi.os "linux" }}
-.config/awesome/
-.config/bspwm/
 .config/deckmaster/
-.config/dunst/
 .config/fontconfig/
 .config/gtk-3.0/
 .config/paru/paru.conf
-.config/polybar/
-.config/qtile/
-.config/rofi/
-.config/sxhkd/
 
-.config/betterlockscreenrc
 .config/chromium-flags.conf
 .config/gtkrc-2.0
-.config/picom.conf
 
 .icons/
 
-.local/share/rofi/
-
 .gtkrc-2.0
-.Xresources
-.xprofile
 {{- end }}
 
