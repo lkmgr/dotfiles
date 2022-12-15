@@ -3,15 +3,20 @@ README.md
 archive
 
 {{- if ne .chezmoi.os "linux" }}
+.config/chromium-flags.conf
 .config/deckmaster/
 .config/fontconfig/
 .config/gtk-3.0/
-.config/paru/paru.conf
-
-.config/chromium-flags.conf
 .config/gtkrc-2.0
+.config/hypr/
+.config/paru/paru.conf
+.config/swaylock/
+.config/waybar/
 
 .icons/
+
+.local/share/dark-mode.d/
+.local/share/light-mode.d/
 
 .gtkrc-2.0
 {{- end }}
