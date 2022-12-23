@@ -30,8 +30,10 @@
 @define-color rosewater #f5e0dc;
 
 * {
-  font-family: FontAwesome, FantasqueSansMono Nerd Font;
-  font-size: 17px;
+  /* font-family: FontAwesome, FantasqueSansMono Nerd Font; */
+  font-family: FontAwesome, SF Pro;
+  font-size: 15px;
+  font-weight: 600;
   min-height: 0;
 }
 
