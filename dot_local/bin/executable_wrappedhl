@@ -6,6 +6,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export GDK_SCALE=2
 export XCURSOR_SIZE=28
 
+export QT_QPA_PLATFORM=wayland
+
 export XDG_DATA_DIRS=~/.local/share:/usr/local/share:/usr/share
 export XDG_CONFIG_DIRS=/etc/xdg
 
