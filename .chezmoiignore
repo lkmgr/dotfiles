@@ -12,6 +12,7 @@ archive
 .config/gtk-3.0/
 .config/gtkrc-2.0
 .config/hypr/
+.config/mako/
 .config/paru/paru.conf
 .config/swayidle/
 .config/swaylock/
