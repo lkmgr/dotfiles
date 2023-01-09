@@ -15,6 +15,10 @@ end
 
 fish_add_path ~/.krew/bin
 
+# Mac Only
+fish_add_path ~/.rd/bin
+fish_add_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # if type -q gem; and test -d (gem environment gemdir)
 #   fish_add_path (gem environment gemdir)/bin
 # end
