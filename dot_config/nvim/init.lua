@@ -22,7 +22,7 @@ require("lazy").setup({
 
   {
     "kyazdani42/nvim-web-devicons",
-    config = { default = true },
+    opts = { default = true },
   },
 
   {
@@ -36,7 +36,7 @@ require("lazy").setup({
   {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
-    config = {
+    opts = {
       current_line_blame = true,
       current_line_blame_opts = {
         delay = 250,
@@ -55,7 +55,7 @@ require("lazy").setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
-    config = {
+    opts = {
       char = "▏",
       context_char = "▏",
       show_current_context = true,
@@ -80,7 +80,7 @@ require("lazy").setup({
 
   {
     "folke/which-key.nvim",
-    config = {
+    opts = {
       key_labels = {
         ["<leader>"] = "SPC",
         ["<space>"] = "SPC",
