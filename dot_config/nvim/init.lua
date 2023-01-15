@@ -127,10 +127,10 @@ require("lazy").setup({
 
   {
     "neovim/nvim-lspconfig",
+    event = "BufReadPre",
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "j-hui/fidget.nvim",
       "folke/neodev.nvim",
     },
     config = function()
@@ -216,6 +216,20 @@ require("lazy").setup({
         end,
       }
     end
+  },
+
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    event = "BufReadPre",
+    dependencies = { "williamboman/mason.nvim" },
+    opts = function()
+      local nls = require("null-ls")
+      return {
+        sources = {
+          nls.builtins.formatting.stylua,
+        },
+      }
+    end,
   },
 
   {
@@ -414,6 +428,10 @@ require("lazy").setup({
             "--trim",
             "--glob=!.git/",
           },
+          layout_config = {
+            width = 0.85,
+            height = 0.85,
+          },
 
           mappings = {
             i = {
@@ -495,6 +513,12 @@ require("lazy").setup({
             glob_pattern = { "!package-lock.json", "!yarn.lock" },
           },
         },
+
+        extensions = {
+          file_browser = {
+            layout_strategy = "vertical",
+          },
+        },
       }
 
       require("telescope").load_extension "file_browser"
@@ -521,13 +545,6 @@ require("lazy").setup({
   },
 })
 
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>')
-
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -544,5 +561,10 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
   group = vim.api.nvim_create_augroup("formatoptions", { clear = true }),
   callback = function() vim.opt_local.formatoptions = "jcrql" end,
   pattern = "*",
+})
+
+-- resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  callback = function() vim.cmd("tabdo wincmd =") end,
 })
 
