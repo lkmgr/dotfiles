@@ -5,7 +5,7 @@ local imap = require("utils.mappings").imap
 
 local M = {}
 
-function M.lsp_buf_mappings(bufnr)
+function M.lsp_buf_mappings(client, bufnr)
   nmap("gD", vim.lsp.buf.declaration, { desc = "Declaration", buffer = bufnr })
   nmap("gd", vim.lsp.buf.definition, { desc = "Definition", buffer = bufnr })
   nmap("K", vim.lsp.buf.hover, { desc = "Hover", buffer = bufnr })
@@ -14,11 +14,25 @@ function M.lsp_buf_mappings(bufnr)
   nmap("<leader>lk", vim.lsp.buf.signature_help, { desc = "Signature Help", buffer = bufnr })
   nmap("<leader>lt", vim.lsp.buf.type_definition, { desc = "Type Definition", buffer = bufnr })
   nmap("<leader>lr", vim.lsp.buf.rename, { desc = "Rename", buffer = bufnr })
-  nmap("<leader>la", vim.lsp.buf.code_action, { desc = "Code Action", buffer = bufnr })
   nmap("<leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add Workspace Folder", buffer = bufnr })
   nmap("<leader>lwr", vim.lsp.buf.remove_workspace_folder, { desc = "Remove Workspace Folder", buffer = bufnr })
-  nmap("<leader>lwl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, { desc = "List Workspace Folders", buffer = bufnr })
-  nmap("<leader>lf", function() vim.lsp.buf.format { async = true } end, { desc = "Format", buffer = bufnr })
+  nmap(
+    "<leader>lwl",
+    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+    { desc = "List Workspace Folders", buffer = bufnr }
+  )
+
+  if client.server_capabilities.codeActionProvider then
+    nmap("<leader>la", vim.lsp.buf.code_action, { desc = "Code Action", buffer = bufnr })
+  end
+
+  if client.server_capabilities.documentFormattingProvider then
+    nmap("<leader>lf", require("utils.format").format, { desc = "Format Document", buffer = bufnr })
+  end
+
+  if client.server_capabilities.documentRangeFormattingProvider then
+    vmap("<leader>lF", require("utils.format").format, { desc = "Format Range", buffer = bufnr })
+  end
 end
 
 function M.setup()
@@ -67,11 +81,19 @@ function M.setup()
   nmap("<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
   nmap("<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
+  -- Buffers
+  nmap("<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+  nmap("<S-Tab>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
+  nmap("<C-c>", "<cmd>lua MiniBufremove.delete(0, true)<cr>", { desc = "Delete buffer" })
+
   -- Diagnostic mappings
   nmap("gl", vim.diagnostic.open_float, { desc = "Hover diagnostics" })
   nmap("gk", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
   nmap("gj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
   nmap("<leader>lq", vim.diagnostic.setloclist, { desc = "Diagnostic loclist" })
+
+  -- Toggle options
+  nmap("<leader>uf", require("utils.format").toggle, { desc = "Toggle format on save" })
 
   -- Telescope
   nmap("<leader>e", "<cmd>Telescope file_browser<cr>", { desc = "File browser" })
@@ -90,7 +112,11 @@ function M.setup()
   end, { desc = "Find text in hidden files" })
   nmap("<leader>sy", "<cmd>Telescope treesitter<cr>", { desc = "Treesitter nodes" })
   nmap("<leader>sze", function() require("telescope.builtin").symbols { sources = { "emoji" } } end, { desc = "Emoji" })
-  nmap("<leader>szg", function() require("telescope.builtin").symbols { sources = { "gitmoji" } } end, { desc = "Gitmoji" })
+  nmap(
+    "<leader>szg",
+    function() require("telescope.builtin").symbols { sources = { "gitmoji" } } end,
+    { desc = "Gitmoji" }
+  )
   nmap("<leader>szn", function() require("telescope.builtin").symbols { sources = { "nerd" } } end, { desc = "Nerd" })
 end
 
