@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "BufReadPost",
-    dependencies = { "RRethy/nvim-treesitter-textsubjects" },
+    -- dependencies = { "RRethy/nvim-treesitter-textsubjects" },
     build = function()
       -- Called this way instead of :TSUpdate so no additional restart is required
       pcall(require("nvim-treesitter.install").update { with_sync = true })
@@ -16,21 +16,21 @@ return {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
+            init_selection = "<cr>",
+            node_incremental = "<cr>",
+            scope_incremental = "<nop>",
+            node_decremental = "<bs>",
           },
         },
-        textsubjects = {
-          enable = true,
-          prev_selection = ",", -- (Optional) keymap to select the previous selection
-          keymaps = {
-            ["<cr>"] = "textsubjects-smart",
-            [";"] = "textsubjects-container-outer",
-            ["i;"] = "textsubjects-container-inner",
-          },
-        },
+        -- textsubjects = {
+        --   enable = true,
+        --   prev_selection = ",", -- (Optional) keymap to select the previous selection
+        --   keymaps = {
+        --     ["<cr>"] = "textsubjects-smart",
+        --     [";"] = "textsubjects-container-outer",
+        --     ["i;"] = "textsubjects-container-inner",
+        --   },
+        -- },
         context_commentstring = {
           enable = true,
           enable_autocmd = false,
