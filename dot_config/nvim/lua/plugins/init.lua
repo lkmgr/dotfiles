@@ -6,6 +6,8 @@ return {
   "MunifTanjim/nui.nvim",
   "stevearc/dressing.nvim",
 
+  "windwp/nvim-spectre",
+
   {
     "rcarriga/nvim-notify",
     config = function() vim.notify = require "notify" end,
@@ -30,6 +32,14 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "契" },
+        topdelete = { text = "契" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
       current_line_blame = true,
       current_line_blame_opts = {
         delay = 250,
@@ -152,22 +162,5 @@ return {
       require("mini.bufremove").setup()
       require("mini.cursorword").setup()
     end,
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "契" },
-        topdelete = { text = "契" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
-      },
-      -- Set up keymappings
-      -- on_attach = function(buffer) end,
-    },
   },
 }

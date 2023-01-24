@@ -118,6 +118,9 @@ function M.setup()
     { desc = "Gitmoji" }
   )
   nmap("<leader>szn", function() require("telescope.builtin").symbols { sources = { "nerd" } } end, { desc = "Nerd" })
+
+  -- Spectre
+  nmap("<leader>r", function() require("spectre").open() end, { desc = "Search and replace" })
 end
 
 return M
