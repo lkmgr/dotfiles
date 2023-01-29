@@ -29,6 +29,12 @@ abbr v nvim
 abbr k kubectl
 abbr kie kubie
 
+# Expand .. to cd .., ... to cd ../../, ...
+abbr --add dotdot --regex '^\.\.+$' --function multicd
+
+# Expand !! to last history item
+abbr -a !! --position anywhere --function last_history_item
+
 if type -q brew
   abbr bi 'brew install'
   abbr bse 'brew search'
