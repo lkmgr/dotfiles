@@ -2,8 +2,9 @@
 
 cd ~
 
-export _JAVA_AWT_WM_NONREPARENTING=1
+export HYPRLAND_LOG_WLR=1
 export GDK_SCALE=1
+export XCURSOR_THEME=macOS-Monterey
 export XCURSOR_SIZE=28
 
 export QT_QPA_PLATFORM=wayland
