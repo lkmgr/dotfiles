@@ -1,7 +1,7 @@
 #!{{ lookPath "zsh" }}
 
-if not type -q zap
+if [ ! $(command -v zap) ]; then
   echo "installing zap..."
   zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
-end
+fi
 
