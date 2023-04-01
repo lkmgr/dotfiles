@@ -1,6 +1,6 @@
 # vim: set ft=toml:
 
-background = "backgrounds/wallhaven-57rmg1.jpg"
+# background = "backgrounds/wallhaven-57rmg1.jpg"
 
 [[keys]]
   index = 0
@@ -107,22 +107,22 @@ background = "backgrounds/wallhaven-57rmg1.jpg"
       command = "echo 'Volume'; pamixer --get-volume-human"
       layout = "0x6+72x30;0x30+72x30"
 
-[[keys]]
-  index = 13
-  [keys.widget]
-    id = "button"
-    [keys.widget.config]
-      icon = "assets/twemoji-dim.png"
-      label = "Mon 15%"
-  [keys.action]
-    exec = "set-monitor-brightness 15"
-
-[[keys]]
-  index = 14
-  [keys.widget]
-    id = "button"
-    [keys.widget.config]
-      icon = "assets/twemoji-bright.png"
-      label = "Mon 45%"
-  [keys.action]
-    exec = "set-monitor-brightness 45"
+# [[keys]]
+#   index = 13
+#   [keys.widget]
+#     id = "button"
+#     [keys.widget.config]
+#       icon = "assets/twemoji-dim.png"
+#       label = "Mon 15%"
+#   [keys.action]
+#     exec = "set-monitor-brightness 15"
+#
+# [[keys]]
+#   index = 14
+#   [keys.widget]
+#     id = "button"
+#     [keys.widget.config]
+#       icon = "assets/twemoji-bright.png"
+#       label = "Mon 45%"
+#   [keys.action]
+#     exec = "set-monitor-brightness 45"

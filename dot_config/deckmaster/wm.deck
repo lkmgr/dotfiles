@@ -1,6 +1,6 @@
 # vim: set ft=toml:
 
-background = "backgrounds/wallhaven-57rmg1.jpg"
+# background = "backgrounds/wallhaven-57rmg1.jpg"
 
 [[keys]]
   index = 0
