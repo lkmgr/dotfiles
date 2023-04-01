@@ -43,7 +43,7 @@ function M.setup()
   map("n", "Q", "<Nop>")
 
   -- General mappings
-  map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save" })
+  -- map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save" })
   map({ "i", "v", "n", "s" }, "<C-q>", "<cmd>q<cr>", { desc = "Quit" })
   map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
@@ -61,25 +61,9 @@ function M.setup()
   vmap("p", '"_dP')
   vmap("P", '"_dP')
 
-  -- Remap for dealing with word wrap
-  nmap("k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
-  nmap("j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
-
   -- Stay in indent mode
   vmap("<", "<gv")
   vmap(">", ">gv")
-
-  -- Focus windows
-  nmap("<C-h>", "<C-w>h", { desc = "Go to left window" })
-  nmap("<C-j>", "<C-w>j", { desc = "Go to lower window" })
-  nmap("<C-k>", "<C-w>k", { desc = "Go to upper window" })
-  nmap("<C-l>", "<C-w>l", { desc = "Go to right window" })
-
-  -- Resize windows
-  nmap("<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-  nmap("<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-  nmap("<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-  nmap("<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
   -- Buffers
   nmap("<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
@@ -95,8 +79,12 @@ function M.setup()
   -- Toggle options
   nmap("<leader>uf", require("utils.format").toggle, { desc = "Toggle format on save" })
 
+  -- File explorer
+  nmap("<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Neotree" })
+  nmap("<leader>o", "<cmd>Neotree focus<cr>", { desc = "Focus Neotree" })
+  -- nmap("<leader>e", "<cmd>Telescope file_browser<cr>", { desc = "File browser" })
+
   -- Telescope
-  nmap("<leader>e", "<cmd>Telescope file_browser<cr>", { desc = "File browser" })
   nmap("<leader>f", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
   nmap("<leader>j", "<cmd>Telescope live_grep<cr>", { desc = "Find text" })
   nmap("<C-_>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", { desc = "Search current buffer" }) -- CTRL-/

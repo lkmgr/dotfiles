@@ -17,23 +17,19 @@ function M.format()
     bufnr = buf,
     timeout_ms = 5000,
     filter = function(client)
-      if have_nls then
-        return client.name == "null-ls"
-      end
+      if have_nls then return client.name == "null-ls" end
       return client.name ~= "null-ls"
     end,
   }
 end
 
 function M.setup_autocmd(client, buf)
-  if client.supports_method("textDocument/formatting") then
+  if client.supports_method "textDocument/formatting" then
     vim.api.nvim_create_autocmd("BufWritePre", {
       group = vim.api.nvim_create_augroup("LspFormat." .. buf, { clear = true }),
       buffer = buf,
       callback = function()
-        if M.autoformat then
-          M.format()
-        end
+        if M.autoformat then M.format() end
       end,
     })
   end

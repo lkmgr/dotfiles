@@ -1,12 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPost",
     -- dependencies = { "RRethy/nvim-treesitter-textsubjects" },
-    build = function()
-      -- Called this way instead of :TSUpdate so no additional restart is required
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
-    end,
+    -- build = function()
+    --   -- Called this way instead of :TSUpdate so no additional restart is required
+    --   pcall(require("nvim-treesitter.install").update { with_sync = true })
+    -- end,
+    build = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup {
         ensure_installed = "all",

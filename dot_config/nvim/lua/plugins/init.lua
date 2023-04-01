@@ -6,6 +6,15 @@ return {
   "MunifTanjim/nui.nvim",
   "stevearc/dressing.nvim",
 
+  {
+    "ggandor/leap.nvim",
+    config = function() require("leap").add_default_mappings() end,
+  },
+  {
+    "ggandor/flit.nvim",
+    config = true,
+  },
+
   "windwp/nvim-spectre",
 
   {
@@ -30,7 +39,6 @@ return {
 
   {
     "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
     opts = {
       signs = {
         add = { text = "▎" },
@@ -51,13 +59,11 @@ return {
 
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
     config = true,
   },
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
     opts = {
       char = "▏",
       context_char = "▏",
@@ -121,12 +127,12 @@ return {
 
   {
     "NvChad/nvim-colorizer.lua",
-    event = "BufReadPre",
     config = function()
       require("colorizer").setup {
         filetypes = { "*" },
         user_default_options = {
           names = false,
+          RGB = false,
           RRGGBBAA = true,
         },
       }
@@ -135,7 +141,7 @@ return {
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "williamboman/mason.nvim" },
     opts = function()
       local nls = require "null-ls"
@@ -161,6 +167,66 @@ return {
       require("mini.tabline").setup()
       require("mini.bufremove").setup()
       require("mini.cursorword").setup()
+
+      require("mini.basics").setup {
+        options = {
+          basic = true,
+          extra_ui = false,
+          win_borders = "bold",
+        },
+        mappings = {
+          basic = true,
+          option_toggle_prefix = [[\]],
+          windows = true,
+          move_with_alt = true,
+        },
+        autocommands = {
+          basic = false,
+          relnum_in_visual_mode = false,
+        },
+      }
+    end,
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    config = function()
+      vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
+
+      require("neo-tree").setup {
+        close_if_last_window = true,
+        default_component_configs = {
+          modified = {
+            symbol = "",
+            highlight = "NeoTreeModified",
+          },
+        },
+        window = {
+          width = 35,
+          mappings = {
+            ["l"] = "open",
+          },
+        },
+        filesystem = {
+          filtered_items = {
+            visible = true,
+            hide_dotfiles = false,
+            hide_by_name = {
+              ".DS_Store",
+              "thumbs.db",
+              "node_modules",
+              "__pycache__",
+            },
+            never_show = { -- remains hidden even if visible is toggled to true
+              ".DS_Store",
+              "thumbs.db",
+              ".git",
+            },
+          },
+          follow_current_file = true,
+          use_libuv_file_watcher = true,
+        },
+      }
     end,
   },
 }
