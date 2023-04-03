@@ -21,20 +21,21 @@ bindkey -e
 autoload -Uz compinit
 compinit
 
-plug "zsh-users/zsh-autosuggestions"
-plug "zsh-users/zsh-completions"
-
-plug "olets/zsh-abbr"
-
-plug "romkatv/powerlevel10k"
-
-# last plugins to load
-plug "zdharma-continuum/fast-syntax-highlighting"
-plug "zsh-users/zsh-history-substring-search"
-
 ZSHRCD="$HOME/.zshrc.d"
 
-plug "$ZSHRCD/aliases.zsh"
+source "$ZSHRCD/plugins.zsh"
+
+# zstyle ':autocomplete:*' widget-style menu-select
+# bindkey -M menuselect '\r' accept-line
+
+source "$ZSHRCD/aliases.zsh"
+
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+export LESS='-R --use-color -Dd+r$Du+b'
+alias ls='ls --color=auto'
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 export ABBR_QUIET=1
 abbr -S gco="git checkout"
