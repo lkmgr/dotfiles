@@ -1,3 +1,7 @@
+ZSHRCD="$HOME/.zshrc.d"
+
+source "$ZSHRCD/utils.zsh"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -6,6 +10,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
+
 HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=50000
@@ -21,24 +26,19 @@ bindkey -e
 autoload -Uz compinit
 compinit
 
-ZSHRCD="$HOME/.zshrc.d"
-
 source "$ZSHRCD/plugins.zsh"
-
-# zstyle ':autocomplete:*' widget-style menu-select
-# bindkey -M menuselect '\r' accept-line
-
+source "$ZSHRCD/env.zsh"
+source "$ZSHRCD/paths.zsh"
 source "$ZSHRCD/aliases.zsh"
 
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ip='ip -color=auto'
-export LESS='-R --use-color -Dd+r$Du+b'
-alias ls='ls --color=auto'
-export MANPAGER="less -R --use-color -Dd+r -Du+b"
+if command_exists direnv; then
+  eval "$(direnv hook zsh)"
+fi
 
-export ABBR_QUIET=1
-abbr -S gco="git checkout"
+if command_exists fnm; then
+  eval "$(fnm env --use-on-cd)"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
