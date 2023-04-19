@@ -20,6 +20,7 @@ setopt nomatch
 setopt append_history inc_append_history share_history hist_ignore_dups extended_history
 
 unsetopt autocd extendedglob notify
+unsetopt LIST_BEEP
 
 bindkey -e
 
@@ -30,6 +31,7 @@ source "$ZSHRCD/plugins.zsh"
 source "$ZSHRCD/env.zsh"
 source "$ZSHRCD/paths.zsh"
 source "$ZSHRCD/aliases.zsh"
+source "$ZSHRCD/config.zsh"
 
 if command_exists direnv; then
   eval "$(direnv hook zsh)"

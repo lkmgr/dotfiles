@@ -1,3 +1,5 @@
+export LS_COLORS="$(vivid generate catppuccin-macchiato)"
+
 export LESS='-R --use-color -Dd+r$Du+b'
 export MANPAGER='less -R --use-color -Dd+r -Du+b'
 
