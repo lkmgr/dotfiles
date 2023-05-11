@@ -35,4 +35,14 @@ function M.setup_autocmd(client, buf)
   end
 end
 
+function M.setup_eslint_autocmd(_, buf)
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = vim.api.nvim_create_augroup("EslintFormat." .. buf, { clear = true }),
+    buffer = buf,
+    callback = function()
+      if M.autoformat then vim.cmd "EslintFixAll" end
+    end,
+  })
+end
+
 return M

@@ -23,94 +23,8 @@ return {
   },
 
   {
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
     opts = { default = true },
-  },
-
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require("tokyonight").setup()
-  --     vim.cmd [[colorscheme tokyonight]]
-  --   end,
-  -- },
-
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    lazy = false,
-    config = function()
-      require("catppuccin").setup {
-        flavour = "mocha",
-        background = {
-          light = "latte",
-          dark = "mocha",
-        },
-        transparent_background = false,
-        show_end_of_buffer = false,
-        term_colors = false,
-        dim_inactive = {
-          enabled = false,
-          shade = "dark",
-          percentage = 0.15,
-        },
-        no_italic = false,
-        no_bold = false,
-        styles = {
-          comments = { "italic" },
-          conditionals = { "italic" },
-          loops = {},
-          functions = {},
-          keywords = {},
-          strings = {},
-          variables = {},
-          numbers = {},
-          booleans = {},
-          properties = {},
-          types = {},
-          operators = {},
-        },
-        color_overrides = {},
-        custom_highlights = {},
-        integrations = {
-          gitsigns = true,
-          leap = true,
-          markdown = true,
-          mason = true,
-          mini = true,
-          neotree = true,
-          cmp = true,
-          notify = true,
-          -- treesitter_context = true,
-          treesitter = true,
-          telescope = true,
-          which_key = true,
-          -- special
-          indent_blankline = {
-            enabled = true,
-            -- colored_indent_levels = true,
-          },
-          native_lsp = {
-            enabled = true,
-            virtual_text = {
-              errors = { "italic" },
-              hints = { "italic" },
-              warnings = { "italic" },
-              information = { "italic" },
-            },
-            underlines = {
-              errors = { "underline" },
-              hints = { "underline" },
-              warnings = { "underline" },
-              information = { "underline" },
-            },
-          },
-        },
-      }
-      vim.cmd.colorscheme "catppuccin"
-    end,
   },
 
   {
@@ -142,16 +56,16 @@ return {
     },
   },
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      char = "▏",
-      context_char = "▏",
-      show_current_context = true,
-      show_current_context_start = true,
-      use_treesitter = true,
-    },
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   opts = {
+  --     char = "▏",
+  --     context_char = "▏",
+  --     show_current_context = true,
+  --     show_current_context_start = true,
+  --     use_treesitter = true,
+  --   },
+  -- },
 
   {
     "numToStr/Comment.nvim",
@@ -228,6 +142,7 @@ return {
       return {
         sources = {
           nls.builtins.formatting.stylua,
+          nls.builtins.formatting.prettierd,
         },
       }
     end,
@@ -244,9 +159,31 @@ return {
   {
     "echasnovski/mini.nvim",
     config = function()
-      require("mini.tabline").setup()
+      -- require("mini.tabline").setup()
       require("mini.bufremove").setup()
-      require("mini.cursorword").setup()
+      -- require("mini.cursorword").setup()
+
+      require("mini.splitjoin").setup {
+        mappings = {
+          toggle = "gS",
+        },
+      }
+
+      require("mini.indentscope").setup {
+        draw = {
+          animation = function() return 10 end,
+        },
+        symbol = "▏",
+      }
+
+      require("mini.move").setup {
+        mappings = {
+          left = "H",
+          right = "L",
+          down = "J",
+          up = "K",
+        },
+      }
 
       require("mini.basics").setup {
         options = {
@@ -258,11 +195,27 @@ return {
           basic = true,
           option_toggle_prefix = [[\]],
           windows = true,
-          move_with_alt = true,
+          move_with_alt = false,
         },
         autocommands = {
           basic = false,
           relnum_in_visual_mode = false,
+        },
+      }
+    end,
+  },
+
+  {
+    "akinsho/bufferline.nvim",
+    config = function()
+      require("bufferline").setup {
+        highlights = require("catppuccin.groups.integrations.bufferline").get(),
+        options = {
+          offsets = {
+            {
+              filetype = "neo-tree",
+            },
+          },
         },
       }
     end,

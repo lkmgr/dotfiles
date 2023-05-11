@@ -19,7 +19,7 @@ vim.opt.runtimepath:prepend(lazypath)
 -- Load plugins from `lua/plugins/init.lua`
 require("lazy").setup("plugins", {
   install = {
-    colorscheme = { "tokyonight" },
+    colorscheme = { "catppuccin" },
   },
   ui = {
     border = "rounded",

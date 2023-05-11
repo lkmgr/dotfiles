@@ -21,7 +21,7 @@ return {
         ensure_installed = {
           "bashls",
           "cssls",
-          "denols",
+          -- "denols",
           "docker_compose_language_service",
           "dockerls",
           "eslint",
@@ -88,6 +88,10 @@ return {
             end,
             capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
           }
+
+          if server == "eslint" then
+            opts.on_attach = function(client, bufnr) require("utils.format").setup_eslint_autocmd(client, bufnr) end
+          end
 
           local present, server_overrides = pcall(require, "config.server-settings." .. server)
           if present then opts = vim.tbl_deep_extend("force", server_overrides, opts) end
