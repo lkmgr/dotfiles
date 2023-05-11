@@ -3,6 +3,9 @@ alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias ls='ls --color=auto'
 
+alias aurins='paru --color always -Sl --aur | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "paru -Si {1}" --reverse | xargs -ro paru -S'
+alias pacins='pacman --color always -Sl | awk '\''{print $2($4=="" ? "" : " *")}'\'' | fzf --multi --ansi --preview "paru -Si {1}" --reverse | xargs -ro sudo pacman -S'
+
 export ABBR_QUIET=1
 
 abbr -S g=git

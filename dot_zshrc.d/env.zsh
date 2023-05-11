@@ -14,6 +14,7 @@ else
   export VISUAL=vi
 fi
 
+export GPG_TTY=$TTY
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 
 if command_exists aqua; then

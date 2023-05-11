@@ -8,6 +8,7 @@ command_timeout = 30000
 
 format = """
 [ ](bold purple)\
+$shell\
 $username\
 $hostname\
 $kubernetes\
@@ -36,7 +37,6 @@ $time\
 $line_break\
 $jobs\
 $status\
-$shell\
 $character"""
 
 [character]
@@ -88,3 +88,5 @@ symbol = "\uf21a "
 [time]
 disabled = false
 
+[shell]
+disabled = false
