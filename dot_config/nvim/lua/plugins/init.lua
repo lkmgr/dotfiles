@@ -15,7 +15,7 @@ return {
     config = true,
   },
 
-  "windwp/nvim-spectre",
+  "nvim-pack/nvim-spectre",
 
   {
     "rcarriga/nvim-notify",
@@ -211,6 +211,8 @@ return {
       require("bufferline").setup {
         highlights = require("catppuccin.groups.integrations.bufferline").get(),
         options = {
+          close_command = function(n) require("mini.bufremove").delete(n, false) end,
+          right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
           offsets = {
             {
               filetype = "neo-tree",
