@@ -65,7 +65,7 @@
         "interval": 2,
     },
     "custom/gpu_temp": {
-        "exec": "echo \"$(cat /sys/class/drm/card0/device/hwmon/hwmon3/temp1_input) / 1000\" | bc",
+        "exec": "echo \"$(cat /sys/class/drm/card0/device/hwmon/hwmon{3,4}/temp1_input 2>/dev/null) / 1000\" | bc",
         "format": "{}°C ",
         "interval": 2,
     },

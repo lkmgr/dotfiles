@@ -40,26 +40,22 @@
 #waybar {
   background: transparent;
   color: @text;
-  /* padding-top: 3px; */
-  /* margin: 5px 0; */
 }
 
 #workspaces button {
   color: @lavender;
-  border-radius: 1rem;
-  /* padding: 0.4rem; */
+  margin: 0 0.2rem;
   background: transparent;
+  border: none;
 }
 
 #workspaces button.active {
   color: @sky;
-  border-radius: 1rem;
 }
 
-/* #workspaces button:hover {
-  color: @sapphire;
-  border-radius: 1rem;
-} */
+#workspaces button:hover {
+  color: @sky;
+}
 
 .modules-left {
   margin-left: 1rem;
@@ -83,8 +79,8 @@
 #temperature {
   background-color: @surface0;
   /* padding: 0.5rem 1rem; */
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   /* border-radius: 1.5rem; */
   color: @text;
 }

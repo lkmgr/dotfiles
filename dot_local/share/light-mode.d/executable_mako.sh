@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-makoctl mode -r darkmode
+# Wayland
+# makoctl mode -r darkmode
+

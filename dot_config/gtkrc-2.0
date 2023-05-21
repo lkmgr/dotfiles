@@ -1,1 +1,5 @@
-gtk-cursor-theme-name=macOSMonterey
+# created by KDE Plasma, Fri Apr 7 19:14:07 2023
+#
+
+gtk-alternative-button-order = 1
+
