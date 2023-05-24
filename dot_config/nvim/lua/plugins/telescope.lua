@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     dependencies = {
       "nvim-telescope/telescope-file-browser.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -12,6 +13,7 @@ return {
         defaults = {
           prompt_prefix = " ",
           selection_caret = "❯ ",
+          path_display = { "truncate" },
           vimgrep_arguments = {
             "rg",
             "--color=never",
@@ -117,6 +119,7 @@ return {
         },
       }
 
+      require("telescope").load_extension "fzf"
       require("telescope").load_extension "file_browser"
     end,
   },

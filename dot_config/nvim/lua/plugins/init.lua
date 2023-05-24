@@ -19,7 +19,19 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    config = function() vim.notify = require "notify" end,
+    keys = {
+      {
+        "<leader>un",
+        function() require("notify").dismiss { silent = true, pending = true } end,
+        desc = "Dismiss all Notifications",
+      },
+    },
+    opts = {
+      timeout = 3000,
+      max_height = function() return math.floor(vim.o.lines * 0.75) end,
+      max_width = function() return math.floor(vim.o.columns * 0.75) end,
+    },
+    init = function() vim.notify = require "notify" end,
   },
 
   {
@@ -33,8 +45,8 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = "契" },
-        topdelete = { text = "契" },
+        delete = { text = "" },
+        topdelete = { text = "" },
         changedelete = { text = "▎" },
         untracked = { text = "▎" },
       },
@@ -48,24 +60,64 @@ return {
   },
 
   {
-    "nvim-lualine/lualine.nvim",
-    config = {
-      options = {
-        theme = "catppuccin",
-      },
+    "RRethy/vim-illuminate",
+    lazy = false,
+    keys = {
+      { "]]", desc = "Next Reference" },
+      { "[[", desc = "Prev Reference" },
     },
+    -- event = { "BufReadPost", "BufNewFile" },
+    opts = { delay = 200 },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+
+      local function map(key, dir, buffer)
+        vim.keymap.set(
+          "n",
+          key,
+          function() require("illuminate")["goto_" .. dir .. "_reference"](false) end,
+          { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer }
+        )
+      end
+
+      map("]]", "next")
+      map("[[", "prev")
+
+      -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function()
+          local buffer = vim.api.nvim_get_current_buf()
+          map("]]", "next", buffer)
+          map("[[", "prev", buffer)
+        end,
+      })
+    end,
   },
 
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   opts = {
-  --     char = "▏",
-  --     context_char = "▏",
-  --     show_current_context = true,
-  --     show_current_context_start = true,
-  --     use_treesitter = true,
-  --   },
-  -- },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function()
+      local icons = require "config.icons"
+
+      return {
+        options = {
+          theme = "catppuccin",
+          disabled_filetypes = { statusline = { "dashboard", "alpha", "neo-tree" } },
+        },
+      }
+    end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      char = "▏",
+      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+      show_trailing_blankline_indent = false,
+      show_current_context = false,
+      use_treesitter = true,
+    },
+  },
 
   {
     "numToStr/Comment.nvim",
@@ -84,12 +136,14 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
+      show_help = false,
+      show_keys = false,
       key_labels = {
         ["<leader>"] = "SPC",
         ["<space>"] = "SPC",
       },
       window = {
-        border = "rounded",
+        border = "single",
       },
     },
     config = function(_, opts)
@@ -97,9 +151,18 @@ return {
       wk.setup(opts)
       wk.register {
         mode = { "n", "v" },
-        ["<leader>l"] = { name = "+LSP", w = { name = "Workspace Folders" } },
-        ["<leader>s"] = { name = "+Search" },
-        ["<leader>u"] = { name = "+Options" },
+        ["g"] = { name = "+goto" },
+        ["]"] = { name = "+next" },
+        ["["] = { name = "+prev" },
+        ["<leader><tab>"] = { name = "+tabs" },
+        ["<leader>b"] = { name = "+buffer" },
+        ["<leader>g"] = { name = "+git" },
+        ["<leader>l"] = { name = "+lsp" },
+        ["<leader>q"] = { name = "+quit/session" },
+        ["<leader>s"] = { name = "+search" },
+        ["<leader>u"] = { name = "+options" },
+        ["<leader>w"] = { name = "+windows" },
+        ["<leader>x"] = { name = "+diagnostics/quickfix" },
       }
     end,
   },
@@ -135,7 +198,8 @@ return {
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    -- lazy = false,
+    -- event = { "BufReadPre", "BufNewFile" },
     dependencies = { "williamboman/mason.nvim" },
     opts = function()
       local nls = require "null-ls"
@@ -149,73 +213,134 @@ return {
   },
 
   {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
+    "echasnovski/mini.bufremove",
+    lazy = false,
+    -- stylua: ignore
+    keys = {
+      { "<C-c>", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
+      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
     },
-    config = function() require("luasnip/loaders/from_vscode").lazy_load() end,
   },
 
   {
-    "echasnovski/mini.nvim",
-    config = function()
-      -- require("mini.tabline").setup()
-      require("mini.bufremove").setup()
-      -- require("mini.cursorword").setup()
-
-      require("mini.splitjoin").setup {
-        mappings = {
-          toggle = "gS",
-        },
-      }
-
-      require("mini.indentscope").setup {
-        draw = {
-          animation = function() return 10 end,
-        },
-        symbol = "▏",
-      }
-
-      require("mini.move").setup {
-        mappings = {
-          left = "H",
-          right = "L",
-          down = "J",
-          up = "K",
-        },
-      }
-
-      require("mini.basics").setup {
-        options = {
-          basic = true,
-          extra_ui = false,
-          win_borders = "bold",
-        },
-        mappings = {
-          basic = true,
-          option_toggle_prefix = [[\]],
-          windows = true,
-          move_with_alt = false,
-        },
-        autocommands = {
-          basic = false,
-          relnum_in_visual_mode = false,
-        },
-      }
+    "echasnovski/mini.indentscope",
+    opts = {
+      draw = {
+        animation = function() return 10 end,
+      },
+      symbol = "▏",
+      options = { try_as_border = true },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
+        callback = function() vim.b.miniindentscope_disable = true end,
+      })
     end,
   },
 
   {
+    "echasnovski/mini.splitjoin",
+    opts = {
+      mappings = { toggle = "gS" },
+    },
+  },
+
+  {
+    "echasnovski/mini.move",
+    opts = {
+      mappings = {
+        left = "H",
+        right = "L",
+        down = "J",
+        up = "K",
+      },
+    },
+  },
+
+  {
+    "echasnovski/mini.trailspace",
+    config = true,
+  },
+
+  -- {
+  --   "echasnovski/mini.nvim",
+  --   config = function()
+  -- require("mini.tabline").setup()
+  -- require("mini.bufremove").setup()
+  -- require("mini.cursorword").setup()
+
+  -- require("mini.splitjoin").setup {
+  --   mappings = { toggle = "gS" },
+  -- }
+
+  -- require("mini.indentscope").setup {
+  --   draw = {
+  --     animation = function() return 10 end,
+  --   },
+  --   symbol = "▏",
+  -- }
+
+  -- require("mini.move").setup {
+  --   mappings = {
+  --     left = "H",
+  --     right = "L",
+  --     down = "J",
+  --     up = "K",
+  --   },
+  -- }
+
+  -- require("mini.basics").setup {
+  --   options = {
+  --     basic = true,
+  --     extra_ui = false,
+  --     win_borders = "bold",
+  --   },
+  --   mappings = {
+  --     basic = true,
+  --     option_toggle_prefix = [[\]],
+  --     windows = true,
+  --     move_with_alt = false,
+  --   },
+  --   autocommands = {
+  --     basic = false,
+  --     relnum_in_visual_mode = false,
+  --   },
+  -- }
+  --   end,
+  -- },
+
+  {
     "akinsho/bufferline.nvim",
+    lazy = false,
+    keys = {
+      { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+      { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+      { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+      { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+    },
     config = function()
       require("bufferline").setup {
         highlights = require("catppuccin.groups.integrations.bufferline").get(),
         options = {
           close_command = function(n) require("mini.bufremove").delete(n, false) end,
           right_mouse_command = function(n) require("mini.bufremove").delete(n, false) end,
+          diagnostics = "nvim_lsp",
+          diagnostics_indicator = function(_, _, diag)
+            local icons = require("config.icons").diagnostics
+            local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+              .. (diag.warning and icons.Warn .. diag.warning or "")
+            return vim.trim(ret)
+          end,
           offsets = {
             {
               filetype = "neo-tree",
+              text = "File Explorer",
+              highlight = "Directory",
+              text_align = "center",
             },
           },
         },
@@ -225,12 +350,14 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    init = function() vim.g.neo_tree_remove_legacy_commands = 1 end,
     config = function()
-      vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
-
       require("neo-tree").setup {
         close_if_last_window = true,
         default_component_configs = {
+          container = {
+            right_padding = 1,
+          },
           modified = {
             symbol = "",
             highlight = "NeoTreeModified",
@@ -239,7 +366,9 @@ return {
         window = {
           width = 35,
           mappings = {
+            ["<space>"] = "none",
             ["l"] = "open",
+            ["a"] = { "add", config = { show_path = "relative" } },
           },
         },
         filesystem = {
@@ -262,6 +391,13 @@ return {
           use_libuv_file_watcher = true,
         },
       }
+
+      vim.api.nvim_create_autocmd("TermClose", {
+        pattern = "*lazygit",
+        callback = function()
+          if package.loaded["neo-tree.sources.git_status"] then require("neo-tree.sources.git_status").refresh() end
+        end,
+      })
     end,
   },
 }

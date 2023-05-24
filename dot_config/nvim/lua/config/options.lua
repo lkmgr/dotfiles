@@ -1,41 +1,54 @@
-local o, opt = vim.o, vim.opt
+-- This file is automatically loaded by plugins.config
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.g.mapleader = " " -- set leader key
-vim.g.maplocalleader = " " -- set local leader key
+local opt = vim.opt
 
-vim.cmd "filetype plugin indent on"
-
-o.formatoptions = "jcrql"
-
-opt.shortmess:append { W = true, c = true, C = true, I = true }
-
--- opt.showtabline = 2 -- always display tabline
-opt.autowrite = true
-opt.backspace = opt.backspace + { "nostop" } -- Don't stop backspace at insert
-opt.clipboard = "unnamedplus" -- Connection to the system clipboard
-opt.cmdheight = 1
+opt.autowrite = true -- Enable auto write
+-- opt.backspace = opt.backspace + { "nostop" } -- Don't stop backspace at insert
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
+opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 0
-opt.confirm = true
-opt.copyindent = true -- Copy the previous indentation on autoindenting
-opt.expandtab = true -- Enable the use of space in tab
-opt.fileencoding = "utf-8" -- File content encoding for the buffer
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
+opt.cursorline = true -- Enable highlighting of the current line
+opt.expandtab = true -- Use spaces instead of tabs
+opt.formatoptions = "jcrqlnt" -- tcqj / jcrql
+opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
-opt.history = 100 -- Number of commands to remember in a history table
-opt.laststatus = 3 -- globalstatus
-opt.lazyredraw = true -- lazily redraw screen
-opt.list = true
-opt.listchars = { tab = "→ ", trail = "•", nbsp = "␣", precedes = "⟨", extends = "⟩" }
-opt.preserveindent = true -- Preserve indent structure as much as possible
-opt.pumheight = 10
-opt.relativenumber = true -- Show relative numberline
-opt.scrolloff = 8 -- Number of lines to keep above and below the cursor
-opt.shiftround = true
-opt.shiftwidth = 2 -- Number of space inserted for indentation
-opt.sidescrolloff = 8 -- Number of columns to keep at the sides of the cursor
-opt.tabstop = 2 -- Number of space in a tab
-opt.timeoutlen = 300 -- Length of time to wait for a mapped sequence
-opt.updatetime = 200 -- Length of time to wait before triggering the plugin
+opt.ignorecase = true -- Ignore case
+opt.inccommand = "nosplit" -- preview incremental substitute
+opt.laststatus = 0
+opt.list = true -- Show some invisible characters (tabs...
+-- opt.listchars = { tab = "→ ", trail = "•", nbsp = "␣", precedes = "⟨", extends = "⟩" }
+opt.listchars = { tab = "→ ", nbsp = "␣", precedes = "⟨", extends = "⟩" }
+opt.mouse = "a" -- Enable mouse mode
+opt.number = true -- Print line number
+opt.pumblend = 0 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.relativenumber = true -- Relative line numbers
+opt.scrolloff = 8 -- Lines of context
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 2 -- Size of an indent
+opt.shortmess:append { W = true, I = true, C = true, c = true }
+opt.showmode = false -- Dont show mode since we have a statusline
+opt.sidescrolloff = 8 -- Columns of context
+opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spelllang = { "en" }
+opt.splitbelow = true -- Put new windows below current
 opt.splitkeep = "screen"
+opt.splitright = true -- Put new windows right of current
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 300
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200 -- Save swap file and trigger CursorHold
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap
 
 opt.fillchars = {
   eob = " ",
@@ -47,3 +60,6 @@ opt.fillchars = {
   vertleft = "┤",
   vertright = "├",
 }
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0

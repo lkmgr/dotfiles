@@ -1,37 +1,31 @@
 require "config.options"
-require("config.mappings").setup()
+require("config.keymaps").setup()
 require "config.autocmds"
 
--- Lazy Setup
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "--single-branch",
-    "https://github.com/folke/lazy.nvim.git",
-    lazypath,
-  }
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
 end
-vim.opt.runtimepath:prepend(lazypath)
+vim.opt.rtp:prepend(lazypath)
 
--- Load plugins from `lua/plugins/init.lua`
+-- delay notifications till vim.notify was replaced or after 500ms
+require("util").lazy_notify()
+
 require("lazy").setup("plugins", {
-  install = {
-    colorscheme = { "catppuccin" },
-  },
-  ui = {
-    border = "rounded",
-  },
+  defaults = { lazy = false },
+  install = { colorscheme = { "catppuccin" } },
+  -- checker = { enabled = true },
   performance = {
     rtp = {
       disabled_plugins = {
         "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
+        -- "matchit",
+        -- "matchparen",
+        -- "netrwPlugin",
         "tarPlugin",
+        "tohtml",
+        "tutor",
         "zipPlugin",
       },
     },

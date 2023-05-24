@@ -36,6 +36,7 @@ return {
       color_overrides = {},
       custom_highlights = {},
       integrations = {
+        fidget = true,
         gitsigns = true,
         leap = true,
         markdown = true,
@@ -44,14 +45,22 @@ return {
         neotree = true,
         cmp = true,
         notify = true,
-        -- treesitter_context = true,
+        semantic_tokens = true,
+        treesitter_context = true,
         treesitter = true,
         telescope = true,
+        lsp_trouble = true,
+        illuminate = true,
         which_key = true,
-        -- special
+
+        -- special modules
         indent_blankline = {
           enabled = true,
-          -- colored_indent_levels = true,
+          colored_indent_levels = false,
+        },
+        dap = {
+          enabled = true,
+          enable_ui = true,
         },
         native_lsp = {
           enabled = true,
@@ -67,6 +76,10 @@ return {
             warnings = { "underline" },
             information = { "underline" },
           },
+        },
+        navic = {
+          enabled = false,
+          custom_bg = "NONE",
         },
       },
     }

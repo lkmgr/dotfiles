@@ -8,10 +8,16 @@ return {
     -- end,
     build = ":TSUpdate",
     config = function()
+      local ts_config = require "config.treesitter"
+
       require("nvim-treesitter.configs").setup {
-        ensure_installed = "all",
-        ignore_install = { "comment" },
-        highlight = { enable = true },
+        ensure_installed = ts_config.ensure_installed,
+        -- ignore_install = { "comment" },
+        highlight = {
+          enable = true,
+          disable = function(_, bufnr) return vim.api.nvim_buf_line_count(bufnr) > 10000 end,
+          additional_vim_regex_highlighting = false,
+        },
         indent = { enable = false },
         incremental_selection = {
           enable = true,

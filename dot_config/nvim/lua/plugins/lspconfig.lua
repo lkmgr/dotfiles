@@ -83,15 +83,16 @@ return {
           local opts = {
             on_attach = function(client, bufnr)
               if old_on_attach then old_on_attach(client, bufnr) end
-              require("config.mappings").lsp_buf_mappings(client, bufnr)
-              require("utils.format").setup_autocmd(client, bufnr)
+              require("config.keymaps").lsp_buf_mappings(client, bufnr)
+
+              if server == "eslint" then
+                require("util.format").setup_eslint_autocmd(client, bufnr)
+              else
+                require("util.format").setup_autocmd(client, bufnr)
+              end
             end,
             capabilities = vim.tbl_deep_extend("force", capabilities, lspconfig[server].capabilities or {}),
           }
-
-          if server == "eslint" then
-            opts.on_attach = function(client, bufnr) require("utils.format").setup_eslint_autocmd(client, bufnr) end
-          end
 
           local present, server_overrides = pcall(require, "config.server-settings." .. server)
           if present then opts = vim.tbl_deep_extend("force", server_overrides, opts) end
