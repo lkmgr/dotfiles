@@ -13,6 +13,13 @@
   stripComponents = 1
   refreshPeriod = "72h"
 
+[".config/awesome/modules/lain"]
+  type = "archive"
+  # renovate: currentValue=master
+  url = "https://github.com/lcpz/lain/archive/88f5a8abd2649b348ffec433a24a263b37f122c0.zip"
+  exact = true
+  stripComponents = 1
+
 [".config/awesome/modules/vicious"]
   type = "archive"
   # renovate: currentValue=master
