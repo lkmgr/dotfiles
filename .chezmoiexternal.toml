@@ -13,21 +13,14 @@
   stripComponents = 1
   refreshPeriod = "72h"
 
-[".config/awesome/modules/lain"]
-  type = "archive"
-  # renovate: currentValue=master
-  url = "https://github.com/lcpz/lain/archive/88f5a8abd2649b348ffec433a24a263b37f122c0.zip"
-  exact = true
-  stripComponents = 1
-
-[".config/awesome/modules/vicious"]
+[".config/awesome/vicious"]
   type = "archive"
   # renovate: currentValue=master
   url = "https://github.com/vicious-widgets/vicious/archive/4d3025400e565958aadb0738a1dba388fa543d44.zip"
   exact = true
   stripComponents = 1
 
-[".config/awesome/modules/bling"]
+[".config/awesome/bling"]
   type = "archive"
   # renovate: currentValue=master
   url = "https://github.com/BlingCorp/bling/archive/401985a327797cf146d95789f83421beeda8a27e.zip"
