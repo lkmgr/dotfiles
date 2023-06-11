@@ -59,5 +59,5 @@ return {
     luasnip = "[SNIP]",
     buffer = "[BUF]",
     path = "[PATH]",
-  }
+  },
 }

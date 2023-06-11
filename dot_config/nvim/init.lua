@@ -2,7 +2,7 @@ require "config.options"
 require("config.keymaps").setup()
 require "config.autocmds"
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   -- stylua: ignore
   vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
@@ -13,8 +13,16 @@ vim.opt.rtp:prepend(lazypath)
 require("util").lazy_notify()
 
 require("lazy").setup("plugins", {
-  defaults = { lazy = false },
-  install = { colorscheme = { "catppuccin" } },
+  defaults = {
+    lazy = false,
+    cond = not vim.g.vscode,
+  },
+  install = {
+    colorscheme = { "catppuccin" },
+  },
+  ui = {
+    border = "single",
+  },
   -- checker = { enabled = true },
   performance = {
     rtp = {

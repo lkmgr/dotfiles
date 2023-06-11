@@ -170,6 +170,8 @@ function M.setup()
     }
   end, { desc = "Find text in hidden files" })
   map("n", "<leader>sy", "<cmd>Telescope treesitter<cr>", { desc = "Treesitter nodes" })
+  map("n", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "Grep string" })
+  map("v", "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "Grep string" })
   map(
     "n",
     "<leader>sze",

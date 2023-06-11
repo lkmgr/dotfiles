@@ -4,10 +4,10 @@ return {
   lazy = false,
   config = function()
     require("catppuccin").setup {
-      flavour = "macchiato",
+      flavour = "mocha",
       background = {
         light = "latte",
-        dark = "macchiato",
+        dark = "mocha",
       },
       transparent_background = false,
       show_end_of_buffer = false,
@@ -15,7 +15,7 @@ return {
       dim_inactive = {
         enabled = false,
         shade = "dark",
-        percentage = 0.15,
+        percentage = 0.04,
       },
       no_italic = false,
       no_bold = false,

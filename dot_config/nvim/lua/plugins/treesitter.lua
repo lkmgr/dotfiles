@@ -18,7 +18,7 @@ return {
           disable = function(_, bufnr) return vim.api.nvim_buf_line_count(bufnr) > 10000 end,
           additional_vim_regex_highlighting = false,
         },
-        indent = { enable = false },
+        indent = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {

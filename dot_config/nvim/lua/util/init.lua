@@ -4,6 +4,8 @@ local M = {}
 
 M.root_patterns = { ".git", "lua" }
 
+function M.get_vim_tip() return vim.fn.system { "curl", "-s", "https://vtip.43z.one" } end
+
 ---@param on_attach fun(client, buffer)
 -- function M.on_attach(on_attach)
 --   vim.api.nvim_create_autocmd("LspAttach", {
@@ -83,27 +85,6 @@ function M.get_root()
   return root
 end
 
--- this will return a function that calls telescope.
--- cwd will default to lazyvim.util.get_root
--- for `files`, git_files or find_files will be chosen depending on .git
--- function M.telescope(builtin, opts)
---   local params = { builtin = builtin, opts = opts }
---   return function()
---     builtin = params.builtin
---     opts = params.opts
---     opts = vim.tbl_deep_extend("force", { cwd = M.get_root() }, opts or {})
---     if builtin == "files" then
---       if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
---         opts.show_untracked = true
---         builtin = "git_files"
---       else
---         builtin = "find_files"
---       end
---     end
---     require("telescope.builtin")[builtin](opts)
---   end
--- end
-
 -- Opens a floating terminal (interactive by default)
 ---@param cmd? string[]|string
 ---@param opts? LazyCmdOptions|{interactive?:boolean, esc_esc?:false}
@@ -136,10 +117,10 @@ function M.toggle(option, silent, values)
   end
 end
 
-local enabled = true
+local diag_enabled = true
 function M.toggle_diagnostics()
-  enabled = not enabled
-  if enabled then
+  diag_enabled = not diag_enabled
+  if diag_enabled then
     vim.diagnostic.enable()
     vim.notify("Enabled diagnostics", vim.log.levels.INFO, { title = "Diagnostics" })
   else
@@ -147,10 +128,6 @@ function M.toggle_diagnostics()
     vim.notify("Disabled diagnostics", vim.log.levels.WARN, { title = "Diagnostics" })
   end
 end
-
--- function M.deprecate(old, new)
---   Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
--- end
 
 -- delay notifications till vim.notify was replaced or after 500ms
 function M.lazy_notify()
