@@ -26,4 +26,11 @@
   url = "https://github.com/BlingCorp/bling/archive/401985a327797cf146d95789f83421beeda8a27e.zip"
   exact = true
   stripComponents = 1
+
+[".config/awesome/rubato"]
+  type = "archive"
+  # renovate: currentValue=main
+  url = "https://github.com/andOrlando/rubato/archive/a9181708863265eb4a36c722f664978ee50fe8a0.zip"
+  exact = true
+  stripComponents = 1
 {{- end }}
