@@ -1,5 +1,5 @@
-source $__fish_config_dir/colors/tokyonight-global-colors.fish
-source $__fish_config_dir/colors/tokyonight.fish
+source $__fish_config_dir/colors/catppuccin-mocha-global-colors.fish
+source $__fish_config_dir/colors/catppuccin-mocha.fish
 
 source $__fish_config_dir/custom.d/abbrs.fish
 source $__fish_config_dir/custom.d/env.fish
