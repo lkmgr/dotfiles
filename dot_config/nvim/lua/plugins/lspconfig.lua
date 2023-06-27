@@ -2,9 +2,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      { "folke/neoconf.nvim", config = true },
+      { "folke/neodev.nvim", opts = {} },
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "folke/neodev.nvim",
     },
     config = function()
       local mason = require "mason"
@@ -13,7 +14,7 @@ return {
 
       mason.setup {
         ui = {
-          border = "rounded",
+          border = "single",
         },
       }
 
@@ -50,6 +51,8 @@ return {
       vim.diagnostic.config {
         virtual_text = {
           severity = { min = vim.diagnostic.severity.WARN },
+          spacing = 4,
+          prefix = "●",
         },
         underline = {
           severity = { min = vim.diagnostic.severity.WARN },
@@ -67,11 +70,11 @@ return {
       }
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
+        border = "single",
       })
 
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
+        border = "single",
       })
 
       local capabilities = require("cmp_nvim_lsp").default_capabilities()

@@ -203,17 +203,13 @@ return {
 
   {
     "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup {
-        check_ts = true,
-        ts_config = {
-          lua = { "string", "comment" },
-          javascript = { "template_string" },
-        },
-      }
-
-      require("cmp").event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
-    end,
+    opts = {
+      check_ts = true,
+      ts_config = {
+        lua = { "string", "comment" },
+        javascript = { "template_string" },
+      },
+    },
   },
 
   {
@@ -232,8 +228,6 @@ return {
 
   {
     "jose-elias-alvarez/null-ls.nvim",
-    -- lazy = false,
-    -- event = { "BufReadPre", "BufNewFile" },
     dependencies = { "williamboman/mason.nvim" },
     opts = function()
       local nls = require "null-ls"

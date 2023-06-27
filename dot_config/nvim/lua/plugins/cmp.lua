@@ -35,6 +35,7 @@ return {
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
+      local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 
       local border_opts = {
         border = "single",
@@ -81,6 +82,18 @@ return {
           { name = "buffer", priority = 40 },
           { name = "path", priority = 20 },
         },
+        sorting = {
+          comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            -- cmp.config.compare.recently_used,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+          },
+        },
         mapping = {
           ["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
           ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
@@ -99,11 +112,16 @@ return {
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            elseif has_words_before() then
-              cmp.complete()
+            -- elseif has_words_before() then
+            --   cmp.complete()
             else
               fallback()
             end
+            -- if cmp.visible() then
+            --   cmp.select_next_item()
+            -- else
+            --   fallback()
+            -- end
           end, { "i", "s" }),
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
@@ -113,6 +131,11 @@ return {
             else
               fallback()
             end
+            -- if cmp.visible() then
+            --   cmp.select_prev_item()
+            -- else
+            --   fallback()
+            -- end
           end, { "i", "s" }),
         },
 
@@ -191,6 +214,8 @@ return {
           { name = "cmdline" },
         }),
       })
+
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
 }
