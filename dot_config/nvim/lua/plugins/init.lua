@@ -378,6 +378,7 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     init = function() vim.g.neo_tree_remove_legacy_commands = 1 end,
     config = function()
       require("neo-tree").setup {
@@ -415,7 +416,9 @@ return {
               ".git",
             },
           },
-          follow_current_file = true,
+          follow_current_file = {
+            enabled = true,
+          },
           use_libuv_file_watcher = true,
         },
       }
