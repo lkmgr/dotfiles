@@ -13,6 +13,7 @@ return {
         defaults = {
           prompt_prefix = " ",
           selection_caret = "❯ ",
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
           path_display = { "truncate" },
           vimgrep_arguments = {
             "rg",
