@@ -23,7 +23,7 @@ return {
           "bashls",
           "cssls",
           -- "denols",
-          "docker_compose_language_service",
+          -- "docker_compose_language_service",
           "dockerls",
           "eslint",
           "html",

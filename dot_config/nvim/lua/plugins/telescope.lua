@@ -27,6 +27,7 @@ return {
             "--trim",
             "--glob=!.git/",
           },
+          layout_strategy = "vertical",
           layout_config = {
             width = 0.85,
             height = 0.85,
@@ -108,7 +109,6 @@ return {
             find_command = { "fd", "--type", "f", "--color", "never", "--hidden", "--strip-cwd-prefix" },
           },
           live_grep = {
-            layout_strategy = "vertical",
             glob_pattern = { "!package-lock.json", "!yarn.lock" },
           },
         },
