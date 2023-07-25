@@ -11,6 +11,7 @@ packages:
   - name: FiloSottile/age@v1.1.1
   - name: Schniz/fnm@v1.35.0
   - name: ajeetdsouza/zoxide@v0.9.1
+  - name: cilium/cilium-cli@v0.15.4
   - name: derailed/k9s@v0.27.4
   - name: extrawurst/gitui@v0.23.0
   - name: fluxcd/flux2@v2.0.1
@@ -28,16 +29,6 @@ packages:
   - name: tilt-dev/tilt@v0.33.2
   - name: twpayne/chezmoi@v2.35.2
   - name: wagoodman/dive@v0.11.0
-  - name: cilium/cilium-cli@v0.15.4
-
-{{- if and (ne .chezmoi.os "darwin") (ne .chezmoi.arch "arm64") }}
-  - name: ogham/exa@v0.10.1
-  - name: Peltoche/lsd@0.23.1
-  - name: dandavison/delta@0.16.5
-  - name: sharkdp/bat@v0.23.0
-  - name: sharkdp/fd@v8.7.0
-  - name: BurntSushi/ripgrep@13.0.0
-{{- end }}
 
   # - name: denisidoro/navi@v2.22.1
   #   registry: local
