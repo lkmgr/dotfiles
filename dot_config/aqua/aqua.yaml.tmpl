@@ -28,6 +28,7 @@ packages:
   - name: tilt-dev/tilt@v0.33.2
   - name: twpayne/chezmoi@v2.35.2
   - name: wagoodman/dive@v0.11.0
+  - name: cilium/cilium-cli@v0.15.4
 
 {{- if and (ne .chezmoi.os "darwin") (ne .chezmoi.arch "arm64") }}
   - name: ogham/exa@v0.10.1
