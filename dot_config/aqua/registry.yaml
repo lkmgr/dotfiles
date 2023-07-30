@@ -1,16 +1,17 @@
 packages:
   - type: github_release
-    repo_owner: denisidoro
-    repo_name: navi
-    asset: "navi-{{.Version}}-{{.Arch}}-{{.OS}}.{{.Format}}"
-    description: An interactive cheatsheet tool for the command-line
-    replacements:
-      darwin: apple-darwin
-      windows: pc-windows-gnu
-      linux: unknown-linux-musl
-      amd64: x86_64
+    repo_owner: DopplerHQ
+    repo_name: cli
+    description: The official CLI for interacting with your Doppler secrets and configuration
+    asset: doppler_{{.Version}}_{{.OS}}_{{.Arch}}.{{.Format}}
     format: tar.gz
-    # format_overrides:
-    #   - goos: windows
-    #     format: zip
+    overrides:
+      - goos: windows
+        format: zip
+    replacements:
+      darwin: macOS
+    checksum:
+      type: github_release
+      asset: checksums.txt
+      algorithm: sha256
 
