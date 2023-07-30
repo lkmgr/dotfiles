@@ -13,6 +13,7 @@ if type -q aqua
   set -gx AQUA_CONFIG ~/.config/aqua/aqua.yaml
   set -gx AQUA_GLOBAL_CONFIG ~/.config/aqua/aqua.yaml
   set -gx AQUA_ROOT_DIR ~/.local/share/aqua
+  set -gx AQUA_POLICY_CONFIG ~/.config/aqua/aqua-policy.yaml
 end
 
 set -gx GPG_TTY (tty)
