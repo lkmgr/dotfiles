@@ -17,4 +17,5 @@ packages:
     files:
       - name: doppler
         src: doppler
+    version_constraint: semver(">= 1.0.0")
 
