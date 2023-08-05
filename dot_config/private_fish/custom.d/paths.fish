@@ -9,8 +9,8 @@ if type -q ruby
 end
 
 if type -q aqua
-  # fish_add_path ~/.local/share/aqua/bin
-  fish_add_path "$AQUA_ROOT_DIR/bin"
+  # add to end of global PATH
+  fish_add_path -aP "$AQUA_ROOT_DIR/bin"
 end
 
 fish_add_path ~/.krew/bin
