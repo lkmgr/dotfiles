@@ -15,11 +15,11 @@ HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=50000
 
-setopt beep
 setopt nomatch
 setopt append_history inc_append_history share_history hist_ignore_dups extended_history
 
 unsetopt autocd extendedglob notify
+unsetopt beep
 
 bindkey -e
 
