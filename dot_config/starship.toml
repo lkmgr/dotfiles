@@ -29,6 +29,7 @@ $python\
 $terraform\
 $vagrant\
 $nix_shell\
+$pulumi\
 $fill \
 $memory_usage\
 $sudo\
@@ -84,6 +85,10 @@ format = '[$symbol $context](bright-green) '
 symbol = "\uf21a "
 # [kubernetes.context_aliases]
 # "default" = "homelab"
+
+[pulumi]
+disabled = false
+search_upwards = false
 
 [time]
 disabled = false
