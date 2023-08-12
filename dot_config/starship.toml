@@ -89,6 +89,7 @@ symbol = "\uf21a "
 [pulumi]
 disabled = false
 search_upwards = false
+format = 'via [$symbol$stack]($style) '
 
 [time]
 disabled = false
