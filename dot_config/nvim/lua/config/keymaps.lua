@@ -109,13 +109,13 @@ function M.setup()
   -- map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
 
   -- lazygit
-  map(
-    "n",
-    "<leader>gg",
-    function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false }) end,
-    { desc = "Lazygit (root dir)" }
-  )
-  map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, { esc_esc = false }) end, { desc = "Lazygit (cwd)" })
+  -- map(
+  --   "n",
+  --   "<leader>gg",
+  --   function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false }) end,
+  --   { desc = "Lazygit (root dir)" }
+  -- )
+  -- map("n", "<leader>gG", function() Util.float_term({ "lazygit" }, { esc_esc = false }) end, { desc = "Lazygit (cwd)" })
 
   -- quit
   map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })

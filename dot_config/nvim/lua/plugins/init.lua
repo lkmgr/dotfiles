@@ -429,6 +429,20 @@ return {
           if package.loaded["neo-tree.sources.git_status"] then require("neo-tree.sources.git_status").refresh() end
         end,
       })
+
+      vim.api.nvim_create_autocmd("FocusGained", {
+        callback = function()
+          if package.loaded["neo-tree.sources.git_status"] then require("neo-tree.sources.git_status").refresh() end
+        end,
+      })
     end,
+  },
+
+  {
+    "akinsho/toggleterm.nvim",
+    opts = {
+      open_mapping = [[<C-\>]],
+      shell = "/usr/bin/fish",
+    },
   },
 }
