@@ -1,3 +1,5 @@
+local icons = require "config.icons"
+
 return {
   {
     "neovim/nvim-lspconfig",
@@ -38,10 +40,10 @@ return {
       }
 
       local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warn },
+        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+        { name = "DiagnosticSignInfo", text = icons.diagnostics.Info },
       }
 
       for _, sign in ipairs(signs) do

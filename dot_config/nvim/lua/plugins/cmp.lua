@@ -28,7 +28,8 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
+      -- "hrsh7th/cmp-path",
+      "FelipeLema/cmp-async-path",
       "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
     },
@@ -80,7 +81,7 @@ return {
           { name = "nvim_lua", priority = 80 },
           { name = "luasnip", priority = 60, keyword_length = 2 },
           { name = "buffer", priority = 40 },
-          { name = "path", priority = 20 },
+          { name = "async_path", priority = 20 },
         },
         sorting = {
           comparators = {
@@ -112,8 +113,8 @@ return {
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
-            -- elseif has_words_before() then
-            --   cmp.complete()
+              -- elseif has_words_before() then
+              --   cmp.complete()
             else
               fallback()
             end
