@@ -70,15 +70,17 @@ function M.setup()
   map("v", ">", ">gv")
 
   -- Buffers
-  -- map("n", "<Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  -- map("n", "<S-Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  -- map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  -- map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  -- map("n", "<C-c>", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete buffer" })
-  -- map("n", "<leader>bd", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete Buffer" })
-  -- map("n", "<leader>bD", function() require("mini.bufremove").delete(0, true) end, { desc = "Delete Buffer (Force)" })
-  -- map("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle pin" })
-  -- map("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete non-pinned buffers" })
+  map("n", "<Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "<S-Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+  map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+  map("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle pin" })
+  map("n", "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", { desc = "Delete non-pinned buffers" })
+
+  map("n", "<C-c>", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete Buffer" })
+  map("n", "<leader>bd", function() require("mini.bufremove").delete(0, false) end, { desc = "Delete Buffer" })
+  map("n", "<leader>bD", function() require("mini.bufremove").delete(0, true) end, { desc = "Delete Buffer (Force)" })
+
   map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
   map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
@@ -154,6 +156,14 @@ function M.setup()
 
   -- Spectre
   map("n", "<leader>r", function() require("spectre").open() end, { desc = "Search and replace" })
+
+  -- Notifications
+  map(
+    "n",
+    "<leader>un",
+    function() require("notify").dismiss { silent = true, pending = true } end,
+    { desc = "Dismiss all Notifications" }
+  )
 
   -- Telescope
   map("n", "<leader>f", "<cmd>Telescope find_files<cr>", { desc = "Find files" })

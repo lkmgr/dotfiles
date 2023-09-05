@@ -19,13 +19,6 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    keys = {
-      {
-        "<leader>un",
-        function() require("notify").dismiss { silent = true, pending = true } end,
-        desc = "Dismiss all Notifications",
-      },
-    },
     opts = {
       timeout = 3000,
       max_height = function() return math.floor(vim.o.lines * 0.75) end,
@@ -97,8 +90,6 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function()
-      local icons = require "config.icons"
-
       return {
         options = {
           icons_enabled = true,
@@ -242,13 +233,6 @@ return {
 
   {
     "echasnovski/mini.bufremove",
-    lazy = false,
-    -- stylua: ignore
-    keys = {
-      { "<C-c>", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
-    },
   },
 
   {
@@ -292,64 +276,8 @@ return {
     config = true,
   },
 
-  -- {
-  --   "echasnovski/mini.nvim",
-  --   config = function()
-  -- require("mini.tabline").setup()
-  -- require("mini.bufremove").setup()
-  -- require("mini.cursorword").setup()
-
-  -- require("mini.splitjoin").setup {
-  --   mappings = { toggle = "gS" },
-  -- }
-
-  -- require("mini.indentscope").setup {
-  --   draw = {
-  --     animation = function() return 10 end,
-  --   },
-  --   symbol = "▏",
-  -- }
-
-  -- require("mini.move").setup {
-  --   mappings = {
-  --     left = "H",
-  --     right = "L",
-  --     down = "J",
-  --     up = "K",
-  --   },
-  -- }
-
-  -- require("mini.basics").setup {
-  --   options = {
-  --     basic = true,
-  --     extra_ui = false,
-  --     win_borders = "bold",
-  --   },
-  --   mappings = {
-  --     basic = true,
-  --     option_toggle_prefix = [[\]],
-  --     windows = true,
-  --     move_with_alt = false,
-  --   },
-  --   autocommands = {
-  --     basic = false,
-  --     relnum_in_visual_mode = false,
-  --   },
-  -- }
-  --   end,
-  -- },
-
   {
     "akinsho/bufferline.nvim",
-    lazy = false,
-    keys = {
-      { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-      { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
-      { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-      { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
-    },
     config = function()
       require("bufferline").setup {
         highlights = require("catppuccin.groups.integrations.bufferline").get(),
