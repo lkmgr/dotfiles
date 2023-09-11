@@ -49,9 +49,7 @@ return {
         semantic_tokens = true,
         treesitter_context = true,
         treesitter = true,
-        telescope = true,
         lsp_trouble = true,
-        illuminate = true,
         which_key = true,
 
         -- special modules
@@ -81,6 +79,13 @@ return {
         navic = {
           enabled = false,
           custom_bg = "NONE",
+        },
+        illuminate = {
+          enabled = true,
+          lsp = true,
+        },
+        telescope = {
+          enabled = true,
         },
       },
     }
