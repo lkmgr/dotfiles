@@ -6,18 +6,18 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
 tap "homebrew/cask-fonts"
 
 # formulas
-brew "git"
+brew "bat"
+brew "eza"
+brew "fd"
 brew "fish"
-brew "python"
+brew "git"
 brew "git-delta"
+brew "go"
 brew "lsd"
-brew "exa"
 brew "node"
 brew "npm"
-brew "go"
+brew "python"
 brew "ripgrep"
-brew "fd"
-brew "bat"
 
 # HEAD versions
 brew "neovim", args: ["HEAD"]
@@ -28,6 +28,8 @@ cask "stats"
 cask "raycast"
 cask "font-cascadia-code-pl"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-commit-mono"
+cask "wezterm"
 
 EOF
 
