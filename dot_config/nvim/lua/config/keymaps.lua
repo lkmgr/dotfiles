@@ -70,8 +70,8 @@ function M.setup()
   map("v", ">", ">gv")
 
   -- Buffers
-  map("n", "<Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+  map("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
   map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
   map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
   map("n", "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", { desc = "Toggle pin" })

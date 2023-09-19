@@ -158,39 +158,39 @@ return {
 
   { "kylechui/nvim-surround", config = true },
 
-  {
-    "folke/which-key.nvim",
-    opts = {
-      show_help = false,
-      show_keys = false,
-      key_labels = {
-        ["<leader>"] = "SPC",
-        ["<space>"] = "SPC",
-      },
-      window = {
-        border = "single",
-      },
-    },
-    config = function(_, opts)
-      local wk = require "which-key"
-      wk.setup(opts)
-      wk.register {
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["<leader><tab>"] = { name = "+tabs" },
-        ["<leader>b"] = { name = "+buffer" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>l"] = { name = "+lsp" },
-        ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>s"] = { name = "+search" },
-        ["<leader>u"] = { name = "+options" },
-        ["<leader>w"] = { name = "+windows" },
-        ["<leader>x"] = { name = "+diagnostics/quickfix" },
-      }
-    end,
-  },
+  -- {
+  --   "folke/which-key.nvim",
+  --   opts = {
+  --     show_help = false,
+  --     show_keys = false,
+  --     key_labels = {
+  --       ["<leader>"] = "SPC",
+  --       ["<space>"] = "SPC",
+  --     },
+  --     window = {
+  --       border = "single",
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     local wk = require "which-key"
+  --     wk.setup(opts)
+  --     wk.register {
+  --       mode = { "n", "v" },
+  --       ["g"] = { name = "+goto" },
+  --       ["]"] = { name = "+next" },
+  --       ["["] = { name = "+prev" },
+  --       ["<leader><tab>"] = { name = "+tabs" },
+  --       ["<leader>b"] = { name = "+buffer" },
+  --       ["<leader>g"] = { name = "+git" },
+  --       ["<leader>l"] = { name = "+lsp" },
+  --       ["<leader>q"] = { name = "+quit/session" },
+  --       ["<leader>s"] = { name = "+search" },
+  --       ["<leader>u"] = { name = "+options" },
+  --       ["<leader>w"] = { name = "+windows" },
+  --       ["<leader>x"] = { name = "+diagnostics/quickfix" },
+  --     }
+  --   end,
+  -- },
 
   {
     "windwp/nvim-autopairs",
@@ -232,48 +232,88 @@ return {
   },
 
   {
-    "echasnovski/mini.bufremove",
-  },
-
-  {
-    "echasnovski/mini.indentscope",
-    opts = {
-      draw = {
-        animation = function() return 10 end,
-      },
-      symbol = "▏",
-      options = { try_as_border = true },
-    },
+    "echasnovski/mini.nvim",
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy", "mason" },
         callback = function() vim.b.miniindentscope_disable = true end,
       })
     end,
-  },
+    config = function()
+      require("mini.bufremove").setup()
 
-  {
-    "echasnovski/mini.splitjoin",
-    opts = {
-      mappings = { toggle = "gS" },
-    },
-  },
+      require("mini.indentscope").setup {
+        draw = {
+          animation = function() return 10 end,
+        },
+        symbol = "▏",
+        options = { try_as_border = true },
+      }
 
-  {
-    "echasnovski/mini.move",
-    opts = {
-      mappings = {
-        left = "H",
-        right = "L",
-        down = "J",
-        up = "K",
-      },
-    },
-  },
+      require("mini.splitjoin").setup {
+        mappings = { toggle = "gS" },
+      }
 
-  {
-    "echasnovski/mini.trailspace",
-    config = true,
+      require("mini.move").setup {
+        mappings = {
+          left = "H",
+          right = "L",
+          down = "J",
+          up = "K",
+        },
+      }
+
+      require("mini.trailspace").setup()
+
+      require("mini.files").setup()
+
+      local miniclue = require "mini.clue"
+      miniclue.setup {
+        triggers = {
+          -- Leader triggers
+          { mode = "n", keys = "<Leader>" },
+          { mode = "x", keys = "<Leader>" },
+
+          -- Built-in completion
+          { mode = "i", keys = "<C-x>" },
+
+          -- `g` key
+          { mode = "n", keys = "g" },
+          { mode = "x", keys = "g" },
+
+          -- Marks
+          { mode = "n", keys = "'" },
+          { mode = "n", keys = "`" },
+          { mode = "x", keys = "'" },
+          { mode = "x", keys = "`" },
+
+          -- Registers
+          { mode = "n", keys = '"' },
+          { mode = "x", keys = '"' },
+          { mode = "i", keys = "<C-r>" },
+          { mode = "c", keys = "<C-r>" },
+
+          -- Window commands
+          { mode = "n", keys = "<C-w>" },
+
+          -- `z` key
+          { mode = "n", keys = "z" },
+          { mode = "x", keys = "z" },
+        },
+        clues = {
+          miniclue.gen_clues.builtin_completion(),
+          miniclue.gen_clues.g(),
+          miniclue.gen_clues.marks(),
+          miniclue.gen_clues.registers(),
+          miniclue.gen_clues.windows(),
+          miniclue.gen_clues.z(),
+        },
+        window = {
+          delay = 500,
+          border = "single",
+        },
+      }
+    end,
   },
 
   {
