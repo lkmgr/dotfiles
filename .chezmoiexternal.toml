@@ -30,7 +30,7 @@
 [".config/awesome/rubato"]
   type = "archive"
   # renovate: currentValue=main
-  url = "https://github.com/andOrlando/rubato/archive/a9181708863265eb4a36c722f664978ee50fe8a0.zip"
+  url = "https://github.com/andOrlando/rubato/archive/8a3737b7af4c9dc40c53d700118333d36541d4d3.zip"
   exact = true
   stripComponents = 1
 {{- end }}
