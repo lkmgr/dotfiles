@@ -4,12 +4,10 @@
 
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   startx
-  # exec ~/.local/bin/wrappedsway
 fi
 
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
-  exec ~/.local/bin/wrappedhl
-  # exec Hyprland
+  exec Hyprland
 fi
 
 # if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty3" ]; then
