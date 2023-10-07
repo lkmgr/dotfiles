@@ -1,0 +1,45 @@
+// vim: set ft=jsonc:sw=4:et
+{
+  "hyprland/workspaces": {
+    "format": "{name} {icon}",
+    "on-click": "activate",
+    "active-only": false,
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+    // "persistent-workspaces": {
+    //   "DP-1": [1, 2, 3, 4, 5, 6],
+    //   "DP-2": [7, 8, 9]
+    // }
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " "
+    },
+    "max-length": 80,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause"
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-bluetooth-muted": " {icon} ",
+    "format-muted": "muted  ",
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": [" ", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  }
+}

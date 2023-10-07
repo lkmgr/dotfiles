@@ -6,138 +6,68 @@
     "height": 32,
     "spacing": 0,
     "margin-top": 5,
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/media"],
     "modules-right": ["pulseaudio", "cpu", "temperature#cpu", "memory", "custom/gpu_usage", "custom/gpu_temp", "network", "clock", "tray"],
-    "wlr/workspaces": {
-        "format": "{name} {icon}",
-        "on-click": "activate",
-        "active-only": false,
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
-        }
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "format-icons": {
-            "Playing": " ",
-            "Paused": " ",
-        },
-        "max-length": 80,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-        "on-click": "playerctl play-pause",
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} ",
-        "format-bluetooth-muted": " {icon} ",
-        "format-muted": "muted  ",
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
-            "default": [" ", " ", " "],
-        },
-        "on-click": "pavucontrol",
-    },
+    "include": [
+        "~/.config/waybar/default-modules.json"
+    ],
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false,
+        "tooltip": false
     },
     "temperature#cpu": {
         "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
         "interval": 3,
-        "format": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
     },
     "memory": {
-        "format": "{}% ",
+        "format": "{}% "
     },
     "custom/gpu_usage": {
-        "exec": "cat /sys/class/drm/card0/device/gpu_busy_percent",
+        "exec": "cat /sys/class/drm/card{0,1}/device/gpu_busy_percent 2>/dev/null || true",
         "format": "{}%  ",
-        "interval": 2,
+        "interval": 2
     },
     "custom/gpu_temp": {
-        "exec": "echo \"$(cat /sys/class/drm/card0/device/hwmon/hwmon{3,4}/temp1_input 2>/dev/null) / 1000\" | bc",
+        "exec": "echo \"$(cat /sys/class/drm/card{0,1}/device/hwmon/hwmon{3,4}/temp1_input 2>/dev/null) / 1000\" | bc",
         "format": "{}°C ",
-        "interval": 2,
+        "interval": 2
     },
     "network": {
         "interface": "enp34s0",
         "interval": 2,
-        "format": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format": " {bandwidthDownBytes}  {bandwidthUpBytes}"
     },
     "clock": {
         "timezone": "Europe/Berlin",
         "interval": 1,
         "format": "{:%Y-%m-%d   %H:%M:%S  }",
         "format-alt": "{:%H:%M:%S  }",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "tray": {
         "icon-size": 21,
         "spacing": 10
-    },
+    }
 }, {
     "layer": "top",
     // "position": "bottom",
-    "output": "HDMI-A-1",
+    "output": "!DP-1",
     "height": 32,
     "spacing": 0,
     "margin-top": 5,
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/media"],
     "modules-right": ["pulseaudio", "clock"],
-    "wlr/workspaces": {
-        "format": "{name} {icon}",
-        "on-click": "activate",
-        "active-only": false,
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
-        }
-    },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "format-icons": {
-            "Playing": " ",
-            "Paused": " ",
-        },
-        "max-length": 80,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-        "on-click": "playerctl play-pause",
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} ",
-        "format-bluetooth-muted": " {icon} ",
-        "format-muted": "muted  ",
-        "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
-            "default": [" ", " ", " "],
-        },
-        "on-click": "pavucontrol",
-    },
+    "include": [
+        "~/.config/waybar/default-modules.json"
+    ],
     "clock": {
         "timezone": "Europe/Berlin",
         "interval": 1,
         "format": "{:%H:%M:%S  }",
         "format-alt": "{:%Y-%m-%d   %H:%M:%S  }",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    },
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    }
 }]
