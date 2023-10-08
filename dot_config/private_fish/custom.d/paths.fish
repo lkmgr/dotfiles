@@ -8,10 +8,11 @@ if type -q ruby
   fish_add_path ~/.gem/ruby/3.1.0/bin
 end
 
-if type -q aqua
+# if type -q aqua
   # add to end of global PATH
   fish_add_path -aP "$AQUA_ROOT_DIR/bin"
-end
+# end
+fish_add_path -aP ~/.local/share/aquaproj-aqua/bin/
 
 fish_add_path ~/.krew/bin
 
