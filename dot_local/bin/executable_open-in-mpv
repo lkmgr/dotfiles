@@ -1,11 +1,22 @@
-#!/bin/sh
+#!/bin/bash
 
-cb=$(xsel -o)
-if [ ! "$cb" ]; then
-  dunstify -t 2000 -u low "Clipboard is empty"
+# Check if Wayland is being used
+if [ -n "$WAYLAND_DISPLAY" ]; then
+  clipboard_command="wl-paste -n"
+else
+  clipboard_command="xsel -o"
+fi
+
+# Read URL from clipboard
+url=$(eval "$clipboard_command")
+
+# Check if the clipboard is empty or the content is not a valid URL
+if [ -z "$url" ] || ! [[ $url =~ ^https?:// ]]; then
+  notify-send "Clipboard does not contain a valid URL"
   exit 1
 fi
 
-dunstify -i tv -t 3000 -u low "Opening in mpv: $cb"
-mpv "$(xsel -o)" &
+# Open URL in mpv
+notify-send "Opening URL: $url"
+mpv "$url" &
 

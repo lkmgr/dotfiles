@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "Connecting to $1..."
+
+bluetoothctl -- power off
+sleep 0.5
+bluetoothctl -- power on
+sleep 0.5
+bluetoothctl -- connect "$1"
+
