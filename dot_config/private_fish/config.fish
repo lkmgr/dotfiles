@@ -8,7 +8,7 @@ source $__fish_config_dir/custom.d/paths.fish
 
 # prepend custom function path to fish_function_path
 if test -d $__fish_config_dir/custom_functions.d
-  set -gp fish_function_path $__fish_config_dir/custom_functions.d
+    set -gp fish_function_path $__fish_config_dir/custom_functions.d
 end
 
 # if type -q asdf; and test -f /usr/local/opt/asdf/libexec/asdf.fish
@@ -16,11 +16,11 @@ end
 # end
 
 if test -f /opt/homebrew/bin/brew
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 end
 
 if type -q starship
-  starship init fish | source
+    starship init fish | source
 end
 
 # if type -q keychain
@@ -28,10 +28,13 @@ end
 # end
 
 if type -q direnv
-  direnv hook fish | source
+    direnv hook fish | source
 end
 
 if type -q fnm
-  fnm env --use-on-cd | source
+    fnm env --use-on-cd | source
 end
 
+if type -q atuin
+    atuin init fish | source
+end
