@@ -16,6 +16,7 @@ archive
 .config/paru/paru.conf
 .config/swayidle/
 .config/swaylock/
+.config/tofi/
 .config/waybar/
 
 .icons/
