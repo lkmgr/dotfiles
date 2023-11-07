@@ -31,7 +31,9 @@
 
 * {
   /* font-family: FontAwesome, FantasqueSansMono Nerd Font; */
-  font-family: FontAwesome, SF Pro;
+  font-family:
+    FontAwesome,
+    SF Pro;
   font-size: 15px;
   font-weight: 600;
   min-height: 0;
@@ -66,6 +68,7 @@
 }
 
 #workspaces,
+#window,
 #custom-media,
 #pulseaudio,
 #network,
@@ -89,6 +92,7 @@
   border-radius: 1.5rem;
 }
 
+#window,
 #pulseaudio {
   border-radius: 1.5rem;
   margin: 0 4px;
@@ -113,4 +117,3 @@
   border-radius: 1.5rem;
   margin-left: 4px;
 }
-

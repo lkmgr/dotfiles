@@ -6,12 +6,16 @@
     "height": 32,
     "spacing": 0,
     "margin-top": 5,
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["custom/media"],
-    "modules-right": ["pulseaudio", "cpu", "temperature#cpu", "memory", "custom/gpu_usage", "custom/gpu_temp", "network", "clock", "tray"],
+    "modules-right": ["pulseaudio", "cpu", "temperature#cpu", "memory", "network", "clock", "tray"],
     "include": [
         "~/.config/waybar/default-modules.json"
     ],
+    "hyprland/window": {
+        "format": "{title}",
+        "separate-outputs": false
+    },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
@@ -24,16 +28,16 @@
     "memory": {
         "format": "{}% "
     },
-    "custom/gpu_usage": {
-        "exec": "cat /sys/class/drm/card{0,1}/device/gpu_busy_percent 2>/dev/null || true",
-        "format": "{}%  ",
-        "interval": 2
-    },
-    "custom/gpu_temp": {
-        "exec": "echo \"$(cat /sys/class/drm/card{0,1}/device/hwmon/hwmon{3,4}/temp1_input 2>/dev/null) / 1000\" | bc",
-        "format": "{}°C ",
-        "interval": 2
-    },
+    // "custom/gpu_usage": {
+    //     "exec": "cat /sys/class/drm/card{0,1}/device/gpu_busy_percent 2>/dev/null || true",
+    //     "format": "{}%  ",
+    //     "interval": 2
+    // },
+    // "custom/gpu_temp": {
+    //     "exec": "echo \"$(cat /sys/class/drm/card{0,1}/device/hwmon/hwmon{3,4}/temp1_input 2>/dev/null) / 1000\" | bc",
+    //     "format": "{}°C ",
+    //     "interval": 2
+    // },
     "network": {
         "interface": "enp34s0",
         "interval": 2,
@@ -42,8 +46,8 @@
     "clock": {
         "timezone": "Europe/Berlin",
         "interval": 1,
-        "format": "{:%Y-%m-%d   %H:%M:%S  }",
-        "format-alt": "{:%H:%M:%S  }",
+        "format": "{:%Y-%m-%d 󰃭  %H:%M:%S 󰥔 }",
+        "format-alt": "{:%H:%M:%S 󰥔 }",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "tray": {
@@ -66,8 +70,8 @@
     "clock": {
         "timezone": "Europe/Berlin",
         "interval": 1,
-        "format": "{:%H:%M:%S  }",
-        "format-alt": "{:%Y-%m-%d   %H:%M:%S  }",
+        "format": "{:%H:%M:%S 󰥔 }",
+        "format-alt": "{:%Y-%m-%d 󰃭  %H:%M:%S 󰥔 }",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     }
 }]
