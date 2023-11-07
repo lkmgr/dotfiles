@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-# Wayland
-# makoctl mode -r darkmode
-
+pgrep -x mako >/dev/null && makoctl mode -r darkmode
