@@ -14,6 +14,7 @@
 	#
 	# Otherwise, fonts are interpreted in Pango format.
 	font = "Sans"
+  # font = "/usr/share/fonts/TTF/JetBrainsMono-Regular.ttf"
 
 	# Point size of text.
 	font-size = 20
@@ -189,10 +190,10 @@
 	corner-radius = 12
 
 	# Padding between borders and text. Can be pixels or a percentage.
-	padding-top = 8
-	padding-bottom = 8
-	padding-left = 8
-	padding-right = 8
+	padding-top = 16
+	padding-bottom = 16
+	padding-left = 16
+	padding-right = 16
 
 	# Whether to clip text drawing to be within the specified padding. This
 	# is mostly important for allowing text to be inset from the border,
@@ -247,7 +248,7 @@
 	# Specify an alternate file to read and store history information
 	# from / to. This shouldn't normally be needed, and is intended to
 	# facilitate the creation of custom modes.
-	# history-file = /path/to/histfile
+	# history-file = $HOME/.local/state/tofi-history
 
 	# Select the matching algorithm used. If normal, substring matching is
 	# used, weighted to favour matches closer to the beginning of the
@@ -261,7 +262,7 @@
 	# If true, require a match to allow a selection to be made. If false,
 	# making a selection with no matches will print input to stdout.
 	# In drun mode, this is always true.
-	require-match = true
+	require-match = false
 
 	# If true, automatically accept a result if it is the only one
 	# remaining. If there's only one result on startup, window creation is
