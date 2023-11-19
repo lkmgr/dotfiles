@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+shutdown='󰐥 Shutdown'
+reboot='󱞯 Reboot'
+
+run_tofi() {
+    echo -e "$shutdown\n$reboot" | tofi --prompt-text "Power Menu " --width 600 --height 250
+}
+
+chosen="$(run_tofi)"
+
+case ${chosen} in
+    $shutdown)
+        systemctl poweroff
+        ;;
+    $reboot)
+        systemctl reboot
+        ;;
+esac
+
