@@ -13,11 +13,13 @@ archive
 .config/gtkrc-2.0
 .config/hypr/
 .config/mako/
+.config/nwg-look/
 .config/paru/paru.conf
 .config/swayidle/
 .config/swaylock/
 .config/tofi/
 .config/waybar/
+.config/xsettingsd/
 
 .icons/
 
