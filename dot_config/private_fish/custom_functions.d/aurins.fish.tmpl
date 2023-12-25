@@ -2,4 +2,8 @@
 function aurins
   paru -Sl --aur | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'paru -Si {1}' --reverse | xargs -ro paru -S
 end
+{{- else if lookPath "yay" }}
+function aurins
+  yay -Sl --aur | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'yay -Si {1}' --reverse | xargs -ro yay -S
+end
 {{- end }}

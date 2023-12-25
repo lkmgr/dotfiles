@@ -1,4 +1,4 @@
-// vim: set ft=jsonc:sw=4:et
+// vim: set ft=jsonc:sw=4:et:
 {
   "hyprland/workspaces": {
     "format": "{name} {icon}",
@@ -7,8 +7,13 @@
     "format-icons": {
       "urgent": "",
       "active": "",
-      "default": ""
+      "default": "",
+      "empty": ""
     }
+    // "persistent-workspaces": {
+    //   "DP-1": 7,
+    //   "DP-2": [10, 11, 12]
+    // }
     // "persistent-workspaces": {
     //   "DP-1": [1, 2, 3, 4, 5, 6],
     //   "DP-2": [7, 8, 9]
@@ -18,7 +23,7 @@
     "format": "{icon} {}",
     "return-type": "json",
     "format-icons": {
-      "Playing": " ",
+      "Playing": "󰝚 ",
       "Paused": " "
     },
     "max-length": 80,

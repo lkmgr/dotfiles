@@ -33,7 +33,10 @@
   /* font-family: FontAwesome, FantasqueSansMono Nerd Font; */
   font-family:
     FontAwesome,
-    SF Pro;
+    SF Pro,
+    Symbols Nerd Font,
+    Symbols Nerd Font Mono;
+  /* font-family: FontAwesome, JetBrains Mono; */
   font-size: 15px;
   font-weight: 600;
   min-height: 0;
@@ -86,6 +89,10 @@
   /* border-radius: 1.5rem; */
   color: @text;
 }
+
+/* #window.empty { */
+/*   background-color: red; */
+/* } */
 
 #workspaces,
 #custom-media {

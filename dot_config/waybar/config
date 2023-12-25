@@ -13,7 +13,7 @@
         "~/.config/waybar/default-modules.json"
     ],
     "hyprland/window": {
-        "format": "{title}",
+        "format": "{}",
         "separate-outputs": false
     },
     "cpu": {
