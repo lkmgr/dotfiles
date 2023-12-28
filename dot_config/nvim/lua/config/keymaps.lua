@@ -6,3 +6,6 @@ vim.keymap.set({ "i", "v", "n", "s" }, "<C-q>", "<cmd>q<cr>", { desc = "Quit" })
 vim.keymap.set("n", "<C-c>", function()
   require("mini.bufremove").delete(0, false)
 end, { desc = "Delete Buffer" })
+
+vim.keymap.set("n", "<leader>ze", "<cmd>SopsEncrypt<cr>", { desc = "SOPS Encrypt" })
+vim.keymap.set("n", "<leader>zd", "<cmd>SopsDecrypt<cr>", { desc = "SOPS Decrypt" })
