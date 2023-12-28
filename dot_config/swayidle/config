@@ -1,3 +1,5 @@
-timeout 600 'swaylock -f'
-timeout 720 'hyprctl dispatch dpms off'
+timeout 900 'swaylock -f'
+timeout 960 'hyprctl dispatch dpms off'
+before-sleep 'playerctl pause'
 before-sleep 'swaylock -f'
+lock 'swaylock -f; sleep 10s; hyprctl dispatch dpms off'
