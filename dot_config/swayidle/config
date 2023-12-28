@@ -1,5 +1,5 @@
 timeout 900 'swaylock -f'
-timeout 960 'hyprctl dispatch dpms off'
+timeout 960 'hyprctl dispatch dpms off' resume 'killall wlsunset; sleep 1s; wlsunset -t 2600 -T 6500 -l 50.8 -L 7.0 -d 900'
 before-sleep 'playerctl pause'
 before-sleep 'swaylock -f'
 lock 'swaylock -f; sleep 10s; hyprctl dispatch dpms off'

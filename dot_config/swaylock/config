@@ -1,8 +1,9 @@
 screenshots
 clock
 indicator
-fade-in=2
-effect-blur=12x12
+grace=3
+fade-in=6
+effect-blur=12x8
 color=4C515B
 indicator-radius=320
 indicator-thickness=10
