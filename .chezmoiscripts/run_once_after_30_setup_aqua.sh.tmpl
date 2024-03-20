@@ -6,7 +6,7 @@ set -eufo pipefail
 newest_aqua_version=v2.25.0
 
 # renovate: depName=aquaproj/aqua-installer datasource=github-releases
-newest_aqua_installer_version=v2.3.0
+newest_aqua_installer_version=v2.3.1
 
 if [ $(command -v aqua) ]; then
   current_aqua_version=$(aqua -v | head -n1 | cut -d" " -f3 | sed "s/^/v/")
