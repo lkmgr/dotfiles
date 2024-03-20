@@ -32,30 +32,95 @@ vim.opt.wildmode = "longest:full,full"
 
 -- [[ Keymaps ]]
 
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- better up/down
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
+-- Clear search with <esc>
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+-- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- Keybinds to make split navigation easier.
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Move to window using the <ctrl> hjkl keys
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+-- Resize window using <ctrl> arrow keys
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Move Lines
+vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+vim.keymap.set("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+vim.keymap.set("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+
+-- buffers
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+
+vim.keymap.set({ "i", "v", "n", "s" }, "<C-q>", "<cmd>q<cr>", { desc = "Quit" })
+vim.keymap.set("n", "<C-c>", function()
+  require("mini.bufremove").delete(0, false)
+end, { desc = "Delete Buffer" })
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- file explorer
+vim.keymap.set("n", "<leader>e", function()
+  require("mini.files").open()
+end, { desc = "Open mini.files" })
+
+-- spectre
+vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
+  desc = "Toggle Spectre",
+})
+vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+  desc = "Search current word",
+})
 
 -- [[ Basic Autocommands ]]
 
+local function augroup(name)
+  return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
+end
+
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  group = augroup("highlight-yank"),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  group = augroup("resize_splits"),
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
   end,
 })
 
@@ -92,7 +157,7 @@ require("lazy").setup({
 
   { -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
     config = function()
       require("which-key").setup()
 
@@ -109,7 +174,7 @@ require("lazy").setup({
 
   { -- Fuzzy Finder (files, lsp, etc)
     "nvim-telescope/telescope.nvim",
-    event = "VeryLazy",
+    event = "VimEnter",
     -- branch = '0.1.x',
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -122,9 +187,26 @@ require("lazy").setup({
       },
       "nvim-telescope/telescope-ui-select.nvim",
       "nvim-tree/nvim-web-devicons",
+      "folke/trouble.nvim",
     },
     config = function()
+      local trouble = require("trouble.providers.telescope")
+
       require("telescope").setup({
+        defaults = {
+          prompt_prefix = " ",
+          selection_caret = "❯ ",
+          path_display = { "truncate" },
+          layout_strategy = "vertical",
+          layout_config = {
+            width = 0.85,
+            height = 0.85,
+          },
+          mappings = {
+            i = { ["<C-q>"] = trouble.open_with_trouble },
+            n = { ["<C-q>"] = trouble.open_with_trouble },
+          },
+        },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown(),
@@ -178,7 +260,7 @@ require("lazy").setup({
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+        group = augroup("lsp-attach"),
         callback = function(event)
           local map = function(keys, func, desc)
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -243,6 +325,26 @@ require("lazy").setup({
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
+            },
+          },
+        },
+        jsonls = {
+          settings = {
+            json = {
+              schemas = require("schemastore").json.schemas(),
+              validate = { enable = true },
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemaStore = {
+                -- disable builtin schemastore to use schemastore plugin
+                enable = false,
+                url = "",
+              },
+              schemas = require("schemastore").yaml.schemas(),
             },
           },
         },
@@ -359,7 +461,12 @@ require("lazy").setup({
   },
 
   -- Highlight todo, notes, etc in comments
-  { "folke/todo-comments.nvim", dependencies = { "nvim-lua/plenary.nvim" }, opts = { signs = false } },
+  {
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
+  },
 
   { -- Collection of various small independent plugins/modules
     "echasnovski/mini.nvim",
@@ -384,8 +491,8 @@ require("lazy").setup({
       })
 
       -- Remap adding surrounding to Visual mode selection
-      -- vim.keymap.del("x", "ys")
-      -- vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+      vim.keymap.del("x", "ys")
+      vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
 
       -- Make special mapping for "add surrounding for line"
       -- vim.keymap.set("n", "yss", "ys_", { remap = true })
@@ -403,6 +510,10 @@ require("lazy").setup({
       -- statusline.section_location = function()
       --   return ''
       -- end
+
+      require("mini.bufremove").setup()
+
+      require("mini.files").setup()
     end,
   },
 
@@ -448,6 +559,19 @@ require("lazy").setup({
     "ggandor/flit.nvim",
     opts = {},
   },
+
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+  },
+
+  {
+    "nvim-pack/nvim-spectre",
+    opts = {},
+  },
+
+  "b0o/schemastore.nvim",
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
