@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
+vim.opt.formatoptions:remove("o")
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
@@ -44,7 +45,7 @@ vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
--- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -89,7 +90,7 @@ vim.keymap.set("v", ">", ">gv")
 
 -- file explorer
 vim.keymap.set("n", "<leader>e", function()
-  require("mini.files").open()
+  require("mini.files").open(vim.api.nvim_buf_get_name(0))
 end, { desc = "Open mini.files" })
 
 -- spectre
@@ -99,6 +100,16 @@ vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', {
 vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
   desc = "Search current word",
 })
+
+-- Sessions
+-- vim.keymap.set("n", "<leader>zc", "<cmd>lua MiniSessions.select()<CR>", { desc = "Choose Session" })
+-- vim.keymap.set("n", "<leader>zw", function()
+--   local name = vim.fn.input("Session name: ")
+--   if name ~= "" then
+--     vim.api.nvim_command('lua MiniSessions.write("' .. name .. '")')
+--   end
+-- end, { desc = "Write Session" })
+vim.keymap.set("n", "<leader>zl", '<cmd>lua require("persistence").load()<CR>', { desc = "Load Session" })
 
 -- [[ Basic Autocommands ]]
 
@@ -124,6 +135,15 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
+-- adjust formatoptions everywhere
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
+  group = augroup("formatoptions"),
+  callback = function()
+    vim.opt_local.formatoptions:remove("o")
+  end,
+  pattern = "*",
+})
+
 -- [[ Install lazy ]]
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -139,8 +159,26 @@ require("lazy").setup({
 
   "tpope/vim-repeat",
 
+  {
+    "stevearc/dressing.nvim",
+    opts = {},
+  },
+
   -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
+  {
+    "numToStr/Comment.nvim",
+    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+    opts = function()
+      return {
+        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+      }
+    end,
+    -- opts = {
+    --   pre_hook = function()
+    --     return vim.bo.commentstring
+    --   end,
+    -- },
+  },
 
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
@@ -348,13 +386,40 @@ require("lazy").setup({
             },
           },
         },
+        tsserver = {},
+        eslint = {},
       }
+
+      vim.diagnostic.config({
+        underline = true,
+        update_in_insert = false,
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+        },
+        severity_sort = true,
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
+        },
+      })
+
+      vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint", numhl = "" })
+      vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo", numhl = "" })
 
       require("mason").setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format lua code
+        "prettierd",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -380,6 +445,15 @@ require("lazy").setup({
       },
       formatters_by_ft = {
         lua = { "stylua" },
+        javascript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        css = { "prettierd" },
+        html = { "prettierd" },
+        json = { "prettierd" },
+        markdown = { "prettierd" },
+        yaml = { "prettierd" },
       },
     },
   },
@@ -415,19 +489,34 @@ require("lazy").setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = "menu,menuone,noinsert" },
-
+        completion = { completeopt = "menu,menuone,noinsert,noselect" },
+        preselect = cmp.PreselectMode.None,
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
         mapping = cmp.mapping.preset.insert({
+          ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+
           ["<C-n>"] = cmp.mapping.select_next_item(),
           ["<C-p>"] = cmp.mapping.select_prev_item(),
 
           ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          -- ["<CR>"] = cmp.mapping({
+          --   i = function(fallback)
+          --     if cmp.visible() and cmp.get_active_entry() then
+          --       cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+          --     else
+          --       fallback()
+          --     end
+          --   end,
+          --   s = cmp.mapping.confirm({ select = true }),
+          --   c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+          -- }),
 
-          ["<C-Space>"] = cmp.mapping.complete({}),
+          ["<C-Space>"] = cmp.mapping.complete(),
 
           ["<C-l>"] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
@@ -454,7 +543,15 @@ require("lazy").setup({
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme("tokyonight-night")
+      require("tokyonight").setup({
+        style = "storm",
+        transparent = true,
+        on_colors = function(colors)
+          colors.border = colors.orange
+        end,
+      })
+
+      vim.cmd.colorscheme("tokyonight")
 
       -- vim.cmd.hi 'Comment gui=none'
     end,
@@ -492,7 +589,7 @@ require("lazy").setup({
 
       -- Remap adding surrounding to Visual mode selection
       vim.keymap.del("x", "ys")
-      vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+      vim.keymap.set("x", "gs", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
 
       -- Make special mapping for "add surrounding for line"
       -- vim.keymap.set("n", "yss", "ys_", { remap = true })
@@ -504,7 +601,33 @@ require("lazy").setup({
       require("mini.pairs").setup()
 
       local statusline = require("mini.statusline")
-      statusline.setup()
+      statusline.setup({
+        content = {
+          active = function()
+            local mode, mode_hl = statusline.section_mode({ trunc_width = 120 })
+            -- local git = statusline.section_git({ trunc_width = 100 })
+            local diagnostics = statusline.section_diagnostics({ trunc_width = 75 })
+            local filename = statusline.section_filename({ trunc_width = 140 })
+            local fileinfo = statusline.section_fileinfo({ trunc_width = 1000 })
+            local location = statusline.section_location({ trunc_width = 75 })
+            local search = statusline.section_searchcount({ trunc_width = 50 })
+
+            return statusline.combine_groups({
+              { hl = mode_hl, strings = { mode } },
+              -- { hl = "MiniStatuslineDevinfo", strings = { git, diagnostics } },
+              { hl = "MiniStatuslineDevinfo", strings = { diagnostics } },
+              "%<", -- Mark general truncate point
+              { hl = "MiniStatuslineFilename", strings = { filename } },
+              "%=", -- End left alignment
+              { hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+              { hl = mode_hl, strings = { search, location } },
+            })
+          end,
+          inactive = nil,
+        },
+        use_icons = true,
+        set_vim_settings = true,
+      })
 
       -- ---@diagnostic disable-next-line: duplicate-set-field
       -- statusline.section_location = function()
@@ -514,6 +637,11 @@ require("lazy").setup({
       require("mini.bufremove").setup()
 
       require("mini.files").setup()
+
+      -- require("mini.sessions").setup({
+      --   autoread = true,
+      --   autowrite = true,
+      -- })
     end,
   },
 
@@ -572,6 +700,12 @@ require("lazy").setup({
   },
 
   "b0o/schemastore.nvim",
+
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {},
+  },
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
