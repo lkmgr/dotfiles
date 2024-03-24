@@ -10,6 +10,7 @@ vim.opt.formatoptions:remove("o")
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
+vim.opt.laststatus = 3
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.mouse = "a"
@@ -197,15 +198,21 @@ require("lazy").setup({
     "folke/which-key.nvim",
     event = "VimEnter",
     config = function()
-      require("which-key").setup()
+      require("which-key").setup({
+        window = {
+          border = "single",
+        },
+      })
 
       -- Document existing key chains
       require("which-key").register({
-        ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-        ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-        ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-        ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-        ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+        c = { name = "[C]ode", _ = "which_key_ignore" },
+        d = { name = "[D]ocument", _ = "which_key_ignore" },
+        r = { name = "[R]ename", _ = "which_key_ignore" },
+        s = { name = "[S]earch", _ = "which_key_ignore" },
+        w = { name = "[W]orkspace", _ = "which_key_ignore" },
+      }, {
+        prefix = "<leader>",
       })
     end,
   },
@@ -294,7 +301,16 @@ require("lazy").setup({
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      { "j-hui/fidget.nvim", opts = {} },
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
+      },
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -398,6 +414,10 @@ require("lazy").setup({
           source = "if_many",
           prefix = "●",
         },
+        float = {
+          border = "rounded",
+          source = "always",
+        },
         severity_sort = true,
         signs = {
           text = {
@@ -409,10 +429,19 @@ require("lazy").setup({
         },
       })
 
-      vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError", numhl = "" })
-      vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn", numhl = "" })
-      vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint", numhl = "" })
-      vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo", numhl = "" })
+      local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+      })
+
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+      })
 
       require("mason").setup()
 
@@ -489,6 +518,10 @@ require("lazy").setup({
             luasnip.lsp_expand(args.body)
           end,
         },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
         completion = { completeopt = "menu,menuone,noinsert,noselect" },
         preselect = cmp.PreselectMode.None,
         -- For an understanding of why these mappings were
@@ -538,22 +571,65 @@ require("lazy").setup({
     end,
   },
 
-  { -- Colorscheme
-    "folke/tokyonight.nvim",
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       style = "storm",
+  --       transparent = true,
+  --       on_colors = function(colors)
+  --         colors.border = colors.orange
+  --       end,
+  --     })
+  --
+  --     vim.cmd.colorscheme("tokyonight")
+  --
+  --     -- vim.cmd.hi 'Comment gui=none'
+  --   end,
+  -- },
+
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
     config = function()
-      require("tokyonight").setup({
-        style = "storm",
-        transparent = true,
-        on_colors = function(colors)
-          colors.border = colors.orange
-        end,
+      require("catppuccin").setup({
+        flavour = "mocha",
+        -- transparent_background = true,
+        dim_inactive = {
+          enabled = true,
+          shade = "dark",
+          percentage = 0.15,
+        },
+        integrations = {
+          fidget = true,
+          gitsigns = true,
+          indent_blankline = {
+            enabled = true,
+          },
+          leap = true,
+          markdown = true,
+          mason = true,
+          mini = {
+            enabled = true,
+          },
+          cmp = true,
+          native_lsp = {
+            enabled = true,
+          },
+          treesitter = true,
+          telescope = {
+            enabled = true,
+          },
+          lsp_trouble = true,
+          which_key = true,
+        },
       })
 
-      vim.cmd.colorscheme("tokyonight")
-
-      -- vim.cmd.hi 'Comment gui=none'
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -626,13 +702,8 @@ require("lazy").setup({
           inactive = nil,
         },
         use_icons = true,
-        set_vim_settings = true,
+        set_vim_settings = false,
       })
-
-      -- ---@diagnostic disable-next-line: duplicate-set-field
-      -- statusline.section_location = function()
-      --   return ''
-      -- end
 
       require("mini.bufremove").setup()
 
@@ -654,7 +725,10 @@ require("lazy").setup({
         ensure_installed = { "bash", "c", "html", "lua", "markdown", "vim", "vimdoc" },
         -- Autoinstall languages that are not installed
         auto_install = true,
-        highlight = { enable = true },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
         indent = { enable = true },
       })
     end,
@@ -705,6 +779,37 @@ require("lazy").setup({
     "folke/persistence.nvim",
     event = "BufReadPre",
     opts = {},
+  },
+
+  {
+    "b0o/incline.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local helpers = require("incline.helpers")
+      local devicons = require("nvim-web-devicons")
+
+      require("incline").setup({
+        window = {
+          padding = 0,
+          margin = { horizontal = 0 },
+        },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          if filename == "" then
+            filename = "[No Name]"
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified
+          return {
+            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
+            " ",
+            { filename, gui = modified and "bold,italic" or "bold" },
+            " ",
+            guibg = props.focused and "#44406e" or "transparent",
+          }
+        end,
+      })
+    end,
   },
 })
 
