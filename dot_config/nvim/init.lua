@@ -235,6 +235,7 @@ require("lazy").setup({
       "folke/trouble.nvim",
     },
     config = function()
+      local actions = require("telescope.actions")
       local trouble = require("trouble.providers.telescope")
 
       require("telescope").setup({
@@ -248,7 +249,11 @@ require("lazy").setup({
             height = 0.85,
           },
           mappings = {
-            i = { ["<C-q>"] = trouble.open_with_trouble },
+            i = {
+              ["<C-q>"] = trouble.open_with_trouble,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+            },
             n = { ["<C-q>"] = trouble.open_with_trouble },
           },
         },
