@@ -3,6 +3,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.opt.autoindent = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cursorline = true
@@ -529,10 +530,16 @@ require("lazy").setup({
         },
         completion = { completeopt = "menu,menuone,noinsert,noselect" },
         preselect = cmp.PreselectMode.None,
-        -- For an understanding of why these mappings were
-        -- chosen, you will need to read `:help ins-completion`
-        --
-        -- No, but seriously. Please read `:help ins-completion`, it is really good!
+        formatting = {
+          format = function(entry, vim_item)
+            vim_item.menu = ({
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaSnip]",
+              path = "[Path]",
+            })[entry.source.name]
+            return vim_item
+          end,
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-j>"] = cmp.mapping.select_next_item(),
           ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -568,9 +575,9 @@ require("lazy").setup({
           end, { "i", "s" }),
         }),
         sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "path" },
+          { name = "nvim_lsp", max_item_count = 8 },
+          { name = "luasnip", max_item_count = 3 },
+          { name = "path", max_item_count = 3 },
         },
       })
     end,
@@ -714,6 +721,8 @@ require("lazy").setup({
 
       require("mini.files").setup()
 
+      require("mini.splitjoin").setup()
+
       -- require("mini.sessions").setup({
       --   autoread = true,
       --   autowrite = true,
@@ -755,7 +764,9 @@ require("lazy").setup({
     "ggandor/leap.nvim",
     config = function()
       local leap = require("leap")
-      leap.create_default_mappings()
+      -- leap.create_default_mappings()
+      vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward)")
+      vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward)")
       leap.opts.special_keys.prev_target = "<bs>"
       leap.opts.special_keys.prev_group = "<bs>"
       require("leap.user").set_repeat_keys("<cr>", "<bs>")
