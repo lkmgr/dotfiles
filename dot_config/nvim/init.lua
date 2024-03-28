@@ -255,7 +255,10 @@ require("lazy").setup({
               ["<C-j>"] = actions.move_selection_next,
               ["<C-k>"] = actions.move_selection_previous,
             },
-            n = { ["<C-q>"] = trouble.open_with_trouble },
+            n = {
+              ["<C-q>"] = trouble.open_with_trouble,
+              ["<BS>"] = actions.delete_buffer,
+            },
           },
         },
         extensions = {
@@ -451,12 +454,13 @@ require("lazy").setup({
 
       require("mason").setup()
 
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        "stylua", -- Used to format lua code
-        "prettierd",
+      require("mason-tool-installer").setup({
+        -- automatically install LSP servers, linters and formatters
+        ensure_installed = vim.list_extend(vim.tbl_keys(servers), {
+          "stylua",
+          "prettierd",
+        }),
       })
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
         handlers = {
@@ -511,12 +515,13 @@ require("lazy").setup({
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
 
-      -- 'rafamadriz/friendly-snippets',
+      -- "rafamadriz/friendly-snippets",
     },
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       luasnip.config.setup({})
+      -- require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
         snippet = {
