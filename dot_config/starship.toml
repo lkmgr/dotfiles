@@ -13,6 +13,7 @@ $username\
 $hostname\
 $kubernetes\
 $directory\
+$direnv\
 $git_branch\
 $git_commit\
 $git_state\
@@ -23,7 +24,6 @@ $cmake\
 $deno\
 $golang\
 $helm\
-$lua\
 $nodejs\
 $python\
 $terraform\
@@ -32,12 +32,12 @@ $nix_shell\
 $pulumi\
 $fill \
 $memory_usage\
+$status\
 $sudo\
 $cmd_duration\
 $time\
 $line_break\
 $jobs\
-$status\
 $character"""
 
 [character]
@@ -51,9 +51,14 @@ min_time = 300
 format = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 5
 truncation_symbol = "…/"
-read_only = " "
-home_symbol = " "
+read_only = "󰌾 "
+home_symbol = "󰋜 "
 truncate_to_repo = false
+
+[direnv]
+disabled = false
+format = '[$symbol$loaded/$allowed]($style) '
+style = 'bold yellow'
 
 [fill]
 symbol = "─"
@@ -75,9 +80,9 @@ modified = "!"
 staged = "+"
 # renamed = ""
 deleted = "x"
-ahead = " ${count}"
-diverged = " ${ahead_count} ${behind_count}"
-behind = " ${count}"
+ahead = "󰁝 ${count}"
+diverged = "󰁝 ${ahead_count} 󰁅 ${behind_count}"
+behind = "󰁅 ${count}"
 
 [kubernetes]
 disabled = true
@@ -96,3 +101,10 @@ disabled = false
 
 [shell]
 disabled = false
+
+[status]
+disabled = false
+
+[sudo]
+disabled = false
+
