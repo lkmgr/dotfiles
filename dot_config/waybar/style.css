@@ -80,6 +80,7 @@
 #custom-gpu_usage,
 #custom-gpu_temp,
 #clock,
+#custom-notification,
 #tray,
 #temperature {
   background-color: @surface0;
@@ -120,7 +121,12 @@
   margin-left: 4px;
 }
 
-#tray {
-  border-radius: 1.5rem;
+#custom-notification {
+  border-radius: 1.5rem 0 0 1.5rem;
   margin-left: 4px;
+}
+
+#tray {
+  border-radius: 0 1.5rem 1.5rem 0;
+  margin-right: 4px;
 }
