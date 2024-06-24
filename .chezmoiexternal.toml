@@ -1,14 +1,14 @@
 {{- if eq .chezmoi.os "linux" }}
-[".icons/macOS-Monterey"]
+[".icons/macOS"]
   type = "archive"
-  url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS-Monterey.tar.gz"
+  url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS.tar.xz"
   exact = true
   stripComponents = 1
   refreshPeriod = "72h"
 
-[".icons/macOS-Monterey-White"]
+[".icons/macOS-White"]
   type = "archive"
-  url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS-Monterey-White.tar.gz"
+  url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS-White.tar.xz"
   exact = true
   stripComponents = 1
   refreshPeriod = "72h"
