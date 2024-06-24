@@ -1,17 +1,17 @@
 {{- if eq .chezmoi.os "linux" }}
 [".icons/macOS"]
   type = "archive"
-  url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS.tar.xz"
+  url = "https://github.com/ful1e5/apple_cursor/releases/download/v2.0.1/macOS.tar.xz"
   exact = true
-  stripComponents = 1
+  stripComponents = 2
   refreshPeriod = "72h"
 
-[".icons/macOS-White"]
-  type = "archive"
-  url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS-White.tar.xz"
-  exact = true
-  stripComponents = 1
-  refreshPeriod = "72h"
+# [".icons/macOS-White"]
+#   type = "archive"
+#   url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS-White.tar.xz"
+#   exact = true
+#   stripComponents = 1
+#   refreshPeriod = "72h"
 
 [".config/awesome/vicious"]
   type = "archive"
