@@ -5,13 +5,15 @@
   exact = true
   stripComponents = 2
   refreshPeriod = "72h"
+  include = ["*/macOS/**"]
 
-# [".icons/macOS-White"]
-#   type = "archive"
-#   url = "https://github.com/ful1e5/apple_cursor/releases/latest/download/macOS-White.tar.xz"
-#   exact = true
-#   stripComponents = 1
-#   refreshPeriod = "72h"
+[".icons/macOS-White"]
+  type = "archive"
+  url = "https://github.com/ful1e5/apple_cursor/releases/download/v2.0.1/macOS.tar.xz"
+  exact = true
+  stripComponents = 2
+  refreshPeriod = "72h"
+  include = ["*/macOS-White/**"]
 
 [".config/awesome/vicious"]
   type = "archive"
