@@ -6,4 +6,26 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec Hyprland
 fi
 
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
+  export MOZ_ENABLE_WAYLAND="1"
+
+  export QT_QPA_PLATFORM="wayland;xcb"
+  export QT_QPA_PLATFORMTHEME="qt5ct"
+  export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+  export QT_SCALE_FACTOR="1"
+
+  export CLUTTER_BACKEND="wayland"
+  export GDK_BACKEND="wayland,x11"
+
+  export GDK_SCALE="1"
+  export XCURSOR_THEME="macOS"
+  export XCURSOR_SIZE="28"
+
+  exec sway
+fi
+
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty3" ]; then
+  exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+fi
+
 [[ -f ~/.bashrc ]] && . ~/.bashrc
