@@ -16,6 +16,7 @@ archive
 .config/mako/
 .config/nwg-look/
 .config/paru/paru.conf
+.config/sway/
 .config/swayidle/
 .config/swaylock/
 .config/tofi/
