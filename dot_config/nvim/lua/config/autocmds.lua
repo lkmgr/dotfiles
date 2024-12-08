@@ -1,30 +1,17 @@
-local function augroup(name)
-  return vim.api.nvim_create_augroup("custom_" .. name, { clear = true })
+-- Autocmds are automatically loaded on the VeryLazy event
+-- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
+-- Add any additional autocmds here
+
+local augroup = function(name)
+  return vim.api.nvim_create_augroup(name, { clear = true })
 end
 
--- Highlight when yanking (copying) text
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = augroup("highlight-yank"),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
--- resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  group = augroup("resize_splits"),
-  callback = function()
-    local current_tab = vim.fn.tabpagenr()
-    vim.cmd("tabdo wincmd =")
-    vim.cmd("tabnext " .. current_tab)
-  end,
-})
-
--- adjust formatoptions everywhere
+-- Set formatoptions everywhere
 vim.api.nvim_create_autocmd({ "BufWinEnter", "BufRead", "BufNewFile" }, {
+  desc = "Set formatoptions",
   group = augroup("formatoptions"),
   callback = function()
-    vim.opt_local.formatoptions:remove("o")
+    vim.opt_local.formatoptions = "jncrql"
   end,
   pattern = "*",
 })
