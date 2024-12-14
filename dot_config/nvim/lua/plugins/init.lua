@@ -1,35 +1,13 @@
 return {
   {
-    "hrsh7th/nvim-cmp",
+    "saghen/blink.cmp",
     opts = function(_, opts)
-      local cmp = require("cmp")
-
-      opts.completion = {
-        completeopt = "menu,menuone,noinsert,noselect",
-      }
-      opts.preselect = cmp.PreselectMode.None
-      opts.mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = LazyVim.cmp.confirm({ select = false }),
-        ["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
-        ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ["<C-CR>"] = function(fallback)
-          cmp.abort()
-          fallback()
-        end,
-        ["<tab>"] = function(fallback)
-          return LazyVim.cmp.map({ "snippet_forward", "ai_accept" }, fallback)()
-        end,
-      })
-      opts.experimental = {
-        ghost_text = false,
-      }
+      opts.completion.list = opts.completion.list or {}
+      opts.completion.list.selection = "auto_insert"
+      opts.keymap = vim.tbl_extend("keep", {
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+      }, opts.keymap)
     end,
   },
   {
@@ -47,13 +25,12 @@ return {
     },
   },
   {
-    "nvim-telescope/telescope.nvim",
-    opts = {
-      defaults = {
-        layout_strategy = "vertical",
-        path_display = { "truncate" },
-      },
-    },
+    "ibhagwan/fzf-lua",
+    opts = function(_, opts)
+      opts.winopts.height = 0.9
+      opts.winopts.width = 0.9
+      opts.winopts.preview.layout = "vertical"
+    end,
   },
   {
     "lewis6991/gitsigns.nvim",
