@@ -3,6 +3,7 @@
 -- Add any additional options here
 
 vim.g.lazyvim_eslint_auto_format = true
+vim.g.lazyvim_prettier_needs_config = true
 vim.g.lazyvim_picker = "fzf"
 
 vim.opt.scrolloff = 8
