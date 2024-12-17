@@ -1,18 +1,18 @@
 source $__fish_config_dir/colors/catppuccin-mocha-global-colors.fish
 source $__fish_config_dir/colors/catppuccin-mocha.fish
 
+if test -f /opt/homebrew/bin/brew
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+end
+
+source $__fish_config_dir/custom.d/paths.fish
 source $__fish_config_dir/custom.d/abbrs.fish
 source $__fish_config_dir/custom.d/env.fish
 source $__fish_config_dir/custom.d/fzf.fish
-source $__fish_config_dir/custom.d/paths.fish
 
 # prepend custom function path to fish_function_path
 if test -d $__fish_config_dir/custom_functions.d
     set -gp fish_function_path $__fish_config_dir/custom_functions.d
-end
-
-if test -f /opt/homebrew/bin/brew
-    eval "$(/opt/homebrew/bin/brew shellenv)"
 end
 
 if type -q starship
