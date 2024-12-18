@@ -25,7 +25,7 @@
 [".config/awesome/bling"]
   type = "archive"
   # renovate: currentValue=master
-  url = "https://github.com/BlingCorp/bling/archive/19ccfc0daf5edda8bbc508487616d00277a9d954.zip"
+  url = "https://github.com/BlingCorp/bling/archive/bcfb671248cf9ff636b7fd7d7120d8ed9deaa395.zip"
   exact = true
   stripComponents = 1
 
