@@ -3,7 +3,7 @@
 #
 
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  exec Hyprland
+  exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
 fi
 
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
@@ -22,10 +22,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty2" ]; then
   export XCURSOR_SIZE="28"
 
   exec sway
-fi
-
-if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty3" ]; then
-  exec /usr/lib/plasma-dbus-run-session-if-needed /usr/bin/startplasma-wayland
+  # exec Hyprland
 fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
