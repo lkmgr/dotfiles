@@ -11,10 +11,6 @@ if test -d $__fish_config_dir/custom_functions.d
     set -gp fish_function_path $__fish_config_dir/custom_functions.d
 end
 
-# if type -q asdf; and test -f /usr/local/opt/asdf/libexec/asdf.fish
-#     source /usr/local/opt/asdf/libexec/asdf.fish
-# end
-
 if test -f /opt/homebrew/bin/brew
     eval "$(/opt/homebrew/bin/brew shellenv)"
 end
@@ -27,14 +23,14 @@ end
 #     keychain --eval --quiet id_ed25519 | source
 # end
 
-if type -q direnv
-    direnv hook fish | source
-end
-
-if type -q fnm
-    fnm env --use-on-cd | source
-end
-
 if type -q atuin
     atuin init fish --disable-up-arrow | source
+end
+
+if type -q mise
+    if status is-interactive
+        mise activate fish | source
+    else
+        mise activate fish --shims | source
+    end
 end
