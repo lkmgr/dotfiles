@@ -4,15 +4,9 @@ fish_add_path ~/go/bin
 fish_add_path /usr/local/sbin
 
 if type -q ruby
-  fish_add_path /usr/local/lib/ruby/gems/3.1.0/bin
-  fish_add_path ~/.gem/ruby/3.1.0/bin
+    fish_add_path /usr/local/lib/ruby/gems/3.1.0/bin
+    fish_add_path ~/.gem/ruby/3.1.0/bin
 end
-
-# if type -q aqua
-  # add to end of global PATH
-  fish_add_path -aP "$AQUA_ROOT_DIR/bin"
-# end
-fish_add_path -aP ~/.local/share/aquaproj-aqua/bin/
 
 fish_add_path ~/.krew/bin
 

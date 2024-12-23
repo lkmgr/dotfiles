@@ -1,7 +1,7 @@
 .github
 README.md
 archive
-.config/nvim/lazy-lock.json
+lazy-lock.json
 
 {{- if ne .chezmoi.os "linux" }}
 .config/chromium-flags.conf

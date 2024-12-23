@@ -2,10 +2,6 @@
   "dependencyDashboard": true,
   "semanticCommits": true,
   "rangeStrategy": "auto",
-  "extends": [
-    // aqua registry and package versions
-    "github>aquaproj/aqua-renovate-config:file#1.5.2(dot_config/aqua/aqua\\.yaml\\.tmpl)",
-  ],
   "regexManagers": [
     // chezmoiexternal git commits
     {
