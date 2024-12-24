@@ -2,6 +2,7 @@
   "dependencyDashboard": true,
   "semanticCommits": true,
   "rangeStrategy": "auto",
+  "ignorePaths": ["**/.archive/**"],
   "customManagers": [
     // mise
     {
