@@ -1,12 +1,12 @@
 [tools]
-fzf = "0.57.0"
-jq = "1.7.1"
-k9s = "0.32.7"
-kubectl = "1.32.0"
-lazygit = "0.44.1"
-node = "22"
-sops = "3.9.2"
-starship = "1.21.1"
-stern = "1.30.0"
-usage = "1.7.4"
-zoxide = "0.9.6"
+fzf = "0.57.0" # renovate: repository=junegunn/fzf
+jq = "1.7.1" # renovate: repository=jqlang/jq
+k9s = "0.32.7" # renovate: repository=derailed/k9s
+kubectl = "1.32.0" # renovate: datasource=github-tags repository=kubernetes/kubectl
+lazygit = "0.44.1" # renovate: repository=jesseduffield/lazygit
+node = "22" # renovate: datasource=node-version
+sops = "3.9.2" # renovate: repository=getsops/sops
+starship = "1.21.1" # renovate: repository=starship/starship
+stern = "1.30.0" # renovate: repository=stern/stern
+usage = "1.7.4" # renovate: repository=jdx/usage
+zoxide = "0.9.6" # renovate: repository=ajeetdsouza/zoxide
