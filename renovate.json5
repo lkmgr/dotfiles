@@ -9,11 +9,12 @@
       "customType": "regex",
       "fileMatch": ["^dot_config/mise/config\\.toml$"],
       "matchStrings": [
-        "(?<depName>\\S+)\\s*=\\s*\"(?<currentValue>.*?)\"\\s*(#\\s*renovate\\s*(datasource=(?<datasource>\\S+)\\s*)?(repository=(?<repository>\\S+))?\\s*)?"
+        "(?<depName>\\S+)\\s*=\\s*\"(?<currentValue>.*?)\"\\s*(#\\s*renovate:\\s*(datasource=(?<datasource>\\S+)\\s*)?(repository=(?<repository>\\S+))?\\s*)?"
       ],
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
       "depNameTemplate": "{{#if repository}}{{{repository}}}{{else}}{{{depName}}}{{/if}}",
-      "versioningTemplate": "semver"
+      "versioningTemplate": "semver",
+      // "extractVersion": "^v?(?<version>.*)$"
     },
     // chezmoiexternal git commits
     {
