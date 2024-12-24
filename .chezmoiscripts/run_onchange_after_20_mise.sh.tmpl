@@ -1,0 +1,16 @@
+#!{{ lookPath "fish" }}
+
+# Should rerun this script when mise is installed at a later point as the path changes?
+# mise path: {{ lookPath "mise" }}
+
+if not type -q mise
+  exit
+end
+
+echo 'Updating mise tools...'
+
+# ~/.config/mise/config.toml hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+mise upgrade
+
+echo 'Updated mise tools'
+
