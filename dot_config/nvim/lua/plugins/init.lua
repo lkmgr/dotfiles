@@ -1,14 +1,17 @@
 return {
   {
     "saghen/blink.cmp",
-    opts = function(_, opts)
-      opts.completion.list = opts.completion.list or {}
-      opts.completion.list.selection = "auto_insert"
-      opts.keymap = vim.tbl_extend("keep", {
+    opts = {
+      completion = {
+        list = {
+          selection = "auto_insert",
+        },
+      },
+      keymap = {
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
-      }, opts.keymap)
-    end,
+      },
+    },
   },
   {
     "numToStr/Comment.nvim",
@@ -26,11 +29,18 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    opts = function(_, opts)
-      opts.winopts.height = 0.9
-      opts.winopts.width = 0.9
-      opts.winopts.preview.layout = "vertical"
-    end,
+    opts = {
+      winopts = {
+        height = 0.9,
+        width = 0.9,
+        preview = {
+          layout = "vertical",
+        },
+      },
+      oldfiles = {
+        include_current_session = true,
+      },
+    },
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -42,5 +52,23 @@ return {
       },
       current_line_blame_formatter = "   <author>, <author_time:%R> • <summary>",
     },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = {
+        enabled = false,
+      },
+    },
+  },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      style = "storm",
+    },
+  },
+  {
+    "echasnovski/mini.splitjoin",
+    opts = {},
   },
 }
