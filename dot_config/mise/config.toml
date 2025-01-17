@@ -1,13 +1,22 @@
 [tools]
+"ubi:sharkdp/bat" = "latest"
+"core:bun" = "latest"
+"ubi:dandavison/delta" = "latest"
+"core:deno" = "latest"
+"aqua:sharkdp/fd" = "latest"
+"aqua:antonmedv/fx" = "latest"
 fzf = "0.59.0" # renovate: repository=junegunn/fzf
 jq = "1.7.1" # renovate: repository=jqlang/jq
 k9s = "0.32.7" # renovate: repository=derailed/k9s
 kubectl = "1.32.1" # renovate: datasource=github-tags repository=kubernetes/kubectl
 lazygit = "0.45.2" # renovate: repository=jesseduffield/lazygit
+"aqua:lsd-rs/lsd" = "latest"
 node = "22" # renovate: datasource=node-version
+"aqua:BurntSushi/ripgrep" = "latest"
 sops = "3.9.4" # renovate: repository=getsops/sops
 starship = "1.22.1" # renovate: repository=starship/starship
 stern = "1.32.0" # renovate: repository=stern/stern
 usage = "1.7.4" # renovate: repository=jdx/usage
 uv = "0.5.27" # renovate: repository=astral-sh/uv
+"ubi:sharkdp/vivid" = "latest"
 zoxide = "0.9.6" # renovate: repository=ajeetdsouza/zoxide
