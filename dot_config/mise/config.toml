@@ -5,7 +5,7 @@ k9s = "0.32.7" # renovate: repository=derailed/k9s
 kubectl = "1.32.1" # renovate: datasource=github-tags repository=kubernetes/kubectl
 lazygit = "0.45.2" # renovate: repository=jesseduffield/lazygit
 node = "22" # renovate: datasource=node-version
-sops = "3.9.3" # renovate: repository=getsops/sops
+sops = "3.9.4" # renovate: repository=getsops/sops
 starship = "1.22.1" # renovate: repository=starship/starship
 stern = "1.32.0" # renovate: repository=stern/stern
 usage = "1.7.4" # renovate: repository=jdx/usage
