@@ -1,5 +1,5 @@
 [tools]
-fzf = "0.58.0" # renovate: repository=junegunn/fzf
+fzf = "0.59.0" # renovate: repository=junegunn/fzf
 jq = "1.7.1" # renovate: repository=jqlang/jq
 k9s = "0.32.7" # renovate: repository=derailed/k9s
 kubectl = "1.32.1" # renovate: datasource=github-tags repository=kubernetes/kubectl
