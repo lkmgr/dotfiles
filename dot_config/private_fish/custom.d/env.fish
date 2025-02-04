@@ -12,4 +12,4 @@ end
 set -gx GPG_TTY (tty)
 set -gx SOPS_AGE_KEY_FILE ~/.config/sops/age/keys.txt
 
-set -gx BAT_THEME base16-256
+set -gx BAT_THEME base16
