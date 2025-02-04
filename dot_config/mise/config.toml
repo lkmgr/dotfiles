@@ -1,23 +1,23 @@
 [tools]
-age = "latest" # renovate: repository=FiloSottile/age
-bat = "latest" # renovate: repository=sharkdp/bat
-bun = "latest"
-delta = "latest" # renovate: repository=dandavison/delta
-deno = "latest"
-fd = "latest" # renovate: repository=sharkdp/fd
-fx = "latest" # renovate: repository=antonmedv/fx
+age = "1.2.1" # renovate: repository=FiloSottile/age
+bat = "0.25.0" # renovate: repository=sharkdp/bat
+bun = "1.2.2"
+delta = "0.18.2" # renovate: repository=dandavison/delta
+deno = "2.1.9"
+fd = "10.2.0" # renovate: repository=sharkdp/fd
+fx = "35.0.0" # renovate: repository=antonmedv/fx
 fzf = "0.59.0" # renovate: repository=junegunn/fzf
 jq = "1.7.1" # renovate: repository=jqlang/jq
 k9s = "0.32.7" # renovate: repository=derailed/k9s
 kubectl = "1.32.1" # renovate: datasource=github-tags repository=kubernetes/kubectl
 lazygit = "0.45.2" # renovate: repository=jesseduffield/lazygit
-lsd = "latest" # renovate: repository=lsd-rs/lsd
+lsd = "1.1.5" # renovate: repository=lsd-rs/lsd
 node = "22" # renovate: datasource=node-version
-ripgrep = "latest" # renovate: repository=BurntSushi/ripgrep
+ripgrep = "14.1.1" # renovate: repository=BurntSushi/ripgrep
 sops = "3.9.4" # renovate: repository=getsops/sops
 starship = "1.22.1" # renovate: repository=starship/starship
 stern = "1.32.0" # renovate: repository=stern/stern
 usage = "2.0.4" # renovate: repository=jdx/usage
 uv = "0.5.27" # renovate: repository=astral-sh/uv
-vivid = "latest" # renovate: repository=sharkdp/vivid
+vivid = "0.10.1" # renovate: repository=sharkdp/vivid
 zoxide = "0.9.6" # renovate: repository=ajeetdsouza/zoxide
