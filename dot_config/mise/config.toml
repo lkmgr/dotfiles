@@ -20,4 +20,4 @@ stern = "1.32.0" # renovate: repository=stern/stern
 usage = "2.0.4" # renovate: repository=jdx/usage
 uv = "0.5.29" # renovate: repository=astral-sh/uv
 vivid = "0.10.1" # renovate: repository=sharkdp/vivid
-zoxide = "0.9.6" # renovate: repository=ajeetdsouza/zoxide
+zoxide = "0.9.7" # renovate: repository=ajeetdsouza/zoxide
