@@ -10,7 +10,7 @@ fzf = "0.60.2" # renovate: repository=junegunn/fzf
 jq = "1.7.1" # renovate: repository=jqlang/jq
 k9s = "0.40.5" # renovate: repository=derailed/k9s
 kubectl = "1.32.2" # renovate: datasource=github-tags repository=kubernetes/kubectl
-lazygit = "0.47.2" # renovate: repository=jesseduffield/lazygit
+lazygit = "0.48.0" # renovate: repository=jesseduffield/lazygit
 lsd = "1.1.5" # renovate: repository=lsd-rs/lsd
 node = "22" # renovate: datasource=node-version
 ripgrep = "14.1.1" # renovate: repository=BurntSushi/ripgrep
