@@ -14,7 +14,7 @@ lazygit = "0.48.0" # renovate: repository=jesseduffield/lazygit
 lsd = "1.1.5" # renovate: repository=lsd-rs/lsd
 node = "22" # renovate: datasource=node-version
 ripgrep = "14.1.1" # renovate: repository=BurntSushi/ripgrep
-sops = "3.9.4" # renovate: repository=getsops/sops
+sops = "3.10.0" # renovate: repository=getsops/sops
 starship = "1.22.1" # renovate: repository=starship/starship
 stern = "1.32.0" # renovate: repository=stern/stern
 usage = "2.0.7" # renovate: repository=jdx/usage
