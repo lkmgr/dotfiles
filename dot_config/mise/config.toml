@@ -18,7 +18,7 @@ sops = "3.10.2" # renovate: repository=getsops/sops
 starship = "1.22.1" # renovate: repository=starship/starship
 stern = "1.32.0" # renovate: repository=stern/stern
 usage = "2.0.7" # renovate: repository=jdx/usage
-uv = "0.6.15" # renovate: repository=astral-sh/uv
+uv = "0.6.16" # renovate: repository=astral-sh/uv
 vivid = "0.10.1" # renovate: repository=sharkdp/vivid
 zoxide = "0.9.7" # renovate: repository=ajeetdsouza/zoxide
 
