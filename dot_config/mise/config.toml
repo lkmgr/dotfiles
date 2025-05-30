@@ -3,7 +3,7 @@ age = "1.2.1" # renovate: repository=FiloSottile/age
 bat = "0.25.0" # renovate: repository=sharkdp/bat
 bun = "1.2.15"
 delta = "0.18.2" # renovate: repository=dandavison/delta
-deno = "2.3.3"
+deno = "2.3.4"
 fd = "10.2.0" # renovate: repository=sharkdp/fd
 fx = "35.0.0" # renovate: repository=antonmedv/fx
 fzf = "0.62.0" # renovate: repository=junegunn/fzf
