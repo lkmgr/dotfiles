@@ -5,7 +5,7 @@ bun = "1.2.16"
 delta = "0.18.2" # renovate: repository=dandavison/delta
 deno = "2.3.6"
 fd = "10.2.0" # renovate: repository=sharkdp/fd
-fx = "35.0.0" # renovate: repository=antonmedv/fx
+fx = "36.0.4" # renovate: repository=antonmedv/fx
 fzf = "0.62.0" # renovate: repository=junegunn/fzf
 jq = "1.7.1" # renovate: repository=jqlang/jq
 k9s = "0.50.6" # renovate: repository=derailed/k9s
