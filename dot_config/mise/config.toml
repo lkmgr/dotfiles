@@ -23,4 +23,4 @@ vivid = "0.10.1" # renovate: repository=sharkdp/vivid
 zoxide = "0.9.8" # renovate: repository=ajeetdsouza/zoxide
 
 "pipx:b2" = "4.3.3"
-"pipx:aider-chat" = { version = "0.85.1", uvx_args = "--python python3.12" }
+"pipx:aider-chat" = { version = "0.85.2", uvx_args = "--python python3.12" }
