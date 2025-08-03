@@ -6,7 +6,7 @@ delta = "0.18.2" # renovate: repository=dandavison/delta
 deno = "2.4.3"
 fd = "10.2.0" # renovate: repository=sharkdp/fd
 fx = "35.0.0" # renovate: repository=antonmedv/fx
-fzf = "0.65.0" # renovate: repository=junegunn/fzf
+fzf = "0.65.1" # renovate: repository=junegunn/fzf
 jq = "1.7.1" # renovate: repository=jqlang/jq
 k9s = "0.50.9" # renovate: repository=derailed/k9s
 kubectl = "1.33.3" # renovate: datasource=github-tags repository=kubernetes/kubectl
