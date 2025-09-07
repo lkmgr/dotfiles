@@ -16,7 +16,7 @@ node = "22" # renovate: datasource=node-version
 ripgrep = "14.1.1" # renovate: repository=BurntSushi/ripgrep
 sops = "3.10.2" # renovate: repository=getsops/sops
 starship = "1.23.0" # renovate: repository=starship/starship
-stern = "1.32.0" # renovate: repository=stern/stern
+stern = "1.33.0" # renovate: repository=stern/stern
 usage = "2.2.2" # renovate: repository=jdx/usage
 uv = "0.8.15" # renovate: repository=astral-sh/uv
 vivid = "0.10.1" # renovate: repository=sharkdp/vivid
