@@ -67,9 +67,11 @@ output $leftMon {
 # Example configuration:
 #
 # exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+#     timeout 300 'swaylock -f -c 000000' \
+#     timeout 600 'swaymsg "output * power off"' \
+#     resume 'swaymsg "output * power on"' \
+#     before-sleep 'swaylock -f -c 000000'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -100,7 +102,7 @@ input "type:keyboard" {
 
 input "type:pointer" {
     accel_profile flat
-    pointer_accel 0.6
+    pointer_accel -0.1
 }
 
 gaps inner 8
@@ -151,9 +153,15 @@ client.urgent           #e0af68 #e0af68    #1d202f #b0e2ff   #e0af68
 
     bindsym $mod+Escape exec ~/.local/bin/tofi-powermenu
 
-    bindsym $mod+F1 exec ~/.config/sway/gamemode.sh
+    bindsym $mod+F1 exec ~/.config/sway/gamemode_single.sh
 
     bindsym $mod+m exec swaync-client -t -sw
+
+    # bindsym $mod+Ctrl+l exec "swaymsg 'output * power off'"
+
+    bindsym $mod+Grave workspace back_and_forth
+
+    bindsym $mod+Shift+Space exec kitty qalc
 #
 # Moving around:
 #
@@ -218,6 +226,8 @@ client.urgent           #e0af68 #e0af68    #1d202f #b0e2ff   #e0af68
     workspace 9 output $leftMon
     workspace 10 output $leftMon
 
+    # for_window [class="steam"] move to workspace 5
+
     for_window [workspace="7"] floating enable
 
 #
@@ -253,11 +263,11 @@ client.urgent           #e0af68 #e0af68    #1d202f #b0e2ff   #e0af68
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    # bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    # bindsym $mod+minus scratchpad show
+    bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
