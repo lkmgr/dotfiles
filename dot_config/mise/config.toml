@@ -17,7 +17,7 @@ ripgrep = "14.1.1" # renovate: repository=BurntSushi/ripgrep
 sops = "3.11.0" # renovate: repository=getsops/sops
 starship = "1.23.0" # renovate: repository=starship/starship
 stern = "1.33.0" # renovate: repository=stern/stern
-usage = "2.4.0" # renovate: repository=jdx/usage
+usage = "2.5.0" # renovate: repository=jdx/usage
 uv = "0.9.5" # renovate: repository=astral-sh/uv
 vivid = "0.10.1" # renovate: repository=sharkdp/vivid
 zoxide = "0.9.8" # renovate: repository=ajeetdsouza/zoxide
