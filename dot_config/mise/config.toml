@@ -20,7 +20,7 @@ stern = "1.34.0" # renovate: repository=stern/stern
 usage = "2.18.2" # renovate: repository=jdx/usage
 uv = "0.11.26" # renovate: repository=astral-sh/uv
 vivid = "0.11.1" # renovate: repository=sharkdp/vivid
-zoxide = "0.9.9" # renovate: repository=ajeetdsouza/zoxide
+zoxide = "0.10.0" # renovate: repository=ajeetdsouza/zoxide
 
 "pipx:b2" = "4.7.1"
 "pipx:aider-chat" = { version = "0.86.2", uvx_args = "--python python3.12" }
